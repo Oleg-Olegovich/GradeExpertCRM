@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GradeExpertCRM.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public string Greeting => "Welcome to Avalonia!";
+        public Uri LogoImage => new Uri("Resources/logo.png", UriKind.Relative);
+        public Uri GearsImage => new Uri("Resources/gears.png", UriKind.Relative);
     }
 }

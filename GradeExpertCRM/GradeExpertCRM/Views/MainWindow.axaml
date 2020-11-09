@@ -6,12 +6,58 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="GradeExpertCRM.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="GradeExpertCRM">
+        Title="GradeExpertCRM" MinHeight="300" MinWidth="700" Height="600" Width="800">
 
+	<Window.Styles>
+		<Style Selector="Button">
+			<Setter Property="FontFamily" Value="Calibri"/>
+			<Setter Property="FontSize" Value="24"/>
+			<Setter Property="Foreground" Value="#FFFFFFFF"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="Background" Value="#EE0505"/>
+			<Setter Property="BorderBrush" Value="#FFFFFFFF"/>
+			<Setter Property="MaxHeight" Value="50"/>
+		</Style>
+		<Style Selector="Button/template/ContentPresenter">
+			<Setter Property="CornerRadius" Value="10" />
+		</Style>
+	</Window.Styles>
+	
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition MaxHeight="50" />
+			<RowDefinition Height="50"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+
+		<DockPanel Grid.Row="0">
+			<Image Source="avares://GradeExpertCRM/Resources/logo.png" DockPanel.Dock="Left"/>
+			<Image Source="avares://GradeExpertCRM/Resources/gears.png" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
+		</DockPanel>
+		
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			
+			<Button x:Name="buttonClient" Content="Клиент" Grid.Column="0"/>
+			<Button x:Name="buttonCar" Content="Автомобиль" Grid.Column="1"/>
+			<Button x:Name="buttonCalculator" Content="Калькуляция" Grid.Column="2"/>
+			<Button x:Name="buttonDocuments" Content="Документы" Grid.Column="3"/>
+			<Button x:Name="buttonMail" Content="Почта" Grid.Column="4"/>
+		</Grid>
+		
+		<StackPanel Orientation="Horizontal" Grid.Row="2">
+			
+		</StackPanel>
+	</Grid>
 
 </Window>
