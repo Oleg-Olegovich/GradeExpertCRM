@@ -48,16 +48,25 @@
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
 			
-			<Button x:Name="ButtonClient" Content="{Binding Localization.ButtonClient}" Grid.Column="0"/>
-			<Button x:Name="ButtonCar" Content="{Binding Localization.ButtonCar}" Grid.Column="1"/>
-			<Button x:Name="ButtonCalculator" Content="{Binding Localization.ButtonCalculator}" Grid.Column="2"/>
-			<Button x:Name="ButtonDocuments" Content="{Binding Localization.ButtonDocuments}" Grid.Column="3"/>
-			<Button x:Name="ButtonMail" Content="{Binding Localization.ButtonMail}" Grid.Column="4"/>
+			<Button x:Name="ButtonClient" 
+					Command="{Binding GoClientWindow}" 
+					Content="{Binding Localization.ButtonClient}" 
+					Grid.Column="0"/>
+			<Button x:Name="ButtonCar" 
+					Content="{Binding Localization.ButtonCar}" 
+					Grid.Column="1"/>
+			<Button x:Name="ButtonCalculator" 
+					Content="{Binding Localization.ButtonCalculator}" 
+					Grid.Column="2"/>
+			<Button x:Name="ButtonDocuments" 
+					Content="{Binding Localization.ButtonDocuments}" 
+					Grid.Column="3"/>
+			<Button x:Name="ButtonMail" 
+					Content="{Binding Localization.ButtonMail}" 
+					Grid.Column="4"/>
 		</Grid>
-		
-		<StackPanel Orientation="Horizontal" Grid.Row="2">
-			
-		</StackPanel>
+
+		<ContentControl Content="{Binding Content}" Grid.Row="2"/>
 	</Grid>
 
 </Window>
