@@ -4,7 +4,22 @@ namespace GradeExpertCRM.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public Uri LogoImage => new Uri("Resources/logo.png", UriKind.Relative);
-        public Uri GearsImage => new Uri("Resources/gears.png", UriKind.Relative);
+        private string Language = "Russian";
+        private ILanguageProvider[] LanguageProvider = new ILanguageProvider[] 
+        {
+            new RussianLanguageProvider(),
+            new GermanLanguageProvider(),
+            new EnglishLanguageProvider()
+        };
+
+        public ILanguageProvider Localization 
+        {
+            get => Language switch 
+            {
+                "Russian" => LanguageProvider[0],
+                "German" => LanguageProvider[1],
+                _ => LanguageProvider[2]
+            }; 
+        }
     }
 }
