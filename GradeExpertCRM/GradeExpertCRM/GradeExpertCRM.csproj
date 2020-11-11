@@ -8,6 +8,10 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Resources\magnifier.png" />
+    <None Remove="Resources\Plus.png" />
+  </ItemGroup>
+  <ItemGroup>
 	  <PackageReference Include="Avalonia" Version="0.10.0-preview6" />
 	  <PackageReference Include="Avalonia.Desktop" Version="0.10.0-preview6" />
 	  <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0-preview6" />
@@ -15,5 +19,7 @@
   <ItemGroup>
 	<AvaloniaResource Include="Resources\gears.png" />
 	<AvaloniaResource Include="Resources\logo.png" />
+	<AvaloniaResource Include="Resources\magnifier.png" />
+	<AvaloniaResource Include="Resources\plus.png" />
   </ItemGroup>
 </Project>

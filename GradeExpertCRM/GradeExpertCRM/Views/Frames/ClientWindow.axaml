@@ -1,29 +1,61 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
+﻿<UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d"
         x:Class="GradeExpertCRM.Views.Frames.ClientWindow">
 
-	<Window.Styles>
+	<UserControl.Styles>
 		<Style Selector="TextBlock">
 			<Setter Property="FontFamily" Value="Calibri"/>
 			<Setter Property="FontSize" Value="24"/>
-			<Setter Property="Foreground" Value="#FFFFFFFF"/>
-			<Setter Property="Background" Value="#EE0505"/>
+			<Setter Property="Foreground" Value="#000000"/>
+			<Setter Property="Background" Value="#FFFFFFFF"/>
 		</Style>
-		<Style Selector="Button/template/ContentPresenter">
-			<Setter Property="CornerRadius" Value="10" />
+		<Style Selector="Border.BorderOfText">
+			<Setter Property="BorderBrush" Value="#EE0505"/>
+			<Setter Property="Padding" Value="5 0 5 0"/>
+			<Setter Property="Margin" Value="0 0 10 0"/>
+			<Setter Property="BorderThickness" Value="3"/>
+			<Setter Property="CornerRadius" Value="10"/>
 		</Style>
-	</Window.Styles>
-	
+		<Style Selector="Button">
+			<Setter Property="FontFamily" Value="Calibri"/>
+			<Setter Property="FontSize" Value="24"/>
+			<Setter Property="Foreground" Value="#000000"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="Background" Value="#FFFFFFFF"/>
+			<Setter Property="BorderBrush" Value="#FFFFFFFF"/>
+			<Setter Property="MaxHeight" Value="50"/>
+		</Style>
+	</UserControl.Styles>
+
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition/>
+			<RowDefinition MaxHeight="50"/>
 			<RowDefinition/>
 			<RowDefinition/>
 		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
 
-		<TextBlock Text="" Grid.Row="0"/>
+		<StackPanel Grid.Row="0" Orientation="Horizontal">
+			<Border Classes="BorderOfText">
+				<TextBlock Text="" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+			</Border>
+			<Image Source="avares://GradeExpertCRM/Resources/magnifier.png" DockPanel.Dock="Left" HorizontalAlignment="Right"/>
+		</StackPanel>
+
+		<ScrollViewer Grid.Row="1">
+			
+		</ScrollViewer>
+
+		<StackPanel Grid.Row="2" Orientation="Horizontal">
+			<Image Source="avares://GradeExpertCRM/Resources/plus.png" DockPanel.Dock="Left" HorizontalAlignment="Right"/>
+			<Button x:Name="ButtonAddClient"
+					Command="{Binding GoAddClientWindow}"
+					Content="{Binding Localization.ButtonAddClient}"/>
+		</StackPanel>
 	</Grid>
-</Window>
+</UserControl>

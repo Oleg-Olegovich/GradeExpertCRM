@@ -10,6 +10,10 @@ namespace GradeExpertCRM.ViewModels.Frames
 {
     class ClientWindowViewModel : ViewModelBase
     {
-        
+        public static ILanguageProvider Localization
+        {
+            get => MainWindowViewModel.Localization;
+        }
+
     }
 }

@@ -7,6 +7,7 @@ namespace GradeExpertCRM.ViewModels
     class RussianLanguageProvider : ILanguageProvider
     {
         public string ButtonClient { get => "Клиент"; }
+        public string ButtonAddClient { get => "Добавить нового клиента"; }
         public string ButtonCar { get => "Автомобиль"; }
         public string ButtonCalculator { get => "Калькуляция"; }
         public string ButtonDocuments { get => "Документы"; }

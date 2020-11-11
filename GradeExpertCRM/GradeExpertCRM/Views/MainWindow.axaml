@@ -3,10 +3,10 @@
         xmlns:vm="clr-namespace:GradeExpertCRM.ViewModels;assembly=GradeExpertCRM"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d"
         x:Class="GradeExpertCRM.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="GradeExpertCRM" MinHeight="300" MinWidth="700" Height="600" Width="800">
+        Title="GradeExpertCRM" MinHeight="300" MinWidth="700" Height="450" Width="800">
 
 	<Window.Styles>
 		<Style Selector="Button">
@@ -53,20 +53,27 @@
 					Content="{Binding Localization.ButtonClient}" 
 					Grid.Column="0"/>
 			<Button x:Name="ButtonCar" 
+					Command="{Binding GoCarWindow}" 
 					Content="{Binding Localization.ButtonCar}" 
 					Grid.Column="1"/>
-			<Button x:Name="ButtonCalculator" 
+			<Button x:Name="ButtonCalculator"
+					Command="{Binding GoCalculatorWindow}"
 					Content="{Binding Localization.ButtonCalculator}" 
 					Grid.Column="2"/>
 			<Button x:Name="ButtonDocuments" 
+					Command="{Binding GoDocumentsWindow}" 
 					Content="{Binding Localization.ButtonDocuments}" 
 					Grid.Column="3"/>
-			<Button x:Name="ButtonMail" 
+			<Button x:Name="ButtonMail"
+					Command="{Binding GoMailWindow}"
 					Content="{Binding Localization.ButtonMail}" 
 					Grid.Column="4"/>
 		</Grid>
 
-		<ContentControl Content="{Binding Content}" Grid.Row="2"/>
+		<ContentControl Content="{Binding Content}" 
+						Grid.Row="2" 
+						HorizontalContentAlignment="Stretch"
+						VerticalContentAlignment="Stretch"/>
 	</Grid>
 
 </Window>
