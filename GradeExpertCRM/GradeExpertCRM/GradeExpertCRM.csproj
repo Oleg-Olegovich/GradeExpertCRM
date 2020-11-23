@@ -21,5 +21,11 @@
 	<AvaloniaResource Include="Resources\logo.png" />
 	<AvaloniaResource Include="Resources\magnifier.png" />
 	<AvaloniaResource Include="Resources\plus.png" />
+    <AvaloniaResource Include="Styles\Style.xaml" />	
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Styles\Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
   </ItemGroup>
 </Project>

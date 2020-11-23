@@ -6,44 +6,44 @@ namespace GradeExpertCRM.ViewModels
 {
     class RussianLanguageProvider : ILanguageProvider
     {
-        public string ButtonClient => "Клиент";
+        public string ButtonClient => "КЛИЕНТ";
 
-        public string ButtonAddClient => "Добавить нового клиента";
+        public string ButtonAddClient => "ДОБАВИТЬ НОВОГО КЛИЕНТА";
 
-        public string ButtonCar => "Автомобиль";
+        public string ButtonCar => "АВТОМОБИЛЬ";
 
-        public string ButtonCalculator => "Калькуляция";
+        public string ButtonCalculator => "КАЛЬКУЛЯЦИЯ";
 
-        public string ButtonDocuments => "Документы";
+        public string ButtonDocuments => "ДОКУМЕНТЫ";
 
-        public string ButtonMail => "Почта";
+        public string ButtonMail => "ПОЧТА";
 
-        public string ButtonSave => "Сохранить";
+        public string ButtonSave => "СОХРАНИТЬ";
 
-        public string LabelAddingNewClient => "Добавление нового клиента";
+        public string LabelAddingNewClient => "ДОБАВЛЕНИЕ НОВОГО КЛИЕНТА";
 
-        public string TextBoxIndex => "Индекс";
+        public string TextBoxIndex => "ИНДЕКС";
 
-        public string TextBoxArea => "Область, край";
+        public string TextBoxArea => "ОБЛАСТЬ, КРАЙ";
 
-        public string TextBoxCity => "";
+        public string TextBoxCity => "ГОРОД";
 
-        public string TextBoxAddress => "";
+        public string TextBoxAddress => "УЛИЦА, ДОМ, КВ";
 
-        public string TextBoxPhoneNumber => "";
+        public string TextBoxPhoneNumber => "ТЕЛЕФОН";
 
-        public string TextBoxEmail => "";
+        public string TextBoxEmail => "E-MAIL";
 
-        public string TextBoxTIN => "";
+        public string TextBoxTIN => "ИНН";
 
-        public string TextBoxCRR => "";
+        public string TextBoxCRR => "КПП";
 
-        public string TextBoxBank => "";
+        public string TextBoxBank => "БАНК, АДРЕС БАНКА";
 
-        public string TextBoxBIC => "";
+        public string TextBoxBIC => "БИК";
 
-        public string TextBoxPaymentAccount => "";
+        public string TextBoxPaymentAccount => "РАСЧ/СЧЁТ";
 
-        public string TextBoxCorrespondentAccount => "";
+        public string TextBoxCorrespondentAccount => "КОРР/СЧЁТ";
     }
 }
