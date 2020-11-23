@@ -10,5 +10,9 @@ namespace GradeExpertCRM.ViewModels.Frames
 {
     internal class MailWindowViewModel : ViewModelBase
     {
+        public static ILanguageProvider Localization
+        {
+            get => MainWindowViewModel.Localization;
+        }
     }
 }

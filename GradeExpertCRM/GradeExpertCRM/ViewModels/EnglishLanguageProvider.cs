@@ -6,11 +6,18 @@ namespace GradeExpertCRM.ViewModels
 {
     class EnglishLanguageProvider : ILanguageProvider
     {
-        public string ButtonClient { get => ""; }
-        public string ButtonAddClient { get => ""; }
-        public string ButtonCar { get; }
-        public string ButtonCalculator { get; }
-        public string ButtonDocuments { get; }
-        public string ButtonMail { get; }
+        public string ButtonClient => "Клиент";
+
+        public string ButtonAddClient => "Добавить нового клиента";
+
+        public string ButtonCar => "Автомобиль";
+
+        public string ButtonCalculator => "Калькуляция";
+
+        public string ButtonDocuments => "Документы";
+
+        public string ButtonMail => "Почта";
+
+        public string ButtonSave => "Сохранить";
     }
 }

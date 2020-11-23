@@ -8,11 +8,12 @@ using GradeExpertCRM.Views.Frames;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
-    internal class CarWindowViewModel : ViewModelBase
+    class SettingsWindowViewModel : ViewModelBase
     {
         public static ILanguageProvider Localization
         {
             get => MainWindowViewModel.Localization;
         }
+
     }
 }

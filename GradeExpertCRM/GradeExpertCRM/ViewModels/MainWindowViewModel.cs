@@ -16,21 +16,21 @@ namespace GradeExpertCRM.ViewModels
 
         private ViewModelBase _content;
 
-        private static ILanguageProvider[] LanguageProvider = new ILanguageProvider[] 
+        private static ILanguageProvider[] LanguageProvider = new ILanguageProvider[]
         {
             new RussianLanguageProvider(),
             new GermanLanguageProvider(),
             new EnglishLanguageProvider()
         };
 
-        public static ILanguageProvider Localization 
+        public static ILanguageProvider Localization
         {
-            get => Language switch 
+            get => Language switch
             {
                 "Russian" => LanguageProvider[0],
                 "German" => LanguageProvider[1],
                 _ => LanguageProvider[2]
-            }; 
+            };
         }
 
         public ViewModelBase Content
@@ -43,6 +43,8 @@ namespace GradeExpertCRM.ViewModels
             }
         }
 
+        public static MainWindowViewModel Instance { get; set; }
+
         private async Task OpenClientWindow() => Content = new ClientWindowViewModel();
 
         private async Task OpenCarWindow() => Content = new CarWindowViewModel();
@@ -52,6 +54,8 @@ namespace GradeExpertCRM.ViewModels
         private async Task OpenDocumentsWindow() => Content = new DocumentsWindowViewModel();
 
         private async Task OpenMailWindow() => Content = new MailWindowViewModel();
+
+        private async Task OpenSettingsWindow() => Content = new SettingsWindowViewModel();
 
 
         public ReactiveCommand<Unit, Unit> GoClientWindow { get; }
@@ -64,6 +68,8 @@ namespace GradeExpertCRM.ViewModels
 
         public ReactiveCommand<Unit, Unit> GoMailWindow { get; }
 
+        public ReactiveCommand<Unit, Unit> GoSettingsWindow { get; }
+
 
         public MainWindowViewModel()
         {
@@ -72,7 +78,9 @@ namespace GradeExpertCRM.ViewModels
             GoCalculatorWindow = ReactiveCommand.CreateFromTask(OpenCalculatorWindow);
             GoDocumentsWindow = ReactiveCommand.CreateFromTask(OpenDocumentsWindow);
             GoMailWindow = ReactiveCommand.CreateFromTask(OpenMailWindow);
-            //Content = new ClientWindowViewModel();
+            GoSettingsWindow = ReactiveCommand.CreateFromTask(OpenSettingsWindow);
+            Instance = this;
+            Content = new ClientWindowViewModel();
         }
     }
 }

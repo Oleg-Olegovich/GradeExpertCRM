@@ -6,11 +6,12 @@
         x:Class="GradeExpertCRM.Views.Frames.ClientWindow">
 
 	<UserControl.Styles>
-		<Style Selector="TextBlock">
+		<Style Selector="TextBox">
 			<Setter Property="FontFamily" Value="Calibri"/>
 			<Setter Property="FontSize" Value="24"/>
 			<Setter Property="Foreground" Value="#000000"/>
 			<Setter Property="Background" Value="#FFFFFFFF"/>
+			<Setter Property="BorderThickness" Value="0"/>
 		</Style>
 		<Style Selector="Border.BorderOfText">
 			<Setter Property="BorderBrush" Value="#EE0505"/>
@@ -23,8 +24,8 @@
 			<Setter Property="FontFamily" Value="Calibri"/>
 			<Setter Property="FontSize" Value="24"/>
 			<Setter Property="Foreground" Value="#000000"/>
-			<Setter Property="BorderThickness" Value="2"/>
 			<Setter Property="Background" Value="#FFFFFFFF"/>
+			<Setter Property="BorderThickness" Value="2"/>
 			<Setter Property="BorderBrush" Value="#FFFFFFFF"/>
 			<Setter Property="MaxHeight" Value="50"/>
 		</Style>
@@ -37,24 +38,40 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="4*"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
 
-		<StackPanel Grid.Row="0" Orientation="Horizontal">
-			<Border Classes="BorderOfText">
-				<TextBlock Text="" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-			</Border>
-			<Image Source="avares://GradeExpertCRM/Resources/magnifier.png" DockPanel.Dock="Left" HorizontalAlignment="Right"/>
-		</StackPanel>
-
-		<ScrollViewer Grid.Row="1">
-			
+		<Border Classes="BorderOfText" 
+				Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+				Margin="10 0 0 0">
+			<TextBox VerticalAlignment="Stretch"/>
+		</Border>
+		<DockPanel Grid.Row="0" Grid.Column="2">
+			<Button x:Name="Search" DockPanel.Dock="Left">
+				<Image Source="avares://GradeExpertCRM/Resources/magnifier.png"/>
+			</Button>
+		</DockPanel>
+		
+		<ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="8">
+Здесь 
+должна 
+быть 
+таблица
 		</ScrollViewer>
 
-		<StackPanel Grid.Row="2" Orientation="Horizontal">
-			<Image Source="avares://GradeExpertCRM/Resources/plus.png" DockPanel.Dock="Left" HorizontalAlignment="Right"/>
+		<StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="8">
+			<Button x:Name="ImageButtonAddClient"
+					Command="{Binding GoAddingClientWindow}">
+				<Image Source="avares://GradeExpertCRM/Resources/plus.png" DockPanel.Dock="Left" HorizontalAlignment="Right"/>
+			</Button>
 			<Button x:Name="ButtonAddClient"
-					Command="{Binding GoAddClientWindow}"
+					Command="{Binding GoAddingClientWindow}"
 					Content="{Binding Localization.ButtonAddClient}"/>
 		</StackPanel>
 	</Grid>
