@@ -1,12 +1,11 @@
-﻿using Avalonia;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace GradeExpertCRM.Views.Frames
+namespace GradeExpertCRM.Views
 {
-    public class ClientView : UserControl
+    public class MainWindowView : Window
     {
-        public ClientView()
+        public MainWindowView()
         {
             InitializeComponent();
         }

@@ -12,7 +12,7 @@ namespace GradeExpertCRM.ViewModels.Frames
     {
         public static ILanguageProvider Localization
         {
-            get => MainWindowViewModel.Localization;
+            get => MainViewModel.Localization;
         }
 
     }

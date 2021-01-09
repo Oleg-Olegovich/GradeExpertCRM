@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GradeExpertCRM.ViewModels
+﻿namespace GradeExpertCRM.ViewModels
 {
     public interface ILanguageProvider
     {
@@ -45,5 +41,11 @@ namespace GradeExpertCRM.ViewModels
         string TextBoxPaymentAccount { get; }
 
         string TextBoxCorrespondentAccount { get; }
+
+        string SignIn { get; }
+
+        string Password { get; }
+
+        string Login { get; }
     }
 }

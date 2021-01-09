@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GradeExpertCRM.ViewModels
+﻿namespace GradeExpertCRM.ViewModels
 {
     class EnglishLanguageProvider : ILanguageProvider
     {
-        public string ButtonClient => "КЛИЕНТ";
+        public string ButtonClient => "CLIENT";
 
         public string ButtonAddClient => "ДОБАВИТЬ НОВОГО КЛИЕНТА";
 
@@ -45,5 +41,11 @@ namespace GradeExpertCRM.ViewModels
         public string TextBoxPaymentAccount => "РАСЧ/СЧЁТ";
 
         public string TextBoxCorrespondentAccount => "КОРР/СЧЁТ";
+
+        public string SignIn => "SIGN IN";
+
+        public string Password => throw new System.NotImplementedException();
+
+        public string Login => throw new System.NotImplementedException();
     }
 }

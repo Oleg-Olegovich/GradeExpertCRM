@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GradeExpertCRM.ViewModels
 {
@@ -45,5 +43,11 @@ namespace GradeExpertCRM.ViewModels
         public string TextBoxPaymentAccount => "РАСЧ/СЧЁТ";
 
         public string TextBoxCorrespondentAccount => "КОРР/СЧЁТ";
+
+        public string SignIn => throw new NotImplementedException();
+
+        public string Password => throw new NotImplementedException();
+
+        public string Login => throw new NotImplementedException();
     }
 }

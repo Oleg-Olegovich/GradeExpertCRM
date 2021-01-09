@@ -11,7 +11,7 @@ namespace GradeExpertCRM
 
         public IControl Build(object data)
         {
-            var name = data.GetType().FullName.Replace("ViewModels", "Views").Replace("ViewModel", ""); ;
+            var name = data.GetType().FullName.Replace("ViewModel", "View");
             var type = Type.GetType(name);
 
             if (type != null)

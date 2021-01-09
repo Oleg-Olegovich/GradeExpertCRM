@@ -12,9 +12,9 @@
     <None Remove="Resources\Plus.png" />
   </ItemGroup>
   <ItemGroup>
-	  <PackageReference Include="Avalonia" Version="0.10.0-preview6" />
-	  <PackageReference Include="Avalonia.Desktop" Version="0.10.0-preview6" />
-	  <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0-preview6" />
+	  <PackageReference Include="Avalonia" Version="0.10.0-rc1" />
+	  <PackageReference Include="Avalonia.Desktop" Version="0.10.0-rc1" />
+	  <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0-rc1" />
   </ItemGroup>
   <ItemGroup>
 	<AvaloniaResource Include="Resources\gears.png" />
@@ -24,8 +24,11 @@
     <AvaloniaResource Include="Styles\Style.xaml" />	
   </ItemGroup>
   <ItemGroup>
-    <None Update="Styles\Style.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
+    <Compile Update="Views\MainView.axaml.cs">
+      <DependentUpon>MainView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SignInView.axaml.cs">
+      <DependentUpon>SignInView.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
