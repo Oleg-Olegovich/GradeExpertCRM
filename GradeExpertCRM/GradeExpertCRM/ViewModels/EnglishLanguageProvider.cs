@@ -18,6 +18,8 @@
 
         public string ButtonSave => "СОХРАНИТЬ";
 
+        public string ButtonCancel => "ОТМЕНА";
+
         public string LabelAddingNewClient => "ДОБАВЛЕНИЕ НОВОГО КЛИЕНТА";
 
         public string LabelAddingNewCar => "ДОБАВЛЕНИЕ НОВОГО АВТОМОБИЛЯ";
@@ -87,5 +89,73 @@
         public string CarNumber => "ГОС. НОМЕР";
 
         public string Loss => "УБЫТОК";
+
+        public string GradExpert => "ГРАД-ЭКСПЕРТ";
+
+        public string FixPrice => "ФИКС. ЦЕНА";
+
+        public string Currency => "РУБ";
+
+        public string RepairOfDents => "РЕМОНТ ВМЯТИН";
+
+        public string Quantity => "КОЛИЧЕСТВО";
+
+        public string Diameter => "ДИАМЕТР, ММ";
+
+        public string NHours => "Н/ЧАСЫ";
+
+        public string Price => "ЦЕНА";
+
+        public string Aluminum => "АЛЮМИНИЙ";
+
+        public string Adhesive => "КЛЕЕВАЯ";
+
+        public string Dismantling => "ДЕ-/МОНТАЖ";
+
+        public string Code => "КОД";
+
+        public string Description => "ОПИСАНИЕ";
+
+        public string SpareParts => "ЗАПЧАСТИ";
+
+        public string TypeOfRepair => "ВИД РЕМОНТА";
+
+        public string WithoutPainting => "БЕЗ ПОКРАСКИ";
+
+        public string UnderPainting => "ПОД ПОКРАСКУ";
+
+        public string Replacement => "ЗАМЕНА";
+
+        public string PriceOfPainting => "СТОИМОСТЬ ПОКРАСКИ";
+
+        public string FrontLeftDoor => "Передняя левая дверь";
+
+        public string RearLeftDoor => "Задняя левая дверь";
+
+        public string FrontRightDoor => "Передняя правая дверь";
+
+        public string RearRightDoor => "Задняя правая дверь";
+
+        public string FrontLeftFender => "Переднее левое крыло";
+
+        public string RearLeftFender => "Заднее левое крыло";
+
+        public string FrontRightFender => "Переднее правое крыло";
+
+        public string RearRightFender => "Заднее правое крыло";
+
+        public string Hood => "Капот";
+
+        public string Roof => "Крыша";
+
+        public string FrontBumper => "Передний бампер";
+
+        public string RearBumper => "Задний бампер";
+
+        public string LeftRack => "Левая стойка";
+
+        public string RightRack => "Правая стойка";
+
+        public string Trunk => "Багажник";
     }
 }

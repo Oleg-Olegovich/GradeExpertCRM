@@ -7,6 +7,34 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Resources\Cars\1\01-1.png" />
+    <None Remove="Resources\Cars\1\02-1.png" />
+    <None Remove="Resources\Cars\1\03-1.png" />
+    <None Remove="Resources\Cars\1\04-1.png" />
+    <None Remove="Resources\Cars\1\05-1.png" />
+    <None Remove="Resources\Cars\1\06-1.png" />
+    <None Remove="Resources\Cars\1\07-1.png" />
+    <None Remove="Resources\Cars\1\08-1.png" />
+    <None Remove="Resources\Cars\1\09-1.png" />
+    <None Remove="Resources\Cars\1\10-1.png" />
+    <None Remove="Resources\Cars\1\11-1.png" />
+    <None Remove="Resources\Cars\1\12-1.png" />
+    <None Remove="Resources\Cars\1\13-1.png" />
+    <None Remove="Resources\Cars\1\14-1.png" />
+    <None Remove="Resources\Cars\2\01-1.png" />
+    <None Remove="Resources\Cars\2\02-1.png" />
+    <None Remove="Resources\Cars\2\03-1.png" />
+    <None Remove="Resources\Cars\2\04-1.png" />
+    <None Remove="Resources\Cars\2\05-1.png" />
+    <None Remove="Resources\Cars\2\06-1.png" />
+    <None Remove="Resources\Cars\2\07-1.png" />
+    <None Remove="Resources\Cars\2\08-1.png" />
+    <None Remove="Resources\Cars\2\09-1.png" />
+    <None Remove="Resources\Cars\2\10-1.png" />
+    <None Remove="Resources\Cars\2\11-1.png" />
+    <None Remove="Resources\Cars\2\12-1.png" />
+    <None Remove="Resources\Cars\2\13-1.png" />
+    <None Remove="Resources\Cars\2\14-1.png" />
     <None Remove="Resources\magnifier.png" />
     <None Remove="Resources\Plus.png" />
   </ItemGroup>
@@ -17,6 +45,34 @@
 	  <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0-rc1" />
   </ItemGroup>
   <ItemGroup>
+	<AvaloniaResource Include="Resources\Cars\1\01-1.png" />
+	<AvaloniaResource Include="Resources\Cars\1\02-1.png" />
+	<AvaloniaResource Include="Resources\Cars\1\03-1.png" />
+	<AvaloniaResource Include="Resources\Cars\1\04-1.png" />
+	<AvaloniaResource Include="Resources\Cars\1\05-1.png" />
+	<AvaloniaResource Include="Resources\Cars\1\06-1.png" />
+	<AvaloniaResource Include="Resources\Cars\1\07-1.png" />
+	<AvaloniaResource Include="Resources\Cars\1\08-1.png" />
+	<AvaloniaResource Include="Resources\Cars\1\09-1.png" />
+	<AvaloniaResource Include="Resources\Cars\1\10-1.png" />
+	<AvaloniaResource Include="Resources\Cars\1\11-1.png" />
+	<AvaloniaResource Include="Resources\Cars\1\12-1.png" />
+	<AvaloniaResource Include="Resources\Cars\1\13-1.png" />
+	<AvaloniaResource Include="Resources\Cars\1\14-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\01-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\02-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\03-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\04-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\05-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\06-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\07-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\08-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\09-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\10-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\11-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\12-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\13-1.png" />
+	<AvaloniaResource Include="Resources\Cars\2\14-1.png" />
 	<AvaloniaResource Include="Resources\gears.png" />
 	<AvaloniaResource Include="Resources\logo.png" />
 	<AvaloniaResource Include="Resources\magnifier.png" />

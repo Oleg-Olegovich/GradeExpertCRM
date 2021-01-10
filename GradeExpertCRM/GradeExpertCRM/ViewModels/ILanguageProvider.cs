@@ -18,6 +18,8 @@
 
         string ButtonSave { get; }
 
+        string ButtonCancel { get; }
+
         string LabelAddingNewClient { get; }
 
         string LabelAddingNewCar { get; }
@@ -87,5 +89,73 @@
         string CarNumber { get; }
 
         string Loss { get; }
+
+        string GradExpert { get; }
+
+        string FixPrice { get; }
+
+        string Currency { get; }
+        
+        string RepairOfDents { get; }
+        
+        string Quantity { get; }
+        
+        string Diameter { get; }
+        
+        string NHours { get; }
+
+        string Price { get; }
+
+        string Aluminum { get; }
+
+        string Adhesive { get; }
+
+        string Dismantling { get; }
+
+        string Code { get; }
+
+        string Description { get; }
+
+        string SpareParts { get; }
+
+        string TypeOfRepair { get; }
+
+        string WithoutPainting { get; }
+
+        string UnderPainting { get; }
+
+        string Replacement { get; }
+
+        string PriceOfPainting { get; }
+
+        string FrontLeftDoor { get; }
+
+        string RearLeftDoor { get; }
+
+        string FrontRightDoor { get; }
+
+        string RearRightDoor { get; }
+
+        string FrontLeftFender { get; }
+
+        string RearLeftFender { get; }
+
+        string FrontRightFender { get; }
+
+        string RearRightFender { get; }
+
+        string Hood { get; }
+
+        string Roof { get; }
+
+        string FrontBumper { get; }
+
+        string RearBumper { get; }
+
+        string LeftRack { get; }
+
+        string RightRack { get; }
+
+        string Trunk { get; }
     }
 }
