@@ -5,7 +5,7 @@ using System.Reactive;
 
 namespace GradeExpertCRM.ViewModels
 {
-    class MainViewModel : ViewModelBase
+    class MainViewModel : ViewModelBase, IBaseWindow
     {
         private static string Language = "Russian";
 
@@ -38,41 +38,41 @@ namespace GradeExpertCRM.ViewModels
             }
         }
 
-        private async Task OpenClientWindow() => Content = new ClientViewModel();
+        private async Task OpenClientWindow() => Content = new ClientViewModel(this);
 
-        private async Task OpenCarWindow() => Content = new CarWindowViewModel();
+        private async Task OpenCarView() => Content = new CarViewModel(this);
 
-        private async Task OpenCalculatorWindow() => Content = new CalculatorWindowViewModel();
+        private async Task OpenCalculatorView() => Content = new CalculatorViewModel();
 
-        private async Task OpenDocumentsWindow() => Content = new DocumentsWindowViewModel();
+        private async Task OpenDocumentsView() => Content = new DocumentsViewModel();
 
-        private async Task OpenMailWindow() => Content = new MailWindowViewModel();
+        private async Task OpenMailView() => Content = new MailViewModel();
 
-        private async Task OpenSettingsWindow() => Content = new SettingsWindowViewModel();
+        private async Task OpenSettingsView() => Content = new SettingsViewModel();
 
 
         public ReactiveCommand<Unit, Unit> GoClientWindow { get; }
 
-        public ReactiveCommand<Unit, Unit> GoCarWindow { get; }
+        public ReactiveCommand<Unit, Unit> GoCarView { get; }
 
-        public ReactiveCommand<Unit, Unit> GoCalculatorWindow { get; }
+        public ReactiveCommand<Unit, Unit> GoCalculatorView { get; }
 
-        public ReactiveCommand<Unit, Unit> GoDocumentsWindow { get; }
+        public ReactiveCommand<Unit, Unit> GoDocumentsView { get; }
 
-        public ReactiveCommand<Unit, Unit> GoMailWindow { get; }
+        public ReactiveCommand<Unit, Unit> GoMailView { get; }
 
-        public ReactiveCommand<Unit, Unit> GoSettingsWindow { get; }
+        public ReactiveCommand<Unit, Unit> GoSettingsView { get; }
 
 
         public MainViewModel()
         {
             GoClientWindow = ReactiveCommand.CreateFromTask(OpenClientWindow);
-            GoCarWindow = ReactiveCommand.CreateFromTask(OpenCarWindow);
-            GoCalculatorWindow = ReactiveCommand.CreateFromTask(OpenCalculatorWindow);
-            GoDocumentsWindow = ReactiveCommand.CreateFromTask(OpenDocumentsWindow);
-            GoMailWindow = ReactiveCommand.CreateFromTask(OpenMailWindow);
-            GoSettingsWindow = ReactiveCommand.CreateFromTask(OpenSettingsWindow);
-            Content = new ClientViewModel();
+            GoCarView = ReactiveCommand.CreateFromTask(OpenCarView);
+            GoCalculatorView = ReactiveCommand.CreateFromTask(OpenCalculatorView);
+            GoDocumentsView = ReactiveCommand.CreateFromTask(OpenDocumentsView);
+            GoMailView = ReactiveCommand.CreateFromTask(OpenMailView);
+            GoSettingsView = ReactiveCommand.CreateFromTask(OpenSettingsView);
+            Content = new ClientViewModel(this);
         }
     }
 }

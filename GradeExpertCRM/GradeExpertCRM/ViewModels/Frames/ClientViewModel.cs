@@ -16,16 +16,20 @@ namespace GradeExpertCRM.ViewModels.Frames
             get => MainViewModel.Localization;
         }
 
-        private async Task OpenAddingClientWindow() => BaseWindow.Content = new AddingClientWindowViewModel();
+        private async Task OpenAddingClientView() => BaseWindow.Content = new AddingClientViewModel();
 
-        public ReactiveCommand<Unit, Unit> GoAddingClientWindow { get; }
+        public ReactiveCommand<Unit, Unit> GoAddingClientView { get; }
 
-        public ClientViewModel()
+        public ClientViewModel(IBaseWindow baseWindow)
         {
-            GoAddingClientWindow = ReactiveCommand.CreateFromTask(OpenAddingClientWindow);
+            BaseWindow = baseWindow;
+            GoAddingClientView = ReactiveCommand.CreateFromTask(OpenAddingClientView);
             Clients = new ObservableCollection<Client>(GenerateClientsTable());
         }
 
+        /// <summary>
+        /// Temporary code.
+        /// </summary>
         private IEnumerable<Client> GenerateClientsTable()
             => new List<Client>()
                 {

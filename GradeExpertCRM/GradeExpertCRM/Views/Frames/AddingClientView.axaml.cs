@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace GradeExpertCRM.Views.Frames
 {
-    public class DocumentsWindow : UserControl
+    public class AddingClientView : UserControl
     {
-        public DocumentsWindow()
+        public AddingClientView()
         {
             this.InitializeComponent();
         }

@@ -24,8 +24,29 @@
     <AvaloniaResource Include="Styles\Style.xaml" />	
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\Frames\AddingCarView.axaml.cs">
+      <DependentUpon>AddingCarView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Frames\AddingClientView.axaml.cs">
+      <DependentUpon>AddingClientView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Frames\CalculatorView.axaml.cs">
+      <DependentUpon>CalculatorView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Frames\CarView.axaml.cs">
+      <DependentUpon>CarView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Frames\ClientView.axaml.cs">
       <DependentUpon>ClientView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Frames\DocumentsView.axaml.cs">
+      <DependentUpon>DocumentsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Frames\MailView.axaml.cs">
+      <DependentUpon>MailView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Frames\SettingsView.axaml.cs">
+      <DependentUpon>SettingsView.axaml</DependentUpon>
     </Compile>
     <Compile Update="Views\MainView.axaml.cs">
       <DependentUpon>MainView.axaml</DependentUpon>

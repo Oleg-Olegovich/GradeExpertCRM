@@ -3,11 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="GradeExpertCRM.Views.Frames.AddingClientWindow">
-	
-	<UserControl.Styles>
-		<StyleInclude Source="avares://GradeExpertCRM/Styles/Style.xaml"/>
-	</UserControl.Styles>
+             x:Class="GradeExpertCRM.Views.Frames.AddingClientView">
 
 	<Grid>
 		<Grid.RowDefinitions>
@@ -28,102 +24,101 @@
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 
-		<TextBlock Grid.Row="0" Grid.Column="0" 
-				   Foreground="#000000" 
+		<TextBlock Grid.Row="0" Grid.Column="0"
+				   Foreground="#000000"
 				   FontFamily="Calibri"
 				   FontSize="24"
 				   Margin="20 0 0 0"
 				   Text="{Binding Localization.LabelAddingNewClient}"/>
 
 		<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
-			<TextBlock Classes="Label"  
+			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxIndex}"/>
 			<Border Classes="BorderOfText">
 				<TextBox VerticalAlignment="Stretch"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
-			<TextBlock Classes="Label"  
+			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxArea}"/>
 			<Border Classes="BorderOfText">
 				<TextBox VerticalAlignment="Stretch"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical">
-			<TextBlock Classes="Label"  
+			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxCity}"/>
 			<Border Classes="BorderOfText">
 				<TextBox VerticalAlignment="Stretch"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical">
-			<TextBlock Classes="Label"  
+			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxAddress}"/>
 			<Border Classes="BorderOfText">
 				<TextBox VerticalAlignment="Stretch"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="4" Grid.Column="0" Orientation="Vertical">
-			<TextBlock Classes="Label"  
+			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxPhoneNumber}"/>
 			<Border Classes="BorderOfText">
 				<TextBox VerticalAlignment="Stretch"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="4" Grid.Column="1" Orientation="Vertical">
-			<TextBlock Classes="Label"  
+			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxEmail}"/>
 			<Border Classes="BorderOfText">
 				<TextBox VerticalAlignment="Stretch"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="5" Grid.Column="0" Orientation="Vertical">
-			<TextBlock Classes="Label"  
+			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxTIN}"/>
 			<Border Classes="BorderOfText">
 				<TextBox VerticalAlignment="Stretch"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="5" Grid.Column="1" Orientation="Vertical">
-			<TextBlock Classes="Label"  
+			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxCRR}"/>
 			<Border Classes="BorderOfText">
 				<TextBox VerticalAlignment="Stretch"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="7" Grid.Column="0" Orientation="Vertical">
-			<TextBlock Classes="Label"  
+			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxBank}"/>
 			<Border Classes="BorderOfText">
 				<TextBox VerticalAlignment="Stretch"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="7" Grid.Column="1" Orientation="Vertical">
-			<TextBlock Classes="Label"  
+			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxBIC}"/>
 			<Border Classes="BorderOfText">
 				<TextBox VerticalAlignment="Stretch"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="8" Grid.Column="0" Orientation="Vertical">
-			<TextBlock Classes="Label"  
+			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxPaymentAccount}"/>
 			<Border Classes="BorderOfText">
 				<TextBox VerticalAlignment="Stretch"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="8" Grid.Column="1" Orientation="Vertical">
-			<TextBlock Classes="Label"  
+			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxCorrespondentAccount}"/>
 			<Border Classes="BorderOfText">
 				<TextBox VerticalAlignment="Stretch"/>
 			</Border>
 		</StackPanel>
-		
-		<Button Grid.Row="10" 
+
+		<Button Grid.Row="10"
 				Grid.Column="0"
 				Classes="Menu"
-				Content="{Binding Localization.ButtonSave}"
-				/>
+				Content="{Binding Localization.ButtonSave}"/>
 	</Grid>
 </UserControl>

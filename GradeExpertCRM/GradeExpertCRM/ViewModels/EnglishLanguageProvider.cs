@@ -2,9 +2,11 @@
 {
     class EnglishLanguageProvider : ILanguageProvider
     {
-        public string ButtonClient => "CLIENT";
+        public string ButtonClient => "КЛИЕНТ";
 
         public string ButtonAddClient => "ДОБАВИТЬ НОВОГО КЛИЕНТА";
+
+        public string ButtonAddCar => "ДОБАВИТЬ НОВЫЙ АВТОМОБИЛЬ";
 
         public string ButtonCar => "АВТОМОБИЛЬ";
 
@@ -17,6 +19,8 @@
         public string ButtonSave => "СОХРАНИТЬ";
 
         public string LabelAddingNewClient => "ДОБАВЛЕНИЕ НОВОГО КЛИЕНТА";
+
+        public string LabelAddingNewCar => "ДОБАВЛЕНИЕ НОВОГО АВТОМОБИЛЯ";
 
         public string TextBoxIndex => "ИНДЕКС";
 
@@ -42,12 +46,46 @@
 
         public string TextBoxCorrespondentAccount => "КОРР/СЧЁТ";
 
-        public string SignIn => "SIGN IN";
+        public string TextBoxBrand => "МАРКА";
 
-        public string Password => throw new System.NotImplementedException();
+        public string TextBoxModel => "МОДЕЛЬ";
 
-        public string Login => throw new System.NotImplementedException();
+        public string TextBoxBodyType => "ТИП КУЗОВА";
 
-        public string FullName => throw new System.NotImplementedException();
+        public string TextBoxColor => "ЦВЕТ";
+
+        public string TextBoxMileage => "ПРОБЕГ, КМ";
+
+        public string TextBoxOwner => "ВЛАДЕЛЕЦ";
+
+        public string TextBoxLoss => "УБЫТОК СК";
+
+        public string TextBoxPolicyNumber => "НОМЕР ПОЛИСА";
+
+        public string TextBoxInsuranceCompany => "СТРАХОВАЯ КОМПАНИЯ";
+
+        public string TextBoxFranchise => "ФРАНШИЗА";
+
+        public string TextBoxDateOfInspection => "ДАТА ОСМОТРА";
+
+        public string TextBoxPlaceOfInspection => "МЕСТО ОСМОТРА";
+
+        public string TextBoxWhoMadeInspection => "ОСМОТР ПРОИЗВЁЛ";
+
+        public string TextBoxTypeOfDamage => "ВИД ПОВРЕЖДЕНИЯ";
+
+        public string SignIn => "ВОЙТИ";
+
+        public string Password => "ПАРОЛЬ";
+
+        public string Login => "ЛОГИН";
+
+        public string FullName => "ФИО / ФИРМА";
+
+        public string CarBrand => "МАРКА / МОДЕЛЬ";
+
+        public string CarNumber => "ГОС. НОМЕР";
+
+        public string Loss => "УБЫТОК";
     }
 }

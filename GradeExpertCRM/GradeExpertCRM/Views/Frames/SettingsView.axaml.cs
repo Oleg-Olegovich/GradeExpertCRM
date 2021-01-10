@@ -4,11 +4,11 @@ using Avalonia.Markup.Xaml;
 
 namespace GradeExpertCRM.Views.Frames
 {
-    public class CarWindow : UserControl
+    public class SettingsView : UserControl
     {
-        public CarWindow()
+        public SettingsView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void InitializeComponent()

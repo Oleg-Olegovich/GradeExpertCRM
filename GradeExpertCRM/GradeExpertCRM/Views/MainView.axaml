@@ -29,7 +29,7 @@
 				BorderBrush="#FFFFFFFF"
 				Background="#FFFFFFFF"
 				BorderThickness="0"
-				Command="{Binding GoSettingsWindow}">	
+				Command="{Binding GoSettingsView}">	
 				<Image Source="avares://GradeExpertCRM/Resources/gears.png"/>
 			</Button>
 		</DockPanel>
@@ -50,22 +50,22 @@
 					Grid.Column="0"/>
 			<Button x:Name="ButtonCar" 
 					Classes="Menu"
-					Command="{Binding GoCarWindow}" 
+					Command="{Binding GoCarView}" 
 					Content="{Binding Localization.ButtonCar}" 
 					Grid.Column="1"/>
 			<Button x:Name="ButtonCalculator"
 					Classes="Menu"
-					Command="{Binding GoCalculatorWindow}"
+					Command="{Binding GoCalculatorView}"
 					Content="{Binding Localization.ButtonCalculator}" 
 					Grid.Column="2"/>
 			<Button x:Name="ButtonDocuments" 
 					Classes="Menu"
-					Command="{Binding GoDocumentsWindow}" 
+					Command="{Binding GoDocumentsView}" 
 					Content="{Binding Localization.ButtonDocuments}" 
 					Grid.Column="3"/>
 			<Button x:Name="ButtonMail"
 					Classes="Menu"
-					Command="{Binding GoMailWindow}"
+					Command="{Binding GoMailView}"
 					Content="{Binding Localization.ButtonMail}" 
 					Grid.Column="4"/>
 		</Grid>

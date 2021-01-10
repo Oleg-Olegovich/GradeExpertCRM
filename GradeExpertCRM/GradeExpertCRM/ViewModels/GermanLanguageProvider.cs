@@ -8,6 +8,8 @@ namespace GradeExpertCRM.ViewModels
 
         public string ButtonAddClient => "ДОБАВИТЬ НОВОГО КЛИЕНТА";
 
+        public string ButtonAddCar => "ДОБАВИТЬ НОВЫЙ АВТОМОБИЛЬ";
+
         public string ButtonCar => "АВТОМОБИЛЬ";
 
         public string ButtonCalculator => "КАЛЬКУЛЯЦИЯ";
@@ -19,6 +21,8 @@ namespace GradeExpertCRM.ViewModels
         public string ButtonSave => "СОХРАНИТЬ";
 
         public string LabelAddingNewClient => "ДОБАВЛЕНИЕ НОВОГО КЛИЕНТА";
+
+        public string LabelAddingNewCar => "ДОБАВЛЕНИЕ НОВОГО АВТОМОБИЛЯ";
 
         public string TextBoxIndex => "ИНДЕКС";
 
@@ -44,12 +48,46 @@ namespace GradeExpertCRM.ViewModels
 
         public string TextBoxCorrespondentAccount => "КОРР/СЧЁТ";
 
-        public string SignIn => throw new NotImplementedException();
+        public string TextBoxBrand => "МАРКА";
 
-        public string Password => throw new NotImplementedException();
+        public string TextBoxModel => "МОДЕЛЬ";
 
-        public string Login => throw new NotImplementedException();
+        public string TextBoxBodyType => "ТИП КУЗОВА";
 
-        public string FullName => throw new NotImplementedException();
+        public string TextBoxColor => "ЦВЕТ";
+
+        public string TextBoxMileage => "ПРОБЕГ, КМ";
+
+        public string TextBoxOwner => "ВЛАДЕЛЕЦ";
+
+        public string TextBoxLoss => "УБЫТОК СК";
+
+        public string TextBoxPolicyNumber => "НОМЕР ПОЛИСА";
+
+        public string TextBoxInsuranceCompany => "СТРАХОВАЯ КОМПАНИЯ";
+
+        public string TextBoxFranchise => "ФРАНШИЗА";
+
+        public string TextBoxDateOfInspection => "ДАТА ОСМОТРА";
+
+        public string TextBoxPlaceOfInspection => "МЕСТО ОСМОТРА";
+
+        public string TextBoxWhoMadeInspection => "ОСМОТР ПРОИЗВЁЛ";
+
+        public string TextBoxTypeOfDamage => "ВИД ПОВРЕЖДЕНИЯ";
+
+        public string SignIn => "ВОЙТИ";
+
+        public string Password => "ПАРОЛЬ";
+
+        public string Login => "ЛОГИН";
+
+        public string FullName => "ФИО / ФИРМА";
+
+        public string CarBrand => "МАРКА / МОДЕЛЬ";
+
+        public string CarNumber => "ГОС. НОМЕР";
+
+        public string Loss => "УБЫТОК";
     }
 }

@@ -8,7 +8,12 @@ using GradeExpertCRM.Views.Frames;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
-    internal class CalculatorWindowViewModel : ViewModelBase
+    class SettingsViewModel : ViewModelBase
     {
+        public static ILanguageProvider Localization
+        {
+            get => MainViewModel.Localization;
+        }
+
     }
 }

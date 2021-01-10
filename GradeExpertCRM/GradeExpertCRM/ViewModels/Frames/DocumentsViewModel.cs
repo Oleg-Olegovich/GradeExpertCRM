@@ -8,7 +8,7 @@ using GradeExpertCRM.Views.Frames;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
-    internal class MailWindowViewModel : ViewModelBase
+    internal class DocumentsViewModel : ViewModelBase
     {
         public static ILanguageProvider Localization
         {

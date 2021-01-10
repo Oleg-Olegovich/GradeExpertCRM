@@ -6,6 +6,8 @@
 
         string ButtonAddClient { get; }
 
+        string ButtonAddCar { get; }
+
         string ButtonCar { get; }
 
         string ButtonCalculator { get; }
@@ -17,6 +19,8 @@
         string ButtonSave { get; }
 
         string LabelAddingNewClient { get; }
+
+        string LabelAddingNewCar { get; }
 
         string TextBoxIndex { get; }
 
@@ -42,6 +46,34 @@
 
         string TextBoxCorrespondentAccount { get; }
 
+        string TextBoxBrand { get; }
+
+        string TextBoxModel { get; }
+
+        string TextBoxBodyType { get; }
+
+        string TextBoxColor { get; }
+
+        string TextBoxMileage { get; }
+
+        string TextBoxOwner { get; }
+
+        string TextBoxLoss { get; }
+
+        string TextBoxPolicyNumber { get; }
+
+        string TextBoxInsuranceCompany { get; }
+
+        string TextBoxFranchise { get; }
+
+        string TextBoxDateOfInspection { get; }
+
+        string TextBoxPlaceOfInspection { get; }
+
+        string TextBoxWhoMadeInspection { get; }
+
+        string TextBoxTypeOfDamage { get; }
+
         string SignIn { get; }
 
         string Password { get; }
@@ -49,5 +81,11 @@
         string Login { get; }
 
         string FullName { get; }
+
+        string CarBrand { get; }
+
+        string CarNumber { get; }
+
+        string Loss { get; }
     }
 }
