@@ -90,7 +90,7 @@
 
         string Loss { get; }
 
-        string GradExpert { get; }
+        string GrandExpert { get; }
 
         string FixPrice { get; }
 

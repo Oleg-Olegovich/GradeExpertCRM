@@ -90,7 +90,7 @@
 
         public string Loss => "УБЫТОК";
 
-        public string GradExpert => "ГРАД-ЭКСПЕРТ";
+        public string GrandExpert => "ГРАД-ЭКСПЕРТ";
 
         public string FixPrice => "ФИКС. ЦЕНА";
 

@@ -29,7 +29,7 @@
 					<RowDefinition/>
 					<RowDefinition/>
 					<RowDefinition/>
-					<RowDefinition/>
+					<RowDefinition MaxHeight="40"/>
 				</Grid.RowDefinitions>
 				<Image Grid.Row="0"
 					Source="{Binding CarImage}"/>
@@ -38,8 +38,17 @@
 						   Foreground="#000000"
 						   FontFamily="Calibry"
 						   FontSize="12"/>
-
-				<Grid Grid.Row="2">
+				<StackPanel Grid.Row="2">
+					<CheckBox>
+						<TextBlock Classes="Text"
+								   Text="{Binding Localization.GrandExpert}"/>
+					</CheckBox>
+					<CheckBox>
+						<TextBlock Classes="Text"
+								   Text="{Binding Localization.FixPrice}"/>
+					</CheckBox>
+				</StackPanel>
+				<Grid Grid.Row="3" Margin="0 0 0 5">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition/>
 						<ColumnDefinition/>
@@ -47,7 +56,7 @@
 					<Border Classes="BorderOfText" Grid.Column="0">
 						<TextBox VerticalAlignment="Stretch"/>
 					</Border>
-					<TextBlock Classes="Label"
+					<TextBlock Classes="Text"
 							   Grid.Column="1"
 							   Text="{Binding Localization.Currency}"/>
 				</Grid>
@@ -64,7 +73,15 @@
 
 		<StackPanel Grid.Column="0" Grid.Row="1"
 					Orientation="Vertical">
-			
+			<TextBlock Classes="Text"
+					   Text="{Binding Localization.RepairOfDents}"/>
+			<TextBox Text="0 РУБ"/>
+			<TextBlock Classes="Text"
+					   Text="{Binding Localization.Dismantling}"/>
+			<TextBox Text="0 РУБ"/>
+			<TextBlock Classes="Text"
+					   Text="{Binding Localization.SpareParts}"/>
+			<TextBox Text="0 РУБ"/>
 		</StackPanel>
 
 		<Grid Grid.Column="1" Grid.Row="1">
@@ -75,17 +92,36 @@
 
 		</Grid>
 
-		<StackPanel Grid.Column="1" Grid.Row="2"
-					Orientation="Horizontal">
-
-		</StackPanel>
-
-		<Button Grid.Column="0" Grid.Row="3">
+		<Grid Grid.Column="1" Grid.Row="2">
+			<Grid.RowDefinitions>
+				<RowDefinition MaxHeight="40"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>	
+				<ColumnDefinition/>	
+				<ColumnDefinition/>	
+			</Grid.ColumnDefinitions>
 			
-		</Button>
+			<TextBlock Grid.Column="0"
+					   Classes="Text"
+					   Text="{Binding Localization.PriceOfPainting}"/>
+			<Border Grid.Column="1"
+					Classes="BorderOfText">
+				<TextBox VerticalAlignment="Stretch"/>
+			</Border>
+			<TextBlock Grid.Column="2"
+					   Classes="Text"
+					   Text="{Binding Localization.Currency}"/>
+		</Grid>
 
-		<Button Grid.Column="1" Grid.Row="3">
+		<Button Grid.Row="3"
+				Grid.Column="0"
+				Classes="Menu"
+				Content="{Binding Localization.ButtonSave}"/>
 
-		</Button>
+		<Button Grid.Column="1" 
+				Grid.Row="3"
+				Classes="Menu"
+				Content="{Binding Localization.ButtonCancel}"/>
 	</Grid>
 </UserControl>
