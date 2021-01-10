@@ -47,5 +47,7 @@
         public string Password => throw new System.NotImplementedException();
 
         public string Login => throw new System.NotImplementedException();
+
+        public string FullName => throw new System.NotImplementedException();
     }
 }

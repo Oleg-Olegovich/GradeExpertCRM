@@ -61,4 +61,24 @@
         <Setter Property="Foreground" Value="#EE0505"/>
         <Setter Property="Background" Value="#FFFFFFFF"/>
     </Style>
+
+	<Style Selector="DataGrid">
+		<Setter Property="FontFamily" Value="Calibri"/>
+		<Setter Property="FontWeight" Value="Normal"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="Foreground" Value="#000000"/>
+		<Setter Property="Background" Value="#FFFFFFFF"/>
+		<Setter Property="RowBackground" Value="#FFFFFFFF"/>
+		<Setter Property="BorderBrush" Value="#EE0505"/>
+		<Setter Property="HorizontalGridLinesBrush" Value="#EE0505"/>
+		<Setter Property="VerticalGridLinesBrush" Value="#EE0505"/>
+	</Style>
+
+	<Style Selector="DataGridColumnHeader">
+		<Setter Property="FontFamily" Value="Calibri"/>
+		<Setter Property="FontWeight" Value="Normal"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="Foreground" Value="#EE0505"/>
+		<Setter Property="Background" Value="#FFFFFFFF"/>
+	</Style>
 </Styles>

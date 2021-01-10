@@ -26,6 +26,7 @@ namespace GradeExpertCRM.ViewModels
         public MainWindowViewModel()
         {
             Content = new SignInViewModel();
+            //Content = new MainViewModel();
         }
     }
 }

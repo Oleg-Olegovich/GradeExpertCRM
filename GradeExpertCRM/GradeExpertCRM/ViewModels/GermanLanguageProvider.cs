@@ -49,5 +49,7 @@ namespace GradeExpertCRM.ViewModels
         public string Password => throw new NotImplementedException();
 
         public string Login => throw new NotImplementedException();
+
+        public string FullName => throw new NotImplementedException();
     }
 }

@@ -49,5 +49,7 @@ namespace GradeExpertCRM.ViewModels
         public string Password => "ПАРОЛЬ";
 
         public string Login => "ЛОГИН";
+
+        public string FullName => "ФИО / ФИРМА";
     }
 }

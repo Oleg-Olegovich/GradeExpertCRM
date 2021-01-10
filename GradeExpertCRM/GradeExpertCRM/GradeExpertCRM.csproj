@@ -4,7 +4,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
@@ -13,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
 	  <PackageReference Include="Avalonia" Version="0.10.0-rc1" />
+	  <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.0-rc1" />
 	  <PackageReference Include="Avalonia.Desktop" Version="0.10.0-rc1" />
 	  <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0-rc1" />
   </ItemGroup>
@@ -24,6 +24,9 @@
     <AvaloniaResource Include="Styles\Style.xaml" />	
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\Frames\ClientView.axaml.cs">
+      <DependentUpon>ClientView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\MainView.axaml.cs">
       <DependentUpon>MainView.axaml</DependentUpon>
     </Compile>

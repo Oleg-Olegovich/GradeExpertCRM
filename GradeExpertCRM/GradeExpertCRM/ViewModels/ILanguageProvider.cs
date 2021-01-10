@@ -47,5 +47,7 @@
         string Password { get; }
 
         string Login { get; }
+
+        string FullName { get; }
     }
 }
