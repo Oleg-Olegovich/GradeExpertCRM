@@ -64,7 +64,7 @@
 		</Border>
 
 		<Grid Grid.Column="1" Grid.Row="0">
-
+			
 		</Grid>
 
 		<Grid Grid.Column="2" Grid.Row="0">
@@ -85,7 +85,26 @@
 		</StackPanel>
 
 		<Grid Grid.Column="1" Grid.Row="1">
-
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<TextBlock Classes="Text"
+					   Text="{Binding Localization.TypeOfRepair}"/>
+			<StackPanel Grid.Row="2">
+				<CheckBox>
+					<TextBlock Classes="Text"
+							   Text="{Binding Localization.WithoutPainting}"/>
+				</CheckBox>
+				<CheckBox>
+					<TextBlock Classes="Text"
+							   Text="{Binding Localization.UnderPainting}"/>
+				</CheckBox>
+				<CheckBox>
+					<TextBlock Classes="Text"
+							   Text="{Binding Localization.Replacement}"/>
+				</CheckBox>
+			</StackPanel>
 		</Grid>
 
 		<Grid Grid.Column="2" Grid.Row="1" Grid.RowSpan="3">
