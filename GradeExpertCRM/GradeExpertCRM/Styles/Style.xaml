@@ -85,6 +85,7 @@
 		<Setter Property="BorderBrush" Value="#EE0505"/>
 		<Setter Property="HorizontalGridLinesBrush" Value="#EE0505"/>
 		<Setter Property="VerticalGridLinesBrush" Value="#EE0505"/>
+		<Setter Property="Margin" Value="5 0 5 0"/>
 	</Style>
 
 	<Style Selector="DataGridColumnHeader">
