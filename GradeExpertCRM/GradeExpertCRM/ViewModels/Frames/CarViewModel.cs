@@ -16,7 +16,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             get => MainViewModel.Localization;
         }
 
-        private async Task OpenAddingCarView() => BaseWindow.Content = new AddingCarViewModel();
+        private async Task OpenAddingCarView() => BaseWindow.Content = new AddingDocumentViewModel();
 
         public ReactiveCommand<Unit, Unit> GoAddingCarView { get; }
 

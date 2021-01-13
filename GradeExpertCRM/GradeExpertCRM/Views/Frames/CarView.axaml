@@ -28,7 +28,7 @@
 
 		<Border Classes="BorderOfText"
 				Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-				Margin="10 0 0 0">
+				Margin="10 0 0 10">
 			<TextBox VerticalAlignment="Stretch"/>
 		</Border>
 		<DockPanel Grid.Row="0" Grid.Column="2">
@@ -68,13 +68,13 @@
 		</ScrollViewer>
 
 		<StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="7">
-			<Button x:Name="ImageButtonAddClient"
+			<Button x:Name="ImageButtonAddCar"
 					Command="{Binding GoAddingCarView}">
 				<Image Source="avares://GradeExpertCRM/Resources/plus.png" 
 					   DockPanel.Dock="Left" 
 					   HorizontalAlignment="Right"/>
 			</Button>
-			<Button x:Name="ButtonAddClient"
+			<Button x:Name="ButtonAddCar"
 					Command="{Binding GoAddingCarView}"
 					Content="{Binding Localization.ButtonAddCar}"/>
 		</StackPanel>

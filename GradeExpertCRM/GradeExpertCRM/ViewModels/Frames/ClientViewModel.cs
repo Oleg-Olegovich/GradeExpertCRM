@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using GradeExpertCRM.Models;
+using System.Threading.Tasks;
 using ReactiveUI;
 using System.Reactive;
-using GradeExpertCRM.Models;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace GradeExpertCRM.ViewModels.Frames

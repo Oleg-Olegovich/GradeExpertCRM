@@ -8,6 +8,10 @@
 
         string ButtonAddCar { get; }
 
+        string ButtonCreateDocument { get; }
+
+        string ButtonPhoto { get; }
+
         string ButtonCar { get; }
 
         string ButtonCalculator { get; }
@@ -20,9 +24,13 @@
 
         string ButtonCancel { get; }
 
+        string ButtonBack { get; }
+
         string LabelAddingNewClient { get; }
 
         string LabelAddingNewCar { get; }
+
+        string LabelCreatingNewDocument { get; }
 
         string TextBoxIndex { get; }
 
@@ -75,6 +83,24 @@
         string TextBoxWhoMadeInspection { get; }
 
         string TextBoxTypeOfDamage { get; }
+
+        string TextBoxCalculationWithPhoto { get; }
+
+        string TextBoxCalculationWithoutPhoto { get; }
+
+        string TextBoxDamagePhotos { get; }
+
+        string TextBoxOrder { get; }
+
+        string TextBoxCertificateOfWorkPerformed { get; }
+
+        string TextBoxInvoiceForPayment { get; }
+
+        string TextBoxInvoiceForPaymentWithSignatures { get; }
+
+        string TextBoxInvoiceForFranchise { get; }
+
+        string TextBoxInvoiceForFranchiseWithSignatures { get; }
 
         string SignIn { get; }
 

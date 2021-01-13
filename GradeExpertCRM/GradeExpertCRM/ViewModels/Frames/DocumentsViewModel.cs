@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using GradeExpertCRM.Views;
+﻿using System.Collections.Generic;
+using GradeExpertCRM.Models;
 using System.Threading.Tasks;
 using ReactiveUI;
-using GradeExpertCRM.Views.Frames;
+using System.Reactive;
+using System.Collections.ObjectModel;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
@@ -13,6 +12,16 @@ namespace GradeExpertCRM.ViewModels.Frames
         public static ILanguageProvider Localization
         {
             get => MainViewModel.Localization;
+        }
+
+        private async Task OpenAddingDocumentView() => BaseWindow.Content = new AddingDocumentViewModel();
+
+        public ReactiveCommand<Unit, Unit> GoAddingDocumentView { get; }
+
+        public DocumentsViewModel(IBaseWindow baseWindow)
+        {
+            BaseWindow = baseWindow;
+            GoAddingDocumentView = ReactiveCommand.CreateFromTask(OpenAddingDocumentView);
         }
     }
 }

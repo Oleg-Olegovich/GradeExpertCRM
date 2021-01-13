@@ -6,22 +6,7 @@
              x:Class="GradeExpertCRM.Views.Frames.DocumentsView">
 
 	<UserControl.Styles>
-		<Style Selector="TextBlock">
-			<Setter Property="FontFamily" Value="Calibri"/>
-			<Setter Property="FontSize" Value="24"/>
-			<Setter Property="Foreground" Value="#000000"/>
-			<Setter Property="Background" Value="#FFFFFFFF"/>
-		</Style>
-		<Style Selector="Button/template/ContentPresenter">
-			<Setter Property="CornerRadius" Value="10" />
-		</Style>
-		<Style Selector="Border.BorderOfText">
-			<Setter Property="BorderBrush" Value="#EE0505"/>
-			<Setter Property="Padding" Value="5 0 5 0"/>
-			<Setter Property="Margin" Value="0 0 10 0"/>
-			<Setter Property="BorderThickness" Value="3"/>
-			<Setter Property="CornerRadius" Value="10"/>
-		</Style>
+		<StyleInclude Source="avares://GradeExpertCRM/Styles/Style.xaml"/>
 	</UserControl.Styles>
 
 	<Grid>
@@ -32,6 +17,62 @@
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 
-		<TextBlock Text="Underconstruction =)" Grid.Row="0" Grid.Column="0"/>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition MaxHeight="50"/>
+				<RowDefinition/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="4*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<Border Classes="BorderOfText"
+					Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+					Margin="10 0 0 10">
+				<TextBox VerticalAlignment="Stretch"/>
+			</Border>
+			<DockPanel Grid.Row="0" Grid.Column="2">
+				<Button x:Name="Search" DockPanel.Dock="Left">
+					<Image Source="avares://GradeExpertCRM/Resources/magnifier.png"/>
+				</Button>
+			</DockPanel>
+
+			<ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7">
+				<DataGrid>
+					
+				</DataGrid>
+			</ScrollViewer>
+
+			<StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="2">
+				<Button x:Name="ImageButtonAddDocument"
+						Command="{Binding GoAddingDocumentView}">
+					<Image Source="avares://GradeExpertCRM/Resources/plus.png"
+						   DockPanel.Dock="Left"
+						   HorizontalAlignment="Right"/>
+				</Button>
+				<Button x:Name="ButtonAddDocument"
+						Command="{Binding GoAddingDocumentView}"
+						Content="{Binding Localization.ButtonCreateDocument}"/>
+			</StackPanel>
+
+			<StackPanel Grid.Row="2" Grid.Column="4" Orientation="Horizontal" Grid.ColumnSpan="2">
+				<Button x:Name="ButtonPhoto"
+						Command="{Binding GoAddingDocumentView}"
+						Content="{Binding Localization.ButtonPhoto}"/>
+				<Button x:Name="ImageButtonPhoto"
+						Command="{Binding GoAddingDocumentView}">
+					<Image Source="avares://GradeExpertCRM/Resources/camera.png"
+						   DockPanel.Dock="Left"
+						   HorizontalAlignment="Right"/>
+				</Button>
+			</StackPanel>
+		</Grid>
 	</Grid>
 </UserControl>

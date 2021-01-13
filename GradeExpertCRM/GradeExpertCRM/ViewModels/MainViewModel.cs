@@ -44,7 +44,7 @@ namespace GradeExpertCRM.ViewModels
 
         private async Task OpenCalculatorView() => Content = new CalculatorViewModel();
 
-        private async Task OpenDocumentsView() => Content = new DocumentsViewModel();
+        private async Task OpenDocumentsView() => Content = new DocumentsViewModel(this);
 
         private async Task OpenMailView() => Content = new MailViewModel();
 

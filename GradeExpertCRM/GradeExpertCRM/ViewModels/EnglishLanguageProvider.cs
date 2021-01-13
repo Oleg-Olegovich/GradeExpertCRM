@@ -8,6 +8,10 @@
 
         public string ButtonAddCar => "ДОБАВИТЬ НОВЫЙ АВТОМОБИЛЬ";
 
+        public string ButtonCreateDocument => "СОЗДАТЬ НОВЫЙ ДОКУМЕНТ";
+
+        public string ButtonPhoto => "ФОТО";
+
         public string ButtonCar => "АВТОМОБИЛЬ";
 
         public string ButtonCalculator => "КАЛЬКУЛЯЦИЯ";
@@ -20,9 +24,13 @@
 
         public string ButtonCancel => "ОТМЕНА";
 
+        public string ButtonBack => "НАЗАД";
+
         public string LabelAddingNewClient => "ДОБАВЛЕНИЕ НОВОГО КЛИЕНТА";
 
         public string LabelAddingNewCar => "ДОБАВЛЕНИЕ НОВОГО АВТОМОБИЛЯ";
+
+        public string LabelCreatingNewDocument => "СОЗДАНИЕ НОВОГО ДОКУМЕНТА";
 
         public string TextBoxIndex => "ИНДЕКС";
 
@@ -75,6 +83,24 @@
         public string TextBoxWhoMadeInspection => "ОСМОТР ПРОИЗВЁЛ";
 
         public string TextBoxTypeOfDamage => "ВИД ПОВРЕЖДЕНИЯ";
+
+        public string TextBoxCalculationWithPhoto => "КАЛЬКУЛЯЦИЯ С ФОТО";
+
+        public string TextBoxCalculationWithoutPhoto => "КАЛЬКУЛЯЦИЯ БЕЗ ФОТО";
+
+        public string TextBoxDamagePhotos => "ФОТО ПОВРЕЖДЕНИЙ";
+
+        public string TextBoxOrder => "ЗАКАЗ-НАРЯД";
+
+        public string TextBoxCertificateOfWorkPerformed => "АКТ ВЫПОЛНЕННЫХ РАБОТ";
+
+        public string TextBoxInvoiceForPayment => "СЧЁТ НА ОПЛАТУ";
+
+        public string TextBoxInvoiceForPaymentWithSignatures => "СЧЁТ НА ОПЛАТУ С ПОДПИСЯМИ И ПЕЧАТЬЮ";
+
+        public string TextBoxInvoiceForFranchise => "СЧЁТ НА ОПЛАТУ ФРАНШИЗЫ";
+
+        public string TextBoxInvoiceForFranchiseWithSignatures => "СЧЁТ НА ОПЛАТУ ФРАНШИЗЫ С ПОДПИСЯМИ И ПЕЧАТЬЮ";
 
         public string SignIn => "ВОЙТИ";
 
