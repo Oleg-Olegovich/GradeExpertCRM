@@ -1,0 +1,307 @@
+﻿@model GradeExpertCRM.Models.Client
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<!--<link rel="stylesheet" href="css/styles.css?v=1.0">-->
+
+	<style>
+		html {
+			font-family: Arial
+		}
+
+		table.table-style, table.table-style th {
+			width: 100%;
+			height: auto;
+			border-collapse: collapse;
+			/*border-spacing: 0;*/
+		}
+
+			table.table-style, table.table-style td, table.table-style th {
+				border: 2px solid black;
+			}
+
+				table.table-style td, table.table-style th {
+					padding: 3px;
+					width: 30px;
+					height: 30px;
+				}
+
+				table.table-style th {
+					font-weight: bold;
+					text-align: center
+				}
+
+
+		.second-table {
+			text-align: center
+		}
+
+			.second-table td:nth-child(2), .second-table td:nth-child(3), .second-table td:nth-child(9) {
+				text-align: right
+			}
+
+			.second-table td:nth-child(1) {
+				text-align: left
+			}
+
+		.column-bold td:nth-child(2n+1) {
+			font-weight: bold
+		}
+
+		.line {
+			height: 1.5px;
+			border-width: 0;
+			background-color: black
+		}
+
+		.line-bold {
+			height: 2.5px;
+			border-width: 0;
+			background-color: black
+		}
+	</style>
+</head>
+<body>
+	<p><strong>Заказ-наряд</strong> № 48 от 28.09.2020 г</p>
+
+	<table class="table-style column-bold">
+		<tr>
+			<td>ЗАКАЗЧИК:</td>
+			<td>ВОЛКОВА АЛЛА СЕРГЕЕВНА</td>
+			<td>ИСПОЛНИТЕЛЬ:</td>
+			<td>ООО ГРАД-ЭКСПЕРТ</td>
+		</tr>
+		<tr>
+			<td>АДРЕС</td>
+			<td>Г. САНКТ-ПЕТЕРБУРГ, ПР-КТ КОСЫГИНА 15, КВ. 151</td>
+			<td>ИНН</td>
+			<td>6671095072</td>
+		</tr>
+		<tr>
+			<td>ТЕЛЕФОН</td>
+			<td>890567899999</td>
+			<td>ОГРН</td>
+			<td>119665802806</td>
+		</tr>
+		<tr>
+			<td>E-MAIL</td>
+			<td>VOLKOVAALLA@MAIL.RU</td>
+			<td>АДРЕС</td>
+			<td>620016 СВЕРДЛОВСКАЯ ОБЛАСТЬ, Г. ЕКАТЕРИНБУРГ, УЛ. МОСТОВАЯ 14</td>
+		</tr>
+		<tr>
+			<td rowspan="4" colspan="2"></td>
+			<td hidden></td>
+			<td>БАНК</td>
+			<td>ТОЧКА ПАО БАНКА "ФК ОТКРЫТИЕ" Г. МОСКВА</td>
+		</tr>
+		<tr>
+			<td>БИК</td>
+			<td>044525999</td>
+		</tr>
+		<tr>
+			<td>КОРР. СЧЕТ</td>
+			<td>30101810845250000999</td>
+		</tr>
+		<tr>
+			<td>РАСЧЕТНЫЙ СЧЕТ</td>
+			<td>40702810702500038918</td>
+		</tr>
+	</table>
+
+	<br />
+	<br />
+
+	<table class="table-style">
+		<tr>
+			<td>
+				<strong>МЕСТО ВЫПОЛНЕНИЯ</strong>
+				<br />
+				САНКТ-ПЕТЕРБУРГ, ПУШКИНСКИЙ Р-Н, ПОС. СЛАВЯНКА, УЛ. СЕТЕВАЯ 13/7 Б
+			</td>
+			<td>
+				<strong>ПРИЧИНЫ ПОВРЕЖДЕНИЯ</strong>
+				<br />
+				ГРАД
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>СТРАХОВАЯ КОМПАНИЯ</strong>
+				<br />
+				АО «ГРУППА РЕНЕССАНС СТРАХОВАНИЕ»
+			</td>
+			<td>
+				<strong>ПРОБЕГ</strong>
+				<br />
+				42110 КМ
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>НОМЕР ПОЛИСА</strong>
+				<br />
+				002AT-19/0148595
+			</td>
+			<td>
+				<strong>ДАТА ПРИЕМКИ А/М В РАБОТУ</strong>
+				<br />
+				26.09.2020
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>НОМЕР УБЫТКА</strong>
+				<br />
+				002AS20-010338
+			</td>
+			<td>
+				<strong>ОТВЕТСТВЕННЫЙ ЗА ВЫПОЛНЕННЫЕ РАБОТЫ, ФИО:</strong>
+				<br />
+				СТАНКОВСКИЙ А.С.
+			</td>
+		</tr>
+	</table>
+
+	<br />
+	<br />
+
+	<table class="table-style">
+		<tr>
+			<th>АВТОМОБИЛЬ</th>
+			<th>ГОС. НОМЕР</th>
+			<th>VIN</th>
+			<th>ЦВЕТ</th>
+		</tr>
+		<tr style="text-align: center">
+			<td>PORSCHE CAYENNE</td>
+			<td>Р555ХУ 178</td>
+			<td>WP1ZZZ92ZJKA40500</td>
+			<td>ФИОЛЕТОВЫЙ</td>
+		</tr>
+	</table>
+
+	<br />
+	<br />
+
+	<strong>ОПИСАНИЕ РАБОТ ПО УДАЛЕНИЮ ВМЯТИН </strong>
+
+	<table class="table-style second-table">
+		<tr>
+			<th rowspan="2">ДЕТАЛЬ</th>
+			<th colspan="2">ВМЯТИНЫ</th>
+			<th rowspan="2">ОПИСАНИЕ РАБОТ</th>
+			<th colspan="3">УДОРОЖАНИЕ +25%</th>
+			<th rowspan="2">ДЕ-/МОНТАЖ</th>
+			<th rowspan="2">ЦЕНА</th>
+		</tr>
+		<tr>
+			<td style="text-align: center">КОЛ-ВО</td>
+			<td style="text-align: center">ДУ, ММ</td>
+			<td style="text-align: center">АЛЮМИНИЙ</td>
+			<td>ДЛИННЫЙ / ВЫСОКИЙ А/МОБИЛЬ</td>
+			<td>КЛЕЕВАЯ ТЕХНИКА</td>
+		</tr>
+		<tr>
+			<td>КАПОТ</td>
+			<td>113</td>
+			<td>30</td>
+			<td>БП</td>
+			<td>&#9679;</td>
+			<td></td>
+			<td></td>
+			<td>&#9679;</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>КРЫША</td>
+			<td>33</td>
+			<td>20</td>
+			<td>БП</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>&#9679;</td>
+			<td></td>
+		</tr>
+
+		<tr>
+			<td style="text-align: right" colspan="8">
+				ДЕ-/МОНТАЖ
+			</td>
+			<td>4100,00</td>
+		</tr>
+		<tr>
+			<td style="text-align: right" colspan="8">
+				БЕСПОКРАСОЧНОЕ УДАЛЕНИЕ ВМЯТИН ПО СИСТЕМЕ ГРАД-ЭКСПЕРТ
+			</td>
+			<td>
+				146700,00
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right" colspan="8">
+				ДОПОЛНИТЕЛЬНЫЕ РАБОТЫ/УСЛУГИ
+			</td>
+			<td>
+				2300,00
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right" colspan="8">
+				ОБЩАЯ СТОИМОСТЬ РАБОТ, РУБ, НДС НЕ ПРЕДУСМОТРЕН
+			</td>
+			<td>
+				153100,00
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right" colspan="8">
+				ФРАНШИЗА, РУБ
+			</td>
+			<td>
+				0,00
+			</td>
+		</tr>
+	</table>
+
+	<p>Условные обозначения: <strong>ПП</strong> — ремонт под покраску, <strong>БП</strong> — ремонт без покраски, <strong>3</strong> — замена</p>
+
+	<br />
+	<table class="table-style">
+		<tr>
+			<td style="padding: 10px 10px 100px 10px; border-bottom-color: white">
+				Лицо, ответственное за выполненные работы.
+				Все претензии рассматриваются только при предъявлении
+				данного документа.
+			</td>
+			<td colspan="2" style="	padding: 10px 10px 100px 10px; border-bottom-color: white">
+				Все работы выполнены в срок и в полном объеме. Заказчик претензий и замечаний по
+				объему, качеству и срокам не имеет.
+				С Правилами предоставления услуг ознакомлен.
+			</td>
+		</tr>
+		<tr>
+			<td align="center" style="padding: 0 15px 10px 15px">
+				<hr class="line" />
+				Подпись представителя исполнителя
+			</td>
+			<td align="center" style="padding: 0 15px 10px 15px; border-right-color: white">
+				<hr class="line" />
+				Дата
+			</td>
+			<td align="center" style="padding: 0 15px 10px 15px">
+				<hr class="line" />
+				Подпись /ФИО/ Печать представителя заказчика
+			</td>
+		</tr>
+	</table>
+
+	<br />
+	<hr class="line-bold" />
+	<p style="text-align:center; font-weight: bold">ООО ГРАД-ЭКСПЕРТ 620016 г.Екатеринбург, ул. Мостовая 14, info@grad-expert.ru, тел. (343) 268-58-18</p>
+</body>
+</html>

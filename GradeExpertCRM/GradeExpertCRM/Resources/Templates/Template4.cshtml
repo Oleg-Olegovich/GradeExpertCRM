@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="ru" style="font-family: Arial">
+<head>
+	<meta charset="utf-8" />
+	<title>HTML5</title>
+
+	<style>
+		table.table-style {
+			width: 100%;
+			height: auto;
+			border-collapse: collapse;
+			/*border-spacing: 0;*/
+		}
+
+			table.table-style, table.table-style td {
+				border: 2px solid black;
+			}
+
+				table.table-style td {
+					padding: 3px;
+					width: 30px;
+					height: 30px;
+				}
+
+		.border-bottom-white {
+			border-bottom: 1px solid white !important
+		}
+
+		.border-white {
+			border-color: white !important
+		}
+
+		.text-bottom {
+			vertical-align: bottom;
+			font-size: 0.6em;
+		}
+
+		.text-bottom-right {
+			text-align: right;
+			font-weight: bold
+		}
+
+		.cell-text-bottom {
+			position: absolute;
+			bottom: 3px;
+			font-size: 0.7em
+		}
+
+		.horizontal-line {
+			height: 3.5px;
+			border-width: 0;
+			background-color: black
+		}
+
+		.horizontal-line-2 {
+			height: 2px;
+			margin: 0;
+			border-width: 0;
+			background-color: black
+		}
+
+		.footer-style {
+			margin: auto;
+			font-weight: bold
+		}
+
+		.footer-left {
+			width: 40%;
+			text-align: right;
+			padding-right: 5%
+		}
+
+		.footer-right {
+			width: 40%;
+			text-align: right;
+		}
+	</style>
+</head>
+<body>
+
+	<p style="font-size: 12pt" align="center">
+		Внимание! Оплата данного счета означает согласие с условиями поставки товара. Уведомление об оплате
+		обязательно, в противном случае не гарантируется наличие товара на складе. Товар отпускается по факту
+		прихода денег на р/с Поставщика, самовывозом, при наличии доверенности и паспорта.
+	</p>
+
+	<table class="table-style">
+		<tbody style="vertical-align: top">
+			<tr>
+				<td colspan="2" class="border-bottom-white">ТОЧКА ПАО БАНКА "ФК ОТКРЫТИЕ" г. Москва</td>
+				<td>БИК</td>
+				<td class="border-bottom-white">044525999</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="text-bottom">Банк получателя</td>
+				<td>Сч. №</td>
+				<td>30101810845250000999</td>
+			</tr>
+			<tr>
+				<td>ИНН 6671095072</td>
+				<td>КПП 667101001</td>
+				<td rowspan="3">Сч. №</td>
+				<td rowspan="3">40702810702500038918</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="border-bottom-white">ООО Град-Эксперт</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="text-bottom">Получатель</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<br />
+	<strong style="font-size: 2em">Счет на оплату № 0107176 от 17 августа 2020</strong>
+	<hr class="horizontal-line" />
+
+	<table style="border-spacing: 20px">
+		<tr>
+			<td>Поставщик:</td>
+			<td><strong>ООО Град-Эксперт, ИНН 6671095072, КПП 667101001, 620016 г. Екатеринбург, ул. Мостовая 14</strong></td>
+		</tr>
+		<tr>
+			<td>Покупатель:</td>
+			<td><strong>АО "Группа Ренессанс Страхование", ИНН 7725497022, КПП 772501001, 115114, Москва, Дербеневская наб., дом. 7, стр. 22, этаж 4, пом XIII</strong></td>
+		</tr>
+		<tr>
+			<td>Поставщик:</td>
+			<td><strong>Общая стоимость ремонта: 98100 руб. Франшиза: 15000 руб, оплачивается страхователем.</strong></td>
+		</tr>
+	</table>
+
+	<table class="table-style">
+		<tbody>
+			<tr>
+				<td>№</td>
+				<td>Товары</td>
+				<td>Кол-во</td>
+				<td>Ед. изм</td>
+				<td>Цена</td>
+				<td>Сумма</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Автомобиль Mazda CX-5, VIN:RUMKE5W7A00007476, ремонт повреждений от града, номер убытка: 002AS20-011189</td>
+				<td>1</td>
+				<td>шт</td>
+				<td>83 100,00</td>
+				<td>83 100,00</td>
+			</tr>
+			<tr class="text-bottom-right">
+				<td colspan="5" class="border-white"><strong>Итог: Без налога (НДС)</strong></td>
+				<td class="border-white"><strong>83 100, 00</strong></td>
+			</tr>
+			<tr class="text-bottom-right">
+				<td colspan="5" class="border-white">Без налога (НДС)</td>
+				<td class="border-white">-</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>Всего наименований 1, на сумму 83 100,00 руб.</p>
+	<strong>Восемьдесят три тысячи сто рублей 00 копеек. Без НДС.</strong>
+	<hr class="horizontal-line">
+	<br />
+
+	<table class="footer-style">
+		<tr>
+			<td>Руководитель</td>
+			<td class="footer-left">
+				Майер И. Ю.
+				<hr class="horizontal-line-2" />
+			</td>
+			<td>Бухгалтер</td>
+			<td class="footer-right">
+				Майер И. Ю.
+				<hr class="horizontal-line-2" />
+			</td>
+		</tr>
+	</table>
+
+
+</body>
+</html>
