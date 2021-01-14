@@ -78,6 +78,7 @@
 				Grid.Column="0"
 				Classes="Menu"
 				Content="{Binding Localization.ButtonBack}"
+				Command="{Binding GoDocumentView}"
 				Margin="10 0 30 0"/>
 	</Grid>
 </UserControl>

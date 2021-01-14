@@ -11,12 +11,7 @@ namespace GradeExpertCRM.ViewModels.Frames
     {
         public ObservableCollection<Car> Cars { get; }
 
-        public static ILanguageProvider Localization
-        {
-            get => MainViewModel.Localization;
-        }
-
-        private async Task OpenAddingCarView() => BaseWindow.Content = new AddingDocumentViewModel();
+        private async Task OpenAddingCarView() => BaseWindow.Content = new AddingCarViewModel();
 
         public ReactiveCommand<Unit, Unit> GoAddingCarView { get; }
 

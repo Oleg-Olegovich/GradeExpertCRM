@@ -36,8 +36,11 @@
     <None Remove="Resources\Cars\2\12-1.png" />
     <None Remove="Resources\Cars\2\13-1.png" />
     <None Remove="Resources\Cars\2\14-1.png" />
+    <None Remove="Resources\english.png" />
+    <None Remove="Resources\germany.png" />
     <None Remove="Resources\magnifier.png" />
     <None Remove="Resources\Plus.png" />
+    <None Remove="Resources\russian.png" />
   </ItemGroup>
   <ItemGroup>
 	  <PackageReference Include="Avalonia" Version="0.10.0-rc1" />
@@ -75,10 +78,13 @@
 	<AvaloniaResource Include="Resources\Cars\2\12-1.png" />
 	<AvaloniaResource Include="Resources\Cars\2\13-1.png" />
 	<AvaloniaResource Include="Resources\Cars\2\14-1.png" />
+	<AvaloniaResource Include="Resources\english.png" />
 	<AvaloniaResource Include="Resources\gears.png" />
+	<AvaloniaResource Include="Resources\germany.png" />
 	<AvaloniaResource Include="Resources\logo.png" />
 	<AvaloniaResource Include="Resources\magnifier.png" />
 	<AvaloniaResource Include="Resources\plus.png" />
+	<AvaloniaResource Include="Resources\russian.png" />
     <AvaloniaResource Include="Styles\Style.xaml" />	
   </ItemGroup>
   <ItemGroup>

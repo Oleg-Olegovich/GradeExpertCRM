@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using GradeExpertCRM.Views;
-using System.Threading.Tasks;
-using ReactiveUI;
-using GradeExpertCRM.Views.Frames;
-
-namespace GradeExpertCRM.ViewModels.Frames
+﻿namespace GradeExpertCRM.ViewModels.Frames
 {
     class SettingsViewModel : ViewModelBase
     {
-        public static ILanguageProvider Localization
-        {
-            get => MainViewModel.Localization;
-        }
+        public void ChangeLanguageToRussian() => MainViewModel.Language = "Russian";
 
+        public void ChangeLanguageToGerman() => MainViewModel.Language = "German";
+
+        public void ChangeLanguageToEnglish() => MainViewModel.Language = "English";
     }
 }

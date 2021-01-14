@@ -40,7 +40,5 @@ namespace GradeExpertCRM.ViewModels.Frames
                     "14-1" => Localization.RearBumper,
                     _ => "Error"
                 };
-
-        public static ILanguageProvider Localization => MainViewModel.Localization;
     }
 }

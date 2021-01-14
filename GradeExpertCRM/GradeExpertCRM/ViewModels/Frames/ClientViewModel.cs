@@ -11,11 +11,6 @@ namespace GradeExpertCRM.ViewModels.Frames
     {
         public ObservableCollection<Client> Clients { get; }
 
-        public static ILanguageProvider Localization
-        {
-            get => MainViewModel.Localization;
-        }
-
         private async Task OpenAddingClientView() => BaseWindow.Content = new AddingClientViewModel();
 
         public ReactiveCommand<Unit, Unit> GoAddingClientView { get; }

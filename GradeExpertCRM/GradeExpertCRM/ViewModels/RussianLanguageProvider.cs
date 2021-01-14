@@ -34,6 +34,10 @@ namespace GradeExpertCRM.ViewModels
 
         public string LabelCreatingNewDocument => "СОЗДАНИЕ НОВОГО ДОКУМЕНТА";
 
+        public string LabelGeneralSettings => "НАСТРОЙКИ ОБЩИЕ";
+
+        public string LabelDetailsSettings => "НАСТРОЙКИ РЕКВИЗИТЫ";
+
         public string TextBoxIndex => "ИНДЕКС";
 
         public string TextBoxArea => "ОБЛАСТЬ, КРАЙ";
@@ -103,6 +107,32 @@ namespace GradeExpertCRM.ViewModels
         public string TextBoxInvoiceForFranchise => "СЧЁТ НА ОПЛАТУ ФРАНШИЗЫ";
 
         public string TextBoxInvoiceForFranchiseWithSignatures => "СЧЁТ НА ОПЛАТУ ФРАНШИЗЫ С ПОДПИСЯМИ И ПЕЧАТЬЮ";
+
+        public string TextBoxPriceOfNormalHour => "СТОИМОСТЬ НОРМО/ЧАСА";
+
+        public string TextBoxCoefficients => "КОЭФФИЦИЕНТЫ";
+
+        public string TextBoxRemovingDents => "УДАЛЕНИЕ ВМЯТИН";
+
+        public string TextBoxFinishingTreatment => "ФИНИШНАЯ ОБРАБОТКА";
+
+        public string TextBoxAdhesiveTechnology => "КЛЕЕВАЯ ТЕХНИКА +";
+
+        public string TextBoxAluminum => "АЛЮМИНИЙ +";
+
+        public string TextBoxUnderPainting => "ПОД ПОКРАСКУ -";
+
+        public string TextBoxAdditionalWorks => "ДОПОЛНИТЕЛЬНЫЕ РАБОТЫ/УСЛУГИ";
+
+        public string TextBoxAntiCorrosionTreatment => "АНТИКОРРОЗИОННАЯ ОБРАБОТКА";
+
+        public string TextBoxToolPreparing => "ПОДГОТОВКА ИНСТРУМЕНТА";
+
+        public string TextBoxNHoursPerItem => "Н/Ч ЗА ДЕТАЛЬ";
+
+        public string TextBoxLanguage => "ЯЗЫК";
+
+        public string TextBoxTitle => "НАЗВАНИЕ";
 
         public string SignIn => "ВОЙТИ";
 

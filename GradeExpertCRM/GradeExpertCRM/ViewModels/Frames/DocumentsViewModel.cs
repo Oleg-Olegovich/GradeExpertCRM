@@ -9,12 +9,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 {
     internal class DocumentsViewModel : ViewModelBase
     {
-        public static ILanguageProvider Localization
-        {
-            get => MainViewModel.Localization;
-        }
-
-        private async Task OpenAddingDocumentView() => BaseWindow.Content = new AddingDocumentViewModel();
+        private async Task OpenAddingDocumentView() => BaseWindow.Content = new AddingDocumentViewModel(BaseWindow, this);
 
         public ReactiveCommand<Unit, Unit> GoAddingDocumentView { get; }
 

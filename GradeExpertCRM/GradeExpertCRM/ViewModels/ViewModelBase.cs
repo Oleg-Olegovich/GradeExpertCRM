@@ -9,5 +9,7 @@ namespace GradeExpertCRM.ViewModels
         /// application where the controls are located.
         /// </summary>
         public IBaseWindow BaseWindow;
+
+        public ILanguageProvider Localization => MainViewModel.Localization;
     }
 }

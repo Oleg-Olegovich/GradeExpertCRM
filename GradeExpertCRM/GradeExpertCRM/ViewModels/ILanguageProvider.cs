@@ -32,6 +32,10 @@
 
         string LabelCreatingNewDocument { get; }
 
+        string LabelGeneralSettings { get; }
+
+        string LabelDetailsSettings { get; }
+
         string TextBoxIndex { get; }
 
         string TextBoxArea { get; }
@@ -101,6 +105,28 @@
         string TextBoxInvoiceForFranchise { get; }
 
         string TextBoxInvoiceForFranchiseWithSignatures { get; }
+
+        string TextBoxPriceOfNormalHour { get; }
+
+        string TextBoxCoefficients { get; }
+
+        string TextBoxRemovingDents { get; }
+
+        string TextBoxFinishingTreatment { get; }
+
+        string TextBoxAdhesiveTechnology { get; }
+
+        string TextBoxAdditionalWorks { get; }
+
+        string TextBoxAntiCorrosionTreatment { get; }
+
+        string TextBoxToolPreparing { get; }
+
+        string TextBoxNHoursPerItem { get; }
+
+        string TextBoxLanguage { get; }
+
+        string TextBoxTitle { get; }
 
         string SignIn { get; }
 

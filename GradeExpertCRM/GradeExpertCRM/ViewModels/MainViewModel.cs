@@ -7,7 +7,7 @@ namespace GradeExpertCRM.ViewModels
 {
     class MainViewModel : ViewModelBase, IBaseWindow
     {
-        private static string Language = "Russian";
+        public static string Language = "Russian";
 
         private ViewModelBase _content;
 
@@ -18,15 +18,13 @@ namespace GradeExpertCRM.ViewModels
             new EnglishLanguageProvider()
         };
 
-        public static ILanguageProvider Localization
-        {
-            get => Language switch
+        public new static ILanguageProvider Localization 
+            => Language switch
             {
                 "Russian" => LanguageProvider[0],
                 "German" => LanguageProvider[1],
                 _ => LanguageProvider[2]
             };
-        }
 
         public ViewModelBase Content
         {

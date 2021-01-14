@@ -7,11 +7,6 @@ namespace GradeExpertCRM.ViewModels
 {
     public class SignInViewModel : ViewModelBase
     {
-        public static ILanguageProvider Localization
-        {
-            get => MainViewModel.Localization;
-        }
-
         #region UserData
 
         private string _login;
