@@ -15,7 +15,7 @@ namespace GradeExpertCRM.Models
 
         public string Number { get; set; }
 
-        public string Loss { get; set; } //TODO в моделе Damaged есть свойство LossNumber
+        public string Loss { get; set; }
 
         public string VIN { get; set; }
 
@@ -27,7 +27,20 @@ namespace GradeExpertCRM.Models
 
         public int Run { get; set; }
 
-        public string Note { get; set; }
+        public string Note { get; set; } //TODO is this property necessary?
 
+        public string DamageType { get; set; }
+
+        public string InsuranceCompany { get; set; }
+
+        public string PolicyNumber { get; set; }
+
+        public int Franchise { get; set; }
+
+        public DateTime InspectionDate { get; set; }
+
+        public string InspectionPlace { get; set; }
+
+        public string Inspector { get; set; }
     }
 }
