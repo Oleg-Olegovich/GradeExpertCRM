@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GradeExpertCRM.Models
 {
@@ -14,9 +12,9 @@ namespace GradeExpertCRM.Models
 
         public string LossNumber { get; set; }
 
-        public double Franchise { get; set; } //TODO int or double
+        public int Franchise { get; set; }
 
-        public string InspectionDate { get; set; } //TODO Can be DateTime?
+        public DateTime InspectionDate { get; set; }
 
         public string Inspector { get; set; }
     }
