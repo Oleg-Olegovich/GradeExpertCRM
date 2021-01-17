@@ -40,7 +40,7 @@ namespace GradeExpertCRM.ViewModels
 
         private async Task OpenCarView() => Content = new CarViewModel(this);
 
-        private async Task OpenCalculatorView() => Content = new CalculatorViewModel(this);
+        private async Task OpenCalculatorView() => Content = new CalculationDataViewModel(this);
 
         private async Task OpenDocumentsView() => Content = new DocumentsViewModel(this);
 

@@ -215,5 +215,23 @@ namespace GradeExpertCRM.ViewModels
         public string RightRack => "Правая стойка";
 
         public string Trunk => "Багажник";
+
+        public string Detail => "ДЕТАЛЬ";
+
+        public string QuantityBriefly => "КОЛ-ВО";
+
+        public string DN => "ДУ, ММ";
+
+        public string AluminumBriefly => "АЛЮ";
+
+        public string Glue => "КЛЕЙ";
+
+        public string Change => "ИЗМЕНИТЬ";
+
+        public string AdditionalWorks => "ДОПОЛНИТЕЛЬНЫЕ РАБОТЫ";
+
+        public string TotalPrice => "ОБЩАЯ СТОИМОСТЬ РЕМОНТА";
+
+        public string PreparingForWork => "ПОДГОТОВКА К РАБОТЕ";
     }
 }
