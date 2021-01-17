@@ -1,5 +1,4 @@
 ﻿using ReactiveUI;
-using GradeExpertCRM.ViewModels.Frames;
 
 namespace GradeExpertCRM.ViewModels
 {
@@ -25,8 +24,8 @@ namespace GradeExpertCRM.ViewModels
         /// </summary>
         public MainWindowViewModel()
         {
-            Content = new SignInViewModel();
-            //Content = new MainViewModel();
+            //Content = new SignInViewModel();
+            Content = new MainViewModel();
         }
     }
 }

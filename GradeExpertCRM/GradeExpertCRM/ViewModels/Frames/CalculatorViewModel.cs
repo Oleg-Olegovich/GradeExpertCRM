@@ -40,5 +40,10 @@ namespace GradeExpertCRM.ViewModels.Frames
                     "14-1" => Localization.RearBumper,
                     _ => "Error"
                 };
+
+        public CalculatorViewModel(IBaseWindow baseWindow)
+        {
+            BaseWindow = baseWindow;
+        }
     }
 }
