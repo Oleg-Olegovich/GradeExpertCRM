@@ -3,7 +3,6 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
-	<!--<link rel="stylesheet" href="css/styles.css?v=1.0">-->
 
 	<style>
 		html {
@@ -23,8 +22,9 @@
 
 				table.table-style td, table.table-style th {
 					padding: 3px;
-					width: 30px;
 					height: 30px;
+					width: auto;
+					/*width: 30px;*/
 				}
 
 				table.table-style th {
@@ -36,7 +36,11 @@
 			font-weight: bold
 		}
 
-		.column-3plus-text-right td:nth-child(n+3) {
+		.column-3plus-text-right td:nth-child(3),
+		.column-3plus-text-right td:nth-child(4),
+		.column-3plus-text-right td:nth-child(5),
+		.column-3plus-text-right td:nth-child(6),
+		.column-3plus-text-right td:nth-child(7) {
 			text-align: right
 		}
 
@@ -53,23 +57,31 @@
 		}
 
 		/*.footer {*/
-			/*Can be removed*/
-			/*position: fixed;
+		/*Can be removed*/
+		/*position: fixed;
 			bottom: 0;*/
-			/*For alignment*/
-			/*font-size: 0.8em;
+		/*For alignment*/
+		/*font-size: 0.8em;
 			padding: 20px;
 			width: 100%;
 			margin-left: auto;
 			margin-right: auto;
 		}*/
+
+		.column-first-last-content-fit td:first-child,
+		.column-first-last-content-fit td:last-child {
+			width: 1%;
+			white-space: nowrap;
+			padding-left: 8px;
+			padding-right: 8px
+		}
 	</style>
 </head>
 <body>
 
 	<!--TODO Make a header with image-->
 	<strong>КАЛЬКУЛЯЦИЯ СТОИМОСТИ РАБОТ</strong>
-	<p>134 ОТ 01.08.2020 Г.</p>
+	<p>№ 134 ОТ 01.08.2020 Г.</p>
 
 	<table class="table-style column-bold">
 		<tr>
@@ -98,9 +110,8 @@
 		</tr>
 		<tr>
 			<td rowspan="4" colspan="2"></td>
-			<td hidden></td>
-			<td>БАНК</td>
-			<td>ТОЧКА ПАО БАНКА "ФК ОТКРЫТИЕ" Г. МОСКВА</td>
+			<td style="font-weight: bold">БАНК</td>
+			<td style="font-weight: normal">ТОЧКА ПАО БАНКА "ФК ОТКРЫТИЕ" Г. МОСКВА</td>
 		</tr>
 		<tr>
 			<td>БИК</td>
@@ -174,7 +185,7 @@
 	<br />
 	<br />
 
-	<table class="table-style column-3plus-text-right">
+	<table class="table-style column-3plus-text-right column-first-last-content-fit">
 		<tr>
 			<td colspan="3">РАБОТЫ ПО ДЕ-/МОНТАЖУ</td>
 		</tr>
@@ -203,7 +214,7 @@
 	<br />
 	<br />
 
-	<table class="table-style column-3plus-text-right">
+	<table class="table-style column-3plus-text-right column-first-last-content-fit">
 		<tr>
 			<td colspan="7">БЕСПОКРАСОЧНОЕ УДАЛЕНИЕ ВМЯТИН ПО СИСТЕМЕ ГРАД-ЭКСПЕРТ</td>
 		</tr>
@@ -239,7 +250,7 @@
 	<br />
 	<br />
 
-	<table class="table-style column-3plus-text-right">
+	<table class="table-style column-3plus-text-right column-first-last-content-fit">
 		<tr>
 			<td>№ ПОЗИЦИИ</td>
 			<td>ДОПОЛНИТЕЛЬНЫЕ РАБОТЫ/УСЛУГИ</td>
@@ -265,7 +276,7 @@
 	<br />
 	<br />
 
-	<table class="table-style column-3plus-text-right">
+	<table class="table-style column-3plus-text-right column-first-last-content-fit">
 		<tr>
 			<td colspan="3">ИТОГОВАЯ КАЛЬКУЛЯЦИЯ</td>
 		</tr>

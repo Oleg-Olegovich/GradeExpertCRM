@@ -1,10 +1,14 @@
-﻿using System.Reactive;
+﻿using System.IO;
+using System.Reactive;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Avalonia.Controls;
+using iText.Html2pdf;
+using iText.Html2pdf.Resolver.Font;
+using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
 using RazorLight;
 using ReactiveUI;
-using SelectPdf;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
@@ -25,10 +29,17 @@ namespace GradeExpertCRM.ViewModels.Frames
             GoDocumentView = ReactiveCommand.CreateFromTask(OpenDocumentView);
 
             SavePdfCommand = ReactiveCommand.CreateFromTask(SavePdf);
+
         }
 
         private async Task SavePdf()
         {
+
+            string input = "GradeExpertCRM.Resources.Templates.template1";
+
+            string output = @"C:\Users\Admin\Desktop\template1.pdf";
+
+
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.Filters.Add(new FileDialogFilter { Name = "PDF", Extensions = { "pdf" } });
             var result = await dialog.ShowAsync(new Window());
@@ -40,20 +51,21 @@ namespace GradeExpertCRM.ViewModels.Frames
                     .UseMemoryCachingProvider()
                     .Build();
 
-                string html = await engine.CompileRenderAsync<object>("GradeExpertCRM.Resources.Templates.Template1", null);
+                string html = await engine.CompileRenderAsync<object>(input, null);
 
-                HtmlToPdf converter = new HtmlToPdf();
+                PdfWriter writer = new PdfWriter(result);
+                PdfDocument pdfDoc = new PdfDocument(writer);
 
-                int margin = 40;
-                converter.Options.MarginLeft = margin;
-                converter.Options.MarginTop = margin / 2;
-                converter.Options.MarginRight = margin;
-                converter.Options.MarginBottom = margin;
+                pdfDoc.SetDefaultPageSize(new PageSize(1000, 1415));
 
-                PdfDocument doc = converter.ConvertHtmlString(html);
+                ConverterProperties converterProperties = new ConverterProperties();
 
-                doc.Save(result);
-                doc.Close();
+                converterProperties.SetFontProvider(new DefaultFontProvider(true, true, true));
+
+                HtmlConverter.ConvertToPdf(html, pdfDoc, converterProperties);
+
+                pdfDoc.Close();
+                writer.Close();
             }
         }
     }

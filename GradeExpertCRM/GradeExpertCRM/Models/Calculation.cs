@@ -6,6 +6,12 @@ namespace GradeExpertCRM.Models
     {
         public string ComponentName { get; set; }
 
+        public bool IsGrandExpert { get; set; }
+
+        public bool IsFixPrice { get; set; }
+
+        public int Price { get; set; }
+
         public int DentCount { get; set; }
 
         public int DentDiameter { get; set; }
@@ -55,6 +61,8 @@ namespace GradeExpertCRM.Models
         public int Code { get; set; }
 
         public string Name { get; set; }
+
+        public int Price { get; set; }
 
         public double WorkingHours { get; set; }
 
