@@ -47,14 +47,15 @@
 						   FontSize="12"/>
 				<StackPanel Grid.Row="2"
 							Grid.ColumnSpan="2">
-					<CheckBox>
+					<RadioButton GroupName="Price"
+								 IsChecked="True">
 						<TextBlock Classes="Text"
 								   Text="{Binding Localization.GrandExpert}"/>
-					</CheckBox>
-					<CheckBox>
+					</RadioButton>
+					<RadioButton GroupName="Price">
 						<TextBlock Classes="Text"
 								   Text="{Binding Localization.FixPrice}"/>
-					</CheckBox>
+					</RadioButton>
 				</StackPanel>
 				<Border Classes="BorderOfText"
 							Grid.Row="3"
@@ -123,14 +124,15 @@
 
 				<StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="4"
 							Margin="0 10 0 0">
-					<CheckBox>
+					<RadioButton GroupName="Materials"
+								 IsChecked="True">
 						<TextBlock Classes="Text"
 								   Text="{Binding Localization.Aluminum}"/>
-					</CheckBox>
-					<CheckBox>
+					</RadioButton>
+					<RadioButton GroupName="Materials">
 						<TextBlock Classes="Text"
 								   Text="{Binding Localization.Adhesive}"/>
-					</CheckBox>
+					</RadioButton>
 				</StackPanel>
 			</Grid>
 		</Border>
@@ -192,18 +194,19 @@
 							  ClipToBounds="False"
 							  IsEnabled="False"/>
 				<StackPanel Grid.Row="2" Margin="0 5 0 0">
-					<CheckBox>
+					<RadioButton GroupName="Repair"
+								 IsChecked="True">
 						<TextBlock Classes="Text"
 								   Text="{Binding Localization.WithoutPainting}"/>
-					</CheckBox>
-					<CheckBox>
+					</RadioButton>
+					<RadioButton GroupName="Repair">
 						<TextBlock Classes="Text"
 								   Text="{Binding Localization.UnderPainting}"/>
-					</CheckBox>
-					<CheckBox>
+					</RadioButton>
+					<RadioButton GroupName="Repair">
 						<TextBlock Classes="Text"
 								   Text="{Binding Localization.Replacement}"/>
-					</CheckBox>
+					</RadioButton>
 				</StackPanel>
 			</Grid>
 		</Border>

@@ -45,6 +45,60 @@ namespace GradeExpertCRM.ViewModels.Frames
                         Name="Apple",
                         City="Воронеж",
                         PhoneNumber="00000000000"
+                    },
+                   new Client()
+                    {
+                        Name="Apple",
+                        City="Воронеж",
+                        PhoneNumber="00000000000"
+                    },
+                   new Client()
+                    {
+                        Name="Apple",
+                        City="Воронеж",
+                        PhoneNumber="00000000000"
+                    },
+                   new Client()
+                    {
+                        Name="Apple",
+                        City="Воронеж",
+                        PhoneNumber="00000000000"
+                    },
+                   new Client()
+                    {
+                        Name="Apple",
+                        City="Воронеж",
+                        PhoneNumber="00000000000"
+                    },
+                   new Client()
+                    {
+                        Name="Apple",
+                        City="Воронеж",
+                        PhoneNumber="00000000000"
+                    },
+                   new Client()
+                    {
+                        Name="Apple",
+                        City="Воронеж",
+                        PhoneNumber="00000000000"
+                    },
+                   new Client()
+                    {
+                        Name="Apple",
+                        City="Воронеж",
+                        PhoneNumber="00000000000"
+                    },
+                   new Client()
+                    {
+                        Name="Apple",
+                        City="Воронеж",
+                        PhoneNumber="00000000000"
+                    },
+                   new Client()
+                    {
+                        Name="Apple",
+                        City="Воронеж",
+                        PhoneNumber="00000000000"
                     }
                 };
     }
