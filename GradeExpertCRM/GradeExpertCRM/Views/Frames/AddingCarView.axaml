@@ -30,11 +30,13 @@
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 
-		<TextBlock Grid.Row="0" Grid.Column="0"
-				   Foreground="#000000"
-				   FontFamily="Calibri"
-				   FontSize="24"
-				   Margin="20 0 0 0"
+		<TextBlock Grid.Row="0"
+				   Grid.Column="0"
+			       Grid.ColumnSpan="2"
+			       Foreground="#000000"
+			       FontFamily="Calibri"
+			       FontSize="24"
+			       Margin="20 0 0 0"
 				   Text="{Binding Localization.LabelAddingNewCar}"/>
 
 		<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">

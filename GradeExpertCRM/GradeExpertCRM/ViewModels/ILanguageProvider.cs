@@ -209,5 +209,23 @@
         string RightRack { get; }
 
         string Trunk { get; }
+
+        string Detail { get; }
+
+        string QuantityBriefly { get; }
+
+        string DN { get; }
+
+        string AluminumBriefly { get; }
+
+        string Glue { get; }
+
+        string Change { get; }
+
+        string AdditionalWorks { get; }
+
+        string TotalPrice { get; }
+
+        string PreparingForWork { get; }
     }
 }

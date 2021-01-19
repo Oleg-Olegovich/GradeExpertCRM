@@ -34,11 +34,13 @@
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 
-		<TextBlock Grid.Row="0" Grid.Column="0"
-				   Foreground="#000000"
-				   FontFamily="Calibri"
-				   FontSize="24"
-				   Margin="20 0 0 0"
+		<TextBlock Grid.Row="0"
+				   Grid.Column="0"
+			       Grid.ColumnSpan="7"
+			       Foreground="#000000"
+			       FontFamily="Calibri"
+			       FontSize="24"
+			       Margin="20 0 0 0"
 				   Text="{Binding Localization.LabelGeneralSettings}"/>
 		
 		<TextBlock Grid.Row="1" Grid.Column="0"
@@ -255,7 +257,9 @@
 
 		<Button Grid.Row="11"
 				Grid.Column="1"
+				Grid.ColumnSpan="2"
 				Classes="Menu"
+				Command="{Binding GoDetailsSettingsView}"
 				Content="{Binding Localization.LabelDetailsSettings}"/>
 	</Grid>
 </UserControl>

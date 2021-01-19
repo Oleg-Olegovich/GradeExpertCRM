@@ -16,7 +16,7 @@
 			<Setter Property="CornerRadius" Value="10" />
 		</Style>
 		<Style Selector="Border.BorderOfText">
-			<Setter Property="BorderBrush" Value="#EE0505"/>
+			<Setter Property="BorderBrush" Value="#E31E24"/>
 			<Setter Property="Padding" Value="5 0 5 0"/>
 			<Setter Property="Margin" Value="0 0 10 0"/>
 			<Setter Property="BorderThickness" Value="3"/>

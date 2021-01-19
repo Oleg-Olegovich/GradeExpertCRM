@@ -9,6 +9,8 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Resources\buttonListLeft.png" />
+    <None Remove="Resources\ButtonListRight.png" />
     <None Remove="Resources\camera.png" />
     <None Remove="Resources\Cars\1\01-1.png" />
     <None Remove="Resources\Cars\1\02-1.png" />
@@ -58,6 +60,8 @@
 	  <PackageReference Include="RazorLight" Version="2.0.0-rc.3" />
   </ItemGroup>
   <ItemGroup>
+	<AvaloniaResource Include="Resources\buttonListLeft.png" />
+	<AvaloniaResource Include="Resources\buttonListRight.png" />
 	<AvaloniaResource Include="Resources\camera.png" />
 	<AvaloniaResource Include="Resources\Cars\1\01-1.png" />
 	<AvaloniaResource Include="Resources\Cars\1\02-1.png" />

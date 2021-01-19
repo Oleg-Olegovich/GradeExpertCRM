@@ -186,8 +186,8 @@
 						   Text="{Binding Localization.TypeOfRepair}"
 						   TextAlignment="Center"/>
 				<GridSplitter Grid.Row="1"
-							  Background="#EE0505"
-							  BorderBrush="#EE0505"
+							  Background="#E31E24"
+							  BorderBrush="#E31E24"
 							  Margin="-6 0 -6 0"
 							  ClipToBounds="False"
 							  IsEnabled="False"/>

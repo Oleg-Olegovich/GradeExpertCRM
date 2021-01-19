@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using GradeExpertCRM.Views;
-using System.Threading.Tasks;
-using ReactiveUI;
-using GradeExpertCRM.Views.Frames;
+﻿using ReactiveUI;
 using Avalonia.Media.Imaging;
 
 namespace GradeExpertCRM.ViewModels.Frames
@@ -40,5 +34,10 @@ namespace GradeExpertCRM.ViewModels.Frames
                     "14-1" => Localization.RearBumper,
                     _ => "Error"
                 };
+
+        public CalculatorViewModel(IBaseWindow baseWindow)
+        {
+            BaseWindow = baseWindow;
+        }
     }
 }
