@@ -29,7 +29,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         private Bitmap[] _carImagesInInterface = { new Bitmap(@"..\..\..\Resources\Cars\2\01-1.png"),
                                                    new Bitmap(@"..\..\..\Resources\Cars\2\02-1.png"),
                                                    new Bitmap(@"..\..\..\Resources\Cars\2\03-1.png"),
-                                                   new Bitmap(@"..\..\..\Resources\Cars\2\04-1.png")};
+                                                   new Bitmap(@"..\..\..\Resources\Cars\2\04-1.png") };
 
         private string[] _carImagesDescriprions = { "", "", "", ""};
 
