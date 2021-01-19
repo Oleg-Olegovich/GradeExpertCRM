@@ -45,18 +45,19 @@
     <None Remove="Resources\magnifier.png" />
     <None Remove="Resources\Plus.png" />
     <None Remove="Resources\russian.png" />
-    <None Remove="Resources\Templates\Template1.cshtml" />
-    <None Remove="Resources\Templates\Template2.cshtml" />
-    <None Remove="Resources\Templates\Template3.cshtml" />
-    <None Remove="Resources\Templates\Template4.cshtml" />
+    <None Remove="Resources\Templates\template1.cshtml" />
+    <None Remove="Resources\Templates\template2.cshtml" />
+    <None Remove="Resources\Templates\template3.cshtml" />
+    <None Remove="Resources\Templates\template4.cshtml" />
   </ItemGroup>
   <ItemGroup>
 	  <PackageReference Include="Avalonia" Version="0.10.0-rc1" />
 	  <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.0-rc1" />
 	  <PackageReference Include="Avalonia.Desktop" Version="0.10.0-rc1" />
 	  <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0-rc1" />
+	  <PackageReference Include="itext7.pdfhtml" Version="3.0.3" />
+	  <PackageReference Include="Microsoft.DotNet.PlatformAbstractions" Version="3.1.6" />
 	  <PackageReference Include="RazorLight" Version="2.0.0-rc.3" />
-	  <PackageReference Include="Select.HtmlToPdf.NetCore" Version="20.2.0" />
   </ItemGroup>
   <ItemGroup>
 	<AvaloniaResource Include="Resources\buttonListLeft.png" />
@@ -100,10 +101,10 @@
     <AvaloniaResource Include="Styles\Style.xaml" />	
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Templates\Template1.cshtml" />
-    <EmbeddedResource Include="Resources\Templates\Template2.cshtml" />
-    <EmbeddedResource Include="Resources\Templates\Template3.cshtml" />
-    <EmbeddedResource Include="Resources\Templates\Template4.cshtml" />
+    <EmbeddedResource Include="Resources\Templates\template1.cshtml" />
+    <EmbeddedResource Include="Resources\Templates\template2.cshtml" />
+    <EmbeddedResource Include="Resources\Templates\template3.cshtml" />
+    <EmbeddedResource Include="Resources\Templates\template4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Views\Frames\AddingCarView.axaml.cs">
