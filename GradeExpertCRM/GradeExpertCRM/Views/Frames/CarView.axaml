@@ -37,35 +37,34 @@
 			</Button>
 		</DockPanel>
 
-		<ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7">
-			<DataGrid Items="{Binding Cars}">
-				<DataGrid.Columns>
-					<DataGridTextColumn Binding="{Binding Brand}">
-						<DataGridTextColumn.Header>
-							<TextBlock Text="{Binding DataContext.Localization.CarBrand, 
+		<DataGrid Grid.Row="1" Grid.Column="0"
+					  Grid.ColumnSpan="7" Items="{Binding Cars}">
+			<DataGrid.Columns>
+				<DataGridTextColumn Binding="{Binding Brand}">
+					<DataGridTextColumn.Header>
+						<TextBlock Text="{Binding DataContext.Localization.CarBrand, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CarView}}}"/>
-						</DataGridTextColumn.Header>
-					</DataGridTextColumn>
-					<DataGridTextColumn Binding="{Binding Number}">
-						<DataGridTextColumn.Header>
-							<TextBlock Text="{Binding DataContext.Localization.CarNumber, 
+					</DataGridTextColumn.Header>
+				</DataGridTextColumn>
+				<DataGridTextColumn Binding="{Binding Number}">
+					<DataGridTextColumn.Header>
+						<TextBlock Text="{Binding DataContext.Localization.CarNumber, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CarView}}}"/>
-						</DataGridTextColumn.Header>
-					</DataGridTextColumn>
-					<DataGridTextColumn Binding="{Binding Loss}">
-						<DataGridTextColumn.Header>
-							<TextBlock Text="{Binding DataContext.Localization.Loss, 
+					</DataGridTextColumn.Header>
+				</DataGridTextColumn>
+				<DataGridTextColumn Binding="{Binding Loss}">
+					<DataGridTextColumn.Header>
+						<TextBlock Text="{Binding DataContext.Localization.Loss, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CarView}}}"/>
-						</DataGridTextColumn.Header>
-					</DataGridTextColumn>
-					<DataGridTextColumn Binding="{Binding VIN}">
-						<DataGridTextColumn.Header>
-							<TextBlock Text="VIN"/>
-						</DataGridTextColumn.Header>
-					</DataGridTextColumn>
-				</DataGrid.Columns>
-			</DataGrid>
-		</ScrollViewer>
+					</DataGridTextColumn.Header>
+				</DataGridTextColumn>
+				<DataGridTextColumn Binding="{Binding VIN}">
+					<DataGridTextColumn.Header>
+						<TextBlock Text="VIN"/>
+					</DataGridTextColumn.Header>
+				</DataGridTextColumn>
+			</DataGrid.Columns>
+		</DataGrid>
 
 		<StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="7">
 			<Button x:Name="ImageButtonAddCar"
