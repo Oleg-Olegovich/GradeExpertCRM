@@ -1,4 +1,7 @@
-﻿namespace GradeExpertCRM.ViewModels
+﻿using System.Collections.ObjectModel;
+using GradeExpertCRM.Models;
+
+namespace GradeExpertCRM.ViewModels
 {
     public interface IBaseWindow
     {

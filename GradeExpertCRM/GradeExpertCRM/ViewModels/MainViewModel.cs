@@ -1,7 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using ReactiveUI;
 using GradeExpertCRM.ViewModels.Frames;
 using System.Reactive;
+using GradeExpertCRM.Models;
 
 namespace GradeExpertCRM.ViewModels
 {
@@ -60,7 +62,6 @@ namespace GradeExpertCRM.ViewModels
         public ReactiveCommand<Unit, Unit> GoMailView { get; }
 
         public ReactiveCommand<Unit, Unit> GoSettingsView { get; }
-
 
         public MainViewModel()
         {

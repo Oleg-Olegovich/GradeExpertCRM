@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using GradeExpertCRM.Models;
 using System.Threading.Tasks;
 using ReactiveUI;
 using System.Reactive;
-using System.Collections.ObjectModel;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
     class ClientViewModel : ViewModelBase
     {
-        public ObservableCollection<Client> Clients { get; }
+        public ObservableCollection<Client> Clients { get; } = new ObservableCollection<Client>();
 
-        private async Task OpenAddingClientView() => BaseWindow.Content = new AddingClientViewModel();
+        private async Task OpenAddingClientView() => BaseWindow.Content = new AddingClientViewModel(BaseWindow, Clients);
 
         public ReactiveCommand<Unit, Unit> GoAddingClientView { get; }
 
@@ -19,8 +19,14 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             BaseWindow = baseWindow;
             GoAddingClientView = ReactiveCommand.CreateFromTask(OpenAddingClientView);
-            Clients = new ObservableCollection<Client>(GenerateClientsTable());
+            // Clients = new ObservableCollection<Client>(GenerateClientsTable());
         }
+
+        public ClientViewModel(IBaseWindow baseWindow, ObservableCollection<Client> clients) : this(baseWindow)
+        {
+            Clients = clients;
+        }
+
 
         /// <summary>
         /// Temporary code.

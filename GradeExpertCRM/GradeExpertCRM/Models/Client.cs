@@ -7,9 +7,11 @@
     {
         public string Name { get; set; }
 
-        public string City { get; set; }
+        public string Index { get; set; }
 
         public string Region { get; set; }
+
+        public string City { get; set; }
 
         public string Street { get; set; }
 

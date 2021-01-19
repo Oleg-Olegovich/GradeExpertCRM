@@ -1,4 +1,6 @@
-﻿using ReactiveUI;
+﻿using System.Collections.ObjectModel;
+using GradeExpertCRM.Models;
+using ReactiveUI;
 
 namespace GradeExpertCRM.ViewModels
 {
