@@ -9,9 +9,9 @@ namespace GradeExpertCRM.ViewModels.Frames
 {
     class ClientViewModel : ViewModelBase
     {
-        public ObservableCollection<Client> Clients { get; } = new ObservableCollection<Client>();
+        public static ObservableCollection<Client> Clients { get; } = new ObservableCollection<Client>();
 
-        private async Task OpenAddingClientView() => BaseWindow.Content = new AddingClientViewModel(BaseWindow, Clients);
+        private async Task OpenAddingClientView() => BaseWindow.Content = new AddingClientViewModel(BaseWindow);
 
         public ReactiveCommand<Unit, Unit> GoAddingClientView { get; }
 
@@ -21,12 +21,6 @@ namespace GradeExpertCRM.ViewModels.Frames
             GoAddingClientView = ReactiveCommand.CreateFromTask(OpenAddingClientView);
             // Clients = new ObservableCollection<Client>(GenerateClientsTable());
         }
-
-        public ClientViewModel(IBaseWindow baseWindow, ObservableCollection<Client> clients) : this(baseWindow)
-        {
-            Clients = clients;
-        }
-
 
         /// <summary>
         /// Temporary code.
