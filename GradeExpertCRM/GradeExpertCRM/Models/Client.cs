@@ -9,25 +9,25 @@
 
         public string Index { get; set; }
 
-        public string Region { get; set; }
+        public string Area { get; set; }
 
         public string City { get; set; }
 
-        public string Street { get; set; }
+        public string Address { get; set; }
 
         public string PhoneNumber { get; set; }
 
         public string Email { get; set; }
 
         /// <summary>
-        /// ИНН - ITN (Individual Taxpayer Number)
+        /// ИНН - TIN (Taxpayer Identification Number)
         /// </summary>
-        public string ITN { get; set; }
+        public string TIN { get; set; }
 
         /// <summary>
-        /// КПП — IEC (Industrial Enterprises Classifier)
+        /// КПП
         /// </summary>
-        public string IEC { get; set; }
+        public string CRR { get; set; }
 
         public string Bank { get; set; }
 
@@ -37,13 +37,13 @@
         public string BIC { get; set; }
 
         /// <summary>
-        /// Расчетный счет - Current account
+        /// Расчетный счет
         /// </summary>
-        public string CurrentAccount { get; set; }
+        public string PaymentAccount { get; set; }
 
         /// <summary>
         /// Корреспондирующий счёт — Corresponding account
         /// </summary>
-        public string CorrespondingAccount { get; set; }
+        public string CorrespondentAccount { get; set; }
     }
 }

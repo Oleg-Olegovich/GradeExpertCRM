@@ -5,7 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="GradeExpertCRM.Views.Frames.AddingClientView">
 
-	<Grid>
+    <Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition/>
 			<RowDefinition/>
@@ -44,7 +44,7 @@
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxArea}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch" Text="{Binding Client.Region}"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding Client.Area}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical">
@@ -58,7 +58,7 @@
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxAddress}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch" Text="{Binding Client.Street}"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding Client.Address}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="4" Grid.Column="0" Orientation="Vertical">
@@ -79,14 +79,14 @@
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxTIN}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch" Text="{Binding Client.ITN}"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding Client.TIN}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="5" Grid.Column="1" Orientation="Vertical">
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxCRR}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch" Text="{Binding Client.IEC}"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding Client.CRR}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="7" Grid.Column="0" Orientation="Vertical">
@@ -107,14 +107,14 @@
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxPaymentAccount}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch" Text="{Binding Client.CurrentAccount}"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding Client.PaymentAccount}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="8" Grid.Column="1" Orientation="Vertical">
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxCorrespondentAccount}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch" Text="{Binding Client.CorrespondingAccount}"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding Client.CorrespondentAccount}"/>
 			</Border>
 		</StackPanel>
 
@@ -122,6 +122,6 @@
 				Grid.Column="0"
 				Classes="Menu"
 				Content="{Binding Localization.ButtonSave}"
-                Command="{Binding SaveCommand}"/>
+        Command="{Binding SaveCommand}"/>
 	</Grid>
 </UserControl>
