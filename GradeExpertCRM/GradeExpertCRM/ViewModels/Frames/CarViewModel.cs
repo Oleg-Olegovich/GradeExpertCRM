@@ -9,7 +9,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 {
     internal class CarViewModel : ViewModelBase
     {
-        public static ObservableCollection<Car> Cars { get; } = new ObservableCollection<Car>();
+        public static ObservableCollection<Car> Cars { get; } = new ObservableCollection<Car>(GenerateCarsTable());
 
         private async Task OpenAddingCarView() => BaseWindow.Content = new AddingCarViewModel(BaseWindow);
 
@@ -19,13 +19,12 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             BaseWindow = baseWindow;
             GoAddingCarView = ReactiveCommand.CreateFromTask(OpenAddingCarView);
-            // Cars = new ObservableCollection<Car>(GenerateCarsTable());
         }
 
         /// <summary>
         /// Temporary code.
         /// </summary>
-        private IEnumerable<Car> GenerateCarsTable()
+        private static IEnumerable<Car> GenerateCarsTable()
             => new List<Car>()
                 {
                     new Car()
