@@ -1,5 +1,12 @@
-﻿using ReactiveUI;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Reactive.Linq;
+using Avalonia.Controls.Primitives;
+using ReactiveUI;
 using Avalonia.Media.Imaging;
+using GradeExpertCRM.Models;
+using GradeExpertCRM.ViewModels.Frames;
+using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
@@ -97,6 +104,20 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             LeftIndex = (LeftIndex + 1) % _carImages.Length;
             UpdateImagesAndDescriptions();
+        }
+
+        public void SelectDetail(string imageNumber)
+        {
+            string carImageName = imageNumber switch
+            {
+                "image0" => _carImageNames[LeftIndex],
+                "image1" => _carImageNames[(LeftIndex + 1) % _carImages.Length],
+                "image2" => _carImageNames[(LeftIndex + 2) % _carImages.Length],
+                "image3" => _carImageNames[(LeftIndex + 3) % _carImages.Length],
+                _ => ""
+            };
+
+            BaseWindow.Content = new CalculatorViewModel(BaseWindow, carImageName);
         }
 
         private void UpdateImagesAndDescriptions()

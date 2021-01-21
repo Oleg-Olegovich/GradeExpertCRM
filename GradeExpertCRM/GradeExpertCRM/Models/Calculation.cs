@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace GradeExpertCRM.Models
 {
@@ -6,20 +8,17 @@ namespace GradeExpertCRM.Models
     {
         public string ComponentName { get; set; }
 
-        public bool IsGrandExpert { get; set; }
-
         public bool IsFixPrice { get; set; }
 
-        public int Price { get; set; }
+        public double Price { get; set; }
 
-        public int DentCount { get; set; }
+        public int DentQuantity { get; set; }
 
         public int DentDiameter { get; set; }
 
-        /// <summary>
-        /// Type of repair. Default value: WithoutPainting
-        /// </summary>
-        public RepairType RepairType { get; set; }
+        public double NHours { get; set; } //TODO check is this property necessary
+
+        public double DentPrice { get; set; }
 
         /// <summary>
         /// Material type. Default value: false - "Steel"
@@ -27,22 +26,27 @@ namespace GradeExpertCRM.Models
         public bool IsAluminum { get; set; }
 
         /// <summary>
-        /// Is "Glue Technique" applied. Default value: false
+        /// Is "Adhesive" applied. Default value: false
         /// </summary>
-        public bool IsGlueTechnique { get; set; }
+        public bool IsAdhesive { get; set; }
 
-        public int PaintingPrice { get; set; }
+        /// <summary>
+        /// Type of repair. Default value: WithoutPainting
+        /// </summary>
+        public TypeOfRepair TypeOfRepair { get; set; }
 
-        public List<AssemblyWork> AssemblyWorks { get; set; }
+        public double PriceOfPainting { get; set; }
+
+        public List<DismantlingWorks> DismantlingWorks { get; set; }
 
         public List<SparePart> SpareParts { get; set; }
     }
 
-    public enum RepairType
+    public enum TypeOfRepair
     {
         WithoutPainting,
-        WithPainting,
-        Replacing
+        UnderPainting,
+        Replacement
     }
 
     public class SparePart
@@ -51,18 +55,18 @@ namespace GradeExpertCRM.Models
 
         public string Name { get; set; }
 
-        public int Price { get; set; }
+        public double Price { get; set; }
 
         public int Quantity { get; set; }
     }
 
-    public class AssemblyWork
+    public class DismantlingWorks
     {
         public int Code { get; set; }
 
         public string Name { get; set; }
 
-        public int Price { get; set; }
+        public double Price { get; set; }
 
         public double WorkingHours { get; set; }
 

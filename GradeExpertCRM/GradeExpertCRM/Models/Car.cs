@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using iText.Layout.Element;
 
 namespace GradeExpertCRM.Models
 {
@@ -39,9 +41,9 @@ namespace GradeExpertCRM.Models
 
         public string TypeOfDamage { get; set; }
 
-
         public int ReleaseYear { get; set; }
 
+        public List<Calculation> CalculationsList { get; set; } = new List<Calculation>();
 
         public string Note { get; set; } //TODO is this property necessary?
     }

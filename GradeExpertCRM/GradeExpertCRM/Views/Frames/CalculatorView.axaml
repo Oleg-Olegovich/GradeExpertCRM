@@ -2,276 +2,293 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+						 xmlns:vm="clr-namespace:GradeExpertCRM.ViewModels.Frames"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="GradeExpertCRM.Views.Frames.CalculatorView">
 
-	<UserControl.Styles>
-		<StyleInclude Source="avares://GradeExpertCRM/Styles/Style.xaml"/>
-	</UserControl.Styles>
 
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition MaxHeight="50"/>
-			<RowDefinition MaxHeight="50"/>
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="2*"/>
-			<ColumnDefinition Width="4*"/>
-			<ColumnDefinition Width="4*"/>
-		</Grid.ColumnDefinitions>
+    <UserControl.Styles>
+    <StyleInclude Source="avares://GradeExpertCRM/Styles/Style.xaml"/>
+  </UserControl.Styles>
 
-		<Border Grid.Column="0" Grid.Row="0"
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition MaxHeight="50"/>
+      <RowDefinition MaxHeight="50"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="2*"/>
+      <ColumnDefinition Width="4*"/>
+      <ColumnDefinition Width="4*"/>
+    </Grid.ColumnDefinitions>
+
+    <Border Grid.Column="0" Grid.Row="0"
 				Classes="BorderOfText"
 				Margin="5 0 5 10">
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="2*"/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Image Grid.Row="0"
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="2*"/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="0"
 					   Grid.ColumnSpan="2"
 					Source="{Binding CarImage}"/>
-				<TextBlock Grid.Row="1"
+        <TextBlock Grid.Row="1"
 						   Grid.ColumnSpan="2"
 						   Text="{Binding CarImageDescription}"
 						   Foreground="#000000"
 						   FontFamily="Calibry"
 						   FontSize="12"/>
-				<StackPanel Grid.Row="2"
+        <StackPanel Grid.Row="2"
 							Grid.ColumnSpan="2">
-					<RadioButton GroupName="Price"
+          <RadioButton GroupName="Price"
 								 IsChecked="True">
-						<TextBlock Classes="Text"
+            <TextBlock Classes="Text"
 								   Text="{Binding Localization.GrandExpert}"/>
-					</RadioButton>
-					<RadioButton GroupName="Price">
-						<TextBlock Classes="Text"
+          </RadioButton>
+          <RadioButton GroupName="Price"
+                       IsChecked="{Binding Calculation.IsFixPrice}">
+            <TextBlock Classes="Text"
 								   Text="{Binding Localization.FixPrice}"/>
-					</RadioButton>
-				</StackPanel>
-				<Border Classes="BorderOfText"
+          </RadioButton>
+        </StackPanel>
+        <Border Classes="BorderOfText"
 							Grid.Row="3"
 							Grid.Column="0"
 							MaxHeight="40"
 							Margin="0 5 0 5">
-					<TextBox VerticalAlignment="Stretch"/>
-				</Border>
-				<TextBlock Classes="Text"
+          <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.Price}"/>
+        </Border>
+        <TextBlock Classes="Text"
 						   Grid.Row="3"
 						   Grid.Column="1"
 						   Text="{Binding Localization.Currency}"/>
-			</Grid>
-		</Border>
+      </Grid>
+    </Border>
 
-		<Border Grid.Column="1" Grid.Row="0"
+    <Border Grid.Column="1" Grid.Row="0"
 				Classes="BorderOfText"
 				Margin="5 0 5 10">
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-				<StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical"
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical"
 							Margin="0 0 0 5">
-					<TextBlock Classes="Label"
+          <TextBlock Classes="Label"
 							   Text="{Binding Localization.Quantity}"/>
-					<Border Classes="BorderOfText">
-						<TextBox VerticalAlignment="Stretch"/>
-					</Border>
-				</StackPanel>
+          <Border Classes="BorderOfText">
+            <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.DentQuantity}"/>
+          </Border>
+        </StackPanel>
 
-				<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical"
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical"
 							Margin="0 5 0 5">
-					<TextBlock Classes="Label"
+          <TextBlock Classes="Label"
 							   Text="{Binding Localization.Diameter}"/>
-					<Border Classes="BorderOfText">
-						<TextBox VerticalAlignment="Stretch"/>
-					</Border>
-				</StackPanel>
+          <Border Classes="BorderOfText">
+            <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.DentDiameter}"/>
+          </Border>
+        </StackPanel>
 
-				<StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical"
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical"
 							Margin="0 5 0 5">
-					<TextBlock Classes="Label"
+          <TextBlock Classes="Label"
 							   Text="{Binding Localization.NHours}"/>
-					<Border Classes="BorderOfText">
-						<TextBox VerticalAlignment="Stretch"/>
-					</Border>
-				</StackPanel>
+          <Border Classes="BorderOfText">
+            <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.NHours}"/>
+          </Border>
+        </StackPanel>
 
-				<StackPanel Grid.Row="3" Grid.Column="0" Orientation="Vertical"
+        <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Vertical"
 							Margin="0 5 0 0">
-					<TextBlock Classes="Label"
+          <TextBlock Classes="Label"
 							   Text="{Binding Localization.Price}"/>
-					<Border Classes="BorderOfText">
-						<TextBox VerticalAlignment="Stretch"/>
-					</Border>
-				</StackPanel>
+          <Border Classes="BorderOfText">
+            <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.DentPrice}"/>
+          </Border>
+        </StackPanel>
 
-				<StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="4"
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="4"
 							Margin="0 10 0 0">
-					<RadioButton GroupName="Materials"
-								 IsChecked="True">
-						<TextBlock Classes="Text"
+          <RadioButton GroupName="Materials"
+                       IsChecked="True">
+            <!--TODO do a Binding for text property-->
+            <TextBlock Classes="Text"
+                       Text="СТАЛЬ"/>
+          </RadioButton>
+          <RadioButton GroupName="Materials"
+                       IsChecked="{Binding Calculation.IsAluminum}">
+            <TextBlock Classes="Text"
 								   Text="{Binding Localization.Aluminum}"/>
-					</RadioButton>
-					<RadioButton GroupName="Materials">
-						<TextBlock Classes="Text"
-								   Text="{Binding Localization.Adhesive}"/>
-					</RadioButton>
-				</StackPanel>
-			</Grid>
-		</Border>
+          </RadioButton>
+          <!--TODO fix CheckBox style-->
+          <CheckBox IsChecked="{Binding Calculation.IsAdhesive}">
+            <TextBlock Classes="Text"
+                       Text="{Binding Localization.Adhesive}"></TextBlock>
+          </CheckBox>
+        </StackPanel>
+      </Grid>
+    </Border>
 
-		<Border Grid.Column="2" Grid.Row="0"
+    <Border Grid.Column="2" Grid.Row="0"
 				Classes="BorderOfText"
 				Margin="5 0 5 10">
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition MaxHeight="20"/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				
-				<TextBlock Grid.Row="0"
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition MaxHeight="20"/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
 						   Classes="Text"
 						   Text="{Binding Localization.Dismantling}"
 						   TextAlignment="Center"/>
-				
-				<DataGrid Grid.Row="1"
+
+        <DataGrid Grid.Row="1"
 						  Margin="-6 0 -6 5">
-					
-				</DataGrid>
-			</Grid>
-		</Border>
 
-		<StackPanel Grid.Column="0" Grid.Row="1"
+        </DataGrid>
+      </Grid>
+    </Border>
+
+    <StackPanel Grid.Column="0" Grid.Row="1"
 					Orientation="Vertical">
-			<TextBlock Classes="Text"
+      <TextBlock Classes="Text"
 					   Text="{Binding Localization.RepairOfDents}"/>
-			<TextBox Text="0 РУБ"
+      <TextBox Text="0 РУБ"
 					 Margin="20 0 0 0"/>
-			<TextBlock Classes="Text"
+      <TextBlock Classes="Text"
 					   Text="{Binding Localization.Dismantling}"/>
-			<TextBox Text="0 РУБ"
+      <TextBox Text="0 РУБ"
 					 Margin="20 0 0 0"/>
-			<TextBlock Classes="Text"
+      <TextBlock Classes="Text"
 					   Text="{Binding Localization.SpareParts}"/>
-			<TextBox Text="0 РУБ"
+      <TextBox Text="0 РУБ"
 					 Margin="20 0 0 0"/>
-		</StackPanel>
+    </StackPanel>
 
-		<Border Grid.Column="1" Grid.Row="1"
+    <Border Grid.Column="1" Grid.Row="1"
 				Classes="BorderOfText"
 				Margin="0 0 5 10">
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition MaxHeight="20"/>
-					<RowDefinition Height="2"/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<TextBlock Grid.Row="0"
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition MaxHeight="20"/>
+          <RowDefinition Height="2"/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
 						   Classes="Text"
 						   Text="{Binding Localization.TypeOfRepair}"
 						   TextAlignment="Center"/>
-				<GridSplitter Grid.Row="1"
+        <GridSplitter Grid.Row="1"
 							  Background="#E31E24"
 							  BorderBrush="#E31E24"
 							  Margin="-6 0 -6 0"
 							  ClipToBounds="False"
 							  IsEnabled="False"/>
-				<StackPanel Grid.Row="2" Margin="0 5 0 0">
-					<RadioButton GroupName="Repair"
-								 IsChecked="True">
-						<TextBlock Classes="Text"
+        <StackPanel Grid.Row="2" Margin="0 5 0 0">
+          <RadioButton GroupName="Repair"
+								 IsChecked="True"
+                 Command="{Binding SelectTypeOfRepair}"
+                 CommandParameter="WithoutPainting">
+            <TextBlock Classes="Text"
 								   Text="{Binding Localization.WithoutPainting}"/>
-					</RadioButton>
-					<RadioButton GroupName="Repair">
-						<TextBlock Classes="Text"
+          </RadioButton>
+          <RadioButton GroupName="Repair"
+                       Command="{Binding SelectTypeOfRepair}"
+                       CommandParameter="UnderPainting">
+            <TextBlock Classes="Text"
 								   Text="{Binding Localization.UnderPainting}"/>
-					</RadioButton>
-					<RadioButton GroupName="Repair">
-						<TextBlock Classes="Text"
+          </RadioButton>
+          <RadioButton GroupName="Repair"
+                       Command="{Binding SelectTypeOfRepair}"
+                       CommandParameter="Replacement">
+            <TextBlock Classes="Text"
 								   Text="{Binding Localization.Replacement}"/>
-					</RadioButton>
-				</StackPanel>
-			</Grid>
-		</Border>
+          </RadioButton>
+        </StackPanel>
+      </Grid>
+    </Border>
 
-		<Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="3"
+    <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="3"
 				Classes="BorderOfText"
 				Margin="5 0 5 10">
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition MaxHeight="20"/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition MaxHeight="20"/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
 
-				<TextBlock Grid.Row="0"
+        <TextBlock Grid.Row="0"
 						   Classes="Text"
 						   Text="{Binding Localization.SpareParts}"
 						   TextAlignment="Center"/>
-				<DataGrid Grid.Row="1"
-						  Margin="-6 0 -6 5">
+        <DataGrid Grid.Row="1"
+                  Margin="-6 0 -6 5">
 
-				</DataGrid>
-			</Grid>
-		</Border>
-			
-		<Grid Grid.Column="1" Grid.Row="2">
-			<Grid.RowDefinitions>
-				<RowDefinition MaxHeight="40"/>
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>	
-				<ColumnDefinition/>	
-				<ColumnDefinition/>	
-			</Grid.ColumnDefinitions>
-			
-			<TextBlock Grid.Column="0"
+        </DataGrid>
+      </Grid>
+    </Border>
+
+    <Grid Grid.Column="1" Grid.Row="2">
+      <Grid.RowDefinitions>
+        <RowDefinition MaxHeight="40"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+
+      <TextBlock Grid.Column="0"
 					   Classes="Text"
 					   Margin="0 10 0 0"
 					   Text="{Binding Localization.PriceOfPainting}"/>
-			<Border Grid.Column="1"
+      <Border Grid.Column="1"
 					Classes="BorderOfText"
 					MaxHeight="40">
-				<TextBox VerticalAlignment="Stretch"/>
-			</Border>
-			<TextBlock Grid.Column="2"
+        <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.PriceOfPainting}"/>
+      </Border>
+      <TextBlock Grid.Column="2"
 					   Classes="Text"
 					   Margin="0 10 0 0"
 					   Text="{Binding Localization.Currency}"/>
-		</Grid>
+    </Grid>
 
-		<Button Grid.Row="3"
+    <Button Grid.Row="3"
 				Grid.Column="0"
 				Classes="Menu"
 				Content="{Binding Localization.ButtonSave}"
-				Margin="5 0 5 10"/>
+				Margin="5 0 5 10" />
 
-		<Grid Grid.Column="1"
+    <Grid Grid.Column="1"
 			  Grid.Row="3">
-			<Grid.ColumnDefinitions>	
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-			</Grid.ColumnDefinitions>
-			<Button Grid.Column="0"
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+      <Button Grid.Column="0"
 					Classes="Menu"
 					Content="{Binding Localization.ButtonCancel}"
-					Margin="5 0 5 10"/>
-		</Grid>
-	</Grid>
+					Margin="5 0 5 10"
+          Command="{Binding Cancel}"/>
+    </Grid>
+  </Grid>
 </UserControl>
