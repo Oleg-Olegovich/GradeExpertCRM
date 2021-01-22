@@ -1,10 +1,14 @@
-﻿namespace GradeExpertCRM.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GradeExpertCRM.Models
 {
     /// <summary>
     /// DTO. The client can be a person or a company.
     /// </summary>
     public class Client
     {
+        [Key]
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public string Index { get; set; }

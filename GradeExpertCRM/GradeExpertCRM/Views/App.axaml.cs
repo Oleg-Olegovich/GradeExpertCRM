@@ -11,6 +11,7 @@ namespace GradeExpertCRM
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
+            new AppBootstrapper();
         }
 
         public override void OnFrameworkInitializationCompleted()

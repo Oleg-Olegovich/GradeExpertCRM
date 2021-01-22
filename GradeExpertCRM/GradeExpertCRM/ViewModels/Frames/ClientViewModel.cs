@@ -4,13 +4,12 @@ using GradeExpertCRM.Models;
 using System.Threading.Tasks;
 using ReactiveUI;
 using System.Reactive;
-using DynamicData;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
     class ClientViewModel : ViewModelBase
     {
-        public static ObservableCollection<Client> Clients { get; } = new ObservableCollection<Client>(GenerateClientsTable());
+        public ObservableCollection<Client> Clients { get; }
 
         private async Task OpenAddingClientView() => BaseWindow.Content = new AddingClientViewModel(BaseWindow);
 
@@ -20,6 +19,8 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             BaseWindow = baseWindow;
             GoAddingClientView = ReactiveCommand.CreateFromTask(OpenAddingClientView);
+
+            Clients = new ObservableCollection<Client>(GenerateClientsTable());
         }
 
         /// <summary>

@@ -18,7 +18,6 @@ namespace GradeExpertCRM.ViewModels.Frames
         public void Save()
         {
             Client.Name = "User";
-            ClientViewModel.Clients.Add(Client);
             BaseWindow.Content = new ClientViewModel(BaseWindow);
         }
     }

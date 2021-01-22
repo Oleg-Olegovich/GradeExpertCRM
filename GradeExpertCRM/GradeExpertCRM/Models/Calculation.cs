@@ -6,6 +6,8 @@ namespace GradeExpertCRM.Models
 {
     public class Calculation
     {
+        [Key]
+        public int Id { get; set; }
         public string ComponentName { get; set; }
 
         public bool IsFixPrice { get; set; }
@@ -37,39 +39,8 @@ namespace GradeExpertCRM.Models
 
         public double PriceOfPainting { get; set; }
 
-        public List<DismantlingWorks> DismantlingWorks { get; set; }
+        public List<DismantlingWork> DismantlingWorks { get; set; }
 
         public List<SparePart> SpareParts { get; set; }
-    }
-
-    public enum TypeOfRepair
-    {
-        WithoutPainting,
-        UnderPainting,
-        Replacement
-    }
-
-    public class SparePart
-    {
-        public int Code { get; set; }
-
-        public string Name { get; set; }
-
-        public double Price { get; set; }
-
-        public int Quantity { get; set; }
-    }
-
-    public class DismantlingWorks
-    {
-        public int Code { get; set; }
-
-        public string Name { get; set; }
-
-        public double Price { get; set; }
-
-        public double WorkingHours { get; set; }
-
-        public string WorkName { get; set; }
     }
 }

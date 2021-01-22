@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using iText.Layout.Element;
+using System.ComponentModel.DataAnnotations;
 
 namespace GradeExpertCRM.Models
 {
     /// <summary>
     /// DTO.
     /// </summary>
-    class Car
+    public class Car
     {
+        [Key]
+        public int Id { get; set; }
         public string Brand { get; set; }
 
         public string Model { get; set; }
