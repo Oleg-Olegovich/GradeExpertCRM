@@ -131,7 +131,7 @@
                        IsChecked="True">
             <!--TODO do a Binding for text property-->
             <TextBlock Classes="Text"
-                       Text="СТАЛЬ"/>
+                       Text="{Binding Localization.Steel}"/>
           </RadioButton>
           <RadioButton GroupName="Materials"
                        IsChecked="{Binding Calculation.IsAluminum}">

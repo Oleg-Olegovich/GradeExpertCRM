@@ -28,39 +28,43 @@
       </Grid.ColumnDefinitions>
 
       <Button Grid.Row="0"
-					Grid.Column="0"
-					Command="{Binding ScrollLeft}">
+			  Grid.Column="0"
+			  MaxHeight="100"
+			  Command="{Binding ScrollLeft}">
         <Image Source="avares://GradeExpertCRM/Resources/buttonListLeft.png"/>
       </Button>
-      <!--TODO fix button style-->
       <Button Grid.Row="0"
               Grid.Column="1"
+			  MaxHeight="200"
               Command="{Binding SelectDetail}"
               CommandParameter="image0">
         <Image Source="{Binding CarImage0}"/>
       </Button>
       <Button Grid.Row="0"
               Grid.Column="2"
+			  MaxHeight="200"
               Command="{Binding SelectDetail}"
               CommandParameter="image1">
         <Image Source="{Binding CarImage1}"/>
       </Button>
       <Button Grid.Row="0"
               Grid.Column="3"
+			  MaxHeight="200"
               Command="{Binding SelectDetail}"
               CommandParameter="image2">
         <Image Source="{Binding CarImage2}"/>
       </Button>
       <Button Grid.Row="0"
               Grid.Column="4"
+			  MaxHeight="200"
               Command="{Binding SelectDetail}"
               CommandParameter="image3">
         <Image Source="{Binding CarImage3}"/>
       </Button>
       <Button Grid.Row="0"
               Grid.Column="5"
-              Command="{Binding ScrollRight}"
-             >
+			  MaxHeight="100"
+              Command="{Binding ScrollRight}">
         <Image Source="avares://GradeExpertCRM/Resources/buttonListRight.png"/>
       </Button>
       <TextBlock Grid.Row="1"

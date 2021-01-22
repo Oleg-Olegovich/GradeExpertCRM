@@ -166,6 +166,8 @@ namespace GradeExpertCRM.ViewModels
 
         public string Aluminum => "АЛЮМИНИЙ";
 
+        public string Steel => "СТАЛЬ";
+
         public string Adhesive => "КЛЕЕВАЯ";
 
         public string Dismantling => "ДЕ-/МОНТАЖ";

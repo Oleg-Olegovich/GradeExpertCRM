@@ -160,6 +160,8 @@
 
         string Aluminum { get; }
 
+        string Steel { get; }
+
         string Adhesive { get; }
 
         string Dismantling { get; }
