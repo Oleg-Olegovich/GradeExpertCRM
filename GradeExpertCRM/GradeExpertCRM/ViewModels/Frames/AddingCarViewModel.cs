@@ -18,7 +18,6 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public void Save()
         {
-            CarViewModel.Cars.Add(Car);
             BaseWindow.Content = new CarViewModel(BaseWindow);
         }
     }

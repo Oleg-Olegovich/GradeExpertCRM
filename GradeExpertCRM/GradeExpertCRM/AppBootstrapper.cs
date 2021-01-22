@@ -12,10 +12,10 @@ namespace GradeExpertCRM
     {
         public AppBootstrapper()
         {   // Registreted services
-            Splat.Locator.CurrentMutable.RegisterConstant(new AppDbContext());
-            Splat.Locator.CurrentMutable.RegisterConstant(new Repository<Client>(), typeof(IRepository<Client>));
-            Splat.Locator.CurrentMutable.RegisterConstant(new Repository<Car>(), typeof(IRepository<Car>));
-            Splat.Locator.CurrentMutable.RegisterConstant(new Repository<Calculation>(), typeof(IRepository<Calculation>));
+            Splat.Locator.CurrentMutable.Register(() => new AppDbContext());
+            Splat.Locator.CurrentMutable.RegisterLazySingleton<IRepository<Client>>(() => new Repository<Client>());
+            Splat.Locator.CurrentMutable.RegisterLazySingleton<IRepository<Car>>(() => new Repository<Car>());
+            Splat.Locator.CurrentMutable.RegisterLazySingleton<IRepository<Calculation>>(() => new Repository<Calculation>());
         }
     }
 }

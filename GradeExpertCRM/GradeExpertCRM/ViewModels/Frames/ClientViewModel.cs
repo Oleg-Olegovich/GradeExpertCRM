@@ -4,6 +4,8 @@ using GradeExpertCRM.Models;
 using System.Threading.Tasks;
 using ReactiveUI;
 using System.Reactive;
+using GradeExpertCRM.Models.Data.Repositories;
+using Splat;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
@@ -15,12 +17,16 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public ReactiveCommand<Unit, Unit> GoAddingClientView { get; }
 
-        public ClientViewModel(IBaseWindow baseWindow)
+        private IRepository<Client> repository_;
+
+        public ClientViewModel(IBaseWindow baseWindow, IRepository<Client> repository = null)
         {
             BaseWindow = baseWindow;
             GoAddingClientView = ReactiveCommand.CreateFromTask(OpenAddingClientView);
 
-            Clients = new ObservableCollection<Client>(GenerateClientsTable());
+            repository_ = repository ?? Locator.Current.GetService<IRepository<Client>>();
+            var clients = repository_.GetAll();
+            Clients = new ObservableCollection<Client>(clients);
         }
 
         /// <summary>
