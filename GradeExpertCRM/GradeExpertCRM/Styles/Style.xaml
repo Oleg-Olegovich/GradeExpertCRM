@@ -96,7 +96,7 @@
 		<Setter Property="Foreground" Value="#E31E24"/>
 		<Setter Property="Background" Value="#FFFFFFFF"/>
 	</Style>
-	
+
 	<Style Selector="RadioButton">
 		<Setter Property="Background" Value="#FFFFFFFF"/>
 		<Setter Property="BorderBrush" Value="#E31E24"/>
