@@ -160,6 +160,8 @@
 
         string Aluminum { get; }
 
+        string Steel { get; }
+
         string Adhesive { get; }
 
         string Dismantling { get; }
@@ -227,5 +229,9 @@
         string TotalPrice { get; }
 
         string PreparingForWork { get; }
+
+        string YearOfRelease { get; }
+
+        string Note { get; }
     }
 }

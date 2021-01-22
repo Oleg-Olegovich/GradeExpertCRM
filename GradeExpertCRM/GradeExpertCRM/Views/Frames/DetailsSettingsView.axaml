@@ -6,8 +6,8 @@
              x:Class="GradeExpertCRM.Views.Frames.DetailsSettingsView">
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition/>
-			<RowDefinition/>
+			<RowDefinition Height="40"/>
+			<RowDefinition MinHeight="100"/>
 			<RowDefinition/>
 			<RowDefinition/>
 			<RowDefinition/>
@@ -43,7 +43,7 @@
 					<TextBlock Classes="Text"
 							   TextAlignment="Center"
 							   Text="LOGO"/>
-					<Button>
+					<Button Classes="Plus">
 						<Image Source="avares://GradeExpertCRM/Resources/plus.png"/>
 					</Button>
 				</StackPanel>
@@ -151,6 +151,7 @@
 		<Button Grid.Row="8"
 				Grid.Column="0"
 				Classes="Menu"
+				Margin="5"
 				Content="{Binding Localization.ButtonSave}"/>
 	</Grid>
 </UserControl>

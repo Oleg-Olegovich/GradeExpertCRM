@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using GradeExpertCRM.Models;
-using ReactiveUI;
+﻿using ReactiveUI;
 
 namespace GradeExpertCRM.ViewModels
 {
@@ -12,6 +10,6 @@ namespace GradeExpertCRM.ViewModels
         /// </summary>
         public IBaseWindow BaseWindow;
 
-        public ILanguageProvider Localization => MainViewModel.Localization;
+        public ILanguageProvider Localization => BaseWindow.Localization;
     }
 }

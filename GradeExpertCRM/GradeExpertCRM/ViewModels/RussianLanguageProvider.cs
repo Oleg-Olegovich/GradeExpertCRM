@@ -166,6 +166,8 @@ namespace GradeExpertCRM.ViewModels
 
         public string Aluminum => "АЛЮМИНИЙ";
 
+        public string Steel => "СТАЛЬ";
+
         public string Adhesive => "КЛЕЕВАЯ";
 
         public string Dismantling => "ДЕ-/МОНТАЖ";
@@ -233,5 +235,9 @@ namespace GradeExpertCRM.ViewModels
         public string TotalPrice => "ОБЩАЯ СТОИМОСТЬ РЕМОНТА";
 
         public string PreparingForWork => "ПОДГОТОВКА К РАБОТЕ";
+
+        public string YearOfRelease => "ГОД ВЫПУСКА";
+
+        public string Note => "ПРИМЕЧАНИЕ";
     }
 }
