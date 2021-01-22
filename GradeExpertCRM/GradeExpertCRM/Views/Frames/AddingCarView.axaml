@@ -11,23 +11,23 @@
 
   <Grid>
     <Grid.RowDefinitions>
+      <RowDefinition MinHeight="40"/>
+      <RowDefinition MinHeight="50"/>
+      <RowDefinition MinHeight="50"/>
+      <RowDefinition MinHeight="50"/>
+      <RowDefinition MinHeight="50"/>
+      <RowDefinition MinHeight="50"/>
       <RowDefinition/>
+      <RowDefinition MinHeight="50"/>
+      <RowDefinition MinHeight="50"/>
+      <RowDefinition MinHeight="50"/>
+      <RowDefinition MinHeight="50"/>
       <RowDefinition/>
-      <RowDefinition/>
-      <RowDefinition/>
-      <RowDefinition/>
-      <RowDefinition/>
-      <RowDefinition/>
-      <RowDefinition/>
-      <RowDefinition/>
-      <RowDefinition/>
-      <RowDefinition/>
-      <RowDefinition/>
-      <RowDefinition/>
+      <RowDefinition MinHeight="50"/>
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition/>
-      <ColumnDefinition/>
+      <ColumnDefinition MinWidth="400"/>
+      <ColumnDefinition MinWidth="400"/>
     </Grid.ColumnDefinitions>
 
     <TextBlock Grid.Row="0"
@@ -53,42 +53,47 @@
         <TextBox VerticalAlignment="Stretch" Text="{Binding Car.Model}"/>
       </Border>
     </StackPanel>
-    <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical">
+    <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical"
+				Margin="0 10 0 0">
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxBodyType}"/>
       <Border Classes="BorderOfText">
         <TextBox VerticalAlignment="Stretch" Text="{Binding Car.BodyType}"/>
       </Border>
     </StackPanel>
-    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical">
+    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical"
+				Margin="0 10 0 0">
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxColor}"/>
       <Border Classes="BorderOfText">
         <TextBox VerticalAlignment="Stretch" Text="{Binding Car.Color}"/>
       </Border>
     </StackPanel>
-    <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Vertical">
+    <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Vertical"
+				Margin="0 10 0 0">
       <TextBlock Classes="Label"
 					   Text="VIN"/>
       <Border Classes="BorderOfText">
         <TextBox VerticalAlignment="Stretch" Text="{Binding Car.VIN}"/>
       </Border>
     </StackPanel>
-    <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Vertical">
+    <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Vertical"
+				Margin="0 10 0 0">
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.CarNumber}"/>
       <Border Classes="BorderOfText">
         <TextBox VerticalAlignment="Stretch" Text="{Binding Car.Number}"/>
       </Border>
     </StackPanel>
-    <StackPanel Grid.Row="5" Grid.Column="0" Orientation="Vertical">
+    <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Vertical"
+				Margin="0 10 0 0">
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxMileage}"/>
       <Border Classes="BorderOfText">
         <TextBox VerticalAlignment="Stretch" Text="{Binding Car.Mileage}"/>
       </Border>
     </StackPanel>
-    <Grid Grid.Row="5" Grid.Column="1">
+    <Grid Grid.Row="4" Grid.Column="1" Margin="0 10 0 0">
       <Grid.RowDefinitions>
         <RowDefinition/>
       </Grid.RowDefinitions>
@@ -103,47 +108,69 @@
           <TextBox VerticalAlignment="Stretch" Text="{Binding Car.Owner}"/>
         </Border>
       </StackPanel>
-      <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
-        <Image Source="avares://GradeExpertCRM/Resources/plus.png"
-					   HorizontalAlignment="Right"/>
+      <Button Grid.Row="0" Grid.Column="1"
+			  Classes="Plus">
+        <Image Source="avares://GradeExpertCRM/Resources/plus.png"/>
       </Button>
     </Grid>
-    <StackPanel Grid.Row="7" Grid.Column="0" Orientation="Vertical">
+    <StackPanel Grid.Row="5" Grid.Column="0" Orientation="Vertical"
+				Margin="0 10 0 0">
+      <TextBlock Classes="Label"
+					   Text="{Binding Localization.YearOfRelease}"/>
+      <Border Classes="BorderOfText">
+        <TextBox VerticalAlignment="Stretch" Text="{Binding Car.ReleaseYear}"/>
+      </Border>
+    </StackPanel>
+    <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Vertical"
+				Margin="0 10 0 0">
+      <TextBlock Classes="Label"
+					   Text="{Binding Localization.Note}"/>
+      <Border Classes="BorderOfText">
+        <TextBox VerticalAlignment="Stretch" Text="{Binding Car.Note}"/>
+      </Border>
+    </StackPanel>
+    <StackPanel Grid.Row="7" Grid.Column="0" Orientation="Vertical"
+				Margin="0 10 0 0">
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxLoss}"/>
       <Border Classes="BorderOfText">
         <TextBox VerticalAlignment="Stretch" Text="{Binding Car.Loss}"/>
       </Border>
     </StackPanel>
-    <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Vertical">
+    <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Vertical"
+				Margin="0 10 0 0">
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxPolicyNumber}"/>
       <Border Classes="BorderOfText">
         <TextBox VerticalAlignment="Stretch" Text="{Binding Car.PolicyNumber}"/>
       </Border>
     </StackPanel>
-    <StackPanel Grid.Row="8" Grid.Column="0" Orientation="Vertical">
+    <StackPanel Grid.Row="8" Grid.Column="0" Orientation="Vertical"
+				Margin="0 10 0 0">
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxInsuranceCompany}"/>
       <Border Classes="BorderOfText">
         <TextBox VerticalAlignment="Stretch" Text="{Binding Car.InsuranceCompany}"/>
       </Border>
     </StackPanel>
-    <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Vertical">
+    <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Vertical"
+				Margin="0 10 0 0">
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxFranchise}"/>
       <Border Classes="BorderOfText">
         <TextBox VerticalAlignment="Stretch" Text="{Binding Car.Franchise}"/>
       </Border>
     </StackPanel>
-    <StackPanel Grid.Row="9" Grid.Column="0" Orientation="Vertical">
+    <StackPanel Grid.Row="9" Grid.Column="0" Orientation="Vertical"
+				Margin="0 10 0 0">
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxDateOfInspection}"/>
       <Border Classes="BorderOfText">
         <TextBox VerticalAlignment="Stretch" Text="{Binding Car.DateOfInspection}"/>
       </Border>
     </StackPanel>
-    <Grid Grid.Row="9" Grid.Column="1">
+    <Grid Grid.Row="9" Grid.Column="1"
+		  Margin="0 10 0 0">
       <Grid.RowDefinitions>
         <RowDefinition/>
       </Grid.RowDefinitions>
@@ -158,12 +185,13 @@
           <TextBox VerticalAlignment="Stretch" Text="{Binding Car.PlaceOfInspection}"/>
         </Border>
       </StackPanel>
-      <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
-        <Image Source="avares://GradeExpertCRM/Resources/plus.png"
-					   HorizontalAlignment="Right"/>
-      </Button>
+		<Button Grid.Row="0" Grid.Column="1"
+				Classes="Plus">
+			<Image Source="avares://GradeExpertCRM/Resources/plus.png"/>
+		</Button>
     </Grid>
-    <Grid Grid.Row="10" Grid.Column="0">
+    <Grid Grid.Row="10" Grid.Column="0"
+		  Margin="0 10 0 0">
       <Grid.RowDefinitions>
         <RowDefinition/>
       </Grid.RowDefinitions>
@@ -178,12 +206,13 @@
           <TextBox VerticalAlignment="Stretch" Text="{Binding Car.WhoMadeInspection}"/>
         </Border>
       </StackPanel>
-      <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
-        <Image Source="avares://GradeExpertCRM/Resources/plus.png"
-					   HorizontalAlignment="Right"/>
+      <Button Grid.Row="0" Grid.Column="1"
+			  Classes="Plus">
+        <Image Source="avares://GradeExpertCRM/Resources/plus.png"/>
       </Button>
     </Grid>
-    <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Vertical">
+    <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Vertical"
+				Margin="0 10 0 0">
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxTypeOfDamage}"/>
       <Border Classes="BorderOfText">
@@ -191,10 +220,11 @@
       </Border>
     </StackPanel>
 
-    <Button Grid.Row="12"
-				Grid.Column="0"
-				Classes="Menu"
-				Content="{Binding Localization.ButtonSave}"
+    <Button Grid.Row="0"
+			Grid.Column="1"
+			Classes="Menu"
+			Margin="5"
+		    Content="{Binding Localization.ButtonSave}"
         Command="{Binding SaveCommand}"/>
   </Grid>
 </UserControl>

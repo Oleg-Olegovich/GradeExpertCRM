@@ -37,7 +37,8 @@
 			</Button>
 		</DockPanel>
 
-		<DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" Items="{Binding Clients}">
+		<DataGrid Grid.Row="1" Grid.Column="0" 
+				  Grid.ColumnSpan="7" Items="{Binding Clients}">
 			<DataGrid.Columns>
 				<DataGridTextColumn Binding="{Binding Name}">
 					<DataGridTextColumn.Header>

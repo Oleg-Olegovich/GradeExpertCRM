@@ -229,5 +229,9 @@
         string TotalPrice { get; }
 
         string PreparingForWork { get; }
+
+        string YearOfRelease { get; }
+
+        string Note { get; }
     }
 }

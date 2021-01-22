@@ -126,15 +126,17 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="4"
-							Margin="0 10 0 0">
+							Margin="10 10 0 0">
           <RadioButton GroupName="Materials"
-                       IsChecked="True">
+                       IsChecked="True"
+					   Margin="0 0 0 5">
             <!--TODO do a Binding for text property-->
             <TextBlock Classes="Text"
                        Text="{Binding Localization.Steel}"/>
           </RadioButton>
           <RadioButton GroupName="Materials"
-                       IsChecked="{Binding Calculation.IsAluminum}">
+                       IsChecked="{Binding Calculation.IsAluminum}"
+					   Margin="0 0 0 5">
             <TextBlock Classes="Text"
 								   Text="{Binding Localization.Aluminum}"/>
           </RadioButton>

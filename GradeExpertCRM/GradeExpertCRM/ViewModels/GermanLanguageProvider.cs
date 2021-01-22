@@ -231,5 +231,9 @@ namespace GradeExpertCRM.ViewModels
         public string TotalPrice => "GESAMTKOSTEN FÜR REPARATUREN";
 
         public string PreparingForWork => "VORBEREITUNG";
+
+        public string YearOfRelease => "BAUJAHR";
+
+        public string Note => "ANMERKUNG";
     }
 }

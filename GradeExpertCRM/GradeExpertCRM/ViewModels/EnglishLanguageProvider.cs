@@ -229,5 +229,9 @@
         public string TotalPrice => "THE TOTAL PRICE OF THE REPAIR";
 
         public string PreparingForWork => "PREPARING FOR WORK";
+
+        public string YearOfRelease => "YEAR OF RELEASE";
+
+        public string Note => "NOTE";
     }
 }

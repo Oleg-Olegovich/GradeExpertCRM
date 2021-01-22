@@ -235,5 +235,9 @@ namespace GradeExpertCRM.ViewModels
         public string TotalPrice => "ОБЩАЯ СТОИМОСТЬ РЕМОНТА";
 
         public string PreparingForWork => "ПОДГОТОВКА К РАБОТЕ";
+
+        public string YearOfRelease => "ГОД ВЫПУСКА";
+
+        public string Note => "ПРИМЕЧАНИЕ";
     }
 }

@@ -23,7 +23,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             GoDetailsSettingsView = ReactiveCommand.CreateFromTask(OpenDetailsSettingsView);
         }
 
-        private async Task OpenDetailsSettingsView() => BaseWindow.Content = new DetailsSettingsViewModel();
+        private async Task OpenDetailsSettingsView() => BaseWindow.Content = new DetailsSettingsViewModel(BaseWindow);
 
         public void ChangeLanguage(string language) 
         { 
