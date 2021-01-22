@@ -2,232 +2,232 @@
 {
     class EnglishLanguageProvider : ILanguageProvider
     {
-        public string ButtonClient => "КЛИЕНТ";
+        public string ButtonClient => "CLIENT";
 
-        public string ButtonAddClient => "ДОБАВИТЬ НОВОГО КЛИЕНТА";
+        public string ButtonAddClient => "ADD A NEW CUSTOMER";
 
-        public string ButtonAddCar => "ДОБАВИТЬ НОВЫЙ АВТОМОБИЛЬ";
+        public string ButtonAddCar => "ADD A NEW VEHICLE";
 
-        public string ButtonCreateDocument => "СОЗДАТЬ НОВЫЙ ДОКУМЕНТ";
+        public string ButtonCreateDocument => "CREATE A NEW DOCUMENT";
 
-        public string ButtonPhoto => "ФОТО";
+        public string ButtonPhoto => "PHOTO";
 
-        public string ButtonCar => "АВТОМОБИЛЬ";
+        public string ButtonCar => "CAR";
 
-        public string ButtonCalculator => "КАЛЬКУЛЯЦИЯ";
+        public string ButtonCalculator => "CALCULATION";
 
-        public string ButtonDocuments => "ДОКУМЕНТЫ";
+        public string ButtonDocuments => "DOCUMENTS";
 
-        public string ButtonMail => "ПОЧТА";
+        public string ButtonMail => "MAIL";
 
-        public string ButtonSave => "СОХРАНИТЬ";
+        public string ButtonSave => "SAVE";
 
-        public string ButtonCancel => "ОТМЕНА";
+        public string ButtonCancel => "CANCEL";
 
-        public string ButtonBack => "НАЗАД";
+        public string ButtonBack => "BACK";
 
-        public string LabelAddingNewClient => "ДОБАВЛЕНИЕ НОВОГО КЛИЕНТА";
+        public string LabelAddingNewClient => "ADDING A NEW CLIENT";
 
-        public string LabelAddingNewCar => "ДОБАВЛЕНИЕ НОВОГО АВТОМОБИЛЯ";
+        public string LabelAddingNewCar => "ADDING A NEW CAR";
 
-        public string LabelCreatingNewDocument => "СОЗДАНИЕ НОВОГО ДОКУМЕНТА";
+        public string LabelCreatingNewDocument => "CREATE A NEW DOCUMENT";
 
-        public string LabelGeneralSettings => "НАСТРОЙКИ ОБЩИЕ";
+        public string LabelGeneralSettings => "GENERAL SETTINGS";
 
-        public string LabelDetailsSettings => "НАСТРОЙКИ РЕКВИЗИТЫ";
+        public string LabelDetailsSettings => "SETTINGS";
 
-        public string TextBoxTitle => "НАЗВАНИЕ";
+        public string TextBoxTitle => "NAME";
 
-        public string TextBoxIndex => "ИНДЕКС";
+        public string TextBoxIndex => "INDEX";
 
-        public string TextBoxArea => "ОБЛАСТЬ, КРАЙ";
+        public string TextBoxArea => "AREA, EDGE";
 
-        public string TextBoxCity => "ГОРОД";
+        public string TextBoxCity => "CITY";
 
-        public string TextBoxAddress => "УЛИЦА, ДОМ, КВ";
+        public string TextBoxAddress => "STREET, HOUSE, SQ";
 
-        public string TextBoxPhoneNumber => "ТЕЛЕФОН";
+        public string TextBoxPhoneNumber => "PHONE";
 
         public string TextBoxEmail => "E-MAIL";
 
-        public string TextBoxTIN => "ИНН";
+        public string TextBoxTIN => "INN";
 
-        public string TextBoxCRR => "КПП";
+        public string TextBoxCRR => "PPC";
 
-        public string TextBoxBank => "БАНК, АДРЕС БАНКА";
+        public string TextBoxBank => "THE BANK, ADDRESS OF THE BANK";
 
-        public string TextBoxBIC => "БИК";
+        public string TextBoxBIC => "BIC";
 
-        public string TextBoxPaymentAccount => "РАСЧ/СЧЁТ";
+        public string TextBoxPaymentAccount => "PAYMENT ACCOUNT";
 
-        public string TextBoxCorrespondentAccount => "КОРР/СЧЁТ";
+        public string TextBoxCorrespondentAccount => "CORRESPONDENT/ACCOUNT";
 
-        public string TextBoxBrand => "МАРКА";
+        public string TextBoxBrand => "BRAND";
 
-        public string TextBoxModel => "МОДЕЛЬ";
+        public string TextBoxModel => "MODEL";
 
-        public string TextBoxBodyType => "ТИП КУЗОВА";
+        public string TextBoxBodyType => "BODY TYPE";
 
-        public string TextBoxColor => "ЦВЕТ";
+        public string TextBoxColor => "COLOR";
 
-        public string TextBoxMileage => "ПРОБЕГ, КМ";
+        public string TextBoxMileage => "MILEAGE, KM";
 
-        public string TextBoxOwner => "ВЛАДЕЛЕЦ";
+        public string TextBoxOwner => "OWNER";
 
-        public string TextBoxLoss => "УБЫТОК СК";
+        public string TextBoxLoss => "THE LOSS";
 
-        public string TextBoxPolicyNumber => "НОМЕР ПОЛИСА";
+        public string TextBoxPolicyNumber => "POLICY NUMBER";
 
-        public string TextBoxInsuranceCompany => "СТРАХОВАЯ КОМПАНИЯ";
+        public string TextBoxInsuranceCompany => "INSURANCE COMPANY";
 
-        public string TextBoxFranchise => "ФРАНШИЗА";
+        public string TextBoxFranchise => "FRANCHISE";
 
-        public string TextBoxDateOfInspection => "ДАТА ОСМОТРА";
+        public string TextBoxDateOfInspection => "DATE OF INSPECTION";
 
-        public string TextBoxPlaceOfInspection => "МЕСТО ОСМОТРА";
+        public string TextBoxPlaceOfInspection => "PLACE OF INSPECTION";
 
-        public string TextBoxWhoMadeInspection => "ОСМОТР ПРОИЗВЁЛ";
+        public string TextBoxWhoMadeInspection => "INSPECTION PERFORMED";
 
-        public string TextBoxTypeOfDamage => "ВИД ПОВРЕЖДЕНИЯ";
+        public string TextBoxTypeOfDamage => "TYPE OF DAMAGE";
 
-        public string TextBoxCalculationWithPhoto => "КАЛЬКУЛЯЦИЯ С ФОТО";
+        public string TextBoxCalculationWithPhoto => "CALCULATION WITH PHOTOS";
 
-        public string TextBoxCalculationWithoutPhoto => "КАЛЬКУЛЯЦИЯ БЕЗ ФОТО";
+        public string TextBoxCalculationWithoutPhoto => "CALCULATION WITHOUT PHOTO";
 
-        public string TextBoxDamagePhotos => "ФОТО ПОВРЕЖДЕНИЙ";
+        public string TextBoxDamagePhotos => "DAMAGE PHOTO";
 
-        public string TextBoxOrder => "ЗАКАЗ-НАРЯД";
+        public string TextBoxOrder => "ORDER-ORDER";
 
-        public string TextBoxCertificateOfWorkPerformed => "АКТ ВЫПОЛНЕННЫХ РАБОТ";
+        public string TextBoxCertificateOfWorkPerformed => "CERTIFICATE OF COMPLETION";
 
-        public string TextBoxInvoiceForPayment => "СЧЁТ НА ОПЛАТУ";
+        public string TextBoxInvoiceForPayment => "INVOICE FOR PAYMENT";
 
-        public string TextBoxInvoiceForPaymentWithSignatures => "СЧЁТ НА ОПЛАТУ С ПОДПИСЯМИ И ПЕЧАТЬЮ";
+        public string TextBoxInvoiceForPaymentWithSignatures => "PAYMENT INVOICE WITH SIGNATURES AND SEAL";
 
-        public string TextBoxInvoiceForFranchise => "СЧЁТ НА ОПЛАТУ ФРАНШИЗЫ";
+        public string TextBoxInvoiceForFranchise => "INVOICE FOR PAYMENT OF THE FRANCHISE";
 
-        public string TextBoxInvoiceForFranchiseWithSignatures => "СЧЁТ НА ОПЛАТУ ФРАНШИЗЫ С ПОДПИСЯМИ И ПЕЧАТЬЮ";
+        public string TextBoxInvoiceForFranchiseWithSignatures => "INVOICE FOR PAYMENT OF THE FRANCHISE WITH THE SIGNATURES AND SEAL";
 
-        public string TextBoxPriceOfNormalHour => "СТОИМОСТЬ НОРМО/ЧАСА";
+        public string TextBoxPriceOfNormalHour => "COST OF NORMO/HOUR";
 
-        public string TextBoxCoefficients => "КОЭФФИЦИЕНТЫ";
+        public string TextBoxCoefficients => "COEFFICIENTS";
 
-        public string TextBoxRemovingDents => "УДАЛЕНИЕ ВМЯТИН";
+        public string TextBoxRemovingDents => "REMOVE DENTS";
 
-        public string TextBoxFinishingTreatment => "ФИНИШНАЯ ОБРАБОТКА";
+        public string TextBoxFinishingTreatment => "FINISH PROCESSING";
 
-        public string TextBoxAdhesiveTechnology => "КЛЕЕВАЯ ТЕХНИКА";
+        public string TextBoxAdhesiveTechnology => "GLUE TECHNIQUE";
 
-        public string TextBoxAdditionalWorks => "ДОПОЛНИТЕЛЬНЫЕ РАБОТЫ/УСЛУГИ";
+        public string TextBoxAdditionalWorks => "ADDITIONAL WORK/SERVICES";
 
-        public string TextBoxAntiCorrosionTreatment => "АНТИКОРРОЗИОННАЯ ОБРАБОТКА";
+        public string TextBoxAntiCorrosionTreatment => "ANTI-CORROSION TREATMENT";
 
-        public string TextBoxToolPreparing => "ПОДГОТОВКА ИНСТРУМЕНТА";
+        public string TextBoxToolPreparing => "PREPARING THE TOOL";
 
-        public string TextBoxNHoursPerItem => "Н/Ч ЗА ДЕТАЛЬ";
+        public string TextBoxNHoursPerItem => "N/H PER DETAIL";
 
-        public string TextBoxLanguage => "ЯЗЫК";
+        public string TextBoxLanguage => "LANGUAGE";
 
-        public string SignIn => "ВОЙТИ";
+        public string SignIn => "LOG IN";
 
-        public string Password => "ПАРОЛЬ";
+        public string Password => "PASSWORD";
 
-        public string Login => "ЛОГИН";
+        public string Login => "LOGIN";
 
-        public string FullName => "ФИО / ФИРМА";
+        public string FullName => "FULL NAME/COMPANY";
 
-        public string CarBrand => "МАРКА / МОДЕЛЬ";
+        public string CarBrand => "MAKE/MODEL";
 
-        public string CarNumber => "ГОС. НОМЕР";
+        public string CarNumber => "STATE. NUMBER";
 
-        public string Loss => "УБЫТОК";
+        public string Loss => "LOSS";
 
-        public string GrandExpert => "ГРАД-ЭКСПЕРТ";
+        public string GrandExpert => "GRAND-EXPERT";
 
-        public string FixPrice => "ФИКС. ЦЕНА";
+        public string FixPrice => "FIX. PRICE";
 
-        public string Currency => "РУБ";
+        public string Currency => "RUB";
 
-        public string RepairOfDents => "РЕМОНТ ВМЯТИН";
+        public string RepairOfDents => "REPAIR OF DENTS";
 
-        public string Quantity => "КОЛИЧЕСТВО";
+        public string Quantity => "QUANTITY";
 
-        public string Diameter => "ДИАМЕТР, ММ";
+        public string Diameter => "DIAMETER, MM";
 
-        public string NHours => "Н/ЧАСЫ";
+        public string NHours => "N/HOURS";
 
-        public string Price => "ЦЕНА";
+        public string Price => "PRICE";
 
-        public string Aluminum => "АЛЮМИНИЙ";
+        public string Aluminum => "ALUMINUM";
 
-        public string Steel => "СТАЛЬ";
+        public string Steel => "STEEL";
 
-        public string Adhesive => "КЛЕЕВАЯ";
+        public string Adhesive => "ADHESIVE";
 
-        public string Dismantling => "ДЕ-/МОНТАЖ";
+        public string Dismantling => "DISMANTLING";
 
-        public string Code => "КОД";
+        public string Code => "CODE";
 
-        public string Description => "ОПИСАНИЕ";
+        public string Description => "DESCRIPTION";
 
-        public string SpareParts => "ЗАПЧАСТИ";
+        public string SpareParts => "SPARE PARTS";
 
-        public string TypeOfRepair => "ВИД РЕМОНТА";
+        public string TypeOfRepair => "TYPE OF REPAIR";
 
-        public string WithoutPainting => "БЕЗ ПОКРАСКИ";
+        public string WithoutPainting => "WITHOUT PAINTING";
 
-        public string UnderPainting => "ПОД ПОКРАСКУ";
+        public string UnderPainting => "FOR PAINTING";
 
-        public string Replacement => "ЗАМЕНА";
+        public string Replacement => "REPLACEMENT";
 
-        public string PriceOfPainting => "СТОИМОСТЬ ПОКРАСКИ";
+        public string PriceOfPainting => "THE PRICE OF THE PAINTING";
 
-        public string FrontLeftDoor => "Передняя левая дверь";
+        public string FrontLeftDoor => "Front left door";
 
-        public string RearLeftDoor => "Задняя левая дверь";
+        public string RearLeftDoor => "Rear left door";
 
-        public string FrontRightDoor => "Передняя правая дверь";
+        public string FrontRightDoor => "Front right door";
 
-        public string RearRightDoor => "Задняя правая дверь";
+        public string RearRightDoor => "Rear right door";
 
-        public string FrontLeftFender => "Переднее левое крыло";
+        public string FrontLeftFender => "Front left fender";
 
-        public string RearLeftFender => "Заднее левое крыло";
+        public string RearLeftFender => "Rear left fender";
 
-        public string FrontRightFender => "Переднее правое крыло";
+        public string FrontRightFender => "Front right fender";
 
-        public string RearRightFender => "Заднее правое крыло";
+        public string RearRightFender => "Rear right fender";
 
-        public string Hood => "Капот";
+        public string Hood => "Hood";
 
-        public string Roof => "Крыша";
+        public string Roof => "Roof";
 
-        public string FrontBumper => "Передний бампер";
+        public string FrontBumper => "Front bumper";
 
-        public string RearBumper => "Задний бампер";
+        public string RearBumper => "Rear bumper";
 
-        public string LeftRack => "Левая стойка";
+        public string LeftRack => "Left rack";
 
-        public string RightRack => "Правая стойка";
+        public string RightRack => "Right rack";
 
-        public string Trunk => "Багажник";
+        public string Trunk => "Trunk";
 
-        public string Detail => "ДЕТАЛЬ";
+        public string Detail => "DETAIL";
 
-        public string QuantityBriefly => "КОЛ-ВО";
+        public string QuantityBriefly => "NUMBER OF";
 
-        public string DN => "ДУ, ММ";
+        public string DN => "DN, MM";
 
-        public string AluminumBriefly => "АЛЮ";
+        public string AluminumBriefly => "ALU";
 
-        public string Glue => "КЛЕЙ";
+        public string Glue => "GLUE";
 
-        public string Change => "ИЗМЕНИТЬ";
+        public string Change => "CHANGE";
 
-        public string AdditionalWorks => "ДОПОЛНИТЕЛЬНЫЕ РАБОТЫ";
+        public string AdditionalWorks => "ADDITIONAL WORKS";
 
-        public string TotalPrice => "ОБЩАЯ СТОИМОСТЬ РЕМОНТА";
+        public string TotalPrice => "THE TOTAL PRICE OF THE REPAIR";
 
-        public string PreparingForWork => "ПОДГОТОВКА К РАБОТЕ";
+        public string PreparingForWork => "PREPARING FOR WORK";
     }
 }

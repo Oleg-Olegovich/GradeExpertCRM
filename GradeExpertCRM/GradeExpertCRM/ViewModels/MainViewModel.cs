@@ -9,24 +9,39 @@ namespace GradeExpertCRM.ViewModels
 {
     class MainViewModel : ViewModelBase, IBaseWindow
     {
-        public static string Language = "Russian";
+        private string _language;
 
         private ViewModelBase _content;
 
-        private static ILanguageProvider[] LanguageProvider = new ILanguageProvider[]
+        private ILanguageProvider _localization;
+
+        private ILanguageProvider[] LanguageProvider = new ILanguageProvider[]
         {
             new RussianLanguageProvider(),
             new GermanLanguageProvider(),
             new EnglishLanguageProvider()
         };
 
-        public new static ILanguageProvider Localization 
-            => Language switch
+        public string Language
+        {
+            get => _language;
+            set
             {
-                "Russian" => LanguageProvider[0],
-                "German" => LanguageProvider[1],
-                _ => LanguageProvider[2]
-            };
+                this.RaiseAndSetIfChanged(ref _language, value);
+                Localization = _language switch
+                {
+                    "Russian" => LanguageProvider[0],
+                    "German" => LanguageProvider[1],
+                    _ => LanguageProvider[2]
+                };
+            }
+        }
+
+        public new ILanguageProvider Localization
+        {
+            get => _localization;
+            set => this.RaiseAndSetIfChanged(ref _localization, value);
+        }
 
         public ViewModelBase Content
         {
@@ -46,7 +61,7 @@ namespace GradeExpertCRM.ViewModels
 
         private async Task OpenDocumentsView() => Content = new DocumentsViewModel(this);
 
-        private async Task OpenMailView() => Content = new MailViewModel();
+        private async Task OpenMailView() => Content = new MailViewModel(this);
 
         private async Task OpenSettingsView() => Content = new SettingsViewModel(this);
 
@@ -71,6 +86,7 @@ namespace GradeExpertCRM.ViewModels
             GoDocumentsView = ReactiveCommand.CreateFromTask(OpenDocumentsView);
             GoMailView = ReactiveCommand.CreateFromTask(OpenMailView);
             GoSettingsView = ReactiveCommand.CreateFromTask(OpenSettingsView);
+            Language = "Russian";
             Content = new ClientViewModel(this);
         }
     }

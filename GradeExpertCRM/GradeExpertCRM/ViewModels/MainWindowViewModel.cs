@@ -6,6 +6,8 @@ namespace GradeExpertCRM.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase, IBaseWindow
     {
+        public string Language { get; set; }
+
         /// <summary>
         /// Reference to the changing content of the app window.
         /// </summary>

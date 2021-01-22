@@ -6,20 +6,29 @@ namespace GradeExpertCRM.ViewModels.Frames
 {
     class SettingsViewModel : ViewModelBase
     {
-        public void ChangeLanguageToRussian() => MainViewModel.Language = "Russian";
-
-        public void ChangeLanguageToGerman() => MainViewModel.Language = "German";
-
-        public void ChangeLanguageToEnglish() => MainViewModel.Language = "English";
-
-        private async Task OpenDetailsSettingsView() => BaseWindow.Content = new DetailsSettingsViewModel();
-
         public ReactiveCommand<Unit, Unit> GoDetailsSettingsView { get; }
+
+        private ILanguageProvider _localization;
+
+        public new ILanguageProvider Localization
+        {
+            get => _localization;
+            set => this.RaiseAndSetIfChanged(ref _localization, value);
+        }
 
         public SettingsViewModel(IBaseWindow baseWindow)
         {
             BaseWindow = baseWindow;
+            Localization = baseWindow.Localization;
             GoDetailsSettingsView = ReactiveCommand.CreateFromTask(OpenDetailsSettingsView);
+        }
+
+        private async Task OpenDetailsSettingsView() => BaseWindow.Content = new DetailsSettingsViewModel();
+
+        public void ChangeLanguage(string language) 
+        { 
+            BaseWindow.Language = language;
+            Localization = BaseWindow.Localization;
         }
     }
 }
