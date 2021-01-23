@@ -130,7 +130,6 @@
           <RadioButton GroupName="Materials"
                        IsChecked="True"
 					   Margin="0 0 0 5">
-            <!--TODO do a Binding for text property-->
             <TextBlock Classes="Text"
                        Text="{Binding Localization.Steel}"/>
           </RadioButton>
@@ -140,7 +139,6 @@
             <TextBlock Classes="Text"
 								   Text="{Binding Localization.Aluminum}"/>
           </RadioButton>
-          <!--TODO fix CheckBox style-->
           <CheckBox IsChecked="{Binding Calculation.IsAdhesive}">
             <TextBlock Classes="Text"
                        Text="{Binding Localization.Adhesive}"></TextBlock>
@@ -278,7 +276,8 @@
 				Grid.Column="0"
 				Classes="Menu"
 				Content="{Binding Localization.ButtonSave}"
-				Margin="5 0 5 10" />
+				Margin="5 0 5 10"
+        Command="{Binding SaveCommand}"/>
 
     <Grid Grid.Column="1"
 			  Grid.Row="3">

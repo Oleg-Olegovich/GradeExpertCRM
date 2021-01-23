@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using ReactiveUI;
 using System.Reactive;
 using System.Collections.ObjectModel;
+using GradeExpertCRM.Models.Data.Repositories;
+using Splat;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
@@ -15,12 +17,22 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public ReactiveCommand<Unit, Unit> GoAddingCarView { get; }
 
-        public CarViewModel(IBaseWindow baseWindow)
+        private IRepository<Car> carRepository_;
+        private ICalculationRepository calculationRepository_;
+
+        public Car SelectedCarId
+        {
+            set => calculationRepository_.SelectedCarId = value.Id;
+        }
+
+        public CarViewModel(IBaseWindow baseWindow, IRepository<Car> carRepository = null, ICalculationRepository calculationRepository = null)
         {
             BaseWindow = baseWindow;
             GoAddingCarView = ReactiveCommand.CreateFromTask(OpenAddingCarView);
-
-            Cars = new ObservableCollection<Car>(GenerateCarsTable());
+            carRepository_ = carRepository ?? Locator.Current.GetService<IRepository<Car>>();
+            calculationRepository_ = calculationRepository ?? Locator.Current.GetService<ICalculationRepository>();
+            var cars = carRepository_.GetAll();
+            Cars = new ObservableCollection<Car>(cars);
         }
 
         /// <summary>

@@ -22,8 +22,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public async Task SaveAsync()
         {
-            Client.Name = "User";
-            var temp = await repository_.AddAsync(Client);
+            await repository_.AddAsync(Client);
             BaseWindow.Content = new ClientViewModel(BaseWindow);
         }
     }

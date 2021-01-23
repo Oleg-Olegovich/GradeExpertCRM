@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Common.Logging.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Splat;
 
 namespace GradeExpertCRM.Models.Data.Repositories
@@ -17,6 +21,11 @@ namespace GradeExpertCRM.Models.Data.Repositories
         public IEnumerable<T> GetAll()
         {
             return dbContext_.Set<T>().ToList();
+        }
+
+        public IEnumerable<T> GetWhere(Expression<Func<T, bool>> predicate)
+        {
+            return dbContext_.Set<T>().Where(predicate);
         }
 
         public T Add(T item)
@@ -36,6 +45,11 @@ namespace GradeExpertCRM.Models.Data.Repositories
         public async Task<T> FindByIdAsync(int id)
         {
             return await dbContext_.FindAsync<T>(id);
+        }
+
+        public T FindById(int id)
+        {
+            return dbContext_.Find<T>(id);
         }
 
         public void Remove(T item)

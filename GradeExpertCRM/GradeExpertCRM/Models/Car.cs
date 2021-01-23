@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GradeExpertCRM.Models
 {
@@ -11,6 +12,12 @@ namespace GradeExpertCRM.Models
     {
         [Key]
         public int Id { get; set; }
+
+        public int ClientId { get; set; }
+
+        [ForeignKey(nameof(ClientId))]
+        public virtual Client Client { get; set; }
+
         public string Brand { get; set; }
 
         public string Model { get; set; }
@@ -24,8 +31,6 @@ namespace GradeExpertCRM.Models
         public string Number { get; set; }
 
         public int Mileage { get; set; }
-
-        public string Owner { get; set; } //TODO change type to Client
 
         public string Loss { get; set; }
 
@@ -45,8 +50,8 @@ namespace GradeExpertCRM.Models
 
         public int ReleaseYear { get; set; }
 
-        public List<Calculation> CalculationsList { get; set; } = new List<Calculation>();
+        public string Note { get; set; }
 
-        public string Note { get; set; } //TODO is this property necessary?
+        public List<Calculation> Calculations { get; set; } = new List<Calculation>();
     }
 }

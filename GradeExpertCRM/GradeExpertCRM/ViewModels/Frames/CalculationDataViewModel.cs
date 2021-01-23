@@ -5,8 +5,10 @@ using Avalonia.Controls.Primitives;
 using ReactiveUI;
 using Avalonia.Media.Imaging;
 using GradeExpertCRM.Models;
+using GradeExpertCRM.Models.Data.Repositories;
 using GradeExpertCRM.ViewModels.Frames;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Splat;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
@@ -38,7 +40,7 @@ namespace GradeExpertCRM.ViewModels.Frames
                                                    new Bitmap(@"..\..\..\Resources\Cars\2\03-1.png"),
                                                    new Bitmap(@"..\..\..\Resources\Cars\2\04-1.png") };
 
-        private string[] _carImagesDescriprions = { "", "", "", ""};
+        private string[] _carImagesDescriprions = { "", "", "", "" };
 
         public Bitmap CarImage0
         {
@@ -88,10 +90,19 @@ namespace GradeExpertCRM.ViewModels.Frames
             set => this.RaiseAndSetIfChanged(ref _carImagesDescriprions[3], value);
         }
 
-        public CalculationDataViewModel(IBaseWindow baseWindow)
+        public ObservableCollection<Calculation> Calculations { get; }
+        private ICalculationRepository calculationRepository_;
+
+        public CalculationDataViewModel(IBaseWindow baseWindow, ICalculationRepository calculationRepository = null)
         {
             BaseWindow = baseWindow;
             UpdateImagesAndDescriptions();
+            
+            calculationRepository_ = calculationRepository ?? Locator.Current.GetService<ICalculationRepository>();
+
+            var selectedCarId= calculationRepository_.SelectedCarId;
+            var calculations = calculationRepository_.GetWhere(x => x.CarId == selectedCarId);
+            Calculations = new ObservableCollection<Calculation>(calculations);
         }
 
         public void ScrollLeft()

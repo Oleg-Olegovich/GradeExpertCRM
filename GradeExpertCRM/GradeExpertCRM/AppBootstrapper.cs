@@ -16,6 +16,7 @@ namespace GradeExpertCRM
             Splat.Locator.CurrentMutable.RegisterLazySingleton<IRepository<Client>>(() => new Repository<Client>());
             Splat.Locator.CurrentMutable.RegisterLazySingleton<IRepository<Car>>(() => new Repository<Car>());
             Splat.Locator.CurrentMutable.RegisterLazySingleton<IRepository<Calculation>>(() => new Repository<Calculation>());
+            Splat.Locator.CurrentMutable.RegisterLazySingleton<ICalculationRepository>(() => new CalculationRepository());
         }
     }
 }

@@ -1,7 +1,13 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Reactive;
+using System.Threading.Tasks;
 using ReactiveUI;
 using Avalonia.Media.Imaging;
 using GradeExpertCRM.Models;
+using GradeExpertCRM.Models.Data.Repositories;
+using Splat;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
@@ -41,16 +47,39 @@ namespace GradeExpertCRM.ViewModels.Frames
                 _ => "Error"
             };
 
-        public CalculatorViewModel(IBaseWindow baseWindow, string carImageName)
+        public ObservableCollection<DismantlingWork> DismantlingWorks { get; }
+        public ObservableCollection<SparePart> SpareParts { get; }
+
+        public ReactiveCommand<Unit, Unit> SaveCommand { get; }
+        private ICalculationRepository calculationRepository_;
+        private Car selectedCar_;
+        public CalculatorViewModel(IBaseWindow baseWindow, string carImageName, ICalculationRepository calculationRepository = null, IRepository<Car> carRepository = null)
         {
-            _carImageName = carImageName;
-            CarImage = new Bitmap($"{ImagePath}{carImageName}.png");
             BaseWindow = baseWindow;
+            _carImageName = carImageName;
+            Calculation.ComponentName = CarImageDescription;
+            CarImage = new Bitmap($"{ImagePath}{carImageName}.png");
+            SaveCommand = ReactiveCommand.CreateFromTask(Save);
+
+            calculationRepository_ = calculationRepository ?? Locator.Current.GetService<ICalculationRepository>();
+            var carRepository_ = carRepository ?? Locator.Current.GetService<IRepository<Car>>();
+            selectedCar_ = carRepository_.FindById(calculationRepository_.SelectedCarId);
+
+            //TODO change items of collections depending on Car's BodyType
+            DismantlingWorks = new ObservableCollection<DismantlingWork>();
+            SpareParts = new ObservableCollection<SparePart>();
         }
 
         public void SelectTypeOfRepair(string type)
         {
             Calculation.TypeOfRepair = Enum.Parse<TypeOfRepair>(type);
+        }
+
+        public async Task Save()
+        {
+            Calculation.CarId = selectedCar_.Id;
+            await calculationRepository_.AddAsync(Calculation);
+            BaseWindow.Content = new CalculationDataViewModel(BaseWindow);
         }
 
         public void Cancel()

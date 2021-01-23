@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GradeExpertCRM.Models
 {
@@ -8,6 +8,12 @@ namespace GradeExpertCRM.Models
     {
         [Key]
         public int Id { get; set; }
+
+        public int CarId { get; set; }
+
+        [ForeignKey("CarId")]
+        public Car Car { get; set; }
+        
         public string ComponentName { get; set; }
 
         public bool IsFixPrice { get; set; }
@@ -39,8 +45,8 @@ namespace GradeExpertCRM.Models
 
         public double PriceOfPainting { get; set; }
 
-        public List<DismantlingWork> DismantlingWorks { get; set; }
+        public List<DismantlingWork> DismantlingWorks { get; set; } = new List<DismantlingWork>();
 
-        public List<SparePart> SpareParts { get; set; }
+        public List<SparePart> SpareParts { get; set; } = new List<SparePart>();
     }
 }

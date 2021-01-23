@@ -97,7 +97,7 @@
 					   FontSize="12"/>
     </Grid>
 
-    <DataGrid Grid.Row="1">
+    <DataGrid Grid.Row="1" Items="{Binding Calculations}">
 
     </DataGrid>
 

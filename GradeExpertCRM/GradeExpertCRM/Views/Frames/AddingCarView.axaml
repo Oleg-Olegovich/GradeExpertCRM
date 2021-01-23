@@ -105,7 +105,14 @@
         <TextBlock Classes="Label"
 						   Text="{Binding Localization.TextBoxOwner}"/>
         <Border Classes="BorderOfText">
-          <TextBox VerticalAlignment="Stretch" Text="{Binding Car.Owner}"/>
+            <ComboBox VerticalAlignment="Stretch"  Items="{Binding Clients}" SelectedItem="{Binding SelectedClient}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <!--<TextBox VerticalAlignment="Stretch" Text="{Binding Car.Client}"/>-->
         </Border>
       </StackPanel>
       <Button Grid.Row="0" Grid.Column="1"

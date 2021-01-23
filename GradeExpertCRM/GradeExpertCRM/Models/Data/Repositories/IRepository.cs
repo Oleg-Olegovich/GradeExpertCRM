@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace GradeExpertCRM.Models.Data.Repositories
@@ -6,9 +8,11 @@ namespace GradeExpertCRM.Models.Data.Repositories
     public interface IRepository<T> where T : class, new()
     {
         IEnumerable<T> GetAll();
+        IEnumerable<T> GetWhere(Expression<Func<T, bool>> predicate);
         T Add(T item);
         Task<T> AddAsync(T item);
         Task<T> FindByIdAsync(int id);
+        T FindById(int id);
         void Remove(T item);
         T Update(T item);
         Task RemoveAsync(T item);
