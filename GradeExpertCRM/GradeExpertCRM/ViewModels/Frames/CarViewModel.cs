@@ -6,12 +6,37 @@ using System.Reactive;
 using System.Collections.ObjectModel;
 using GradeExpertCRM.Models.Data.Repositories;
 using Splat;
+using System.Linq;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
     internal class CarViewModel : ViewModelBase
     {
-        public ObservableCollection<Car> Cars { get; }
+        private string _searchString;
+
+        private ObservableCollection<Car> _allCars;
+
+        private ObservableCollection<Car> _cars;
+
+        public ObservableCollection<Car> Cars
+        {
+            get => _cars;
+            set => this.RaiseAndSetIfChanged(ref _cars, value);
+        }
+
+        public string SearchString
+        {
+            get => _searchString;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _searchString, value);
+                if (_allCars != null)
+                {
+                    var cars = _allCars.Where(car => car.Model.Contains(_searchString));
+                    Cars = new ObservableCollection<Car>(cars);
+                }
+            }
+        }
 
         private async Task OpenAddingCarView() => BaseWindow.Content = new AddingCarViewModel(BaseWindow);
 
@@ -32,29 +57,8 @@ namespace GradeExpertCRM.ViewModels.Frames
             carRepository_ = carRepository ?? Locator.Current.GetService<IRepository<Car>>();
             calculationRepository_ = calculationRepository ?? Locator.Current.GetService<ICalculationRepository>();
             var cars = carRepository_.GetAll();
-            Cars = new ObservableCollection<Car>(cars);
+            _allCars = new ObservableCollection<Car>(cars);
+            Cars = _allCars;
         }
-
-        /// <summary>
-        /// Temporary code.
-        /// </summary>
-        private static IEnumerable<Car> GenerateCarsTable()
-            => new List<Car>()
-                {
-                    new Car()
-                    {
-                        Brand="Лада седан",
-                        Number="555",
-                        Loss="керкеркеркер",
-                        VIN="рекциектицкет",
-                    },
-                    new Car()
-                    {
-                        Brand="Баклажан",
-                        Number="555",
-                        Loss="керкеркеркер",
-                        VIN="рекциектицкет",
-                    },
-                };
     }
 }

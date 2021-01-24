@@ -66,8 +66,8 @@
 		<Setter Property="Foreground" Value="#E31E24"/>
 		<Setter Property="Background" Value="#FFFFFFFF"/>
 		<Setter Property="FontWeight" Value="Bold"/>
-		<Setter Property="Padding" Value="6 0 6 0"/>
-		<Setter Property="Margin" Value="35 0 0 -12"/>
+		<Setter Property="Padding" Value="2 0 2 0"/>
+		<Setter Property="Margin" Value="35 0 0 -6"/>
 		<Setter Property="ZIndex" Value="1"/>
 		<Setter Property="HorizontalAlignment" Value="Left"/>
 	</Style>
@@ -110,5 +110,18 @@
 	<Style Selector="ScrollBar">
 		<Setter Property="BorderBrush" Value="#E31E24"/>
 		<Setter Property="Foreground" Value="#E31E24"/>
+	</Style>
+
+	<Style Selector="ComboBox">
+		<Setter Property="AutoScrollToSelectedItem" Value="True"/>
+		<Setter Property="FontFamily" Value="Calibri"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="BorderBrush" Value="#00FFFFFF"/>
+	</Style>
+
+	<Style Selector="AutoCompleteBox">
+		<Setter Property="FontFamily" Value="Calibri"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="BorderBrush" Value="#00FFFFFF"/>
 	</Style>
 </Styles>

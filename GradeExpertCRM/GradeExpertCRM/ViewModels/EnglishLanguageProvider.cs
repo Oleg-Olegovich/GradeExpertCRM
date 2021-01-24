@@ -1,4 +1,6 @@
-﻿namespace GradeExpertCRM.ViewModels
+﻿using System;
+
+namespace GradeExpertCRM.ViewModels
 {
     class EnglishLanguageProvider : ILanguageProvider
     {
@@ -6,7 +8,7 @@
 
         public string ButtonAddClient => "ADD A NEW CUSTOMER";
 
-        public string ButtonAddCar => "ADD A NEW VEHICLE";
+        public string ButtonAddCar => "ADD A NEW CAR";
 
         public string ButtonCreateDocument => "CREATE A NEW DOCUMENT";
 
@@ -233,5 +235,15 @@
         public string YearOfRelease => "YEAR OF RELEASE";
 
         public string Note => "NOTE";
+
+        public string Error => "Error";
+
+        public string IncorrectFillingInOfFields => "The fields are filled in incorrectly" + Environment.NewLine;
+
+        public string Client => "Client";
+
+        public string Partner => "Partner";
+
+        public string Role => "Role";
     }
 }

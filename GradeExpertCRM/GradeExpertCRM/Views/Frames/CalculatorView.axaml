@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 						 xmlns:vm="clr-namespace:GradeExpertCRM.ViewModels.Frames"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:local="clr-namespace:GradeExpertCRM.Views.Frames"
              x:Class="GradeExpertCRM.Views.Frames.CalculatorView">
 
 
@@ -161,9 +162,35 @@
 						   Text="{Binding Localization.Dismantling}"
 						   TextAlignment="Center"/>
 
-        <DataGrid Grid.Row="1"
-						  Margin="-6 0 -6 5">
-
+        <DataGrid Grid.Row="1" Items="{Binding DismantlingWorks}"
+				  Margin="-6 0 -6 5">
+			<DataGrid.Columns>
+			    <DataGridCheckBoxColumn Binding="{Binding IsApplied}"/>
+			    <DataGridTextColumn Binding="{Binding WorkingHours}">
+				    <DataGridTextColumn.Header>
+					    <TextBlock Text="{Binding DataContext.Localization.NHours, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+				    </DataGridTextColumn.Header>
+			    </DataGridTextColumn>
+			    <DataGridTextColumn Binding="{Binding Price}">
+				    <DataGridTextColumn.Header>
+					    <TextBlock Text="{Binding DataContext.Localization.Price, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+				    </DataGridTextColumn.Header>
+			    </DataGridTextColumn>
+			    <DataGridTextColumn Binding="{Binding Code}">
+				    <DataGridTextColumn.Header>
+					    <TextBlock Text="{Binding DataContext.Localization.Code, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+				    </DataGridTextColumn.Header>
+			    </DataGridTextColumn>
+			    <DataGridTextColumn Binding="{Binding Name}">
+				    <DataGridTextColumn.Header>
+					    <TextBlock Text="{Binding DataContext.Localization.Description, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+				    </DataGridTextColumn.Header>
+			    </DataGridTextColumn>
+			</DataGrid.Columns>
         </DataGrid>
       </Grid>
     </Border>
@@ -240,9 +267,29 @@
 						   Classes="Text"
 						   Text="{Binding Localization.SpareParts}"
 						   TextAlignment="Center"/>
-        <DataGrid Grid.Row="1"
+        <DataGrid Grid.Row="1" Items="SpareParts"
                   Margin="-6 0 -6 5">
-
+			<DataGrid.Columns>
+			    <DataGridTextColumn Binding="{Binding Id}"/>
+			    <DataGridTextColumn Binding="{Binding Code}">
+				    <DataGridTextColumn.Header>
+					    <TextBlock Text="{Binding DataContext.Localization.Code, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+				    </DataGridTextColumn.Header>
+			    </DataGridTextColumn>
+			    <DataGridTextColumn Binding="{Binding Price}">
+				    <DataGridTextColumn.Header>
+					    <TextBlock Text="{Binding DataContext.Localization.Price, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+				    </DataGridTextColumn.Header>
+			    </DataGridTextColumn>
+			    <DataGridTextColumn Binding="{Binding Name}">
+				    <DataGridTextColumn.Header>
+					    <TextBlock Text="{Binding DataContext.Localization.Description, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+				    </DataGridTextColumn.Header>
+			    </DataGridTextColumn>
+			</DataGrid.Columns>
         </DataGrid>
       </Grid>
     </Border>

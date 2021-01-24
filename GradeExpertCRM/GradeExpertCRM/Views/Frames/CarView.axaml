@@ -29,7 +29,7 @@
 		<Border Classes="BorderOfText"
 				Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
 				Margin="10 0 0 10">
-			<TextBox VerticalAlignment="Stretch"/>
+			<TextBox Text="{Binding SearchString}" VerticalAlignment="Stretch"/>
 		</Border>
 		<DockPanel Grid.Row="0" Grid.Column="2">
 			<Button x:Name="Search" DockPanel.Dock="Left">
@@ -38,7 +38,8 @@
 		</DockPanel>
 
 		<DataGrid Grid.Row="1" Grid.Column="0"
-					  Grid.ColumnSpan="7" Items="{Binding Cars}" SelectedItem="{Binding SelectedCarId, Mode=OneWayToSource}">
+				  Grid.ColumnSpan="7" Items="{Binding Cars}" 
+				  SelectedItem="{Binding SelectedCarId, Mode=OneWayToSource}">
 			<DataGrid.Columns>
 				<DataGridTextColumn Binding="{Binding Brand}">
 					<DataGridTextColumn.Header>

@@ -218,7 +218,7 @@ namespace GradeExpertCRM.ViewModels
 
         public string QuantityBriefly => "ANZAHL";
 
-        public string DN => "DN, MM";
+        public string DN => "DU, MM";
 
         public string AluminumBriefly => "ALU";
 
@@ -235,5 +235,15 @@ namespace GradeExpertCRM.ViewModels
         public string YearOfRelease => "BAUJAHR";
 
         public string Note => "ANMERKUNG";
+
+        public string Error => "Fehler";
+
+        public string IncorrectFillingInOfFields => "Die Felder sind nicht korrekt ausgefüllt" + Environment.NewLine;
+
+        public string Client => "Client";
+
+        public string Partner => "Partner";
+
+        public string Role => "Rolle";
     }
 }
