@@ -233,5 +233,15 @@
         string YearOfRelease { get; }
 
         string Note { get; }
+
+        string Error { get; }
+
+        string IncorrectFillingInOfFields { get; }
+
+        string Client { get; }
+
+        string Partner { get; }
+
+        string Role { get; }
     }
 }

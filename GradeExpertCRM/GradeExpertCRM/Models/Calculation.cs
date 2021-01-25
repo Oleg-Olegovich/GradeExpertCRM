@@ -38,6 +38,8 @@ namespace GradeExpertCRM.Models
         /// </summary>
         public bool IsAdhesive { get; set; }
 
+        public bool IsDismantling { get; set; }
+
         /// <summary>
         /// Type of repair. Default value: WithoutPainting
         /// </summary>

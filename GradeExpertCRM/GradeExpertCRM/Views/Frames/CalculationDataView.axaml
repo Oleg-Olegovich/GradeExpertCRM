@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:local="clr-namespace:GradeExpertCRM.Views.Frames"
              x:Class="GradeExpertCRM.Views.Frames.CalculationDataView">
 
   <Grid>
@@ -30,12 +31,14 @@
       <Button Grid.Row="0"
 			  Grid.Column="0"
 			  MaxHeight="100"
+			  IsEnabled="{Binding IsButtonEnabled}"
 			  Command="{Binding ScrollLeft}">
         <Image Source="avares://GradeExpertCRM/Resources/buttonListLeft.png"/>
       </Button>
       <Button Grid.Row="0"
               Grid.Column="1"
 			  MaxHeight="200"
+			  IsEnabled="{Binding IsButtonEnabled}"
               Command="{Binding SelectDetail}"
               CommandParameter="image0">
         <Image Source="{Binding CarImage0}"/>
@@ -43,6 +46,7 @@
       <Button Grid.Row="0"
               Grid.Column="2"
 			  MaxHeight="200"
+			  IsEnabled="{Binding IsButtonEnabled}"
               Command="{Binding SelectDetail}"
               CommandParameter="image1">
         <Image Source="{Binding CarImage1}"/>
@@ -50,6 +54,7 @@
       <Button Grid.Row="0"
               Grid.Column="3"
 			  MaxHeight="200"
+			  IsEnabled="{Binding IsButtonEnabled}"
               Command="{Binding SelectDetail}"
               CommandParameter="image2">
         <Image Source="{Binding CarImage2}"/>
@@ -57,6 +62,7 @@
       <Button Grid.Row="0"
               Grid.Column="4"
 			  MaxHeight="200"
+			  IsEnabled="{Binding IsButtonEnabled}"
               Command="{Binding SelectDetail}"
               CommandParameter="image3">
         <Image Source="{Binding CarImage3}"/>
@@ -64,6 +70,7 @@
       <Button Grid.Row="0"
               Grid.Column="5"
 			  MaxHeight="100"
+			  IsEnabled="{Binding IsButtonEnabled}"
               Command="{Binding ScrollRight}">
         <Image Source="avares://GradeExpertCRM/Resources/buttonListRight.png"/>
       </Button>
@@ -98,7 +105,77 @@
     </Grid>
 
     <DataGrid Grid.Row="1" Items="{Binding Calculations}">
-
+		<DataGrid.Columns>
+			<DataGridTextColumn Binding="{Binding ComponentName}">
+				<DataGridTextColumn.Header>
+					<TextBlock Text="{Binding DataContext.Localization.Detail, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
+				</DataGridTextColumn.Header>
+			</DataGridTextColumn>
+			<DataGridTextColumn Binding="{Binding DentQuantity}">
+				<DataGridTextColumn.Header>
+					<TextBlock Text="{Binding DataContext.Localization.QuantityBriefly, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
+				</DataGridTextColumn.Header>
+			</DataGridTextColumn>
+			<DataGridTextColumn Binding="{Binding DentDiameter}">
+				<DataGridTextColumn.Header>
+					<TextBlock Text="{Binding DataContext.Localization.DN, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
+				</DataGridTextColumn.Header>
+			</DataGridTextColumn>
+			<DataGridTextColumn Binding="{Binding TypeOfRepair}">
+				<DataGridTextColumn.Header>
+					<TextBlock Text="{Binding DataContext.Localization.TypeOfRepair, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
+				</DataGridTextColumn.Header>
+			</DataGridTextColumn>
+			<DataGridCheckBoxColumn Binding="{Binding IsAluminum}">
+				<DataGridCheckBoxColumn.Header>
+					<TextBlock Text="{Binding DataContext.Localization.AluminumBriefly, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
+				</DataGridCheckBoxColumn.Header>
+			</DataGridCheckBoxColumn>
+			<DataGridCheckBoxColumn Binding="{Binding IsAdhesive}">
+				<DataGridCheckBoxColumn.Header>
+					<TextBlock Text="{Binding DataContext.Localization.Glue, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
+				</DataGridCheckBoxColumn.Header>
+			</DataGridCheckBoxColumn>
+			<DataGridCheckBoxColumn Binding="{Binding IsDismantling}">
+				<DataGridCheckBoxColumn.Header>
+					<TextBlock Text="{Binding DataContext.Localization.Dismantling, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
+				</DataGridCheckBoxColumn.Header>
+			</DataGridCheckBoxColumn>
+			<DataGridTextColumn Binding="{Binding NHours}">
+				<DataGridTextColumn.Header>
+					<TextBlock Text="{Binding DataContext.Localization.NHours, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
+				</DataGridTextColumn.Header>
+			</DataGridTextColumn>
+			<DataGridTextColumn Binding="{Binding DentPrice}">
+				<DataGridTextColumn.Header>
+					<TextBlock Text="{Binding DataContext.Localization.Price, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
+				</DataGridTextColumn.Header>
+			</DataGridTextColumn>
+			<DataGridTemplateColumn>
+				<DataGridTemplateColumn.CellTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<Button>
+								<TextBlock Text="{Binding DataContext.Localization.Change, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
+							</Button>
+							<Button>
+								<Image Source="avares://GradeExpertCRM/Resources/cross.png"/>
+							</Button>
+						</StackPanel>
+					</DataTemplate>
+				</DataGridTemplateColumn.CellTemplate>
+			</DataGridTemplateColumn>
+		</DataGrid.Columns>
     </DataGrid>
 
     <Grid Grid.Row="2"
@@ -134,17 +211,17 @@
         </StackPanel>
 
         <Button Grid.Row="1"
-						Grid.Column="0"
-						Classes="Menu"
-						Content="{Binding Localization.ButtonSave}"/>
+				Grid.Column="0"
+				Classes="Menu"
+				Content="{Binding Localization.ButtonSave}"/>
 
         <Button Grid.Row="1"
-						Grid.Column="1"
-						Classes="Menu"
-						Content="{Binding Localization.Change}"/>
+				Grid.Column="1"
+				Classes="Menu"
+				Content="{Binding Localization.Change}"/>
       </Grid>
 
-      <Grid Grid.Column="1">
+      <Grid Grid.Column="1" Margin="0 10 0 0">
         <Grid.RowDefinitions>
           <RowDefinition/>
           <RowDefinition/>
@@ -184,29 +261,29 @@
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TotalPrice}"/>
         <TextBlock Grid.Row="0" Grid.Column="1"
-						   Classes="Text"
-						   Foreground="#000000"
-						   Text="0,00"/>
+				   Classes="Text"
+				   Foreground="#000000"
+				   Text="0,00"/>
         <TextBlock Grid.Row="1" Grid.Column="1"
-						   Classes="Text"
-						   Foreground="#000000"
-						   Text="0,00"/>
+				   Classes="Text"
+				   Foreground="#000000"
+				   Text="0,00"/>
         <TextBlock Grid.Row="2" Grid.Column="1"
-						   Classes="Text"
-						   Foreground="#000000"
-						   Text="0,00"/>
+				   Classes="Text"
+				   Foreground="#000000"
+				   Text="0,00"/>
         <TextBlock Grid.Row="3" Grid.Column="1"
-						   Classes="Text"
-						   Foreground="#000000"
-						   Text="0,00"/>
+				   Classes="Text"
+				   Foreground="#000000"
+				   Text="0,00"/>
         <TextBlock Grid.Row="4" Grid.Column="1"
-						   Classes="Text"
-						   Foreground="#000000"
-						   Text="0,00"/>
+				   Classes="Text"
+				   Foreground="#000000"
+				   Text="0,00"/>
         <TextBlock Grid.Row="5" Grid.Column="1"
-						   Classes="Text"
-						   Foreground="#000000"
-						   Text="0,00"/>
+				   Classes="Text"
+				   Foreground="#000000"
+				   Text="0,00"/>
         <TextBlock Grid.Row="0" Grid.Column="2"
 				   Classes="Text"
 				   Text="{Binding Localization.Currency}"/>

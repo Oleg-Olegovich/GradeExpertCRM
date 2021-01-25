@@ -9,6 +9,7 @@ using GradeExpertCRM.Models.Data.Repositories;
 using GradeExpertCRM.ViewModels.Frames;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Splat;
+using System.Linq;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
@@ -90,7 +91,10 @@ namespace GradeExpertCRM.ViewModels.Frames
             set => this.RaiseAndSetIfChanged(ref _carImagesDescriprions[3], value);
         }
 
+        public bool IsButtonEnabled => calculationRepository_.SelectedCarId > 0;
+
         public ObservableCollection<Calculation> Calculations { get; }
+
         private ICalculationRepository calculationRepository_;
 
         public CalculationDataViewModel(IBaseWindow baseWindow, ICalculationRepository calculationRepository = null)

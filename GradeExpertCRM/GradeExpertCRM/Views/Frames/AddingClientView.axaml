@@ -41,6 +41,17 @@
 				<TextBox VerticalAlignment="Stretch" Text="{Binding Client.Name}"/>
 			</Border>
 		</StackPanel>
+		<StackPanel Grid.Row="1" Grid.Column="1"
+					Orientation="Vertical">
+			<TextBlock Classes="Label"
+					   Text="{Binding Localization.Role}"/>
+			<Border Classes="BorderOfText">
+				<ComboBox Name="clientRole">
+					<TextBlock Text="{Binding Localization.Client}"/>
+					<TextBlock Text="{Binding Localization.Partner}"/>
+				</ComboBox>
+			</Border>
+		</StackPanel>
 		<StackPanel Grid.Row="2" Grid.Column="0" 
 					Orientation="Vertical"
 					Margin="0 10 0 0">

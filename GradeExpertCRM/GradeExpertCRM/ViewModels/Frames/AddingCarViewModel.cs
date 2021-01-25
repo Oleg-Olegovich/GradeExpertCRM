@@ -3,8 +3,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reactive;
 using System.Threading.Tasks;
+using Avalonia.Controls;
 using GradeExpertCRM.Models;
 using GradeExpertCRM.Models.Data.Repositories;
+using MessageBox.Avalonia.Enums;
 using ReactiveUI;
 using Splat;
 
@@ -15,9 +17,13 @@ namespace GradeExpertCRM.ViewModels.Frames
         public Car Car { get; set; } = new Car();
 
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
+
         public ObservableCollection<Client> Clients { get; set; }
+
         public Client SelectedClient { get; set; } = new Client();
+
         private IRepository<Car> carRepository_;
+
         private IRepository<Client> clientRepository_;
 
         public AddingCarViewModel(IBaseWindow baseWindow, IRepository<Car> carRepository = null, IRepository<Client> clientRepository = null)
@@ -41,6 +47,22 @@ namespace GradeExpertCRM.ViewModels.Frames
             Car.ClientId = SelectedClient.Id;
             await carRepository_.AddAsync(Car);
             BaseWindow.Content = new CarViewModel(BaseWindow);
+
+            /*
+            try
+            {
+                Car.ClientId = SelectedClient.Id;
+                await carRepository_.AddAsync(Car);
+                BaseWindow.Content = new CarViewModel(BaseWindow);
+            }
+            catch
+            {
+                await MessageBox.Avalonia.MessageBoxManager
+                    .GetMessageBoxStandardWindow(Localization.Error, Localization.IncorrectFillingInOfFields,
+                    ButtonEnum.Ok, Icon.Error, WindowStartupLocation.CenterScreen, Style.MacOs)
+                    .Show();
+            }
+            */
         }
     }
 }

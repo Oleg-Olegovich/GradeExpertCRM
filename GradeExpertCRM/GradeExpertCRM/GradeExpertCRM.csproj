@@ -40,6 +40,7 @@
     <None Remove="Resources\Cars\2\12-1.png" />
     <None Remove="Resources\Cars\2\13-1.png" />
     <None Remove="Resources\Cars\2\14-1.png" />
+    <None Remove="Resources\cross.png" />
     <None Remove="Resources\english.png" />
     <None Remove="Resources\germany.png" />
     <None Remove="Resources\magnifier.png" />
@@ -55,7 +56,9 @@
 	  <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.0" />
 	  <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
 	  <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0" />
+	  <PackageReference Include="Extended.Wpf.Toolkit" Version="4.0.2" />
 	  <PackageReference Include="itext7.pdfhtml" Version="3.0.3" />
+	  <PackageReference Include="MessageBox.Avalonia" Version="1.0.1" />
 	  <PackageReference Include="Microsoft.DotNet.PlatformAbstractions" Version="3.1.6" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.11" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.11">
@@ -96,6 +99,7 @@
 	<AvaloniaResource Include="Resources\Cars\2\12-1.png" />
 	<AvaloniaResource Include="Resources\Cars\2\13-1.png" />
 	<AvaloniaResource Include="Resources\Cars\2\14-1.png" />
+	<AvaloniaResource Include="Resources\cross.png" />
 	<AvaloniaResource Include="Resources\english.png" />
 	<AvaloniaResource Include="Resources\gears.png" />
 	<AvaloniaResource Include="Resources\germany.png" />

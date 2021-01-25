@@ -1,7 +1,9 @@
 ﻿using System.Reactive;
 using System.Threading.Tasks;
+using Avalonia.Controls;
 using GradeExpertCRM.Models;
 using GradeExpertCRM.Models.Data.Repositories;
+using MessageBox.Avalonia.Enums;
 using ReactiveUI;
 using Splat;
 
@@ -22,8 +24,18 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public async Task SaveAsync()
         {
-            await repository_.AddAsync(Client);
-            BaseWindow.Content = new ClientViewModel(BaseWindow);
+            try
+            {
+                await repository_.AddAsync(Client);
+                BaseWindow.Content = new ClientViewModel(BaseWindow);
+            }
+            catch
+            {
+                await MessageBox.Avalonia.MessageBoxManager
+                    .GetMessageBoxStandardWindow(Localization.Error, Localization.IncorrectFillingInOfFields,
+                    ButtonEnum.Ok, Icon.Error, WindowStartupLocation.CenterScreen, Style.MacOs)
+                    .Show();
+            }
         }
     }
 }

@@ -239,5 +239,15 @@ namespace GradeExpertCRM.ViewModels
         public string YearOfRelease => "ГОД ВЫПУСКА";
 
         public string Note => "ПРИМЕЧАНИЕ";
+
+        public string Client => "Клиент";
+
+        public string Partner => "Партнёр";
+
+        public string Error => "Ошибка";
+
+        public string Role => "Роль";
+
+        public string IncorrectFillingInOfFields => "Поля неверно заполнены" + Environment.NewLine;
     }
 }

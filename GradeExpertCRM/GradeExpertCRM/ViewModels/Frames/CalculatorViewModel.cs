@@ -48,12 +48,17 @@ namespace GradeExpertCRM.ViewModels.Frames
             };
 
         public ObservableCollection<DismantlingWork> DismantlingWorks { get; }
+
         public ObservableCollection<SparePart> SpareParts { get; }
 
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
+
         private ICalculationRepository calculationRepository_;
+
         private Car selectedCar_;
-        public CalculatorViewModel(IBaseWindow baseWindow, string carImageName, ICalculationRepository calculationRepository = null, IRepository<Car> carRepository = null)
+
+        public CalculatorViewModel(IBaseWindow baseWindow, string carImageName, 
+            ICalculationRepository calculationRepository = null, IRepository<Car> carRepository = null)
         {
             BaseWindow = baseWindow;
             _carImageName = carImageName;
