@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using GradeExpertCRM.Models;
 using GradeExpertCRM.Models.Data.Repositories;
 using MessageBox.Avalonia.Enums;
+using Org.BouncyCastle.Crypto.Tls;
 using ReactiveUI;
 using Splat;
 
@@ -19,7 +21,8 @@ namespace GradeExpertCRM.ViewModels.Frames
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
 
         public ObservableCollection<Client> Clients { get; set; }
-
+        public ObservableCollection<string> InspectionPlaces { get; set; }
+        public ObservableCollection<string> Inspectors { get; set; }
         public Client SelectedClient { get; set; } = new Client();
 
         private IRepository<Car> carRepository_;
@@ -32,13 +35,25 @@ namespace GradeExpertCRM.ViewModels.Frames
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
             carRepository_ = carRepository ?? Locator.Current.GetService<IRepository<Car>>();
             clientRepository_ = clientRepository ?? Locator.Current.GetService<IRepository<Client>>();
-            var clients = clientRepository_.GetAll();
+            var clients = clientRepository_.GetAll().ToList();
             Clients = new ObservableCollection<Client>(clients);
+
+            var partners = (from client in clients
+                            where client.IsPartner
+                            select client).ToList();
+
+            var inspectionPlaces = from partner in partners
+                                   select new string($"{partner.Area} {partner.City} {partner.Address}");
+
+            InspectionPlaces = new ObservableCollection<string>(inspectionPlaces);
+
+            var inspectors = from partner in partners
+                             select partner.Name;
+            Inspectors = new ObservableCollection<string>(inspectors);
         }
 
         public async Task Save()
         {
-
             var validationContext = new ValidationContext(Car) { MemberName = nameof(Car) };
             var isValid = Validator.TryValidateObject(Car, validationContext, null);
             if (!isValid)

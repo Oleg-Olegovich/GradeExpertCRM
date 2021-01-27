@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Avalonia.Data;
 using Common.Logging.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Splat;
@@ -25,7 +26,7 @@ namespace GradeExpertCRM.Models.Data.Repositories
 
         public IEnumerable<T> GetWhere(Expression<Func<T, bool>> predicate)
         {
-            return dbContext_.Set<T>().Where(predicate);
+            return dbContext_.Set<T>().Where(predicate).ToList(); // May cause Exception!!!
         }
 
         public T Add(T item)

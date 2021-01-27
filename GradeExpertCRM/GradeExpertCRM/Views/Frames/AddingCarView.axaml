@@ -94,21 +94,21 @@
         <TextBox VerticalAlignment="Stretch" Text="{Binding Car.Mileage}"/>
       </Border>
     </StackPanel>
-	  <StackPanel Grid.Row="4" Grid.Column="1"  Margin="0 10 0 0" Orientation="Vertical">
-		  <TextBlock Classes="Label"
+    <StackPanel Grid.Row="4" Grid.Column="1"  Margin="0 10 0 0" Orientation="Vertical">
+      <TextBlock Classes="Label"
 					 Text="{Binding Localization.TextBoxOwner}"/>
-		  <Border Classes="BorderOfText">
-			  <ComboBox VerticalAlignment="Stretch"
+      <Border Classes="BorderOfText">
+        <ComboBox VerticalAlignment="Stretch"
 						Items="{Binding Clients}"
 						IsDropDownOpen="{Binding IsDropDownOpen}"
 						SelectedItem="{Binding SelectedClient}">
-				  <ComboBox.ItemTemplate>
-					  <DataTemplate>
-						  <TextBlock Text="{Binding Name}"></TextBlock>
-					  </DataTemplate>
-				  </ComboBox.ItemTemplate>
-			  </ComboBox>
-			  <!--<AutoCompleteBox VerticalAlignment="Stretch" 
+          <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Name}"></TextBlock>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+        <!--<AutoCompleteBox VerticalAlignment="Stretch" 
 					         Items="{Binding Clients}"
 							 IsDropDownOpen="{Binding IsDropDownOpen}"
 						     IsTextCompletionEnabled="True"
@@ -119,9 +119,9 @@
                     </DataTemplate>
                 </AutoCompleteBox.ItemTemplate>
             </AutoCompleteBox>-->
-			  <!--<TextBox VerticalAlignment="Stretch" Text="{Binding Car.Client}"/>-->
-		  </Border>
-	  </StackPanel>
+        <!--<TextBox VerticalAlignment="Stretch" Text="{Binding Car.Client}"/>-->
+      </Border>
+    </StackPanel>
     <StackPanel Grid.Row="5" Grid.Column="0" Orientation="Vertical"
 				Margin="0 10 0 0">
       <TextBlock Classes="Label"
@@ -191,13 +191,21 @@
         <TextBlock Classes="Label"
 						   Text="{Binding Localization.TextBoxPlaceOfInspection}"/>
         <Border Classes="BorderOfText">
-          <TextBox VerticalAlignment="Stretch" Text="{Binding Car.PlaceOfInspection}"/>
+          <ComboBox Items="{Binding InspectionPlaces}"
+                    SelectedItem="{Binding Car.PlaceOfInspection}"
+                    VerticalAlignment="Stretch">
+              <!--<ComboBox.ItemTemplate>
+                  <DataTemplate>
+                      <TextBlock Text="{Binding }"></TextBlock>
+                  </DataTemplate>
+              </ComboBox.ItemTemplate>-->
+          </ComboBox>
         </Border>
       </StackPanel>
-		<Button Grid.Row="0" Grid.Column="1"
-				Classes="Plus">
-			<Image Source="avares://GradeExpertCRM/Resources/plus.png"/>
-		</Button>
+      <Button Grid.Row="0" Grid.Column="1"
+          Classes="Plus">
+        <Image Source="avares://GradeExpertCRM/Resources/plus.png"/>
+      </Button>
     </Grid>
     <Grid Grid.Row="10" Grid.Column="0"
 		  Margin="0 10 0 0">
@@ -212,7 +220,10 @@
         <TextBlock Classes="Label"
 						   Text="{Binding Localization.TextBoxWhoMadeInspection}"/>
         <Border Classes="BorderOfText">
-          <TextBox VerticalAlignment="Stretch" Text="{Binding Car.WhoMadeInspection}"/>
+            <ComboBox Items="{Binding Inspectors}"
+                      SelectedItem="{Binding Car.WhoMadeInspection}"
+                      VerticalAlignment="Stretch">
+            </ComboBox>
         </Border>
       </StackPanel>
       <Button Grid.Row="0" Grid.Column="1"

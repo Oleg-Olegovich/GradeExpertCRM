@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace GradeExpertCRM.Models.Data
 {
-    public class AppDbContext  : DbContext
+    public class AppDbContext : DbContext
     {
         public DbSet<Client> Clients { get; set; }
         public DbSet<Car> Cars { get; set; }
@@ -12,7 +13,10 @@ namespace GradeExpertCRM.Models.Data
 
         public AppDbContext()
         {
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
+            //Task.Run(async () => await Database.EnsureDeletedAsync());
+            Task.Run(async () => await Database.EnsureCreatedAsync());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

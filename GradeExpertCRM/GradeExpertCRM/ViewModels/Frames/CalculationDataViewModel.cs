@@ -10,6 +10,7 @@ using GradeExpertCRM.ViewModels.Frames;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Splat;
 using System.Linq;
+using Org.BouncyCastle.Utilities.Collections;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
@@ -96,17 +97,21 @@ namespace GradeExpertCRM.ViewModels.Frames
         public ObservableCollection<Calculation> Calculations { get; }
 
         private ICalculationRepository calculationRepository_;
+        private ICarRepository carRepository_;
 
-        public CalculationDataViewModel(IBaseWindow baseWindow, ICalculationRepository calculationRepository = null)
+        public CalculationDataViewModel(IBaseWindow baseWindow, ICalculationRepository calculationRepository = null, ICarRepository carRepository = null)
         {
             BaseWindow = baseWindow;
             UpdateImagesAndDescriptions();
-            
-            calculationRepository_ = calculationRepository ?? Locator.Current.GetService<ICalculationRepository>();
 
-            var selectedCarId= calculationRepository_.SelectedCarId;
-            var calculations = calculationRepository_.GetWhere(x => x.CarId == selectedCarId);
-            Calculations = new ObservableCollection<Calculation>(calculations);
+            calculationRepository_ = calculationRepository ?? Locator.Current.GetService<ICalculationRepository>();
+            carRepository_ = carRepository ?? Locator.Current.GetService<ICarRepository>();
+
+            var selectedCarId = calculationRepository_.SelectedCarId;
+            var calculations = carRepository_.GetCalculationsByCarId(selectedCarId);
+
+            Calculations = calculations != null ? new ObservableCollection<Calculation>(calculations) 
+                                                : new ObservableCollection<Calculation>();
         }
 
         public void ScrollLeft()

@@ -4,12 +4,14 @@ using System.Text;
 
 namespace GradeExpertCRM.Models
 {
-    class Document
+    public class Document
     {
         /// <summary>
         /// DTO.
         /// </summary>
 
         public string Title { get; set; }
+
+        public DateTime CreationDate { get; set; }
     }
 }

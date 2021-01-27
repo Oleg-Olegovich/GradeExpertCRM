@@ -37,9 +37,9 @@
 			</Button>
 		</DockPanel>
 
-		<DataGrid Grid.Row="1" Grid.Column="0"
-				  Grid.ColumnSpan="7" Items="{Binding Cars}" 
-				  SelectedItem="{Binding SelectedCarId, Mode=OneWayToSource}">
+        <DataGrid Grid.Row="1" Grid.Column="0"
+                  Grid.ColumnSpan="7" Items="{Binding Cars}" 
+                  SelectedItem="{Binding SelectedCarId, Mode=OneWayToSource}">
 			<DataGrid.Columns>
 				<DataGridTextColumn Binding="{Binding Brand}">
 					<DataGridTextColumn.Header>
