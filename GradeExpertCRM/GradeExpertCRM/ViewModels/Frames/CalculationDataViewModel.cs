@@ -10,6 +10,7 @@ using GradeExpertCRM.ViewModels.Frames;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Splat;
 using System.Linq;
+using System.Reactive;
 using Org.BouncyCastle.Utilities.Collections;
 
 namespace GradeExpertCRM.ViewModels.Frames
@@ -93,6 +94,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         }
 
         public bool IsButtonEnabled => calculationRepository_.SelectedCarId > 0;
+        public ReactiveCommand<Calculation, Unit> DeleteCommand { get; }
 
         public ObservableCollection<Calculation> Calculations { get; }
 
@@ -104,6 +106,8 @@ namespace GradeExpertCRM.ViewModels.Frames
             BaseWindow = baseWindow;
             UpdateImagesAndDescriptions();
 
+            DeleteCommand = ReactiveCommand.Create<Calculation>(Delete);
+
             calculationRepository_ = calculationRepository ?? Locator.Current.GetService<ICalculationRepository>();
             carRepository_ = carRepository ?? Locator.Current.GetService<ICarRepository>();
 
@@ -112,6 +116,12 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             Calculations = calculations != null ? new ObservableCollection<Calculation>(calculations) 
                                                 : new ObservableCollection<Calculation>();
+        }
+
+        public void Delete(Calculation calculation)
+        {
+            Calculations.Remove(calculation);
+            calculationRepository_.Remove(calculation);
         }
 
         public void ScrollLeft()

@@ -26,7 +26,7 @@ namespace GradeExpertCRM.Models.Data.Repositories
 
         public IEnumerable<T> GetWhere(Expression<Func<T, bool>> predicate)
         {
-            return dbContext_.Set<T>().Where(predicate).ToList(); // May cause Exception!!!
+            return dbContext_.Set<T>().Where(predicate).Select(x => x); // May cause Exception!!!
         }
 
         public T Add(T item)

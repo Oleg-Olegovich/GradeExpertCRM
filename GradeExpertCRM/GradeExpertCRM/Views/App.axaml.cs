@@ -15,7 +15,6 @@ namespace GradeExpertCRM
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
-            _ = new AppBootstrapper();
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -23,6 +22,7 @@ namespace GradeExpertCRM
             var configuration = builder.Build();
 
             ConnectionString = configuration.GetConnectionString("DefaultConnection");
+            _ = new AppBootstrapper();
         }
 
         public override void OnFrameworkInitializationCompleted()

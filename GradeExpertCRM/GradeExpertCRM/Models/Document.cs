@@ -1,14 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace GradeExpertCRM.Models
 {
+    /// <summary>
+    /// DTO.
+    /// </summary>
     public class Document
     {
-        /// <summary>
-        /// DTO.
-        /// </summary>
+        [Key]
+        public int Id { get; set; }
+
+        public int CarId { get; set; }
+
+        [ForeignKey("CarId")]
+        public Car Car { get; set; }
 
         public string Title { get; set; }
 

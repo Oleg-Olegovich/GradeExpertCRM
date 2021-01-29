@@ -5,6 +5,8 @@ using ReactiveUI;
 using System.Reactive;
 using System.Collections.ObjectModel;
 using System.Linq;
+using GradeExpertCRM.Models.Data.Repositories;
+using Splat;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
@@ -40,11 +42,15 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public ReactiveCommand<Unit, Unit> GoAddingDocumentView { get; }
 
-        public DocumentsViewModel(IBaseWindow baseWindow)
+        private IRepository<Document> documentRepository_;
+        public DocumentsViewModel(IBaseWindow baseWindow, IRepository<Document> documentRepository = null)
         {
             BaseWindow = baseWindow;
             GoAddingDocumentView = ReactiveCommand.CreateFromTask(OpenAddingDocumentView);
-            //_allDocuments = new ObservableCollection<Client>(documents);
+
+            documentRepository_ = documentRepository ?? Locator.Current.GetService<IRepository<Document>>();
+            var documents = documentRepository_.GetAll();
+            _allDocuments = new ObservableCollection<Document>(documents);
             Documents = _allDocuments;
         }
     }

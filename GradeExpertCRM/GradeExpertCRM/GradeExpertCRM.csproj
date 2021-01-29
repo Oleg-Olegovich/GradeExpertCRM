@@ -9,6 +9,7 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="appsettings.json" />
     <None Remove="Resources\buttonListLeft.png" />
     <None Remove="Resources\ButtonListRight.png" />
     <None Remove="Resources\camera.png" />
@@ -110,6 +111,9 @@
     <AvaloniaResource Include="Styles\Style.xaml" />	
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Templates\template1.cshtml" />
     <EmbeddedResource Include="Resources\Templates\template2.cshtml" />
     <EmbeddedResource Include="Resources\Templates\template3.cshtml" />
@@ -149,10 +153,5 @@
     <Compile Update="Views\SignInView.axaml.cs">
       <DependentUpon>SignInView.axaml</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>

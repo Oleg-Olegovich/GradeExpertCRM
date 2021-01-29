@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace GradeExpertCRM.Models.Data
 {
@@ -10,13 +9,15 @@ namespace GradeExpertCRM.Models.Data
         public DbSet<Calculation> Calculations { get; set; }
         public DbSet<DismantlingWork> DismantlingWorks { get; set; }
         public DbSet<SparePart> SpareParts { get; set; }
+        public DbSet<Document> Documents { get; set; }
+        public DbSet<Settings> Settings { get; set; }
+        public DbSet<DetailsSettings> DetailsSettings { get; set; }
 
         public AppDbContext()
         {
             //Database.EnsureDeleted();
-            //Database.EnsureCreated();
-            //Task.Run(async () => await Database.EnsureDeletedAsync());
-            Task.Run(async () => await Database.EnsureCreatedAsync());
+            Database.EnsureCreated();
+            //Task.Run(async () => await Database.EnsureCreatedAsync());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

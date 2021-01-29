@@ -4,37 +4,37 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="GradeExpertCRM.Views.Frames.SettingsView">
-	
-	<UserControl.Styles>
-		<StyleInclude Source="avares://GradeExpertCRM/Styles/Style.xaml"/>
-	</UserControl.Styles>
 
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-			<ColumnDefinition/>
-		</Grid.ColumnDefinitions>
+  <UserControl.Styles>
+    <StyleInclude Source="avares://GradeExpertCRM/Styles/Style.xaml"/>
+  </UserControl.Styles>
 
-		<TextBlock Grid.Row="0"
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+
+    <TextBlock Grid.Row="0"
 				   Grid.Column="0"
 			       Grid.ColumnSpan="7"
 			       Foreground="#000000"
@@ -42,230 +42,231 @@
 			       FontSize="24"
 			       Margin="20 0 0 0"
 				   Text="{Binding Localization.LabelGeneralSettings}"/>
-		
-		<TextBlock Grid.Row="1" Grid.Column="0"
+
+    <TextBlock Grid.Row="1" Grid.Column="0"
 				   Classes="Text"
 				   Text="{Binding Localization.TextBoxPriceOfNormalHour}"/>
 
-		<TextBlock Grid.Row="1" Grid.Column="4"
+    <TextBlock Grid.Row="1" Grid.Column="4"
 				   Classes="Text"
 				   Text="{Binding Localization.TextBoxCoefficients}"/>
 
-		<TextBlock Grid.Row="6" Grid.Column="0"
+    <TextBlock Grid.Row="6" Grid.Column="0"
 				   Classes="Text"
 				   Text="{Binding Localization.TextBoxAdditionalWorks}"/>
 
-		<TextBlock Grid.Row="6" Grid.Column="4"
+    <TextBlock Grid.Row="6" Grid.Column="4"
 				   Classes="Text"
 				   Text="{Binding Localization.TextBoxLanguage}"/>
 
-		<TextBlock Grid.Row="2" Grid.Column="0"
+    <TextBlock Grid.Row="2" Grid.Column="0"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TextBoxRemovingDents}"/>
 
-		<TextBlock Grid.Row="2" Grid.Column="2"
+    <TextBlock Grid.Row="2" Grid.Column="2"
 				   Classes="Text"
 				   Text="{Binding Localization.Currency}"/>
 
-		<TextBlock Grid.Row="3" Grid.Column="2"
+    <TextBlock Grid.Row="3" Grid.Column="2"
 				   Classes="Text"
 				   Text="{Binding Localization.Currency}"/>
 
-		<TextBlock Grid.Row="4" Grid.Column="2"
+    <TextBlock Grid.Row="4" Grid.Column="2"
 				   Classes="Text"
 				   Text="{Binding Localization.Currency}"/>
 
-		<TextBlock Grid.Row="7" Grid.Column="2"
+    <TextBlock Grid.Row="7" Grid.Column="2"
 				   Classes="Text"
 				   Text="{Binding Localization.Currency}"/>
 
-		<TextBlock Grid.Row="8" Grid.Column="2"
+    <TextBlock Grid.Row="8" Grid.Column="2"
 				   Classes="Text"
 				   Text="{Binding Localization.Currency}"/>
 
-		<TextBlock Grid.Row="9" Grid.Column="2"
+    <TextBlock Grid.Row="9" Grid.Column="2"
 				   Classes="Text"
 				   Text="{Binding Localization.TextBoxNHoursPerItem}"/>
 
-		<TextBlock Grid.Row="2" Grid.Column="6"
+    <TextBlock Grid.Row="2" Grid.Column="6"
 				   Classes="Text"
 				   Text="%"/>
 
-		<TextBlock Grid.Row="3" Grid.Column="6"
+    <TextBlock Grid.Row="3" Grid.Column="6"
 				   Classes="Text"
 				   Text="%"/>
 
-		<TextBlock Grid.Row="4" Grid.Column="6"
+    <TextBlock Grid.Row="4" Grid.Column="6"
 				   Classes="Text"
 				   Text="%"/>
 
-		<TextBlock Grid.Row="3" Grid.Column="0"
+    <TextBlock Grid.Row="3" Grid.Column="0"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.Dismantling}"/>
 
-		<TextBlock Grid.Row="4" Grid.Column="0"
+    <TextBlock Grid.Row="4" Grid.Column="0"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TextBoxFinishingTreatment}"/>
 
-		<TextBlock Grid.Row="7" Grid.Column="0"
+    <TextBlock Grid.Row="7" Grid.Column="0"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TextBoxAntiCorrosionTreatment}"/>
 
-		<TextBlock Grid.Row="8" Grid.Column="0"
+    <TextBlock Grid.Row="8" Grid.Column="0"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TextBoxToolPreparing}"/>
 
-		<TextBlock Grid.Row="9" Grid.Column="0"
+    <TextBlock Grid.Row="9" Grid.Column="0"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TextBoxFinishingTreatment}"/>
 
-		<TextBlock Grid.Row="2" Grid.Column="4"
+    <TextBlock Grid.Row="2" Grid.Column="4"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TextBoxAluminum} +"/>
 
-		<TextBlock Grid.Row="3" Grid.Column="4"
+    <TextBlock Grid.Row="3" Grid.Column="4"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TextBoxAdhesiveTechnology} +"/>
 
-		<TextBlock Grid.Row="4" Grid.Column="4"
+    <TextBlock Grid.Row="4" Grid.Column="4"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TextBoxUnderPainting}"/>
 
-		<Border Grid.Row="2" Grid.Column="1"
+    <Border Grid.Row="2" Grid.Column="1"
 				Classes="BorderOfText"
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
 				MaxHeight="40">
-			<TextBox VerticalAlignment="Stretch"/>
-		</Border>
+      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.RemoveDentsPrice}"/>
+    </Border>
 
-		<Border Grid.Row="3" Grid.Column="1"
+    <Border Grid.Row="3" Grid.Column="1"
 				Classes="BorderOfText"
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
 				MaxHeight="40">
-			<TextBox VerticalAlignment="Stretch"/>
-		</Border>
+      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.DismantlingPrice}"/>
+    </Border>
 
-		<Border Grid.Row="4" Grid.Column="1"
+    <Border Grid.Row="4" Grid.Column="1"
 				Classes="BorderOfText"
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
 				MaxHeight="40">
-			<TextBox VerticalAlignment="Stretch"/>
-		</Border>
+      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.FinishingProcessingPrice}"/>
+    </Border>
 
-		<Border Grid.Row="7" Grid.Column="1"
+    <Border Grid.Row="7" Grid.Column="1"
 				Classes="BorderOfText"
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
 				MaxHeight="40">
-			<TextBox VerticalAlignment="Stretch"/>
-		</Border>
+      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.AntiCorrosionPrice}"/>
+    </Border>
 
-		<Border Grid.Row="8" Grid.Column="1"
+    <Border Grid.Row="8" Grid.Column="1"
 				Classes="BorderOfText"
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
 				MaxHeight="40">
-			<TextBox VerticalAlignment="Stretch"/>
-		</Border>
+      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.PreparingToolPrice}"/>
+    </Border>
 
-		<Border Grid.Row="9" Grid.Column="1"
+    <Border Grid.Row="9" Grid.Column="1"
 				Classes="BorderOfText"
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
 				MaxHeight="40">
-			<TextBox VerticalAlignment="Stretch"/>
-		</Border>
+      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.FinishProcessingNHours}"/>
+    </Border>
 
-		<Border Grid.Row="2" Grid.Column="5"
+    <Border Grid.Row="2" Grid.Column="5"
 				Classes="BorderOfText"
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
 				MaxHeight="40">
-			<TextBox VerticalAlignment="Stretch"/>
-		</Border>
+      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.AluminumPercent}"/>
+    </Border>
 
-		<Border Grid.Row="3" Grid.Column="5"
+    <Border Grid.Row="3" Grid.Column="5"
 				Classes="BorderOfText"
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
 				MaxHeight="40">
-			<TextBox VerticalAlignment="Stretch"/>
-		</Border>
+      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.GlueTechniquePercent}"/>
+    </Border>
 
-		<Border Grid.Row="4" Grid.Column="5"
+    <Border Grid.Row="4" Grid.Column="5"
 				Classes="BorderOfText"
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
 				MaxHeight="40">
-			<TextBox VerticalAlignment="Stretch"/>
-		</Border>
+      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.UnderPantingPercent}"/>
+    </Border>
 
-		<StackPanel Grid.Row="7" Grid.Column="4" 
-					Orientation="Horizontal" 
+    <StackPanel Grid.Row="7" Grid.Column="4"
+					Orientation="Horizontal"
 					HorizontalAlignment="Left">
-			<Button x:Name="ImageButtonRussian"
+      <Button x:Name="ImageButtonRussian"
 					Command="{Binding ChangeLanguage}"
 					CommandParameter="Russian">
-				<Image Source="avares://GradeExpertCRM/Resources/russian.png" 
-					   DockPanel.Dock="Left" 
+        <Image Source="avares://GradeExpertCRM/Resources/russian.png"
+					   DockPanel.Dock="Left"
 					   HorizontalAlignment="Right"/>
-			</Button>
-			<Button x:Name="ButtonRussian"
+      </Button>
+      <Button x:Name="ButtonRussian"
 					Command="{Binding ChangeLanguage}"
 					CommandParameter="Russian"
 					Content="Русский"/>
-		</StackPanel>
+    </StackPanel>
 
-		<StackPanel Grid.Row="8" Grid.Column="4"
+    <StackPanel Grid.Row="8" Grid.Column="4"
 					Orientation="Horizontal"
 					HorizontalAlignment="Left">
-			<Button Command="{Binding ChangeLanguage}"
+      <Button Command="{Binding ChangeLanguage}"
 					CommandParameter="German">
-				<Image Source="avares://GradeExpertCRM/Resources/germany.png"
+        <Image Source="avares://GradeExpertCRM/Resources/germany.png"
 					   DockPanel.Dock="Left"
 					   HorizontalAlignment="Right"/>
-			</Button>
-			<Button Command="{Binding ChangeLanguage}"
+      </Button>
+      <Button Command="{Binding ChangeLanguage}"
 					CommandParameter="German"
 					Content="Deutsch"/>
-		</StackPanel>
+    </StackPanel>
 
-		<StackPanel Grid.Row="9" Grid.Column="4"
+    <StackPanel Grid.Row="9" Grid.Column="4"
 					Orientation="Horizontal"
 					HorizontalAlignment="Left">
-			<Button Command="{Binding ChangeLanguage}"
+      <Button Command="{Binding ChangeLanguage}"
 					CommandParameter="English">
-				<Image Source="avares://GradeExpertCRM/Resources/english.png"
+        <Image Source="avares://GradeExpertCRM/Resources/english.png"
 					   DockPanel.Dock="Left"
 					   HorizontalAlignment="Right"/>
-			</Button>
-			<Button Command="{Binding ChangeLanguage}"
+      </Button>
+      <Button Command="{Binding ChangeLanguage}"
 					CommandParameter="English"
 					Content="English"/>
-		</StackPanel>
+    </StackPanel>
 
-		<Button Grid.Row="11"
+    <Button Grid.Row="11"
 				Grid.Column="0"
 				Classes="Menu"
-				Content="{Binding Localization.ButtonSave}"/>
+				Command="{Binding SaveCommand}"
+        Content="{Binding Localization.ButtonSave}"/>
 
-		<Button Grid.Row="11"
+    <Button Grid.Row="11"
 				Grid.Column="1"
 				Grid.ColumnSpan="2"
 				Classes="Menu"
 				Command="{Binding GoDetailsSettingsView}"
 				Content="{Binding Localization.LabelDetailsSettings}"/>
-	</Grid>
+  </Grid>
 </UserControl>

@@ -104,7 +104,7 @@
 					   FontSize="12"/>
     </Grid>
 
-    <DataGrid Grid.Row="1" Items="{Binding Calculations}">
+    <DataGrid Grid.Row="1" Items="{Binding Calculations}" >
 		<DataGrid.Columns>
 			<DataGridTextColumn Binding="{Binding ComponentName}">
 				<DataGridTextColumn.Header>
@@ -160,7 +160,7 @@
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
 				</DataGridTextColumn.Header>
 			</DataGridTextColumn>
-			<DataGridTemplateColumn>
+			<DataGridTemplateColumn> 
 				<DataGridTemplateColumn.CellTemplate>
 					<DataTemplate>
 						<StackPanel Orientation="Horizontal">
@@ -168,7 +168,8 @@
 								<TextBlock Text="{Binding DataContext.Localization.Change, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
 							</Button>
-							<Button>
+							<Button Command="{Binding DataContext.DeleteCommand, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" CommandParameter="{Binding}">
 								<Image Source="avares://GradeExpertCRM/Resources/cross.png"/>
 							</Button>
 						</StackPanel>
