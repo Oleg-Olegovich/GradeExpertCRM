@@ -8,6 +8,7 @@ namespace GradeExpertCRM.Models.Data.Repositories
 {
     public class CarRepository : Repository<Car>, ICarRepository
     {
+        public int SelectedCarId { get; set; }
         public IEnumerable<Calculation> GetCalculationsByCarId(int id)
         {
             return dbContext_.Cars.Include(x => x.Calculations).FirstOrDefault(x => x.Id == id)?.Calculations;

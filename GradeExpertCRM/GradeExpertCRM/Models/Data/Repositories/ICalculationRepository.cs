@@ -6,6 +6,5 @@ namespace GradeExpertCRM.Models.Data.Repositories
 {
     public interface ICalculationRepository : IRepository<Calculation>
     {
-        public int SelectedCarId { get; set; }
     }
 }

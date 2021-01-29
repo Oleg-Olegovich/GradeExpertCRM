@@ -49,7 +49,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             set
             {
                 if (value != null)
-                    calculationRepository_.SelectedCarId = value.Id;
+                    carRepository_.SelectedCarId = value.Id;
             }
         }
 

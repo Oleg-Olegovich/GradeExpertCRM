@@ -53,9 +53,9 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
 
-        private ICalculationRepository calculationRepository_;
+        private readonly ICalculationRepository calculationRepository_;
 
-        private Car selectedCar_;
+        private readonly Car selectedCar_;
 
         public CalculatorViewModel(IBaseWindow baseWindow, string carImageName)
         {
@@ -66,8 +66,8 @@ namespace GradeExpertCRM.ViewModels.Frames
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
 
             calculationRepository_ =  Locator.Current.GetService<ICalculationRepository>();
-            var carRepository_ = Locator.Current.GetService<ICarRepository>();
-            selectedCar_ = carRepository_.FindById(calculationRepository_.SelectedCarId);
+            var carRepository = Locator.Current.GetService<ICarRepository>();
+            selectedCar_ = carRepository.FindById(carRepository.SelectedCarId);
 
             //TODO change items of collections depending on Car's BodyType
             DismantlingWorks = new ObservableCollection<DismantlingWork>();

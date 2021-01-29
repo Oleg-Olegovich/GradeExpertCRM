@@ -93,7 +93,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             set => this.RaiseAndSetIfChanged(ref _carImagesDescriprions[3], value);
         }
 
-        public bool IsButtonEnabled => calculationRepository_.SelectedCarId > 0;
+        public bool IsButtonEnabled => carRepository_.SelectedCarId > 0;
         public ReactiveCommand<Calculation, Unit> DeleteCommand { get; }
 
         public ObservableCollection<Calculation> Calculations { get; }
@@ -111,7 +111,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
             carRepository_ = Locator.Current.GetService<ICarRepository>();
 
-            var selectedCarId = calculationRepository_.SelectedCarId;
+            var selectedCarId = carRepository_.SelectedCarId;
             var calculations = carRepository_.GetCalculationsByCarId(selectedCarId);
 
             Calculations = calculations != null ? new ObservableCollection<Calculation>(calculations) 
