@@ -4,6 +4,9 @@ using ReactiveUI;
 using GradeExpertCRM.ViewModels.Frames;
 using System.Reactive;
 using GradeExpertCRM.Models;
+using GradeExpertCRM.Models.Data.Repositories;
+using Microsoft.EntityFrameworkCore.Internal;
+using Splat;
 
 namespace GradeExpertCRM.ViewModels
 {
@@ -86,7 +89,10 @@ namespace GradeExpertCRM.ViewModels
             GoDocumentsView = ReactiveCommand.CreateFromTask(OpenDocumentsView);
             GoMailView = ReactiveCommand.CreateFromTask(OpenMailView);
             GoSettingsView = ReactiveCommand.CreateFromTask(OpenSettingsView);
-            Language = "Russian";
+
+            var settingsRepository = Locator.Current.GetService<IRepository<Settings>>();
+            Language = settingsRepository.FirstOrDefault()?.Language ?? "Russian";
+
             Content = new ClientViewModel(this);
         }
     }

@@ -63,70 +63,70 @@
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxIndex}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding DetailsSettings.Index}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical">
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxArea}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding DetailsSettings.Area}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="3" Grid.Column="0" Orientation="Vertical">
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxCity}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding DetailsSettings.City}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="3" Grid.Column="1" Orientation="Vertical">
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxAddress}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding DetailsSettings.Address}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="4" Grid.Column="0" Orientation="Vertical">
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxPhoneNumber}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding DetailsSettings.PhoneNumber}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="4" Grid.Column="1" Orientation="Vertical">
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxEmail}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding DetailsSettings.Email}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="5" Grid.Column="0" Orientation="Vertical">
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxTIN}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding DetailsSettings.TIN}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="5" Grid.Column="1" Orientation="Vertical">
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxCRR}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding DetailsSettings.CRR}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="6" Grid.Column="0" Orientation="Vertical">
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxBank}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding DetailsSettings.Bank}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="6" Grid.Column="1" Orientation="Vertical">
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxBIC}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding DetailsSettings.BIC}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="7" 
@@ -135,7 +135,7 @@
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxPaymentAccount}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding DetailsSettings.PaymentAccount}"/>
 			</Border>
 		</StackPanel>
 		<StackPanel Grid.Row="7"
@@ -144,7 +144,7 @@
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxCorrespondentAccount}"/>
 			<Border Classes="BorderOfText">
-				<TextBox VerticalAlignment="Stretch"/>
+				<TextBox VerticalAlignment="Stretch" Text="{Binding DetailsSettings.CorrespondentAccount}"/>
 			</Border>
 		</StackPanel>
 

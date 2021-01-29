@@ -78,5 +78,15 @@ namespace GradeExpertCRM.Models.Data.Repositories
             await dbContext_.SaveChangesAsync();
             return item;
         }
+
+        public T FirstOrDefault()
+        {
+            return dbContext_.Set<T>().FirstOrDefault();
+        }
+
+        public async Task<T> FirstOrDefaultAsync()
+        {
+            return await dbContext_.Set<T>().FirstOrDefaultAsync();
+        }
     }
 }
