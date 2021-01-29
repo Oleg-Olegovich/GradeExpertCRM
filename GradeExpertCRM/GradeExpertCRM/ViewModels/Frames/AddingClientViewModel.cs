@@ -13,7 +13,7 @@ namespace GradeExpertCRM.ViewModels.Frames
     class AddingClientViewModel : ViewModelBase
     {
         public Client Client { get; set; } = new Client();
-        private IRepository<Client> repository_;
+        private IClientRepository clientRepository_;
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
 
         public int ClientOrPartner
@@ -22,12 +22,12 @@ namespace GradeExpertCRM.ViewModels.Frames
             set => Client.IsPartner = value == 1;
         }
 
-        public AddingClientViewModel(IBaseWindow baseWindow, IRepository<Client> repository = null)
+        public AddingClientViewModel(IBaseWindow baseWindow)
         {
             BaseWindow = baseWindow;
             SaveCommand = ReactiveCommand.CreateFromTask(SaveAsync);
 
-            repository_ = repository ?? Locator.Current.GetService<IRepository<Client>>();
+            clientRepository_ = Locator.Current.GetService<IClientRepository>();
         }
 
         public async Task SaveAsync()
@@ -38,7 +38,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             if (!isValid)
                 return;
 
-            await repository_.AddAsync(Client);
+            await clientRepository_.AddAsync(Client);
             BaseWindow.Content = new ClientViewModel(BaseWindow);
 
             //try

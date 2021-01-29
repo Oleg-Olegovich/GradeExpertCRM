@@ -42,7 +42,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public ReactiveCommand<Unit, Unit> GoAddingCarView { get; }
 
-        private IRepository<Car> carRepository_;
+        private ICarRepository carRepository_;
         private ICalculationRepository calculationRepository_;
         public Car SelectedCarId
         {
@@ -53,12 +53,12 @@ namespace GradeExpertCRM.ViewModels.Frames
             }
         }
 
-        public CarViewModel(IBaseWindow baseWindow, IRepository<Car> carRepository = null, ICalculationRepository calculationRepository = null)
+        public CarViewModel(IBaseWindow baseWindow)
         {
             BaseWindow = baseWindow;
             GoAddingCarView = ReactiveCommand.CreateFromTask(OpenAddingCarView);
-            carRepository_ = carRepository ?? Locator.Current.GetService<IRepository<Car>>();
-            calculationRepository_ = calculationRepository ?? Locator.Current.GetService<ICalculationRepository>();
+            carRepository_ = Locator.Current.GetService<ICarRepository>();
+            calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
             var cars = carRepository_.GetAll();
             _allCars = new ObservableCollection<Car>(cars);
             Cars = _allCars;

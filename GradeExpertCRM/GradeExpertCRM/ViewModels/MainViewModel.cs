@@ -90,7 +90,7 @@ namespace GradeExpertCRM.ViewModels
             GoMailView = ReactiveCommand.CreateFromTask(OpenMailView);
             GoSettingsView = ReactiveCommand.CreateFromTask(OpenSettingsView);
 
-            var settingsRepository = Locator.Current.GetService<IRepository<Settings>>();
+            var settingsRepository = Locator.Current.GetService<ISettingsRepository>();
             Language = settingsRepository.FirstOrDefault()?.Language ?? "Russian";
 
             Content = new ClientViewModel(this);

@@ -57,8 +57,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         private Car selectedCar_;
 
-        public CalculatorViewModel(IBaseWindow baseWindow, string carImageName, 
-            ICalculationRepository calculationRepository = null, IRepository<Car> carRepository = null)
+        public CalculatorViewModel(IBaseWindow baseWindow, string carImageName)
         {
             BaseWindow = baseWindow;
             _carImageName = carImageName;
@@ -66,8 +65,8 @@ namespace GradeExpertCRM.ViewModels.Frames
             CarImage = new Bitmap($"{ImagePath}{carImageName}.png");
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
 
-            calculationRepository_ = calculationRepository ?? Locator.Current.GetService<ICalculationRepository>();
-            var carRepository_ = carRepository ?? Locator.Current.GetService<IRepository<Car>>();
+            calculationRepository_ =  Locator.Current.GetService<ICalculationRepository>();
+            var carRepository_ = Locator.Current.GetService<ICarRepository>();
             selectedCar_ = carRepository_.FindById(calculationRepository_.SelectedCarId);
 
             //TODO change items of collections depending on Car's BodyType

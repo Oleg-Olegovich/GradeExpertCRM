@@ -101,15 +101,15 @@ namespace GradeExpertCRM.ViewModels.Frames
         private ICalculationRepository calculationRepository_;
         private ICarRepository carRepository_;
 
-        public CalculationDataViewModel(IBaseWindow baseWindow, ICalculationRepository calculationRepository = null, ICarRepository carRepository = null)
+        public CalculationDataViewModel(IBaseWindow baseWindow)
         {
             BaseWindow = baseWindow;
             UpdateImagesAndDescriptions();
 
             DeleteCommand = ReactiveCommand.Create<Calculation>(Delete);
 
-            calculationRepository_ = calculationRepository ?? Locator.Current.GetService<ICalculationRepository>();
-            carRepository_ = carRepository ?? Locator.Current.GetService<ICarRepository>();
+            calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
+            carRepository_ = Locator.Current.GetService<ICarRepository>();
 
             var selectedCarId = calculationRepository_.SelectedCarId;
             var calculations = carRepository_.GetCalculationsByCarId(selectedCarId);

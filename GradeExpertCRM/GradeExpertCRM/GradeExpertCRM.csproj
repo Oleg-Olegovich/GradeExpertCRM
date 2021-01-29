@@ -10,6 +10,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="Resources\arial.TTF" />
     <None Remove="Resources\buttonListLeft.png" />
     <None Remove="Resources\ButtonListRight.png" />
     <None Remove="Resources\camera.png" />
@@ -69,6 +70,7 @@
 	  <PackageReference Include="RazorLight" Version="2.0.0-rc.3" />
   </ItemGroup>
   <ItemGroup>
+	<AvaloniaResource Include="Resources\arial.TTF" />
 	<AvaloniaResource Include="Resources\buttonListLeft.png" />
 	<AvaloniaResource Include="Resources\buttonListRight.png" />
 	<AvaloniaResource Include="Resources\camera.png" />

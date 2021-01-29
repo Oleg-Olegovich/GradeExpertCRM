@@ -25,16 +25,16 @@ namespace GradeExpertCRM.ViewModels.Frames
         public ObservableCollection<string> Inspectors { get; set; }
         public Client SelectedClient { get; set; } = new Client();
 
-        private IRepository<Car> carRepository_;
+        private ICarRepository carRepository_;
 
-        private IRepository<Client> clientRepository_;
+        private IClientRepository clientRepository_;
 
-        public AddingCarViewModel(IBaseWindow baseWindow, IRepository<Car> carRepository = null, IRepository<Client> clientRepository = null)
+        public AddingCarViewModel(IBaseWindow baseWindow)
         {
             BaseWindow = baseWindow;
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
-            carRepository_ = carRepository ?? Locator.Current.GetService<IRepository<Car>>();
-            clientRepository_ = clientRepository ?? Locator.Current.GetService<IRepository<Client>>();
+            carRepository_ =  Locator.Current.GetService<ICarRepository>();
+            clientRepository_ = Locator.Current.GetService<IClientRepository>();
             var clients = clientRepository_.GetAll().ToList();
             Clients = new ObservableCollection<Client>(clients);
 

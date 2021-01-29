@@ -26,13 +26,13 @@ namespace GradeExpertCRM.ViewModels.Frames
             set => this.RaiseAndSetIfChanged(ref _localization, value);
         }
 
-        private readonly IRepository<Settings> settingsRepository_;
+        private readonly ISettingsRepository settingsRepository_;
         public SettingsViewModel(IBaseWindow baseWindow)
         {
             BaseWindow = baseWindow;
             Localization = baseWindow.Localization;
 
-            settingsRepository_ = Locator.Current.GetService<IRepository<Settings>>();
+            settingsRepository_ = Locator.Current.GetService<ISettingsRepository>();
             Settings = settingsRepository_.FirstOrDefault() ?? new Settings();
 
             GoDetailsSettingsView = ReactiveCommand.CreateFromTask(OpenDetailsSettingsView);

@@ -14,9 +14,9 @@ namespace GradeExpertCRM.Models.Data.Repositories
     {
         protected readonly AppDbContext dbContext_;
 
-        public Repository(AppDbContext dbContext = null)
+        public Repository()
         {
-            dbContext_ = dbContext ?? Locator.Current.GetService<AppDbContext>();
+            dbContext_ = Locator.Current.GetService<AppDbContext>();
         }
 
         public IEnumerable<T> GetAll()

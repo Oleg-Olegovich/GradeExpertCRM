@@ -41,15 +41,15 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public ReactiveCommand<Unit, Unit> GoAddingClientView { get; }
 
-        private IRepository<Client> repository_;
+        private IClientRepository clientRepository_;
 
-        public ClientViewModel(IBaseWindow baseWindow, IRepository<Client> repository = null)
+        public ClientViewModel(IBaseWindow baseWindow)
         {
             BaseWindow = baseWindow;
             GoAddingClientView = ReactiveCommand.CreateFromTask(OpenAddingClientView);
             SearchString = "";
-            repository_ = repository ?? Locator.Current.GetService<IRepository<Client>>();
-            var clients = repository_.GetAll();
+            clientRepository_ = Locator.Current.GetService<IClientRepository>();
+            var clients = clientRepository_.GetAll();
             _allClients = new ObservableCollection<Client>(clients);
             Clients = _allClients;
         }

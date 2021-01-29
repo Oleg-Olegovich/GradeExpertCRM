@@ -25,14 +25,14 @@ namespace GradeExpertCRM.ViewModels.Frames
             set => this.RaiseAndSetIfChanged(ref image_, value);
         }
 
-        private readonly IRepository<DetailsSettings> detailsRepository_;
+        private readonly IDetailsSettingsRepository detailsRepository_;
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
         public ReactiveCommand<Unit, Unit> ChooseImageCommand { get; }
 
         public DetailsSettingsViewModel(IBaseWindow baseWindow)
         {
             BaseWindow = baseWindow;
-            detailsRepository_ = Locator.Current.GetService<IRepository<DetailsSettings>>();
+            detailsRepository_ = Locator.Current.GetService<IDetailsSettingsRepository>();
             DetailsSettings = detailsRepository_.FirstOrDefault() ?? new DetailsSettings();
 
             if (DetailsSettings?.Image != null)
