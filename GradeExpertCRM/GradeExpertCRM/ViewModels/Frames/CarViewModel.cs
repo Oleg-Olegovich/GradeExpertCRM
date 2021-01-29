@@ -44,10 +44,13 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         private IRepository<Car> carRepository_;
         private ICalculationRepository calculationRepository_;
-
         public Car SelectedCarId
         {
-            set => calculationRepository_.SelectedCarId = value.Id;
+            set
+            {
+                if (value != null)
+                    calculationRepository_.SelectedCarId = value.Id;
+            }
         }
 
         public CarViewModel(IBaseWindow baseWindow, IRepository<Car> carRepository = null, ICalculationRepository calculationRepository = null)

@@ -60,7 +60,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             OpenFileDialog dialog = new OpenFileDialog { AllowMultiple = false };
             dialog.Filters.Add(new FileDialogFilter { Name = "Image", Extensions = { "png", "jpg", "jpeg" } });
 
-            string[] result = await dialog.ShowAsync(new BaseWindow());
+            string[] result = await dialog.ShowAsync(new Window());
 
             if (result.Length > 0)
             {
