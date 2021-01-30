@@ -7,10 +7,10 @@ namespace GradeExpertCRM.Models.Data.Repositories
 {
     public interface IRepository<T> where T : class, new()
     {
-        IEnumerable<T> GetAll();
+        IEnumerable<T> All();
         T FirstOrDefault();
         Task<T> FirstOrDefaultAsync();
-        IEnumerable<T> GetWhere(Expression<Func<T, bool>> predicate);
+        IEnumerable<T> Where(Expression<Func<T, bool>> predicate);
         T Add(T item);
         Task<T> AddAsync(T item);
         Task<T> FindByIdAsync(int id);

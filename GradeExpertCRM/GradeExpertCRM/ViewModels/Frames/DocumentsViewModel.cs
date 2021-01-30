@@ -49,7 +49,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             GoAddingDocumentView = ReactiveCommand.CreateFromTask(OpenAddingDocumentView);
 
             documentRepository_ = Locator.Current.GetService<IDocumentRepository>();
-            var documents = documentRepository_.GetAll();
+            var documents = documentRepository_.All();
             _allDocuments = new ObservableCollection<Document>(documents);
             Documents = _allDocuments;
         }

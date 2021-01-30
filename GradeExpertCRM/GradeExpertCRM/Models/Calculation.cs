@@ -22,7 +22,7 @@ namespace GradeExpertCRM.Models
 
         public int DentQuantity { get; set; }
 
-        public int DentDiameter { get; set; }
+        public int DentDiameter { get; set; } = 20;
 
         public double NHours { get; set; } //TODO check is this property necessary
 

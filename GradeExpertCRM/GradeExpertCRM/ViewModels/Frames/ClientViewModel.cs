@@ -49,7 +49,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             GoAddingClientView = ReactiveCommand.CreateFromTask(OpenAddingClientView);
             SearchString = "";
             clientRepository_ = Locator.Current.GetService<IClientRepository>();
-            var clients = clientRepository_.GetAll();
+            var clients = clientRepository_.All();
             _allClients = new ObservableCollection<Client>(clients);
             Clients = _allClients;
         }

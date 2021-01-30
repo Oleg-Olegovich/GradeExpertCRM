@@ -7,6 +7,7 @@ namespace GradeExpertCRM.Models.Data.Repositories
     public interface ICarRepository : IRepository<Car>
     {
         public int SelectedCarId { get; set; }
-        public IEnumerable<Calculation> GetCalculationsByCarId(int id);
+
+        public Car CarWithCalculations(int id);
     }
 }

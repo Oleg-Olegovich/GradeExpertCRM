@@ -18,15 +18,20 @@ namespace GradeExpertCRM.ViewModels.Frames
     {
         public Car Car { get; set; } = new Car();
 
-        public ReactiveCommand<Unit, Unit> SaveCommand { get; }
-
         public ObservableCollection<Client> Clients { get; set; }
         public ObservableCollection<string> InspectionPlaces { get; set; }
         public ObservableCollection<string> Inspectors { get; set; }
         public Client SelectedClient { get; set; } = new Client();
 
-        private ICarRepository carRepository_;
+        public int BodyTypeIndex
+        {
+            get => (int) Car.BodyType;
+            set => Car.BodyType = (BodyType)value;
+        }
 
+        public ReactiveCommand<Unit, Unit> SaveCommand { get; }
+
+        private ICarRepository carRepository_;
         private IClientRepository clientRepository_;
 
         public AddingCarViewModel(IBaseWindow baseWindow)
@@ -35,7 +40,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
             carRepository_ =  Locator.Current.GetService<ICarRepository>();
             clientRepository_ = Locator.Current.GetService<IClientRepository>();
-            var clients = clientRepository_.GetAll().ToList();
+            var clients = clientRepository_.All().ToList();
             Clients = new ObservableCollection<Client>(clients);
 
             var partners = (from client in clients
@@ -56,7 +61,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             var validationContext = new ValidationContext(Car) { MemberName = nameof(Car) };
             var isValid = Validator.TryValidateObject(Car, validationContext, null);
-            if (!isValid)
+            if (!isValid || SelectedClient.Id == 0)
                 return;
 
             Car.ClientId = SelectedClient.Id;

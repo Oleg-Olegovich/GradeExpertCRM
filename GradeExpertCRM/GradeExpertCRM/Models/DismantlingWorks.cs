@@ -17,12 +17,12 @@ namespace GradeExpertCRM.Models
 
         public int Code { get; set; }
 
+        public double NHours { get; set; }
+
         public string Name { get; set; }
 
-        public double Price { get; set; }
+        public double Price { get; set; } //TODO check if necessary
 
-        public double WorkingHours { get; set; }
-
-        public string WorkName { get; set; }
+        public string WorkName { get; set; } //TODO check if necessary
     }
 }

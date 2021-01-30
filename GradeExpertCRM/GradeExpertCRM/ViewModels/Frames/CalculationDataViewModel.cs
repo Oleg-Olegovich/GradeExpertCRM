@@ -112,10 +112,8 @@ namespace GradeExpertCRM.ViewModels.Frames
             carRepository_ = Locator.Current.GetService<ICarRepository>();
 
             var selectedCarId = carRepository_.SelectedCarId;
-            var calculations = carRepository_.GetCalculationsByCarId(selectedCarId);
-
-            Calculations = calculations != null ? new ObservableCollection<Calculation>(calculations) 
-                                                : new ObservableCollection<Calculation>();
+            var calculations = calculationRepository_.Where(x => x.CarId == selectedCarId);
+            Calculations = new ObservableCollection<Calculation>(calculations);
         }
 
         public void Delete(Calculation calculation)

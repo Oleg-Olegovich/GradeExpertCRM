@@ -8,7 +8,7 @@
              x:Class="GradeExpertCRM.Views.Frames.CalculatorView">
 
 
-    <UserControl.Styles>
+  <UserControl.Styles>
     <StyleInclude Source="avares://GradeExpertCRM/Styles/Style.xaml"/>
   </UserControl.Styles>
 
@@ -104,7 +104,11 @@
           <TextBlock Classes="Label"
 							   Text="{Binding Localization.Diameter}"/>
           <Border Classes="BorderOfText">
-            <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.DentDiameter}"/>
+            <ComboBox  VerticalAlignment="Stretch" SelectedItem="{Binding DentDiameter}">
+              <TextBlock Text="20"/>
+              <TextBlock Text="30"/>
+              <TextBlock Text="40"/>
+            </ComboBox>
           </Border>
         </StackPanel>
 
@@ -164,33 +168,33 @@
 
         <DataGrid Grid.Row="1" Items="{Binding DismantlingWorks}"
 				  Margin="-6 0 -6 5">
-			<DataGrid.Columns>
-			    <DataGridCheckBoxColumn Binding="{Binding IsApplied}"/>
-			    <DataGridTextColumn Binding="{Binding WorkingHours}">
-				    <DataGridTextColumn.Header>
-					    <TextBlock Text="{Binding DataContext.Localization.NHours, 
+          <DataGrid.Columns>
+            <DataGridCheckBoxColumn Binding="{Binding IsApplied}"/>
+            <DataGridTextColumn Binding="{Binding WorkingHours}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.NHours, 
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
-				    </DataGridTextColumn.Header>
-			    </DataGridTextColumn>
-			    <DataGridTextColumn Binding="{Binding Price}">
-				    <DataGridTextColumn.Header>
-					    <TextBlock Text="{Binding DataContext.Localization.Price, 
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding Price}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.Price, 
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
-				    </DataGridTextColumn.Header>
-			    </DataGridTextColumn>
-			    <DataGridTextColumn Binding="{Binding Code}">
-				    <DataGridTextColumn.Header>
-					    <TextBlock Text="{Binding DataContext.Localization.Code, 
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding Code}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.Code, 
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
-				    </DataGridTextColumn.Header>
-			    </DataGridTextColumn>
-			    <DataGridTextColumn Binding="{Binding Name}">
-				    <DataGridTextColumn.Header>
-					    <TextBlock Text="{Binding DataContext.Localization.Description, 
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding Name}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.Description, 
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
-				    </DataGridTextColumn.Header>
-			    </DataGridTextColumn>
-			</DataGrid.Columns>
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+          </DataGrid.Columns>
         </DataGrid>
       </Grid>
     </Border>
@@ -232,9 +236,9 @@
 							  IsEnabled="False"/>
         <StackPanel Grid.Row="2" Margin="0 5 0 0">
           <RadioButton GroupName="Repair"
-								 IsChecked="True"
-                 Command="{Binding SelectTypeOfRepair}"
-                 CommandParameter="WithoutPainting">
+                       IsChecked="True"
+                       Command="{Binding SelectTypeOfRepair}"
+                       CommandParameter="WithoutPainting">
             <TextBlock Classes="Text"
 								   Text="{Binding Localization.WithoutPainting}"/>
           </RadioButton>
@@ -269,27 +273,33 @@
 						   TextAlignment="Center"/>
         <DataGrid Grid.Row="1" Items="SpareParts"
                   Margin="-6 0 -6 5">
-			<DataGrid.Columns>
-			    <DataGridTextColumn Binding="{Binding Id}"/>
-			    <DataGridTextColumn Binding="{Binding Code}">
-				    <DataGridTextColumn.Header>
-					    <TextBlock Text="{Binding DataContext.Localization.Code, 
+          <DataGrid.Columns>
+            <DataGridTextColumn Binding="{Binding Id}"/>
+            <DataGridTextColumn Binding="{Binding Code}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.Code, 
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
-				    </DataGridTextColumn.Header>
-			    </DataGridTextColumn>
-			    <DataGridTextColumn Binding="{Binding Price}">
-				    <DataGridTextColumn.Header>
-					    <TextBlock Text="{Binding DataContext.Localization.Price, 
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding NHours}">
+                <DataGridTextColumn.Header>
+                  <TextBlock Text="{Binding DataContext.Localization.NHours, 
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
-				    </DataGridTextColumn.Header>
-			    </DataGridTextColumn>
-			    <DataGridTextColumn Binding="{Binding Name}">
-				    <DataGridTextColumn.Header>
-					    <TextBlock Text="{Binding DataContext.Localization.Description, 
+                </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding Price}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.Price, 
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
-				    </DataGridTextColumn.Header>
-			    </DataGridTextColumn>
-			</DataGrid.Columns>
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding Name}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.Description, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+          </DataGrid.Columns>
         </DataGrid>
       </Grid>
     </Border>

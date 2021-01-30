@@ -59,7 +59,21 @@
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxBodyType}"/>
       <Border Classes="BorderOfText">
-        <TextBox VerticalAlignment="Stretch" Text="{Binding Car.BodyType}"/>
+        <ComboBox SelectedIndex="{Binding BodyTypeIndex}">
+          <!--TODO Add translations-->
+          <TextBlock Text="Компакт"/>
+          <TextBlock Text="Купе"/>
+          <TextBlock Text="Кабрио"/>
+          <TextBlock Text="Седан"/>
+          <TextBlock Text="Хэтчбек"/>
+          <TextBlock Text="Универсал"/>
+          <TextBlock Text="Лифтбек"/>
+          <TextBlock Text="Минивен"/>
+          <TextBlock Text="Кроссовер"/>
+          <TextBlock Text="Внедорожник"/>
+          <TextBlock Text="Фургон"/>
+          <TextBlock Text="Пикап"/>
+        </ComboBox>
       </Border>
     </StackPanel>
     <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical"
@@ -194,7 +208,7 @@
           <ComboBox Items="{Binding InspectionPlaces}"
                     SelectedItem="{Binding Car.PlaceOfInspection}"
                     VerticalAlignment="Stretch">
-              <!--<ComboBox.ItemTemplate>
+            <!--<ComboBox.ItemTemplate>
                   <DataTemplate>
                       <TextBlock Text="{Binding }"></TextBlock>
                   </DataTemplate>
@@ -220,10 +234,10 @@
         <TextBlock Classes="Label"
 						   Text="{Binding Localization.TextBoxWhoMadeInspection}"/>
         <Border Classes="BorderOfText">
-            <ComboBox Items="{Binding Inspectors}"
-                      SelectedItem="{Binding Car.WhoMadeInspection}"
-                      VerticalAlignment="Stretch">
-            </ComboBox>
+          <ComboBox Items="{Binding Inspectors}"
+                    SelectedItem="{Binding Car.WhoMadeInspection}"
+                    VerticalAlignment="Stretch">
+          </ComboBox>
         </Border>
       </StackPanel>
       <Button Grid.Row="0" Grid.Column="1"

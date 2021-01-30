@@ -22,5 +22,7 @@ namespace GradeExpertCRM.Models
         public string Title { get; set; }
 
         public DateTime CreationDate { get; set; }
+
+        public byte[] Content { get; set; }
     }
 }

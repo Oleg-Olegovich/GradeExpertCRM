@@ -19,12 +19,16 @@ namespace GradeExpertCRM.Models
         //[Required]
         public double FinishProcessingNHours { get; set; }
         //[Required]
+        [Range(0, 100)]
         public int AluminumPercent { get; set; }
         //[Required]
+        [Range(0, 100)]
         public int GlueTechniquePercent { get; set; }
         //[Required]
+        [Range(0, 100)]
         public int UnderPantingPercent { get; set; }
         //[Required]
+        [Range(0, 100)]
         public int? TaxPercent { get; set; }
         public string Language { get; set; } = "Russian";
     }

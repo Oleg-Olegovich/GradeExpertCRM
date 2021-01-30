@@ -19,14 +19,14 @@ namespace GradeExpertCRM.Models.Data.Repositories
             dbContext_ = Locator.Current.GetService<AppDbContext>();
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> All()
         {
             return dbContext_.Set<T>().ToList();
         }
 
-        public IEnumerable<T> GetWhere(Expression<Func<T, bool>> predicate)
+        public IEnumerable<T> Where(Expression<Func<T, bool>> predicate)
         {
-            return dbContext_.Set<T>().Where(predicate).Select(x => x); // May cause Exception!!!
+            return dbContext_.Set<T>().Where(predicate);
         }
 
         public T Add(T item)
@@ -36,7 +36,7 @@ namespace GradeExpertCRM.Models.Data.Repositories
             return item;
         }
 
-        public async Task<T> AddAsync(T item)
+        public async Task<T> AddAsync(T item) //TODO May cause exception!!!
         {
             await dbContext_.AddAsync(item);
             await dbContext_.SaveChangesAsync();

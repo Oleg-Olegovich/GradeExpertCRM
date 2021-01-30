@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
+using Avalonia.Controls;
 using ReactiveUI;
 using Avalonia.Media.Imaging;
 using GradeExpertCRM.Models;
 using GradeExpertCRM.Models.Data.Repositories;
+using iText.Layout.Element;
+using Newtonsoft.Json;
 using Splat;
 
 namespace GradeExpertCRM.ViewModels.Frames
@@ -23,6 +28,12 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             get => _carImage;
             set => this.RaiseAndSetIfChanged(ref _carImage, value);
+        }
+
+        public TextBlock DentDiameter
+        {
+            get => new TextBlock { Text = Calculation.DentDiameter.ToString() };
+            set => Calculation.DentDiameter = int.Parse(value.Text);
         }
 
         public Calculation Calculation { get; set; } = new Calculation();
@@ -65,12 +76,12 @@ namespace GradeExpertCRM.ViewModels.Frames
             CarImage = new Bitmap($"{ImagePath}{carImageName}.png");
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
 
-            calculationRepository_ =  Locator.Current.GetService<ICalculationRepository>();
+            calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
             var carRepository = Locator.Current.GetService<ICarRepository>();
+
             selectedCar_ = carRepository.FindById(carRepository.SelectedCarId);
 
-            //TODO change items of collections depending on Car's BodyType
-            DismantlingWorks = new ObservableCollection<DismantlingWork>();
+            DismantlingWorks = new ObservableCollection<DismantlingWork>(GetDismantlingWorksByBodyType(selectedCar_.BodyType, carImageName));
             SpareParts = new ObservableCollection<SparePart>();
         }
 
@@ -89,6 +100,50 @@ namespace GradeExpertCRM.ViewModels.Frames
         public void Cancel()
         {
             BaseWindow.Content = new CalculationDataViewModel(BaseWindow);
+        }
+
+        private List<DismantlingWork> GetDismantlingWorksByBodyType(BodyType bodyType, string componentName)
+        {
+            string jsonFile = GetJsonFileName(componentName);
+            
+            if (jsonFile == null)
+                return new List<DismantlingWork>();
+
+            string directory = @$"..\..\..\Resources\DismantlingWork\{bodyType}\";
+            string json = File.ReadAllText(directory + jsonFile);
+            return JsonConvert.DeserializeObject<List<DismantlingWork>>(json);
+        }
+
+        private string GetJsonFileName(string componentName)
+        {
+            string fileName = componentName switch
+            {
+                "01-1" => "front-left-door.json",
+                "02-1" => "front-right-door.json",
+                "03-1" => "rear-right-door.json",
+                "04-1" => "rear-left-door.json",
+                "05-1" => "front-left-fender.json",
+                "06-1" => "front-right-fender.json",
+                "09-1" => "roof.json",
+                "10-1" => "hood.json",
+                "11-1" => "truck.json",
+                "12-1" => "rear-left-fender.json",
+                "13-1" => "rear-right-fender.json",
+
+                //TODO These don't exist
+                /*
+                 * - Передний бампер
+                 * - Задний бампер
+                 * - Левая стойка
+                 * - Правая стойка.
+                 */
+                //"07-1" => Localization.LeftRack,
+                //"08-1" => Localization.RightRack,
+                //"14-1" => Localization.RearBumper,
+                _ => null
+            };
+
+            return fileName;
         }
     }
 }

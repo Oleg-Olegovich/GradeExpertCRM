@@ -25,7 +25,7 @@ namespace GradeExpertCRM.Models
         public string Model { get; set; }
 
         //[Required]
-        public string BodyType { get; set; }
+        public BodyType BodyType { get; set; }
 
         //[Required]
         public string Color { get; set; }
@@ -72,5 +72,6 @@ namespace GradeExpertCRM.Models
         public string Note { get; set; }
 
         public List<Calculation> Calculations { get; set; } = new List<Calculation>();
+        public List<Document> Documents { get; set; } = new List<Document>();
     }
 }

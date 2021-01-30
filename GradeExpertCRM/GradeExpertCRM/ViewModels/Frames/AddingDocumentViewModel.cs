@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Reactive;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using GradeExpertCRM.Models;
@@ -16,6 +17,7 @@ using iText.Kernel.Pdf;
 using iText.Layout.Element;
 using iText.Layout.Font;
 using iText.Layout.Properties;
+using Microsoft.AspNetCore.Components;
 using RazorLight;
 using ReactiveUI;
 using Splat;
@@ -33,44 +35,48 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public ReactiveCommand<Unit, Unit> GoDocumentView { get; }
 
+        public ReactiveCommand<Unit, Unit> DamagePhotosCommand { get; }
         public ReactiveCommand<Unit, Unit> SavePdfCommand { get; }
+        public ReactiveCommand<Unit, Unit> TestCommand { get; }
 
+        private readonly Car car_;
         private IDocumentRepository documentRepository_;
         private ICarRepository carRepository_;
-        private ICalculationRepository calculationRepository_;
         public AddingDocumentViewModel(IBaseWindow baseWindow, DocumentsViewModel parent)
         {
             BaseWindow = baseWindow;
             Parent = parent;
             GoDocumentView = ReactiveCommand.CreateFromTask(OpenDocumentView);
+            DamagePhotosCommand = ReactiveCommand.CreateFromTask(DamagePhotos);
             SavePdfCommand = ReactiveCommand.CreateFromTask(SavePdf);
+            TestCommand = ReactiveCommand.CreateFromTask(Test);
 
             documentRepository_ = Locator.Current.GetService<IDocumentRepository>();
             carRepository_ = Locator.Current.GetService<ICarRepository>();
-            calculationRepository_= Locator.Current.GetService<ICalculationRepository>();
-
+            car_ = carRepository_.CarWithCalculations(carRepository_.SelectedCarId);
         }
 
-        private const string FontArial = @"..\..\Resources\arial.TTF";
-        private async Task DamagePhoto()
+        private const string FontArial = @"..\..\..\Resources\arial.TTF";
+        private async Task DamagePhotos()
         {
-            /*
             //TODO make a restrictions for selecting up to 15 files
             OpenFileDialog dialog = new OpenFileDialog { AllowMultiple = true };
             dialog.Filters.Add(new FileDialogFilter { Name = "Images", Extensions = { "png", "jpg", "jpeg" } });
 
             string[] images = await dialog.ShowAsync(new Window());
 
+            if (images.Length <= 0) // Validation
+                return;
+
             const int pageWidth = 1000;
             const int pageHeight = 1415;
 
             // To save bytes
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            PdfWriter writer = new PdfWriter(baos);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            PdfWriter writer = new PdfWriter(stream);
             PdfDocument pdf = new PdfDocument(writer);
             pdf.SetDefaultPageSize(new PageSize(pageWidth, pageHeight));
             Document document = new Document(pdf);
-
 
             // Font registraction
             FontProvider fontProvider = new FontProvider();
@@ -82,9 +88,8 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             for (int i = 0; i < images.Length; i += 2)
             {
-                
                 document.Add(new Paragraph("ФОТО К КАЛЬКУЛЯЦИИ СТОИМОСТИ РАБОТ").SetBold());
-                document.Add(new Paragraph($"№ {car.Id} ОТ {DateTime.Now:d/M/yyyy} Г"));
+                document.Add(new Paragraph($"№ {car_.Id} ОТ {DateTime.Now:d/M/yyyy} Г"));
 
                 #region Table
 
@@ -93,17 +98,17 @@ namespace GradeExpertCRM.ViewModels.Frames
                 Cell cell21 = new Cell().Add(new Paragraph("НОМЕР ПОЛИСА ").SetBold());
                 Cell cell31 = new Cell().Add(new Paragraph("НОМЕР УБЫТКА").SetBold());
 
-                Cell cell12 = new Cell().Add(new Paragraph(car.Client.Name));
-                Cell cell22 = new Cell().Add(new Paragraph(car.PolicyNumber));
-                Cell cell32 = new Cell().Add(new Paragraph(car.Loss));
+                Cell cell12 = new Cell().Add(new Paragraph(car_.Client.Name));
+                Cell cell22 = new Cell().Add(new Paragraph(car_.PolicyNumber));
+                Cell cell32 = new Cell().Add(new Paragraph(car_.Loss));
 
                 Cell cell13 = new Cell().Add(new Paragraph("АВТОМОБИЛЬ").SetBold());
                 Cell cell23 = new Cell().Add(new Paragraph("ГОС. НОМЕР").SetBold());
                 Cell cell33 = new Cell().Add(new Paragraph("VIN").SetBold());
 
-                Cell cell14 = new Cell().Add(new Paragraph($"{car.Brand} {car.Model}"));
-                Cell cell24 = new Cell().Add(new Paragraph(car.Number));
-                Cell cell34 = new Cell().Add(new Paragraph(car.VIN));
+                Cell cell14 = new Cell().Add(new Paragraph($"{car_.Brand} {car_.Model}"));
+                Cell cell24 = new Cell().Add(new Paragraph(car_.Number));
+                Cell cell34 = new Cell().Add(new Paragraph(car_.VIN));
 
                 table.AddCell(cell11).AddCell(cell12).AddCell(cell13).AddCell(cell14);
                 table.AddCell(cell21).AddCell(cell22).AddCell(cell23).AddCell(cell24);
@@ -118,14 +123,14 @@ namespace GradeExpertCRM.ViewModels.Frames
 
                 Table table2 = new Table(1, false).SetMarginTop(20);
 
-                Image img = new Image(ImageDataFactory.Create(Directory + images[i])) //todo remove Directory from filename
+                Image img = new Image(ImageDataFactory.Create(images[i])) //todo remove Directory from filename
                     .SetMaxWidth(pageWidth - document.GetLeftMargin() - document.GetRightMargin())
                     .SetMaxHeight(600).SetMargins(10, 0, 10, 0);
                 table2.AddCell(new Cell().Add(new Paragraph($"ФОТО {i + 1}.")).Add(img).SetBorder(Border.NO_BORDER));
 
                 if (i + 1 != images.Length)
                 {
-                    Image img2 = new Image(ImageDataFactory.Create(Directory + images[i + 1])) //todo remove Directory from filename
+                    Image img2 = new Image(ImageDataFactory.Create(images[i + 1])) //todo remove Directory from filename
                         .SetMaxWidth(pageWidth - document.GetLeftMargin() - document.GetRightMargin())
                         .SetMaxHeight(600)
                         .SetMargins(10, 0, 10, 0);
@@ -158,9 +163,17 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             // To save bytes
             document.Close();
-            byte[] pdfBytes = baos.ToArray();
-            */
+            byte[] pdfBytes = stream.ToArray();
 
+            Models.Document documentModel = new Models.Document
+            {
+                CarId = car_.Id,
+                Title = "ФОТО ПОВРЕЖДЕНИЙ",
+                CreationDate = DateTime.Now,
+                Content = pdfBytes
+            };
+
+            await documentRepository_.AddAsync(documentModel);
         }
 
         private async Task SavePdf()
@@ -198,6 +211,15 @@ namespace GradeExpertCRM.ViewModels.Frames
                 pdfDoc.Close();
                 writer.Close();
             }
+        }
+
+        private async Task Test()
+        {
+            const string Output = @"C:\Users\Admin\Desktop\test.pdf";
+            var document = await documentRepository_.FirstOrDefaultAsync();
+            MemoryStream memory = new MemoryStream(document.Content);
+            PdfDocument pdfDoc = new PdfDocument(new PdfReader(memory), new PdfWriter(Output));
+            pdfDoc.Close();
         }
     }
 }

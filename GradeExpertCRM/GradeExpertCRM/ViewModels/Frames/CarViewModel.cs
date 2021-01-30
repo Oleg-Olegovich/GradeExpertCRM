@@ -59,7 +59,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             GoAddingCarView = ReactiveCommand.CreateFromTask(OpenAddingCarView);
             carRepository_ = Locator.Current.GetService<ICarRepository>();
             calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
-            var cars = carRepository_.GetAll();
+            var cars = carRepository_.All();
             _allCars = new ObservableCollection<Car>(cars);
             Cars = _allCars;
         }
