@@ -126,7 +126,7 @@ namespace GradeExpertCRM.ViewModels
 
         public string TextBoxToolPreparing => "VORBEREITUNG DES WERKZEUGS";
 
-        public string TextBoxNHoursPerItem => "N/S pro DETAIL";
+        public string TextBoxNHoursPerCar => "N/S pro DETAIL";
 
         public string TextBoxLanguage => "SPRACHE";
 
@@ -245,5 +245,17 @@ namespace GradeExpertCRM.ViewModels
         public string Partner => "Partner";
 
         public string Role => "Rolle";
+
+        public string Vat => "MWSt";
+
+        public string Document => "DOKUMENT";
+
+        public string DocumentData => "BELEGDATEN";
+
+        public string RecentChanges => "LETZTE ÄNDERUNGEN";
+
+        public string Actions => "AKTIONEN";
+
+        public string CreationData => "ERSTELLUNGSDATUM";
     }
 }

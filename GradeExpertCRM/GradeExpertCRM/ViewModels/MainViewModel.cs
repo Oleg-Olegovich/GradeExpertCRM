@@ -1,11 +1,9 @@
-﻿using System.Collections.ObjectModel;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ReactiveUI;
 using GradeExpertCRM.ViewModels.Frames;
 using System.Reactive;
 using GradeExpertCRM.Models;
 using GradeExpertCRM.Models.Data.Repositories;
-using Microsoft.EntityFrameworkCore.Internal;
 using Splat;
 
 namespace GradeExpertCRM.ViewModels
@@ -81,8 +79,10 @@ namespace GradeExpertCRM.ViewModels
 
         public ReactiveCommand<Unit, Unit> GoSettingsView { get; }
 
-        public MainViewModel()
+        public MainViewModel(bool isAdmin)
         {
+            IsAdmin = isAdmin;
+
             GoClientWindow = ReactiveCommand.CreateFromTask(OpenClientWindow);
             GoCarView = ReactiveCommand.CreateFromTask(OpenCarView);
             GoCalculatorView = ReactiveCommand.CreateFromTask(OpenCalculatorView);

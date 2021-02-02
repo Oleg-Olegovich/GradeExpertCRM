@@ -16,6 +16,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         public Settings Settings { get; set; }
 
         public ReactiveCommand<Unit, Unit> GoDetailsSettingsView { get; }
+
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
 
         private ILanguageProvider _localization;
@@ -26,7 +27,24 @@ namespace GradeExpertCRM.ViewModels.Frames
             set => this.RaiseAndSetIfChanged(ref _localization, value);
         }
 
+
+        private bool _isVatEnabled = false;
+
+        public bool IsVatEnabled 
+        {
+            get => _isVatEnabled;
+            set
+            {
+                if (!value)
+                {
+                    Settings.TaxPercent = null;
+                }
+                this.RaiseAndSetIfChanged(ref _isVatEnabled, value);
+            }
+        }
+
         private readonly ISettingsRepository settingsRepository_;
+
         public SettingsViewModel(IBaseWindow baseWindow)
         {
             BaseWindow = baseWindow;
@@ -39,7 +57,8 @@ namespace GradeExpertCRM.ViewModels.Frames
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
         }
 
-        private async Task OpenDetailsSettingsView() => BaseWindow.Content = new DetailsSettingsViewModel(BaseWindow);
+        private async Task OpenDetailsSettingsView() 
+            => BaseWindow.Content = new DetailsSettingsViewModel(BaseWindow);
 
         public void ChangeLanguage(string language)
         {

@@ -122,7 +122,7 @@
 
         string TextBoxToolPreparing { get; }
 
-        string TextBoxNHoursPerItem { get; }
+        string TextBoxNHoursPerCar { get; }
 
         string TextBoxLanguage { get; }
 
@@ -243,5 +243,17 @@
         string Partner { get; }
 
         string Role { get; }
+
+        string Vat { get; }
+
+        string Document { get; }
+        
+        string DocumentData { get; }
+        
+        string RecentChanges { get; }
+        
+        string Actions { get; }
+
+        string CreationData { get; }
     }
 }

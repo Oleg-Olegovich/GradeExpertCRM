@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Reactive.Linq;
-using Avalonia.Controls.Primitives;
+﻿using System.Collections.ObjectModel;
 using ReactiveUI;
 using Avalonia.Media.Imaging;
 using GradeExpertCRM.Models;
 using GradeExpertCRM.Models.Data.Repositories;
-using GradeExpertCRM.ViewModels.Frames;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Splat;
-using System.Linq;
 using System.Reactive;
-using Org.BouncyCastle.Utilities.Collections;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {

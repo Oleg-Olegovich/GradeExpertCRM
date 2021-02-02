@@ -128,7 +128,7 @@ namespace GradeExpertCRM.ViewModels
 
         public string TextBoxToolPreparing => "ПОДГОТОВКА ИНСТРУМЕНТА";
 
-        public string TextBoxNHoursPerItem => "Н/Ч ЗА ДЕТАЛЬ";
+        public string TextBoxNHoursPerCar => "Н/Ч ЗА АВТОМОБИЛЬ";
 
         public string TextBoxLanguage => "ЯЗЫК";
 
@@ -249,5 +249,17 @@ namespace GradeExpertCRM.ViewModels
         public string Role => "Роль";
 
         public string IncorrectFillingInOfFields => "Поля неверно заполнены" + Environment.NewLine;
+
+        public string Vat => "НДС";
+
+        public string Document => "ДОКУМЕНТ";
+
+        public string DocumentData => "ДАТА ДОКУМЕНТА";
+
+        public string RecentChanges => "ПОСЛ. ИЗМЕНЕНИЯ";
+
+        public string Actions => "ДЕЙСТВИЯ";
+
+        public string CreationData => "ДАТА СОЗДАНИЯ";
     }
 }

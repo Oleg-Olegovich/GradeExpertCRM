@@ -204,15 +204,18 @@
       <TextBlock Classes="Text"
 					   Text="{Binding Localization.RepairOfDents}"/>
       <TextBox Text="0 РУБ"
-					 Margin="20 0 0 0"/>
+			   IsReadOnly="true"
+			   Margin="20 0 0 0"/>
       <TextBlock Classes="Text"
 					   Text="{Binding Localization.Dismantling}"/>
       <TextBox Text="0 РУБ"
-					 Margin="20 0 0 0"/>
+			   IsReadOnly="true"
+			   Margin="20 0 0 0"/>
       <TextBlock Classes="Text"
-					   Text="{Binding Localization.SpareParts}"/>
+			     Text="{Binding Localization.SpareParts}"/>
       <TextBox Text="0 РУБ"
-					 Margin="20 0 0 0"/>
+			   IsReadOnly="true"
+			   Margin="20 0 0 0"/>
     </StackPanel>
 
     <Border Grid.Column="1" Grid.Row="1"

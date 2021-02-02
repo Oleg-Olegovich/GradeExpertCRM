@@ -86,7 +86,7 @@
 
     <TextBlock Grid.Row="9" Grid.Column="2"
 				   Classes="Text"
-				   Text="{Binding Localization.TextBoxNHoursPerItem}"/>
+				   Text="{Binding Localization.TextBoxNHoursPerCar}"/>
 
     <TextBlock Grid.Row="2" Grid.Column="6"
 				   Classes="Text"
@@ -97,6 +97,10 @@
 				   Text="%"/>
 
     <TextBlock Grid.Row="4" Grid.Column="6"
+				   Classes="Text"
+				   Text="%"/>
+
+	  <TextBlock Grid.Row="5" Grid.Column="6"
 				   Classes="Text"
 				   Text="%"/>
 
@@ -139,6 +143,20 @@
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TextBoxUnderPainting}"/>
+	
+	<Grid Grid.Row="5" Grid.Column="4"
+		  HorizontalAlignment="Right">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<CheckBox IsChecked="{Binding IsVatEnabled}"
+				  HorizontalAlignment="Left"/>
+		<TextBlock Classes="Text"
+				   TextAlignment="Right"
+				   Grid.Column="1"
+				   Text="{Binding Localization.Vat}"/>
+	</Grid>
 
     <Border Grid.Row="2" Grid.Column="1"
 				Classes="BorderOfText"
@@ -211,6 +229,16 @@
 				MaxHeight="40">
       <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.UnderPantingPercent}"/>
     </Border>
+
+	<Border Grid.Row="5" Grid.Column="5"
+			Classes="BorderOfText"
+			VerticalAlignment="Top"
+			Margin="5 0 0 5"
+			MaxHeight="40">
+		  <TextBox VerticalAlignment="Stretch" 
+				   Text="{Binding Settings.TaxPercent}"
+				   IsEnabled="{Binding IsVatEnabled}"/>
+	  </Border>
 
     <StackPanel Grid.Row="7" Grid.Column="4"
 					Orientation="Horizontal"
