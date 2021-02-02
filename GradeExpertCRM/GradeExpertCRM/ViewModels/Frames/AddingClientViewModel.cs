@@ -32,8 +32,8 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public async Task SaveAsync()
         {
-            try
-            {
+            
+            
                 var validationContext = new ValidationContext(Client) { MemberName = nameof(Client) };
                 var isValid = Validator.TryValidateObject(Client, validationContext, null);
                 if (!isValid)
