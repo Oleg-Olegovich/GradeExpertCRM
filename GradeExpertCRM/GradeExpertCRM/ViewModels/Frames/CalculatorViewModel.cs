@@ -18,7 +18,6 @@ namespace GradeExpertCRM.ViewModels.Frames
 {
     internal class CalculatorViewModel : ViewModelBase
     {
-        private const string ResourcesDirectory = @"..\..\..\Resources\";
         private string _carImageName = "01-1";
 
         private const string ImagePath = @"..\..\..\Resources\Cars\2\";
@@ -65,74 +64,25 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
 
-        private readonly Car selectedCar_;
-
         private readonly ICalculationRepository calculationRepository_;
 
-        private readonly ISettingsRepository settingsRepository_;
-
-        private readonly Settings settings_;
+        private readonly Car selectedCar_;
 
         public CalculatorViewModel(IBaseWindow baseWindow, string carImageName)
         {
             BaseWindow = baseWindow;
             _carImageName = carImageName;
             Calculation.ComponentName = CarImageDescription;
-            CarImage = new Bitmap(ImagePath + carImageName + ".png");
+            CarImage = new Bitmap($"{ImagePath}{carImageName}.png");
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
 
             calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
             var carRepository = Locator.Current.GetService<ICarRepository>();
-            var settingsRepository = Locator.Current.GetService<ISettingsRepository>();
 
             selectedCar_ = carRepository.FindById(carRepository.SelectedCarId);
-            settings_ = settingsRepository.FirstOrDefault();
 
             DismantlingWorks = new ObservableCollection<DismantlingWork>(GetDismantlingWorksByBodyType(selectedCar_.BodyType, carImageName));
             SpareParts = new ObservableCollection<SparePart>();
-        }
-
-        private void Calculate()
-        {
-            string folder = _carImageName switch
-            {
-                "09-1" => @"DentRemoval\roof\",
-                "10-1" => @"DentRemoval\hood\",
-                "11-1" => @"DentRemoval\trunk\",
-                _ => @"DentRemoval\others\"
-            };
-
-            var path = ResourcesDirectory + folder + Calculation.DentDiameter + ".json";
-            var json = File.ReadAllText(path);
-            var sortedList = JsonConvert.DeserializeObject<SortedList<int, double>>(json);
-            double hours;
-            bool result = sortedList.TryGetValue(Calculation.DentQuantity, out hours);
-
-            if (!result)
-            {
-                var keyList = sortedList.Keys.ToList();
-                int keyIndex = keyList.BinarySearch(Calculation.DentQuantity);
-                keyIndex = ~keyIndex - 1;
-                hours = sortedList[keyList[keyIndex]];
-            }
-
-            //TODO add other calculations
-            Calculation.NHours = hours;
-            Calculation.DentPrice = hours * settings_.RemoveDentsPrice;
-
-            if (Calculation.TypeOfRepair == TypeOfRepair.UnderPainting)
-            {
-                Calculation.DentPrice -= Calculation.DentPrice * (settings_.UnderPantingPercent / 100.0);
-                Calculation.Price += Calculation.PriceOfPainting;
-            }
-
-            if (Calculation.IsAluminum)
-                Calculation.DentPrice += Calculation.DentPrice * (settings_.AluminumPercent / 100.0);
-
-            if (Calculation.IsAdhesive)
-                Calculation.DentPrice = Calculation.DentPrice * (settings_.GlueTechniquePercent / 100.0);
-
-            Calculation.Price += Calculation.DentPrice;
         }
 
         public void SelectTypeOfRepair(string type)
@@ -142,7 +92,6 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public async Task Save()
         {
-            Calculate();
             Calculation.CarId = selectedCar_.Id;
             await calculationRepository_.AddAsync(Calculation);
             BaseWindow.Content = new CalculationDataViewModel(BaseWindow);
@@ -156,12 +105,12 @@ namespace GradeExpertCRM.ViewModels.Frames
         private List<DismantlingWork> GetDismantlingWorksByBodyType(BodyType bodyType, string componentName)
         {
             string jsonFile = GetJsonFileName(componentName);
-
+            
             if (jsonFile == null)
                 return new List<DismantlingWork>();
 
-            string path = @$"{ResourcesDirectory}DismantlingWork\{bodyType}\{jsonFile}";
-            string json = File.ReadAllText(path);
+            string directory = @$"..\..\..\Resources\DismantlingWork\{bodyType}\";
+            string json = File.ReadAllText(directory + jsonFile);
             return JsonConvert.DeserializeObject<List<DismantlingWork>>(json);
         }
 
