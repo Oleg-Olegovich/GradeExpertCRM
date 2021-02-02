@@ -126,7 +126,7 @@ namespace GradeExpertCRM.ViewModels
 
         public string TextBoxToolPreparing => "PREPARING THE TOOL";
 
-        public string TextBoxNHoursPerItem => "N/H PER DETAIL";
+        public string TextBoxNHoursPerCar => "N/H PER AUTO";
 
         public string TextBoxLanguage => "LANGUAGE";
 
@@ -238,12 +238,25 @@ namespace GradeExpertCRM.ViewModels
 
         public string Error => "Error";
 
-        public string IncorrectFillingInOfFields => "The fields are filled in incorrectly" + Environment.NewLine;
+        public string IncorrectFillingInOfFields => "The fields are filled in incorrectly" 
+            + Environment.NewLine;
 
         public string Client => "Client";
 
         public string Partner => "Partner";
 
         public string Role => "Role";
+
+        public string Vat => "VAT";
+
+        public string Document => "DOCUMENT";
+
+        public string DocumentData => "DOCUMENT DATA";
+
+        public string RecentChanges => "RECENT CHANGES";
+
+        public string Actions => "ACTIONS";
+
+        public string CreationData => "CREATION DATA";
     }
 }

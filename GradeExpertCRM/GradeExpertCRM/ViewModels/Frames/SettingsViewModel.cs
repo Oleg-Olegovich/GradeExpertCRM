@@ -1,11 +1,8 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Reactive;
 using System.Threading.Tasks;
 using GradeExpertCRM.Models;
 using GradeExpertCRM.Models.Data.Repositories;
-using Microsoft.EntityFrameworkCore.Internal;
 using ReactiveUI;
 using Splat;
 
@@ -16,6 +13,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         public Settings Settings { get; set; }
 
         public ReactiveCommand<Unit, Unit> GoDetailsSettingsView { get; }
+
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
 
         private ILanguageProvider _localization;
@@ -27,6 +25,22 @@ namespace GradeExpertCRM.ViewModels.Frames
         }
 
         private readonly IRepository<Settings> settingsRepository_;
+
+        private bool _isVatEnabled = false;
+
+        public bool IsVatEnabled 
+        {
+            get => _isVatEnabled;
+            set
+            {
+                if (!value)
+                {
+                    Settings.TaxPercent = null;
+                }
+                this.RaiseAndSetIfChanged(ref _isVatEnabled, value);
+            }
+        }
+
         public SettingsViewModel(IBaseWindow baseWindow)
         {
             BaseWindow = baseWindow;
@@ -39,7 +53,8 @@ namespace GradeExpertCRM.ViewModels.Frames
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
         }
 
-        private async Task OpenDetailsSettingsView() => BaseWindow.Content = new DetailsSettingsViewModel(BaseWindow);
+        private async Task OpenDetailsSettingsView() 
+            => BaseWindow.Content = new DetailsSettingsViewModel(BaseWindow);
 
         public void ChangeLanguage(string language)
         {

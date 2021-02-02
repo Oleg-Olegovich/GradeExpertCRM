@@ -169,7 +169,8 @@
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
 							</Button>
 							<Button Command="{Binding DataContext.DeleteCommand, 
-                                          RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" CommandParameter="{Binding}">
+                                    RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" 
+									CommandParameter="{Binding}">
 								<Image Source="avares://GradeExpertCRM/Resources/cross.png"/>
 							</Button>
 						</StackPanel>

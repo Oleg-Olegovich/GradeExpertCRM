@@ -73,8 +73,9 @@ namespace GradeExpertCRM.ViewModels
 
         public ReactiveCommand<Unit, Unit> SignInCommand { get; }
 
-        public SignInViewModel()
+        public SignInViewModel(IBaseWindow baseWindow)
         {
+            BaseWindow = baseWindow;
             SignInCommand = ReactiveCommand.CreateFromTask(SignInAsync);
         }
 
@@ -96,7 +97,7 @@ namespace GradeExpertCRM.ViewModels
                 // TO DO.
                 if (Login == "Admin" && Password == "qwerty")
                 {
-                    BaseWindow.Content = new MainViewModel();
+                    BaseWindow.Content = new MainViewModel(true);
                 }
             }
             catch (Exception e)

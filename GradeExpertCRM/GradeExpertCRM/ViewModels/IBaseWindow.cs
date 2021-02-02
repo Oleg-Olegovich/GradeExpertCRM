@@ -14,5 +14,7 @@ namespace GradeExpertCRM.ViewModels
         public ILanguageProvider Localization { get; }
 
         public string Language { set; }
+
+        public bool IsAdmin { get; set; }
     }
 }

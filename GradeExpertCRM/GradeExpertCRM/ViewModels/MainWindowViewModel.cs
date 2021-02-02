@@ -1,12 +1,43 @@
-﻿using GradeExpertCRM.Models;
+﻿using GradeExpertCRM.Models.Data.Repositories;
 using ReactiveUI;
-using System.Collections.ObjectModel;
+using GradeExpertCRM.Models;
+using Splat;
 
 namespace GradeExpertCRM.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase, IBaseWindow
     {
-        public string Language { get; set; }
+        private string _language;
+
+        private ILanguageProvider _localization;
+
+        private ILanguageProvider[] LanguageProvider = new ILanguageProvider[]
+        {
+            new RussianLanguageProvider(),
+            new GermanLanguageProvider(),
+            new EnglishLanguageProvider()
+        };
+
+        public string Language
+        {
+            get => _language;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _language, value);
+                Localization = _language switch
+                {
+                    "Russian" => LanguageProvider[0],
+                    "German" => LanguageProvider[1],
+                    _ => LanguageProvider[2]
+                };
+            }
+        }
+
+        public new ILanguageProvider Localization
+        {
+            get => _localization;
+            set => this.RaiseAndSetIfChanged(ref _localization, value);
+        }
 
         /// <summary>
         /// Reference to the changing content of the app window.
@@ -28,8 +59,10 @@ namespace GradeExpertCRM.ViewModels
         /// </summary>
         public MainWindowViewModel()
         {
-            //Content = new SignInViewModel();
-            Content = new MainViewModel();
+            var settingsRepository = Locator.Current.GetService<IRepository<Settings>>();
+            Language = settingsRepository.FirstOrDefault()?.Language ?? "Russian";
+            //Content = new SignInViewModel(this);
+            Content = new MainViewModel(true);
         }
     }
 }

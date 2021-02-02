@@ -32,27 +32,23 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public async Task SaveAsync()
         {
+            try
+            {
+                var validationContext = new ValidationContext(Client) { MemberName = nameof(Client) };
+                var isValid = Validator.TryValidateObject(Client, validationContext, null);
+                if (!isValid)
+                    return;
 
-            var validationContext = new ValidationContext(Client) { MemberName = nameof(Client) };
-            var isValid = Validator.TryValidateObject(Client, validationContext, null);
-            if (!isValid)
-                return;
-
-            await repository_.AddAsync(Client);
-            BaseWindow.Content = new ClientViewModel(BaseWindow);
-
-            //try
-            //{
-            //    await repository_.AddAsync(Client);
-            //    BaseWindow.Content = new ClientViewModel(BaseWindow);
-            //}
-            //catch
-            //{
-            //    await MessageBox.Avalonia.MessageBoxManager
-            //        .GetMessageBoxStandardWindow(Localization.Error, Localization.IncorrectFillingInOfFields,
-            //        ButtonEnum.Ok, Icon.Error, WindowStartupLocation.CenterScreen, Style.MacOs)
-            //        .Show();
-            //}
+                await repository_.AddAsync(Client);
+                BaseWindow.Content = new ClientViewModel(BaseWindow);
+            }
+            catch
+            {
+                await MessageBox.Avalonia.MessageBoxManager
+                    .GetMessageBoxStandardWindow(Localization.Error, Localization.IncorrectFillingInOfFields,
+                    ButtonEnum.Ok, Icon.Error, WindowStartupLocation.CenterScreen, Style.MacOs)
+                    .Show();
+            }
         }
     }
 }
