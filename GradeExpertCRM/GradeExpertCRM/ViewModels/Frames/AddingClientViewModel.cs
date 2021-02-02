@@ -32,6 +32,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public async Task SaveAsync()
         {
+<<<<<<< HEAD
 
             var validationContext = new ValidationContext(Client) { MemberName = nameof(Client) };
             var isValid = Validator.TryValidateObject(Client, validationContext, null);
@@ -53,6 +54,25 @@ namespace GradeExpertCRM.ViewModels.Frames
             //        ButtonEnum.Ok, Icon.Error, WindowStartupLocation.CenterScreen, Style.MacOs)
             //        .Show();
             //}
+=======
+            try
+            {
+                var validationContext = new ValidationContext(Client) { MemberName = nameof(Client) };
+                var isValid = Validator.TryValidateObject(Client, validationContext, null);
+                if (!isValid)
+                    return;
+
+                await repository_.AddAsync(Client);
+                BaseWindow.Content = new ClientViewModel(BaseWindow);
+            }
+            catch
+            {
+                await MessageBox.Avalonia.MessageBoxManager
+                    .GetMessageBoxStandardWindow(Localization.Error, Localization.IncorrectFillingInOfFields,
+                    ButtonEnum.Ok, Icon.Error, WindowStartupLocation.CenterScreen, Style.MacOs)
+                    .Show();
+            }
+>>>>>>> c976383740f6d7f13ae5d437a87efe60b9897ba1
         }
     }
 }

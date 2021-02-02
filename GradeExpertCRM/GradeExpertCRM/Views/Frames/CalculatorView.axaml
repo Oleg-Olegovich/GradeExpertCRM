@@ -8,9 +8,15 @@
              x:Class="GradeExpertCRM.Views.Frames.CalculatorView">
 
 
+<<<<<<< HEAD
   <UserControl.Styles>
     <StyleInclude Source="avares://GradeExpertCRM/Styles/Style.xaml"/>
   </UserControl.Styles>
+=======
+    <UserControl.Styles>
+        <StyleInclude Source="avares://GradeExpertCRM/Styles/Style.xaml"/>
+    </UserControl.Styles>
+>>>>>>> c976383740f6d7f13ae5d437a87efe60b9897ba1
 
   <Grid>
     <Grid.RowDefinitions>
@@ -204,15 +210,18 @@
       <TextBlock Classes="Text"
 					   Text="{Binding Localization.RepairOfDents}"/>
       <TextBox Text="0 РУБ"
-					 Margin="20 0 0 0"/>
+			   IsReadOnly="true"
+			   Margin="20 0 0 0"/>
       <TextBlock Classes="Text"
 					   Text="{Binding Localization.Dismantling}"/>
       <TextBox Text="0 РУБ"
-					 Margin="20 0 0 0"/>
+			   IsReadOnly="true"
+			   Margin="20 0 0 0"/>
       <TextBlock Classes="Text"
-					   Text="{Binding Localization.SpareParts}"/>
+			     Text="{Binding Localization.SpareParts}"/>
       <TextBox Text="0 РУБ"
-					 Margin="20 0 0 0"/>
+			   IsReadOnly="true"
+			   Margin="20 0 0 0"/>
     </StackPanel>
 
     <Border Grid.Column="1" Grid.Row="1"

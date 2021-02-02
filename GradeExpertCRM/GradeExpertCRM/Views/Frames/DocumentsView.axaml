@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:local="clr-namespace:GradeExpertCRM.Views.Frames"
              x:Class="GradeExpertCRM.Views.Frames.DocumentsView">
 
 	<UserControl.Styles>
@@ -44,11 +45,48 @@
 				</Button>
 			</DockPanel>
 
-			<ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7">
-				<DataGrid>
-					
-				</DataGrid>
-			</ScrollViewer>
+			<DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7"
+					  Items="{Binding Documents}">
+				<DataGrid.Columns>
+					<DataGridTextColumn Binding="{Binding Title}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding DataContext.Localization.Document, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type local:DocumentsView}}}"/>
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding CarId}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="%"/>
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding CreationDate}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding DataContext.Localization.CreationData, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type local:DocumentsView}}}"/>
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTemplateColumn>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Horizontal">
+									<Button>
+										<Image Source=""/>
+									</Button>
+									<Button>
+										<Image Source=""/>
+									</Button>
+									<Button>
+										<Image Source=""/>
+									</Button>
+									<Button>
+										<Image Source=""/>
+									</Button>
+								</StackPanel>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+				</DataGrid.Columns>
+			</DataGrid>
 
 			<StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="2">
 				<Button x:Name="ImageButtonAddDocument"
@@ -60,18 +98,6 @@
 				<Button x:Name="ButtonAddDocument"
 						Command="{Binding GoAddingDocumentView}"
 						Content="{Binding Localization.ButtonCreateDocument}"/>
-			</StackPanel>
-
-			<StackPanel Grid.Row="2" Grid.Column="4" Orientation="Horizontal" Grid.ColumnSpan="2">
-				<Button x:Name="ButtonPhoto"
-						Command="{Binding GoAddingDocumentView}"
-						Content="{Binding Localization.ButtonPhoto}"/>
-				<Button x:Name="ImageButtonPhoto"
-						Command="{Binding GoAddingDocumentView}">
-					<Image Source="avares://GradeExpertCRM/Resources/camera.png"
-						   DockPanel.Dock="Left"
-						   HorizontalAlignment="Right"/>
-				</Button>
 			</StackPanel>
 		</Grid>
 	</Grid>

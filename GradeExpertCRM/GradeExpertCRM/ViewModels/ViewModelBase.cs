@@ -11,5 +11,7 @@ namespace GradeExpertCRM.ViewModels
         public IBaseWindow BaseWindow;
 
         public ILanguageProvider Localization => BaseWindow.Localization;
+
+        public bool IsAdmin { get; set; }
     }
 }

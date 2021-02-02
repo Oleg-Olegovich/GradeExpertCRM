@@ -59,6 +59,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public async Task Save()
         {
+<<<<<<< HEAD
             var validationContext = new ValidationContext(Car) { MemberName = nameof(Car) };
             var isValid = Validator.TryValidateObject(Car, validationContext, null);
             if (!isValid || SelectedClient.Id == 0)
@@ -69,8 +70,14 @@ namespace GradeExpertCRM.ViewModels.Frames
             BaseWindow.Content = new CarViewModel(BaseWindow);
 
             /*
+=======
+>>>>>>> c976383740f6d7f13ae5d437a87efe60b9897ba1
             try
             {
+                var validationContext = new ValidationContext(Car) { MemberName = nameof(Car) };
+                var isValid = Validator.TryValidateObject(Car, validationContext, null);
+                if (!isValid)
+                    return;
                 Car.ClientId = SelectedClient.Id;
                 await carRepository_.AddAsync(Car);
                 BaseWindow.Content = new CarViewModel(BaseWindow);
@@ -82,7 +89,6 @@ namespace GradeExpertCRM.ViewModels.Frames
                     ButtonEnum.Ok, Icon.Error, WindowStartupLocation.CenterScreen, Style.MacOs)
                     .Show();
             }
-            */
         }
     }
 }
