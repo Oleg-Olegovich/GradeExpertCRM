@@ -189,7 +189,7 @@
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxDateOfInspection}"/>
       <Border Classes="BorderOfText">
-        <TextBox VerticalAlignment="Stretch" Text="{Binding Car.DateOfInspection}"/>
+          <TextBox VerticalAlignment="Stretch" Text="{Binding Car.DateOfInspection}"/>
       </Border>
     </StackPanel>
     <Grid Grid.Row="9" Grid.Column="1"

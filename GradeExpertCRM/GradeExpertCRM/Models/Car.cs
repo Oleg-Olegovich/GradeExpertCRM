@@ -72,6 +72,7 @@ namespace GradeExpertCRM.Models
         public string Note { get; set; }
 
         public List<Calculation> Calculations { get; set; } = new List<Calculation>();
+        public OverallCalculation OverallCalculation { get; set; }
         public List<Document> Documents { get; set; } = new List<Document>();
     }
 }

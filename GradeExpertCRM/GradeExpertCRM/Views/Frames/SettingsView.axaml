@@ -1,4 +1,4 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
+﻿	<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -179,7 +179,7 @@
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
 				MaxHeight="40">
-      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.FinishingProcessingPrice}"/>
+      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.FinalProcessing}"/>
     </Border>
 
     <Border Grid.Row="7" Grid.Column="1"
@@ -187,7 +187,7 @@
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
 				MaxHeight="40">
-      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.AntiCorrosionPrice}"/>
+      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.AntiCorrosion}"/>
     </Border>
 
     <Border Grid.Row="8" Grid.Column="1"
@@ -195,7 +195,7 @@
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
 				MaxHeight="40">
-      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.PreparingToolPrice}"/>
+      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.PreparingTool}"/>
     </Border>
 
     <Border Grid.Row="9" Grid.Column="1"
@@ -203,7 +203,7 @@
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
 				MaxHeight="40">
-      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.FinishProcessingNHours}"/>
+      <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.FinalProcessingMax}"/>
     </Border>
 
     <Border Grid.Row="2" Grid.Column="5"

@@ -1,10 +1,12 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using ReactiveUI;
 using Avalonia.Media.Imaging;
 using GradeExpertCRM.Models;
 using GradeExpertCRM.Models.Data.Repositories;
 using Splat;
 using System.Reactive;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
@@ -86,13 +88,25 @@ namespace GradeExpertCRM.ViewModels.Frames
             set => this.RaiseAndSetIfChanged(ref _carImagesDescriprions[3], value);
         }
 
+        #region OverallPrices
+        public double DentRepairPrice { get; set; }
+        public double DismantlingPrice { get; set; }
+        public double SparePartsPrice { get; set; }
+        public double PaintingPrice { get; set; }
+        public double AdditionalWorksPrice { get; set; }
+        public double TotalPrice { get; set; }
+        #endregion
+
         public bool IsButtonEnabled => carRepository_.SelectedCarId > 0;
         public ReactiveCommand<Calculation, Unit> DeleteCommand { get; }
-
+        
+        public OverallCalculation OverallCalculation { get; }
         public ObservableCollection<Calculation> Calculations { get; }
 
-        private ICalculationRepository calculationRepository_;
-        private ICarRepository carRepository_;
+        private readonly IOverallCalculationRepository overallCalculationRepository_;
+        private readonly ICalculationRepository calculationRepository_;
+        private readonly ICarRepository carRepository_;
+        private readonly Settings settings_;
 
         public CalculationDataViewModel(IBaseWindow baseWindow)
         {
@@ -101,12 +115,54 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             DeleteCommand = ReactiveCommand.Create<Calculation>(Delete);
 
-            calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
             carRepository_ = Locator.Current.GetService<ICarRepository>();
-
             var selectedCarId = carRepository_.SelectedCarId;
-            var calculations = calculationRepository_.Where(x => x.CarId == selectedCarId);
+            if(selectedCarId == 0)
+                return;
+
+            overallCalculationRepository_ = Locator.Current.GetService<IOverallCalculationRepository>();
+            calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
+            settings_ = Locator.Current.GetService<ISettingsRepository>().FirstOrDefault();
+
+            var calculations = calculationRepository_.GetFullCalculationsByCarId(selectedCarId);
             Calculations = new ObservableCollection<Calculation>(calculations);
+
+            var overallCalculation = overallCalculationRepository_.GetByCarId(selectedCarId);
+            OverallCalculation = overallCalculation ?? new OverallCalculation();
+            UpdateOverallCalculation();
+            UpdatePrices();
+        }
+
+        private void UpdatePrices()
+        {
+            foreach (var calculation in Calculations)
+            {
+                DentRepairPrice += calculation.DentPrice;
+                PaintingPrice += calculation.PriceOfPainting;
+                AdditionalWorksPrice += OverallCalculation.AntiCorrosionPrice + 
+                                        OverallCalculation.PreparingToolPrice +
+                                        OverallCalculation.FinalProcessingPrice;
+
+                foreach (var dismantlingWork in calculation.DismantlingWorks)
+                    DismantlingPrice += dismantlingWork.Price;
+
+                foreach (var sparePart in calculation.SpareParts)
+                    SparePartsPrice += sparePart.Price;
+            }
+
+            TotalPrice = DentRepairPrice + DismantlingPrice + SparePartsPrice + PaintingPrice + AdditionalWorksPrice;
+        }
+
+        private void UpdateOverallCalculation()
+        {
+            OverallCalculation.CarId = carRepository_.SelectedCarId;
+            OverallCalculation.PreparingToolPrice = settings_.PreparingTool * settings_.DismantlingPrice * Calculations.Count;
+            OverallCalculation.AntiCorrosionPrice = settings_.AntiCorrosion * settings_.DismantlingPrice * Calculations.Count;
+            var price = settings_.FinalProcessing * settings_.DismantlingPrice;
+            var maxPrice = settings_.FinalProcessingMax * settings_.DismantlingPrice;
+            OverallCalculation.FinalProcessingPrice = price > maxPrice ? maxPrice : price;
+
+            overallCalculationRepository_.Update(OverallCalculation);
         }
 
         public void Delete(Calculation calculation)

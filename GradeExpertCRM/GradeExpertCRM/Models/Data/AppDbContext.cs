@@ -12,6 +12,7 @@ namespace GradeExpertCRM.Models.Data
         public DbSet<Document> Documents { get; set; }
         public DbSet<Settings> Settings { get; set; }
         public DbSet<DetailsSettings> DetailsSettings { get; set; }
+        public DbSet<OverallCalculation> OverallCalculations { get; set; }
 
         public AppDbContext()
         {

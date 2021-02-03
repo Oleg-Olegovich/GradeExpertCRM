@@ -11,13 +11,13 @@ namespace GradeExpertCRM.Models
         //[Required]
         public double DismantlingPrice { get; set; }
         //[Required]
-        public double FinishingProcessingPrice { get; set; }
+        public double FinalProcessing { get; set; }
         //[Required]
-        public double AntiCorrosionPrice { get; set; }
+        public double AntiCorrosion { get; set; }
         //[Required]
-        public double PreparingToolPrice { get; set; }
+        public double PreparingTool { get; set; }
         //[Required]
-        public double FinishProcessingNHours { get; set; }
+        public double FinalProcessingMax { get; set; }
         //[Required]
         [Range(0, 100)]
         public int AluminumPercent { get; set; }

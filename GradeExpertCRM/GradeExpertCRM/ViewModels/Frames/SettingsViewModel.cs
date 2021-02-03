@@ -52,6 +52,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             settingsRepository_ = Locator.Current.GetService<ISettingsRepository>();
             Settings = settingsRepository_.FirstOrDefault() ?? new Settings();
+            _isVatEnabled = Settings.TaxPercent != null;
 
             GoDetailsSettingsView = ReactiveCommand.CreateFromTask(OpenDetailsSettingsView);
             SaveCommand = ReactiveCommand.CreateFromTask(Save);

@@ -105,79 +105,79 @@
     </Grid>
 
     <DataGrid Grid.Row="1" Items="{Binding Calculations}" >
-		<DataGrid.Columns>
-			<DataGridTextColumn Binding="{Binding ComponentName}">
-				<DataGridTextColumn.Header>
-					<TextBlock Text="{Binding DataContext.Localization.Detail, 
+      <DataGrid.Columns>
+        <DataGridTextColumn Binding="{Binding ComponentName}">
+          <DataGridTextColumn.Header>
+            <TextBlock Text="{Binding DataContext.Localization.Detail, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
-				</DataGridTextColumn.Header>
-			</DataGridTextColumn>
-			<DataGridTextColumn Binding="{Binding DentQuantity}">
-				<DataGridTextColumn.Header>
-					<TextBlock Text="{Binding DataContext.Localization.QuantityBriefly, 
+          </DataGridTextColumn.Header>
+        </DataGridTextColumn>
+        <DataGridTextColumn Binding="{Binding DentQuantity}">
+          <DataGridTextColumn.Header>
+            <TextBlock Text="{Binding DataContext.Localization.QuantityBriefly, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
-				</DataGridTextColumn.Header>
-			</DataGridTextColumn>
-			<DataGridTextColumn Binding="{Binding DentDiameter}">
-				<DataGridTextColumn.Header>
-					<TextBlock Text="{Binding DataContext.Localization.DN, 
+          </DataGridTextColumn.Header>
+        </DataGridTextColumn>
+        <DataGridTextColumn Binding="{Binding DentDiameter}">
+          <DataGridTextColumn.Header>
+            <TextBlock Text="{Binding DataContext.Localization.DN, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
-				</DataGridTextColumn.Header>
-			</DataGridTextColumn>
-			<DataGridTextColumn Binding="{Binding TypeOfRepair}">
-				<DataGridTextColumn.Header>
-					<TextBlock Text="{Binding DataContext.Localization.TypeOfRepair, 
+          </DataGridTextColumn.Header>
+        </DataGridTextColumn>
+        <DataGridTextColumn Binding="{Binding TypeOfRepair}">
+          <DataGridTextColumn.Header>
+            <TextBlock Text="{Binding DataContext.Localization.TypeOfRepair, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
-				</DataGridTextColumn.Header>
-			</DataGridTextColumn>
-			<DataGridCheckBoxColumn Binding="{Binding IsAluminum}">
-				<DataGridCheckBoxColumn.Header>
-					<TextBlock Text="{Binding DataContext.Localization.AluminumBriefly, 
+          </DataGridTextColumn.Header>
+        </DataGridTextColumn>
+        <DataGridCheckBoxColumn Binding="{Binding IsAluminum}">
+          <DataGridCheckBoxColumn.Header>
+            <TextBlock Text="{Binding DataContext.Localization.AluminumBriefly, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
-				</DataGridCheckBoxColumn.Header>
-			</DataGridCheckBoxColumn>
-			<DataGridCheckBoxColumn Binding="{Binding IsAdhesive}">
-				<DataGridCheckBoxColumn.Header>
-					<TextBlock Text="{Binding DataContext.Localization.Glue, 
+          </DataGridCheckBoxColumn.Header>
+        </DataGridCheckBoxColumn>
+        <DataGridCheckBoxColumn Binding="{Binding IsAdhesive}">
+          <DataGridCheckBoxColumn.Header>
+            <TextBlock Text="{Binding DataContext.Localization.Glue, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
-				</DataGridCheckBoxColumn.Header>
-			</DataGridCheckBoxColumn>
-			<DataGridCheckBoxColumn Binding="{Binding IsDismantling}">
-				<DataGridCheckBoxColumn.Header>
-					<TextBlock Text="{Binding DataContext.Localization.Dismantling, 
+          </DataGridCheckBoxColumn.Header>
+        </DataGridCheckBoxColumn>
+        <DataGridCheckBoxColumn Binding="{Binding IsDismantling}">
+          <DataGridCheckBoxColumn.Header>
+            <TextBlock Text="{Binding DataContext.Localization.Dismantling, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
-				</DataGridCheckBoxColumn.Header>
-			</DataGridCheckBoxColumn>
-			<DataGridTextColumn Binding="{Binding NHours}">
-				<DataGridTextColumn.Header>
-					<TextBlock Text="{Binding DataContext.Localization.NHours, 
+          </DataGridCheckBoxColumn.Header>
+        </DataGridCheckBoxColumn>
+        <DataGridTextColumn Binding="{Binding NHours}">
+          <DataGridTextColumn.Header>
+            <TextBlock Text="{Binding DataContext.Localization.NHours, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
-				</DataGridTextColumn.Header>
-			</DataGridTextColumn>
-			<DataGridTextColumn Binding="{Binding DentPrice}">
-				<DataGridTextColumn.Header>
-					<TextBlock Text="{Binding DataContext.Localization.Price, 
+          </DataGridTextColumn.Header>
+        </DataGridTextColumn>
+        <DataGridTextColumn Binding="{Binding DentPrice}">
+          <DataGridTextColumn.Header>
+            <TextBlock Text="{Binding DataContext.Localization.Price, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
-				</DataGridTextColumn.Header>
-			</DataGridTextColumn>
-			<DataGridTemplateColumn> 
-				<DataGridTemplateColumn.CellTemplate>
-					<DataTemplate>
-						<StackPanel Orientation="Horizontal">
-							<Button>
-								<TextBlock Text="{Binding DataContext.Localization.Change, 
+          </DataGridTextColumn.Header>
+        </DataGridTextColumn>
+        <DataGridTemplateColumn>
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <StackPanel Orientation="Horizontal">
+                <Button>
+                  <TextBlock Text="{Binding DataContext.Localization.Change, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"/>
-							</Button>
-							<Button Command="{Binding DataContext.DeleteCommand, 
-                                    RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" 
-									CommandParameter="{Binding}">
-								<Image Source="avares://GradeExpertCRM/Resources/cross.png"/>
-							</Button>
-						</StackPanel>
-					</DataTemplate>
-				</DataGridTemplateColumn.CellTemplate>
-			</DataGridTemplateColumn>
-		</DataGrid.Columns>
+                </Button>
+                <Button Command="{Binding DataContext.DeleteCommand, 
+                                    RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"
+                    CommandParameter="{Binding}">
+                  <Image Source="avares://GradeExpertCRM/Resources/cross.png"/>
+                </Button>
+              </StackPanel>
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+      </DataGrid.Columns>
     </DataGrid>
 
     <Grid Grid.Row="2"
@@ -265,27 +265,27 @@
         <TextBlock Grid.Row="0" Grid.Column="1"
 				   Classes="Text"
 				   Foreground="#000000"
-				   Text="0,00"/>
+				   Text="{Binding DentRepairPrice}"/>
         <TextBlock Grid.Row="1" Grid.Column="1"
 				   Classes="Text"
 				   Foreground="#000000"
-				   Text="0,00"/>
+				   Text="{Binding DismantlingPrice}"/>
         <TextBlock Grid.Row="2" Grid.Column="1"
 				   Classes="Text"
 				   Foreground="#000000"
-				   Text="0,00"/>
+				   Text="{Binding SparePartsPrice}"/>
         <TextBlock Grid.Row="3" Grid.Column="1"
 				   Classes="Text"
 				   Foreground="#000000"
-				   Text="0,00"/>
+				   Text="{Binding PaintingPrice}"/>
         <TextBlock Grid.Row="4" Grid.Column="1"
 				   Classes="Text"
 				   Foreground="#000000"
-				   Text="0,00"/>
+				   Text="{Binding AdditionalWorksPrice}"/>
         <TextBlock Grid.Row="5" Grid.Column="1"
 				   Classes="Text"
 				   Foreground="#000000"
-				   Text="0,00"/>
+				   Text="{Binding TotalPrice}"/>
         <TextBlock Grid.Row="0" Grid.Column="2"
 				   Classes="Text"
 				   Text="{Binding Localization.Currency}"/>
