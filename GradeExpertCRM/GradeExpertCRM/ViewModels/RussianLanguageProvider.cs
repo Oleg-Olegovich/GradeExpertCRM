@@ -116,11 +116,11 @@ namespace GradeExpertCRM.ViewModels
 
         public string TextBoxFinishingTreatment => "ФИНИШНАЯ ОБРАБОТКА";
 
-        public string TextBoxAdhesiveTechnology => "КЛЕЕВАЯ ТЕХНИКА +";
+        public string TextBoxAdhesiveTechnology => "КЛЕЕВАЯ ТЕХНИКА";
 
-        public string TextBoxAluminum => "АЛЮМИНИЙ +";
+        public string TextBoxAluminum => "АЛЮМИНИЙ";
 
-        public string TextBoxUnderPainting => "ПОД ПОКРАСКУ -";
+        public string TextBoxUnderPainting => "ПОД ПОКРАСКУ";
 
         public string TextBoxAdditionalWorks => "ДОПОЛНИТЕЛЬНЫЕ РАБОТЫ/УСЛУГИ";
 

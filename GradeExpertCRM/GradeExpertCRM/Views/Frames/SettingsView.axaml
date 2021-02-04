@@ -132,17 +132,17 @@
     <TextBlock Grid.Row="2" Grid.Column="4"
 				   Classes="Text"
 				   TextAlignment="Right"
-				   Text="{Binding Localization.TextBoxAluminum} +"/>
+				   Text="{Binding Localization.TextBoxAluminum, StringFormat={}{0} +}"/>
 
     <TextBlock Grid.Row="3" Grid.Column="4"
 				   Classes="Text"
 				   TextAlignment="Right"
-				   Text="{Binding Localization.TextBoxAdhesiveTechnology} +"/>
+				   Text="{Binding Localization.TextBoxAdhesiveTechnology, StringFormat={}{0} +}"/>
 
     <TextBlock Grid.Row="4" Grid.Column="4"
 				   Classes="Text"
 				   TextAlignment="Right"
-				   Text="{Binding Localization.TextBoxUnderPainting}"/>
+				   Text="{Binding Localization.TextBoxUnderPainting ,StringFormat={}{0} -}"/>
 	
 	<Grid Grid.Row="5" Grid.Column="4"
 		  HorizontalAlignment="Right">
