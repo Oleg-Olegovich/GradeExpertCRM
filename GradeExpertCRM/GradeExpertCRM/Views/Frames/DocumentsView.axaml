@@ -70,16 +70,17 @@
 							<DataTemplate>
 								<StackPanel Orientation="Horizontal">
 									<Button>
-										<Image Source=""/>
+										<!-- TODO Вызывает исключение! Из-за того, что нет параметра Source -->
+										<!-- <Image Source=""/> -->
 									</Button>
 									<Button>
-										<Image Source=""/>
+										<!-- <Image Source=""/> -->
 									</Button>
 									<Button>
-										<Image Source=""/>
+										<!-- <Image Source=""/> -->
 									</Button>
 									<Button>
-										<Image Source=""/>
+										<!-- <Image Source=""/> -->
 									</Button>
 								</StackPanel>
 							</DataTemplate>

@@ -139,9 +139,6 @@ namespace GradeExpertCRM.ViewModels.Frames
             {
                 DentRepairPrice += calculation.DentPrice;
                 PaintingPrice += calculation.PriceOfPainting;
-                AdditionalWorksPrice += OverallCalculation.AntiCorrosionPrice + 
-                                        OverallCalculation.PreparingToolPrice +
-                                        OverallCalculation.FinalProcessingPrice;
 
                 foreach (var dismantlingWork in calculation.DismantlingWorks)
                     DismantlingPrice += dismantlingWork.Price;
@@ -150,6 +147,10 @@ namespace GradeExpertCRM.ViewModels.Frames
                     SparePartsPrice += sparePart.Price;
             }
 
+            AdditionalWorksPrice += OverallCalculation.AntiCorrosionPrice + 
+                                    OverallCalculation.PreparingToolPrice +
+                                    OverallCalculation.FinalProcessingPrice;
+            
             TotalPrice = DentRepairPrice + DismantlingPrice + SparePartsPrice + PaintingPrice + AdditionalWorksPrice;
         }
 
@@ -158,7 +159,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             OverallCalculation.CarId = carRepository_.SelectedCarId;
             OverallCalculation.PreparingToolPrice = settings_.PreparingTool * settings_.DismantlingPrice * Calculations.Count;
             OverallCalculation.AntiCorrosionPrice = settings_.AntiCorrosion * settings_.DismantlingPrice * Calculations.Count;
-            var price = settings_.FinalProcessing * settings_.DismantlingPrice;
+            var price = settings_.FinalProcessing * settings_.DismantlingPrice * Calculations.Count;
             var maxPrice = settings_.FinalProcessingMax * settings_.DismantlingPrice;
             OverallCalculation.FinalProcessingPrice = price > maxPrice ? maxPrice : price;
 

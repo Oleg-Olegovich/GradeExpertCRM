@@ -43,13 +43,18 @@ namespace GradeExpertCRM.ViewModels.Frames
         public ReactiveCommand<Unit, Unit> GoAddingDocumentView { get; }
 
         private IDocumentRepository documentRepository_;
+        private ICarRepository carRepository_;
         public DocumentsViewModel(IBaseWindow baseWindow)
         {
             BaseWindow = baseWindow;
             GoAddingDocumentView = ReactiveCommand.CreateFromTask(OpenAddingDocumentView);
 
+            carRepository_ = Locator.Current.GetService<ICarRepository>();
+            if (carRepository_.SelectedCarId == 0)
+                return;
+
             documentRepository_ = Locator.Current.GetService<IDocumentRepository>();
-            var documents = documentRepository_.All();
+            var documents = documentRepository_.Where(x=>x.CarId == carRepository_.SelectedCarId);
             _allDocuments = new ObservableCollection<Document>(documents);
             Documents = _allDocuments;
         }

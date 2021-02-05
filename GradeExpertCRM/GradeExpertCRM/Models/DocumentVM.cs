@@ -2,8 +2,7 @@
 {
     public class DocumentVM
     {
-        public Client Client { get; set; }
-        public Settings Settings { get; set; }
         public Car Car { get; set; }
+        public DetailsSettings DetailsSettings { get; set; }
     }
 }

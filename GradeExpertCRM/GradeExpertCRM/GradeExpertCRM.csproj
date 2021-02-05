@@ -439,7 +439,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Templates\template1.cshtml" />
     <EmbeddedResource Include="Resources\Templates\template2.cshtml" />
-    <EmbeddedResource Include="Resources\Templates\template3.cshtml" />
     <EmbeddedResource Include="Resources\Templates\template4.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -489,5 +488,8 @@
     <Compile Update="Views\SignInView.axaml.cs">
       <DependentUpon>SignInView.axaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Templates\template3.cshtml" />
   </ItemGroup>
 </Project>
