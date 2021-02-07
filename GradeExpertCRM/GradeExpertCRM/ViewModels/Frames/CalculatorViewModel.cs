@@ -33,7 +33,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public TextBlock DentDiameter
         {
-            get => new TextBlock { Text = Calculation.DentDiameter.ToString() };
+            get => new TextBlock {Text = Calculation.DentDiameter.ToString()};
             set => Calculation.DentDiameter = int.Parse(value.Text);
         }
 
@@ -88,42 +88,57 @@ namespace GradeExpertCRM.ViewModels.Frames
             selectedCar_ = carRepository.FindById(carRepository.SelectedCarId);
             settings_ = settingsRepository.FirstOrDefault();
 
-            DismantlingWorks = new ObservableCollection<DismantlingWork>(GetDismantlingWorksByBodyType(selectedCar_.BodyType, carImageName));
+            DismantlingWorks =
+                new ObservableCollection<DismantlingWork>(GetDismantlingWorksByBodyType(selectedCar_.BodyType,
+                    carImageName));
             SpareParts = new ObservableCollection<SparePart>();
         }
 
         private void Calculate()
         {
-            string folder = _carImageName switch
+            double initialDentPrice;
+            if (!Calculation.IsFixPrice)
             {
-                "09-1" => @"DentRemoval\roof\",
-                "10-1" => @"DentRemoval\hood\",
-                "11-1" => @"DentRemoval\trunk\",
-                _ => @"DentRemoval\others\"
-            };
+                string folder = _carImageName switch
+                {
+                    "09-1" => @"DentRemoval\roof\",
+                    "10-1" => @"DentRemoval\hood\",
+                    "11-1" => @"DentRemoval\trunk\",
+                    _ => @"DentRemoval\others\"
+                };
 
-            var path = ResourcesDirectory + folder + Calculation.DentDiameter + ".json";
-            var json = File.ReadAllText(path);
-            var sortedList = JsonConvert.DeserializeObject<SortedList<int, double>>(json);
-            double hours;
-            bool result = sortedList.TryGetValue(Calculation.DentQuantity, out hours);
+                var path = ResourcesDirectory + folder + Calculation.DentDiameter + ".json";
+                var json = File.ReadAllText(path);
+                var sortedList = JsonConvert.DeserializeObject<SortedList<int, double>>(json);
+                double hours;
+                bool result = sortedList.TryGetValue(Calculation.DentQuantity, out hours);
 
-            if (!result)
-            {
-                var keyList = sortedList.Keys.ToList();
-                int keyIndex = keyList.BinarySearch(Calculation.DentQuantity);
-                keyIndex = ~keyIndex - 1;
-                hours = sortedList[keyList[keyIndex]];
+                if (!result)
+                {
+                    var keyList = sortedList.Keys.ToList();
+                    int keyIndex = keyList.BinarySearch(Calculation.DentQuantity);
+                    keyIndex = ~keyIndex - 1;
+                    hours = sortedList[keyList[keyIndex]];
+                }
+
+                Calculation.NHours = hours;
+                initialDentPrice = hours * settings_.RemoveDentsPrice;
+                Calculation.DentPrice = initialDentPrice;
             }
+            else
+                initialDentPrice = Calculation.DentPrice;
 
-            Calculation.NHours = hours;
-            double initialDentPrice = hours * settings_.RemoveDentsPrice;
-            Calculation.DentPrice = initialDentPrice;
 
             if (Calculation.TypeOfRepair == TypeOfRepair.UnderPainting)
             {
                 Calculation.DentPrice -= initialDentPrice * (settings_.UnderPantingPercent / 100.0);
-                // Calculation.Price += Calculation.PriceOfPainting;
+                Calculation.Price = Calculation.PriceOfPainting;
+            }
+            else if (Calculation.TypeOfRepair == TypeOfRepair.Replacement)
+            {
+                Calculation.SpareParts = new List<SparePart>(SpareParts);
+                foreach (var part in SpareParts)
+                    Calculation.Price += part.Price * part.Quantity;
             }
 
             if (Calculation.IsAluminum)
@@ -132,6 +147,16 @@ namespace GradeExpertCRM.ViewModels.Frames
             if (Calculation.IsAdhesive)
                 Calculation.DentPrice += initialDentPrice * (settings_.GlueTechniquePercent / 100.0);
 
+            Calculation.Price += Calculation.DentPrice;
+
+            var appliedWorks = from work in DismantlingWorks
+                where work.IsApplied
+                select work;
+
+            Calculation.DismantlingWorks = new List<DismantlingWork>(appliedWorks);
+
+            foreach (var work in Calculation.DismantlingWorks)
+                Calculation.Price += work.Price;
         }
 
         public void SelectTypeOfRepair(string type)
@@ -155,7 +180,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         private List<DismantlingWork> GetDismantlingWorksByBodyType(BodyType bodyType, string componentName)
         {
             string jsonFile = GetJsonFileName(componentName);
-            
+
             if (jsonFile == null)
                 return new List<DismantlingWork>();
 

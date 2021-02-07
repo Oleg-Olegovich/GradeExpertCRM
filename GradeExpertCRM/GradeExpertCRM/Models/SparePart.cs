@@ -13,7 +13,7 @@ namespace GradeExpertCRM.Models
         [ForeignKey(nameof(CalculationId))]
         public Calculation Calculation { get; set; }
 
-        public bool IsApplied { get; set; }
+        public bool IsApplied { get; set; } //TODO May be redundant 
 
         public int Code { get; set; }
 
