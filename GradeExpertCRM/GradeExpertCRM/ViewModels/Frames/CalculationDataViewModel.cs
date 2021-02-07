@@ -97,7 +97,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         public double TotalPrice { get; set; }
         #endregion
 
-        public bool IsButtonEnabled => carRepository_.SelectedCarId > 0;
+        public bool IsButtonEnabled => carRepository_.SelectedCarId > 0 && settings_ != null;
         public ReactiveCommand<Calculation, Unit> DeleteCommand { get; }
         
         public OverallCalculation OverallCalculation { get; }
@@ -116,13 +116,13 @@ namespace GradeExpertCRM.ViewModels.Frames
             DeleteCommand = ReactiveCommand.Create<Calculation>(Delete);
 
             carRepository_ = Locator.Current.GetService<ICarRepository>();
+            settings_ = Locator.Current.GetService<ISettingsRepository>().FirstOrDefault();
             var selectedCarId = carRepository_.SelectedCarId;
-            if(selectedCarId == 0)
+            if(selectedCarId == 0 || settings_ == null)
                 return;
 
             overallCalculationRepository_ = Locator.Current.GetService<IOverallCalculationRepository>();
             calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
-            settings_ = Locator.Current.GetService<ISettingsRepository>().FirstOrDefault();
 
             var calculations = calculationRepository_.GetFullCalculationsByCarId(selectedCarId);
             Calculations = new ObservableCollection<Calculation>(calculations);

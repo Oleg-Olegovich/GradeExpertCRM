@@ -180,7 +180,7 @@ namespace GradeExpertCRM.ViewModels.Frames
                 "12-1" => "rear-left-fender.json",
                 "13-1" => "rear-right-fender.json",
 
-                //TODO These don't exist
+                // These don't exist
                 /*
                  * - Передний бампер
                  * - Задний бампер
