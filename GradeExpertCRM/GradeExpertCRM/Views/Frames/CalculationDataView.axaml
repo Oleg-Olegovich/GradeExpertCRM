@@ -242,23 +242,23 @@
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.RepairOfDents}"/>
-        <TextBlock Grid.Row="0" Grid.Column="1"
+        <TextBlock Grid.Column="0" Grid.Row="1"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.Dismantling}"/>
-        <TextBlock Grid.Row="0" Grid.Column="2"
+        <TextBlock Grid.Column="0" Grid.Row="2"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.SpareParts}"/>
-        <TextBlock Grid.Row="0" Grid.Column="3"
+        <TextBlock Grid.Column="0" Grid.Row="3"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.PriceOfPainting}"/>
-        <TextBlock Grid.Row="0" Grid.Column="4"
+        <TextBlock Grid.Column="0" Grid.Row="4"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.AdditionalWorks}"/>
-        <TextBlock Grid.Row="0" Grid.Column="5"
+        <TextBlock Grid.Column="0" Grid.Row="5"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TotalPrice}"/>

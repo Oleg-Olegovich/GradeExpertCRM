@@ -51,7 +51,7 @@
 				   Classes="Text"
 				   Text="{Binding Localization.TextBoxCoefficients}"/>
 
-    <TextBlock Grid.Row="6" Grid.Column="0"
+    <TextBlock Grid.Row="5" Grid.Column="0"
 				   Classes="Text"
 				   Text="{Binding Localization.TextBoxAdditionalWorks}"/>
 
@@ -72,17 +72,17 @@
 				   Classes="Text"
 				   Text="{Binding Localization.Currency}"/>
 
-    <TextBlock Grid.Row="4" Grid.Column="2"
+    <TextBlock Grid.Row="8" Grid.Column="2"
 				   Classes="Text"
-				   Text="{Binding Localization.Currency}"/>
+				   Text="{Binding Localization.NHours}"/>
+
+    <TextBlock Grid.Row="6" Grid.Column="2"
+				   Classes="Text"
+				   Text="{Binding Localization.NHours}"/>
 
     <TextBlock Grid.Row="7" Grid.Column="2"
 				   Classes="Text"
-				   Text="{Binding Localization.Currency}"/>
-
-    <TextBlock Grid.Row="8" Grid.Column="2"
-				   Classes="Text"
-				   Text="{Binding Localization.Currency}"/>
+				   Text="{Binding Localization.NHours}"/>
 
     <TextBlock Grid.Row="9" Grid.Column="2"
 				   Classes="Text"
@@ -109,17 +109,17 @@
 				   TextAlignment="Right"
 				   Text="{Binding Localization.Dismantling}"/>
 
-    <TextBlock Grid.Row="4" Grid.Column="0"
+    <TextBlock Grid.Row="8" Grid.Column="0"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TextBoxFinishingTreatment}"/>
 
-    <TextBlock Grid.Row="7" Grid.Column="0"
+    <TextBlock Grid.Row="6" Grid.Column="0"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TextBoxAntiCorrosionTreatment}"/>
 
-    <TextBlock Grid.Row="8" Grid.Column="0"
+    <TextBlock Grid.Row="7" Grid.Column="0"
 				   Classes="Text"
 				   TextAlignment="Right"
 				   Text="{Binding Localization.TextBoxToolPreparing}"/>
@@ -174,7 +174,7 @@
       <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.DismantlingPrice}"/>
     </Border>
 
-    <Border Grid.Row="4" Grid.Column="1"
+    <Border Grid.Row="8" Grid.Column="1"
 				Classes="BorderOfText"
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
@@ -182,7 +182,7 @@
       <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.FinalProcessing}"/>
     </Border>
 
-    <Border Grid.Row="7" Grid.Column="1"
+    <Border Grid.Row="6" Grid.Column="1"
 				Classes="BorderOfText"
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"
@@ -190,7 +190,7 @@
       <TextBox VerticalAlignment="Stretch" Text="{Binding Settings.AntiCorrosion}"/>
     </Border>
 
-    <Border Grid.Row="8" Grid.Column="1"
+    <Border Grid.Row="7" Grid.Column="1"
 				Classes="BorderOfText"
 				VerticalAlignment="Top"
 				Margin="5 0 0 5"

@@ -257,5 +257,29 @@ namespace GradeExpertCRM.ViewModels
         public string Actions => "AKTIONEN";
 
         public string CreationData => "ERSTELLUNGSDATUM";
+
+        public string Compact => "Kompakt";
+
+        public string Compartment => "Fach";
+
+        public string Cabrio => "Cabrio";
+
+        public string Sedan => "Limousine";
+
+        public string Hatchback => "Hatchback";
+
+        public string StationWagon => "Stationsfuhrwerk";
+
+        public string Liftback => "Liftback";
+
+        public string Minivan => "Minivan";
+
+        public string Crossover => "Crossover";
+
+        public string OffRoadVehicle => "Geländewagen";
+
+        public string Van => "Van";
+
+        public string PickupTruck => "Anhalterlastwagen";
     }
 }

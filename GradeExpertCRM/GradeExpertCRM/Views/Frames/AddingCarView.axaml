@@ -60,19 +60,18 @@
 					   Text="{Binding Localization.TextBoxBodyType}"/>
       <Border Classes="BorderOfText">
         <ComboBox SelectedIndex="{Binding BodyTypeIndex}">
-          <!--TODO Add translations-->
-          <TextBlock Text="Компакт"/>
-          <TextBlock Text="Купе"/>
-          <TextBlock Text="Кабрио"/>
-          <TextBlock Text="Седан"/>
-          <TextBlock Text="Хэтчбек"/>
-          <TextBlock Text="Универсал"/>
-          <TextBlock Text="Лифтбек"/>
-          <TextBlock Text="Минивен"/>
-          <TextBlock Text="Кроссовер"/>
-          <TextBlock Text="Внедорожник"/>
-          <TextBlock Text="Фургон"/>
-          <TextBlock Text="Пикап"/>
+          <TextBlock Text="{Binding Localization.Compact}"/>
+          <TextBlock Text="{Binding Localization.Compartment}"/>
+          <TextBlock Text="{Binding Localization.Cabrio}"/>
+          <TextBlock Text="{Binding Localization.Sedan}"/>
+          <TextBlock Text="{Binding Localization.Hatchback}"/>
+          <TextBlock Text="{Binding Localization.StationWagon}"/>
+          <TextBlock Text="{Binding Localization.Liftback}"/>
+          <TextBlock Text="{Binding Localization.Minivan}"/>
+          <TextBlock Text="{Binding Localization.Crossover}"/>
+          <TextBlock Text="{Binding Localization.OffRoadVehicle}"/>
+          <TextBlock Text="{Binding Localization.Van}"/>
+          <TextBlock Text="{Binding Localization.PickupTruck}"/>
         </ComboBox>
       </Border>
     </StackPanel>
@@ -189,19 +188,11 @@
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxDateOfInspection}"/>
       <Border Classes="BorderOfText">
-          <TextBox VerticalAlignment="Stretch" Text="{Binding Car.DateOfInspection}"/>
+		  <DatePicker VerticalAlignment="Stretch" SelectedDate="{Binding Car.DateOfInspection}"/>
       </Border>
     </StackPanel>
-    <Grid Grid.Row="9" Grid.Column="1"
-		  Margin="0 10 0 0">
-      <Grid.RowDefinitions>
-        <RowDefinition/>
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="9*"/>
-        <ColumnDefinition/>
-      </Grid.ColumnDefinitions>
-      <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+	<StackPanel Grid.Row="9" Grid.Column="1" 
+				Orientation="Vertical">
         <TextBlock Classes="Label"
 						   Text="{Binding Localization.TextBoxPlaceOfInspection}"/>
         <Border Classes="BorderOfText">
@@ -215,22 +206,9 @@
               </ComboBox.ItemTemplate>-->
           </ComboBox>
         </Border>
-      </StackPanel>
-      <Button Grid.Row="0" Grid.Column="1"
-          Classes="Plus">
-        <Image Source="avares://GradeExpertCRM/Resources/plus.png"/>
-      </Button>
-    </Grid>
-    <Grid Grid.Row="10" Grid.Column="0"
-		  Margin="0 10 0 0">
-      <Grid.RowDefinitions>
-        <RowDefinition/>
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="9*"/>
-        <ColumnDefinition/>
-      </Grid.ColumnDefinitions>
-      <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+    </StackPanel>
+	<StackPanel Grid.Row="10" Grid.Column="0" 
+				Orientation="Vertical">
         <TextBlock Classes="Label"
 						   Text="{Binding Localization.TextBoxWhoMadeInspection}"/>
         <Border Classes="BorderOfText">
@@ -239,12 +217,7 @@
                     VerticalAlignment="Stretch">
           </ComboBox>
         </Border>
-      </StackPanel>
-      <Button Grid.Row="0" Grid.Column="1"
-			  Classes="Plus">
-        <Image Source="avares://GradeExpertCRM/Resources/plus.png"/>
-      </Button>
-    </Grid>
+    </StackPanel>
     <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Vertical"
 				Margin="0 10 0 0">
       <TextBlock Classes="Label"

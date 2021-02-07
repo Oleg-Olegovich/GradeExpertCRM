@@ -255,5 +255,29 @@
         string Actions { get; }
 
         string CreationData { get; }
+
+        string Compact { get; }
+
+        string Compartment { get; }
+
+        string Cabrio { get; }
+
+        string Sedan { get; }
+
+        string Hatchback { get; }
+
+        string StationWagon { get; }
+
+        string Liftback { get; }
+
+        string Minivan { get; }
+
+        string Crossover { get; }
+
+        string OffRoadVehicle { get; }
+
+        string Van { get; }
+
+        string PickupTruck { get; }
     }
 }
