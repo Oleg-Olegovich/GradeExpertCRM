@@ -440,6 +440,7 @@
     <EmbeddedResource Include="Resources\Templates\template1.cshtml" />
     <EmbeddedResource Include="Resources\Templates\template2.cshtml" />
     <EmbeddedResource Include="Resources\Templates\template4.cshtml" />
+    <EmbeddedResource Include="Resources\Templates\template5.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\DismantlingWork\SUV-and-Van\front-left-door.json" />

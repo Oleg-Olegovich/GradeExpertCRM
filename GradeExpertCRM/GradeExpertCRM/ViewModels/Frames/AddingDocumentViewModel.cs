@@ -39,6 +39,9 @@ namespace GradeExpertCRM.ViewModels.Frames
         public ReactiveCommand<Unit, Unit> CalculationWithoutPhotoCommand { get; }
         public ReactiveCommand<Unit, Unit> DamagePhotosCommand { get; }
         public ReactiveCommand<Unit, Unit> OrderCommand { get; }
+        public ReactiveCommand<Unit, Unit> PerformedWorkCommand { get; }
+        public ReactiveCommand<Unit, Unit> PaymentCommand { get; }
+        public ReactiveCommand<Unit, Unit> FranchiseCommand { get; }
 
         private readonly Car car_;
         private DetailsSettings detailsSettings_;
@@ -54,6 +57,9 @@ namespace GradeExpertCRM.ViewModels.Frames
             OrderCommand = ReactiveCommand.CreateFromTask(Order);
             CalculationWithoutPhotoCommand = ReactiveCommand.CreateFromTask(CalculationWithoutPhoto);
             CalculationWithPhotoCommand = ReactiveCommand.CreateFromTask(CalculationWithPhoto);
+            PerformedWorkCommand = ReactiveCommand.CreateFromTask(PerformedWork);
+            PaymentCommand = ReactiveCommand.CreateFromTask(Payment);
+            FranchiseCommand = ReactiveCommand.CreateFromTask(Franchise);
 
             documentRepository_ = Locator.Current.GetService<IDocumentRepository>();
             carRepository_ = Locator.Current.GetService<ICarRepository>();
@@ -207,10 +213,10 @@ namespace GradeExpertCRM.ViewModels.Frames
             await documentRepository_.AddAsync(documentModel);
             Test(pdfBytes);
         }
-
+        
         private async Task CalculationWithoutPhoto()
         {
-            string input = "GradeExpertCRM.Resources.Templates.template3";
+            const string input = "GradeExpertCRM.Resources.Templates.template3";
 
             var engine = new RazorLightEngineBuilder()
                 .UseEmbeddedResourcesProject(System.Reflection.Assembly.GetEntryAssembly())
@@ -253,7 +259,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             Test(pdfBytes);
         }
-
+        
         private async Task DamagePhotos()
         {
             //TODO make a restrictions for selecting up to 15 files
@@ -379,43 +385,191 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             Test(pdfBytes);
         }
-
-        //TODO change the logic
+        
         private async Task Order()
         {
-            string input = "GradeExpertCRM.Resources.Templates.template1";
+            const string input = "GradeExpertCRM.Resources.Templates.template1";
+            
+            var engine = new RazorLightEngineBuilder()
+                .UseEmbeddedResourcesProject(System.Reflection.Assembly.GetEntryAssembly())
+                .UseMemoryCachingProvider()
+                .Build();
 
-            string output = @"C:\Users\Admin\Desktop\template1.pdf";
-
-            SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Filters.Add(new FileDialogFilter {Name = "PDF", Extensions = {"pdf"}});
-            var result = await dialog.ShowAsync(new Window());
-
-            if (result != null)
+            var documentVM = new DocumentVM
             {
-                var engine = new RazorLightEngineBuilder()
-                    .UseEmbeddedResourcesProject(System.Reflection.Assembly.GetEntryAssembly())
-                    .UseMemoryCachingProvider()
-                    .Build();
+                Car = car_,
+                DetailsSettings = detailsSettings_
+            };
 
-                string html = await engine.CompileRenderAsync<object>(input, null);
+            string html = await engine.CompileRenderAsync<object>(input, documentVM);
 
-                PdfWriter writer = new PdfWriter(result);
-                PdfDocument pdfDoc = new PdfDocument(writer);
+            const int pageWidth = 1000;
+            const int pageHeight = 1415;
 
-                pdfDoc.SetDefaultPageSize(new PageSize(1000, 1415));
+            // To save bytes
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            PdfWriter writer = new PdfWriter(stream);
+            PdfDocument pdfDoc = new PdfDocument(writer);
 
-                ConverterProperties converterProperties = new ConverterProperties();
+            pdfDoc.SetDefaultPageSize(new PageSize(pageWidth, pageHeight));
+            ConverterProperties converterProperties = new ConverterProperties();
+            converterProperties.SetFontProvider(new DefaultFontProvider(true, true, true));
+            HtmlConverter.ConvertToPdf(html, pdfDoc, converterProperties);
+            
+            pdfDoc.Close();
+            byte[] pdfBytes = stream.ToArray();
 
-                converterProperties.SetFontProvider(new DefaultFontProvider(true, true, true));
+            Models.Document documentModel = new Models.Document
+            {
+                CarId = car_.Id,
+                Title = "ЗАКАЗ-НАРЯД",
+                CreationDate = DateTime.Now,
+                Content = pdfBytes
+            };
 
-                HtmlConverter.ConvertToPdf(html, pdfDoc, converterProperties);
+            await documentRepository_.AddAsync(documentModel);
 
-                pdfDoc.Close();
-                writer.Close();
-            }
+            Test(pdfBytes);
+        }
+        
+        private async Task PerformedWork()
+        {
+            const string input = "GradeExpertCRM.Resources.Templates.template2";
+            
+            var engine = new RazorLightEngineBuilder()
+                .UseEmbeddedResourcesProject(System.Reflection.Assembly.GetEntryAssembly())
+                .UseMemoryCachingProvider()
+                .Build();
+
+            var documentVM = new DocumentVM
+            {
+                Car = car_,
+                DetailsSettings = detailsSettings_
+            };
+
+            string html = await engine.CompileRenderAsync<object>(input, documentVM);
+
+            const int pageWidth = 1000;
+            const int pageHeight = 1415;
+
+            // To save bytes
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            PdfWriter writer = new PdfWriter(stream);
+            PdfDocument pdfDoc = new PdfDocument(writer);
+
+            pdfDoc.SetDefaultPageSize(new PageSize(pageWidth, pageHeight));
+            ConverterProperties converterProperties = new ConverterProperties();
+            converterProperties.SetFontProvider(new DefaultFontProvider(true, true, true));
+            HtmlConverter.ConvertToPdf(html, pdfDoc, converterProperties);
+            
+            pdfDoc.Close();
+            byte[] pdfBytes = stream.ToArray();
+
+            Models.Document documentModel = new Models.Document
+            {
+                CarId = car_.Id,
+                Title = "АКТ ВЫПОЛНЕННЫХ РАБОТ",
+                CreationDate = DateTime.Now,
+                Content = pdfBytes
+            };
+
+            await documentRepository_.AddAsync(documentModel);
+
+            Test(pdfBytes);
         }
 
+        private async Task Payment()
+        {
+            const string input = "GradeExpertCRM.Resources.Templates.template4";
+            
+            var engine = new RazorLightEngineBuilder()
+                .UseEmbeddedResourcesProject(System.Reflection.Assembly.GetEntryAssembly())
+                .UseMemoryCachingProvider()
+                .Build();
+
+            var documentVM = new DocumentVM
+            {
+                Car = car_,
+                DetailsSettings = detailsSettings_
+            };
+
+            string html = await engine.CompileRenderAsync<object>(input, documentVM);
+
+            const int pageWidth = 1000;
+            const int pageHeight = 1415;
+
+            // To save bytes
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            PdfWriter writer = new PdfWriter(stream);
+            PdfDocument pdfDoc = new PdfDocument(writer);
+
+            pdfDoc.SetDefaultPageSize(new PageSize(pageWidth, pageHeight));
+            ConverterProperties converterProperties = new ConverterProperties();
+            converterProperties.SetFontProvider(new DefaultFontProvider(true, true, true));
+            HtmlConverter.ConvertToPdf(html, pdfDoc, converterProperties);
+            
+            pdfDoc.Close();
+            byte[] pdfBytes = stream.ToArray();
+
+            Models.Document documentModel = new Models.Document
+            {
+                CarId = car_.Id,
+                Title = "Счет на оплату",
+                CreationDate = DateTime.Now,
+                Content = pdfBytes
+            };
+
+            await documentRepository_.AddAsync(documentModel);
+
+            Test(pdfBytes);
+        }
+
+        private async Task Franchise()
+        {
+            const string input = "GradeExpertCRM.Resources.Templates.template5";
+            
+            var engine = new RazorLightEngineBuilder()
+                .UseEmbeddedResourcesProject(System.Reflection.Assembly.GetEntryAssembly())
+                .UseMemoryCachingProvider()
+                .Build();
+
+            var documentVM = new DocumentVM
+            {
+                Car = car_,
+                DetailsSettings = detailsSettings_
+            };
+
+            string html = await engine.CompileRenderAsync<object>(input, documentVM);
+
+            const int pageWidth = 1000;
+            const int pageHeight = 1415;
+
+            // To save bytes
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            PdfWriter writer = new PdfWriter(stream);
+            PdfDocument pdfDoc = new PdfDocument(writer);
+
+            pdfDoc.SetDefaultPageSize(new PageSize(pageWidth, pageHeight));
+            ConverterProperties converterProperties = new ConverterProperties();
+            converterProperties.SetFontProvider(new DefaultFontProvider(true, true, true));
+            HtmlConverter.ConvertToPdf(html, pdfDoc, converterProperties);
+            
+            pdfDoc.Close();
+            byte[] pdfBytes = stream.ToArray();
+
+            Models.Document documentModel = new Models.Document
+            {
+                CarId = car_.Id,
+                Title = "Счет на оплату франшизы",
+                CreationDate = DateTime.Now,
+                Content = pdfBytes
+            };
+
+            await documentRepository_.AddAsync(documentModel);
+
+            Test(pdfBytes);
+        }
+        
         private void Test(byte[] pdfBytes)
         {
             const string Output = @"C:\Users\Admin\Desktop\demo.pdf";

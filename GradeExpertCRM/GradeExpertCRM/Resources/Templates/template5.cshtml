@@ -1,7 +1,7 @@
 ﻿@using GradeExpertCRM
 @using GradeExpertCRM.Models
 @model GradeExpertCRM.Models.DocumentVM
-@* Счет на оплату *@
+@* Счет. Франшиза *@
 <!DOCTYPE html>
 <html lang="ru" style="font-family: Arial">
 <head>
@@ -160,7 +160,7 @@
         sparePartPrice += calculation.SpareParts.Sum(sparePart => sparePart.Price);
     }
 
-	double overallPrice = dismantlingWorkPrice + sparePartPrice + dentRemovalPrice + additionalWorksPrice + paintingPrice;
+    double overallPrice = dismantlingWorkPrice + sparePartPrice + dentRemovalPrice + additionalWorksPrice + paintingPrice;
 }
 
 <table style="border-spacing: 20px">
@@ -171,58 +171,60 @@
         </td>
     </tr>
     <tr>
-	    <td>Покупатель:</td>
-	    <td>
-		    <strong>@Model.Car.Client.Name,@(Model.Car.Client.TIN != null ? $" ИНН {Model.Car.Client.TIN}," : "")@(Model.Car.Client.CRR != null ? $" КПП {Model.Car.Client.CRR}," : "")
-			    @(Model.Car.Client.Index != null ? $" {Model.Car.Client.Index}," : "") @Model.Car.Client.City, @Model.Car.Client.Address</strong>
+        <td>Покупатель:</td>
+        <td>
+            <strong>
+                @Model.Car.Client.Name,@(Model.Car.Client.TIN != null ? $" ИНН {Model.Car.Client.TIN}," : "")@(Model.Car.Client.CRR != null ? $" КПП {Model.Car.Client.CRR}," : "")
+                @(Model.Car.Client.Index != null ? $" {Model.Car.Client.Index}," : "") @Model.Car.Client.City, @Model.Car.Client.Address
+            </strong>
         </td>
     </tr>
     <tr>
         <td>Примечание:</td>
-	    <td>
-		    
-		    <strong>Общая стоимость ремонта: @(overallPrice) руб. Франшиза: @Model.Car.Franchise руб, оплачивается страхователем.</strong>
-	    </td>
+        <td>
+
+            <strong>Общая стоимость ремонта: @(overallPrice) руб. Франшиза: @Model.Car.Franchise руб, оплачивается страхователем.</strong>
+        </td>
     </tr>
 </table>
 
 <table class="table-style">
-	<tbody>
-	<tr>
-		<td>№</td>
-		<td>Товары</td>
-		<td>Кол-во</td>
-		<td>Ед. изм</td>
-		<td>Цена</td>
-		<td>Сумма</td>
-	</tr>
-	<tr>
-		<td>1</td>
-		<td>Автомобиль @Model.Car.Brand @Model.Car.Model, VIN:@Model.Car.VIN, ремонт повреждений от града, номер убытка: @Model.Car.Loss</td>
-		<td>1</td>
-		<td>шт</td>
-		<td>@(overallPrice - Model.Car.Franchise)</td>
-		<td>@(overallPrice - Model.Car.Franchise)</td>
-	</tr>
-	<tr class="text-bottom-right">
-		<td colspan="5" class="border-white">
-			<strong>Итог:</strong>
-		</td>
-		<td class="border-white">
-			<strong>@(overallPrice - Model.Car.Franchise)</strong>
-		</td>
-	</tr>
-	<tr class="text-bottom-right">
-		<td colspan="5" class="border-white">Без налога (НДС)</td>
-		<td class="border-white">-</td>
-	</tr>
-	</tbody>
+    <tbody>
+    <tr>
+        <td>№</td>
+        <td>Товары</td>
+        <td>Кол-во</td>
+        <td>Ед. изм</td>
+        <td>Цена</td>
+        <td>Сумма</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Автомобиль @Model.Car.Brand @Model.Car.Model, VIN:@Model.Car.VIN, ремонт повреждений от града, номер убытка: @Model.Car.Loss</td>
+        <td>1</td>
+        <td>шт</td>
+        <td>@(Model.Car.Franchise)</td>
+        <td>@(Model.Car.Franchise)</td>
+    </tr>
+    <tr class="text-bottom-right">
+        <td colspan="5" class="border-white">
+            <strong>Итог:</strong>
+        </td>
+        <td class="border-white">
+            <strong>@(Model.Car.Franchise)</strong>
+        </td>
+    </tr>
+    <tr class="text-bottom-right">
+        <td colspan="5" class="border-white">Без налога (НДС)</td>
+        <td class="border-white">-</td>
+    </tr>
+    </tbody>
 </table>
 @{
-	INumberToWordsTranslate converter = new NumberInWordsRussianCurrency((decimal)(overallPrice - Model.Car.Franchise), false);
-	string word = converter.Translate();
+    INumberToWordsTranslate converter = new NumberInWordsRussianCurrency(Model.Car.Franchise, false);
+    string word = converter.Translate();
 }
-<p>Всего наименований 1, на сумму @(overallPrice - Model.Car.Franchise) руб.</p>
+<p>Всего наименований 1, на сумму @(Model.Car.Franchise) руб.</p>
 <strong>@(word). Без НДС.</strong>
 <hr class="horizontal-line">
 <br/>

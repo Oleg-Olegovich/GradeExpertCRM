@@ -6,14 +6,12 @@ namespace GradeExpertCRM.Models
 {
     public class Calculation
     {
-        [Key]
-        public int Id { get; set; }
+        [Key] public int Id { get; set; }
 
         public int CarId { get; set; }
 
-        [ForeignKey("CarId")]
-        public Car Car { get; set; }
-        
+        [ForeignKey("CarId")] public Car Car { get; set; }
+
         public string ComponentName { get; set; }
 
         public bool IsFixPrice { get; set; }
