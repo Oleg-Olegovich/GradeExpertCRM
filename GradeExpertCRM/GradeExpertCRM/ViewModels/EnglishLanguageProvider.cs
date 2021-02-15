@@ -282,5 +282,7 @@ namespace GradeExpertCRM.ViewModels
         public string Van => "The van";
 
         public string PickupTruck => "Pickup truck";
+
+        public string Calculate => "CALCULATE";
     }
 }

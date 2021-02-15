@@ -2,362 +2,366 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:GradeExpertCRM.ViewModels.Frames"
+						 xmlns:vm="clr-namespace:GradeExpertCRM.ViewModels.Frames"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             xmlns:local="clr-namespace:GradeExpertCRM.Views.Frames"
+			 xmlns:local="clr-namespace:GradeExpertCRM.Views.Frames"
              x:Class="GradeExpertCRM.Views.Frames.CalculatorView">
 
 
-    <UserControl.Styles>
-        <StyleInclude Source="avares://GradeExpertCRM/Styles/Style.xaml" />
-    </UserControl.Styles>
+  <UserControl.Styles>
+    <StyleInclude Source="avares://GradeExpertCRM/Styles/Style.xaml"/>
+  </UserControl.Styles>
 
-    <Grid>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition MaxHeight="50"/>
+      <RowDefinition MaxHeight="50"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="2*"/>
+      <ColumnDefinition Width="4*"/>
+      <ColumnDefinition Width="4*"/>
+    </Grid.ColumnDefinitions>
+
+    <Border Grid.Column="0" Grid.Row="0"
+				Classes="BorderOfText"
+				Margin="5 0 5 10">
+      <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition MaxHeight="50" />
-            <RowDefinition MaxHeight="50" />
+          <RowDefinition Height="2*"/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="4*" />
-            <ColumnDefinition Width="4*" />
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="0"
+					   Grid.ColumnSpan="2"
+					Source="{Binding CarImage}"/>
+        <TextBlock Grid.Row="1"
+						   Grid.ColumnSpan="2"
+						   Text="{Binding CarImageDescription}"
+						   Foreground="#000000"
+						   FontFamily="Calibry"
+						   FontSize="12"/>
+        <StackPanel Grid.Row="2"
+							Grid.ColumnSpan="2">
+          <RadioButton GroupName="Price"
+					   IsChecked="True"
+					   Command="{Binding ChangePriceMode}"
+					   CommandParameter="true">
+            <TextBlock Classes="Text"
+					   Text="{Binding Localization.GrandExpert}"/>
+          </RadioButton>
+          <RadioButton GroupName="Price"
+                       IsChecked="{Binding Calculation.IsFixPrice}"
+					   Command="{Binding ChangePriceMode}"
+					   CommandParameter="true">
+            <TextBlock Classes="Text"
+					   Text="{Binding Localization.FixPrice}"/>
+          </RadioButton>
+        </StackPanel>
+        <Border Classes="BorderOfText"
+							Grid.Row="3"
+							Grid.Column="0"
+							MaxHeight="40"
+							Margin="0 5 0 5">
+          <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.Price}"
+				   IsReadOnly="true"/>
+        </Border>
+        <TextBlock Classes="Text"
+						   Grid.Row="3"
+						   Grid.Column="1"
+						   Text="{Binding Localization.Currency}"/>
+      </Grid>
+    </Border>
+
+    <Border Grid.Column="1" Grid.Row="0"
+				Classes="BorderOfText"
+				Margin="5 0 5 10">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" Grid.Row="0"
-                Classes="BorderOfText"
-                Margin="5 0 5 10">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*" />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Image Grid.Row="0"
-                       Grid.ColumnSpan="2"
-                       Source="{Binding CarImage}" />
-                <TextBlock Grid.Row="1"
-                           Grid.ColumnSpan="2"
-                           Text="{Binding CarImageDescription}"
-                           Foreground="#000000"
-                           FontFamily="Calibry"
-                           FontSize="12" />
-                <StackPanel Grid.Row="2"
-                            Grid.ColumnSpan="2">
-                    <RadioButton GroupName="Price"
-                                 IsChecked="True">
-                        <TextBlock Classes="Text"
-                                   Text="{Binding Localization.GrandExpert}" />
-                    </RadioButton>
-                    <RadioButton GroupName="Price"
-                                 IsChecked="{Binding Calculation.IsFixPrice}">
-                        <TextBlock Classes="Text"
-                                   Text="{Binding Localization.FixPrice}" />
-                    </RadioButton>
-                </StackPanel>
-                <Border Classes="BorderOfText"
-                        Grid.Row="3"
-                        Grid.Column="0"
-                        MaxHeight="40"
-                        Margin="0 5 0 5">
-                    <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.Price}" />
-                </Border>
-                <TextBlock Classes="Text"
-                           Grid.Row="3"
-                           Grid.Column="1"
-                           Text="{Binding Localization.Currency}" />
-            </Grid>
-        </Border>
-
-        <Border Grid.Column="1" Grid.Row="0"
-                Classes="BorderOfText"
-                Margin="5 0 5 10">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical"
-                            Margin="0 0 0 5">
-                    <TextBlock Classes="Label"
-                               Text="{Binding Localization.Quantity}" />
-                    <Border Classes="BorderOfText">
-                        <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.DentQuantity}" />
-                    </Border>
-                </StackPanel>
-
-                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical"
-                            Margin="0 5 0 5">
-                    <TextBlock Classes="Label"
-                               Text="{Binding Localization.Diameter}" />
-                    <Border Classes="BorderOfText">
-                        <ComboBox VerticalAlignment="Stretch" SelectedItem="{Binding DentDiameter}">
-                            <TextBlock Text="20" />
-                            <TextBlock Text="30" />
-                            <TextBlock Text="40" />
-                        </ComboBox>
-                    </Border>
-                </StackPanel>
-
-                <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical"
-                            Margin="0 5 0 5">
-                    <TextBlock Classes="Label"
-                               Text="{Binding Localization.NHours}" />
-                    <Border Classes="BorderOfText">
-                        <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.NHours}" />
-                    </Border>
-                </StackPanel>
-
-                <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Vertical"
-                            Margin="0 5 0 0">
-                    <TextBlock Classes="Label"
-                               Text="{Binding Localization.Price}" />
-                    <Border Classes="BorderOfText">
-                        <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.DentPrice}" />
-                    </Border>
-                </StackPanel>
-
-                <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="4"
-                            Margin="10 10 0 0">
-                    <RadioButton GroupName="Materials"
-                                 IsChecked="True"
-                                 Margin="0 0 0 5">
-                        <TextBlock Classes="Text"
-                                   Text="{Binding Localization.Steel}" />
-                    </RadioButton>
-                    <RadioButton GroupName="Materials"
-                                 IsChecked="{Binding Calculation.IsAluminum}"
-                                 Margin="0 0 0 5">
-                        <TextBlock Classes="Text"
-                                   Text="{Binding Localization.Aluminum}" />
-                    </RadioButton>
-                    <CheckBox IsChecked="{Binding Calculation.IsAdhesive}">
-                        <TextBlock Classes="Text"
-                                   Text="{Binding Localization.Adhesive}" />
-                    </CheckBox>
-                </StackPanel>
-            </Grid>
-        </Border>
-
-        <Border Grid.Column="2" Grid.Row="0"
-                Classes="BorderOfText"
-                Margin="5 0 5 10">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition MaxHeight="20" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0"
-                           Classes="Text"
-                           Text="{Binding Localization.Dismantling}"
-                           TextAlignment="Center" />
-
-                <DataGrid Grid.Row="1" Items="{Binding DismantlingWorks}"
-                          Margin="-6 0 -6 5">
-                    <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Binding="{Binding IsApplied}" />
-                        <DataGridTextColumn Binding="{Binding WorkingHours}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock
-                                    Text="{Binding DataContext.Localization.NHours, 
-                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Price}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock
-                                    Text="{Binding DataContext.Localization.Price, 
-                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Code}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock
-                                    Text="{Binding DataContext.Localization.Code, 
-                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Name}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock
-                                    Text="{Binding DataContext.Localization.Description, 
-                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
-        </Border>
-
-        <StackPanel Grid.Column="0" Grid.Row="1"
-                    Orientation="Vertical">
-            <TextBlock Classes="Text"
-                       Text="{Binding Localization.RepairOfDents}" />
-            <TextBox Text="0 РУБ"
-                     IsReadOnly="true"
-                     Margin="20 0 0 0" />
-            <TextBlock Classes="Text"
-                       Text="{Binding Localization.Dismantling}" />
-            <TextBox Text="0 РУБ"
-                     IsReadOnly="true"
-                     Margin="20 0 0 0" />
-            <TextBlock Classes="Text"
-                       Text="{Binding Localization.SpareParts}" />
-            <TextBox Text="0 РУБ"
-                     IsReadOnly="true"
-                     Margin="20 0 0 0" />
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical"
+							Margin="0 0 0 5">
+          <TextBlock Classes="Label"
+							   Text="{Binding Localization.Quantity}"/>
+          <Border Classes="BorderOfText">
+            <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.DentQuantity}"/>
+          </Border>
         </StackPanel>
 
-        <Border Grid.Column="1" Grid.Row="1"
-                Classes="BorderOfText"
-                Margin="0 0 5 10">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition MaxHeight="20" />
-                    <RowDefinition Height="2" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0"
-                           Classes="Text"
-                           Text="{Binding Localization.TypeOfRepair}"
-                           TextAlignment="Center" />
-                <GridSplitter Grid.Row="1"
-                              Background="#E31E24"
-                              BorderBrush="#E31E24"
-                              Margin="-6 0 -6 0"
-                              ClipToBounds="False"
-                              IsEnabled="False" />
-                <StackPanel Grid.Row="2" Margin="0 5 0 0">
-                    <RadioButton GroupName="Repair"
-                                 IsChecked="True"
-                                 Command="{Binding SelectTypeOfRepair}"
-                                 CommandParameter="WithoutPainting">
-                        <TextBlock Classes="Text"
-                                   Text="{Binding Localization.WithoutPainting}" />
-                    </RadioButton>
-                    <RadioButton GroupName="Repair"
-                                 Command="{Binding SelectTypeOfRepair}"
-                                 CommandParameter="UnderPainting">
-                        <TextBlock Classes="Text"
-                                   Text="{Binding Localization.UnderPainting}" />
-                    </RadioButton>
-                    <RadioButton GroupName="Repair"
-                                 Command="{Binding SelectTypeOfRepair}"
-                                 CommandParameter="Replacement">
-                        <TextBlock Classes="Text"
-                                   Text="{Binding Localization.Replacement}" />
-                    </RadioButton>
-                </StackPanel>
-            </Grid>
-        </Border>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical"
+							Margin="0 5 0 5">
+          <TextBlock Classes="Label"
+							   Text="{Binding Localization.Diameter}"/>
+          <Border Classes="BorderOfText">
+            <ComboBox  VerticalAlignment="Stretch" SelectedItem="{Binding DentDiameter}">
+              <TextBlock Text="20"/>
+              <TextBlock Text="30"/>
+              <TextBlock Text="40"/>
+            </ComboBox>
+          </Border>
+        </StackPanel>
 
-        <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="3"
-                Classes="BorderOfText"
-                Margin="5 0 5 10">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition MaxHeight="20" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical"
+							Margin="0 5 0 5">
+          <TextBlock Classes="Label"
+							   Text="{Binding Localization.NHours}"/>
+          <Border Classes="BorderOfText">
+            <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.NHours}"
+					 IsEnabled="{Binding IsPriceEnabled}"/>
+          </Border>
+        </StackPanel>
 
-                <TextBlock Grid.Row="0"
-                           Classes="Text"
-                           Text="{Binding Localization.SpareParts}"
-                           TextAlignment="Center" />
-                <DataGrid Grid.Row="1" Items="SpareParts"
-                          Margin="-6 0 -6 5">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Id}" />
-                        <DataGridTextColumn Binding="{Binding Code}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock
-                                    Text="{Binding DataContext.Localization.Code, 
-                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding NHours}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock
-                                    Text="{Binding DataContext.Localization.NHours, 
-                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Price}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock
-                                    Text="{Binding DataContext.Localization.Price, 
-                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Name}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock
-                                    Text="{Binding DataContext.Localization.Description, 
-                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
-        </Border>
+        <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Vertical"
+							Margin="0 5 0 0">
+          <TextBlock Classes="Label"
+							   Text="{Binding Localization.Price}"/>
+          <Border Classes="BorderOfText">
+            <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.DentPrice}"
+					 IsEnabled="{Binding IsPriceEnabled}"/>
+          </Border>
+        </StackPanel>
 
-        <Grid Grid.Column="1" Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition MaxHeight="40" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="4"
+							Margin="10 10 0 0">
+          <RadioButton GroupName="Materials"
+                       IsChecked="True"
+					   Margin="0 0 0 5">
+            <TextBlock Classes="Text"
+                       Text="{Binding Localization.Steel}"/>
+          </RadioButton>
+          <RadioButton GroupName="Materials"
+                       IsChecked="{Binding Calculation.IsAluminum}"
+					   Margin="0 0 0 5">
+            <TextBlock Classes="Text"
+								   Text="{Binding Localization.Aluminum}"/>
+          </RadioButton>
+          <CheckBox IsChecked="{Binding Calculation.IsAdhesive}">
+            <TextBlock Classes="Text"
+                       Text="{Binding Localization.Adhesive}"></TextBlock>
+          </CheckBox>
+        </StackPanel>
+      </Grid>
+    </Border>
 
-            <TextBlock Grid.Column="0"
-                       Classes="Text"
-                       Margin="0 10 0 0"
-                       Text="{Binding Localization.PriceOfPainting}" />
-            <Border Grid.Column="1"
-                    Classes="BorderOfText"
-                    MaxHeight="40">
-                <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.PriceOfPainting}" />
-            </Border>
-            <TextBlock Grid.Column="2"
-                       Classes="Text"
-                       Margin="0 10 0 0"
-                       Text="{Binding Localization.Currency}" />
-        </Grid>
+    <Border Grid.Column="2" Grid.Row="0"
+				Classes="BorderOfText"
+				Margin="5 0 5 10">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition MaxHeight="20"/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
 
-        <Button Grid.Row="3"
-                Grid.Column="0"
-                Classes="Menu"
-                Content="{Binding Localization.ButtonSave}"
-                Margin="5 0 5 10"
-                Command="{Binding SaveCommand}" />
+        <TextBlock Grid.Row="0"
+						   Classes="Text"
+						   Text="{Binding Localization.Dismantling}"
+						   TextAlignment="Center"/>
 
-        <Grid Grid.Column="1"
-              Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"
-                    Classes="Menu"
-                    Content="{Binding Localization.ButtonCancel}"
-                    Margin="5 0 5 10"
-                    Command="{Binding Cancel}" />
-        </Grid>
+        <DataGrid Grid.Row="1" Items="{Binding DismantlingWorks}"
+				  Margin="-6 0 -6 5">
+          <DataGrid.Columns>
+            <DataGridCheckBoxColumn Binding="{Binding IsApplied}"/>
+            <DataGridTextColumn Binding="{Binding WorkingHours}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.NHours, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding Price}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.Price, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding Code}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.Code, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding Name}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.Description, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+          </DataGrid.Columns>
+        </DataGrid>
+      </Grid>
+    </Border>
+
+    <StackPanel Grid.Column="0" Grid.Row="1"
+					Orientation="Vertical">
+      <TextBlock Classes="Text"
+					   Text="{Binding Localization.RepairOfDents}"/>
+      <TextBox Text="0 РУБ"
+			   IsReadOnly="true"
+			   Margin="20 0 0 0"/>
+      <TextBlock Classes="Text"
+					   Text="{Binding Localization.Dismantling}"/>
+      <TextBox Text="0 РУБ"
+			   IsReadOnly="true"
+			   Margin="20 0 0 0"/>
+      <TextBlock Classes="Text"
+			     Text="{Binding Localization.SpareParts}"/>
+      <TextBox Text="0 РУБ"
+			   IsReadOnly="true"
+			   Margin="20 0 0 0"/>
+    </StackPanel>
+
+    <Border Grid.Column="1" Grid.Row="1"
+				Classes="BorderOfText"
+				Margin="0 0 5 10">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition MaxHeight="20"/>
+          <RowDefinition Height="2"/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+						   Classes="Text"
+						   Text="{Binding Localization.TypeOfRepair}"
+						   TextAlignment="Center"/>
+        <GridSplitter Grid.Row="1"
+							  Background="#E31E24"
+							  BorderBrush="#E31E24"
+							  Margin="-6 0 -6 0"
+							  ClipToBounds="False"
+							  IsEnabled="False"/>
+        <StackPanel Grid.Row="2" Margin="0 5 0 0">
+          <RadioButton GroupName="Repair"
+                       IsChecked="True"
+                       Command="{Binding SelectTypeOfRepair}"
+                       CommandParameter="WithoutPainting">
+            <TextBlock Classes="Text"
+								   Text="{Binding Localization.WithoutPainting}"/>
+          </RadioButton>
+          <RadioButton GroupName="Repair"
+                       Command="{Binding SelectTypeOfRepair}"
+                       CommandParameter="UnderPainting">
+            <TextBlock Classes="Text"
+								   Text="{Binding Localization.UnderPainting}"/>
+          </RadioButton>
+          <RadioButton GroupName="Repair"
+                       Command="{Binding SelectTypeOfRepair}"
+                       CommandParameter="Replacement">
+            <TextBlock Classes="Text"
+								   Text="{Binding Localization.Replacement}"/>
+          </RadioButton>
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="3"
+				Classes="BorderOfText"
+				Margin="5 0 5 10">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition MaxHeight="20"/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+						   Classes="Text"
+						   Text="{Binding Localization.SpareParts}"
+						   TextAlignment="Center"/>
+        <DataGrid Grid.Row="1" Items="SpareParts"
+                  Margin="-6 0 -6 5">
+          <DataGrid.Columns>
+            <DataGridTextColumn Binding="{Binding Id}"/>
+            <DataGridTextColumn Binding="{Binding Code}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.Code, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding NHours}">
+                <DataGridTextColumn.Header>
+                  <TextBlock Text="{Binding DataContext.Localization.NHours, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+                </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding Price}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.Price, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding Name}">
+              <DataGridTextColumn.Header>
+                <TextBlock Text="{Binding DataContext.Localization.Description, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"/>
+              </DataGridTextColumn.Header>
+            </DataGridTextColumn>
+          </DataGrid.Columns>
+        </DataGrid>
+      </Grid>
+    </Border>
+
+    <Grid Grid.Column="1" Grid.Row="2">
+      <Grid.RowDefinitions>
+        <RowDefinition MaxHeight="40"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+
+      <TextBlock Grid.Column="0"
+					   Classes="Text"
+					   Margin="0 10 0 0"
+					   Text="{Binding Localization.PriceOfPainting}"/>
+      <Border Grid.Column="1"
+					Classes="BorderOfText"
+					MaxHeight="40">
+        <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.PriceOfPainting}"/>
+      </Border>
+      <TextBlock Grid.Column="2"
+					   Classes="Text"
+					   Margin="0 10 0 0"
+					   Text="{Binding Localization.Currency}"/>
     </Grid>
+
+    <Button Grid.Row="3"
+				Grid.Column="0"
+				Classes="Menu"
+				Content="{Binding Localization.ButtonSave}"
+				Margin="5 0 5 10"
+        Command="{Binding SaveCommand}"/>
+
+    <Grid Grid.Column="1"
+			  Grid.Row="3">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+	  <Button Grid.Column="0"
+					Classes="Menu"
+					Content="{Binding Localization.Calculate}"
+					Margin="5 0 5 10"
+          Command="{Binding Calculate}"/>	
+      <Button Grid.Column="1"
+					Classes="Menu"
+					Content="{Binding Localization.ButtonCancel}"
+					Margin="5 0 5 10"
+          Command="{Binding Cancel}"/>
+    </Grid>
+  </Grid>
 </UserControl>

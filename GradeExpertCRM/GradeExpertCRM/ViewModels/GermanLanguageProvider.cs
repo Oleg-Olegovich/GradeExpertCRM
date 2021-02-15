@@ -281,5 +281,7 @@ namespace GradeExpertCRM.ViewModels
         public string Van => "Van";
 
         public string PickupTruck => "Anhalterlastwagen";
+
+        public string Calculate => "BERECHNEN";
     }
 }

@@ -18,6 +18,8 @@ namespace GradeExpertCRM.ViewModels.Frames
 {
     internal class CalculatorViewModel : ViewModelBase
     {
+        private bool _isPriceEnabled = false;
+
         private const string ResourcesDirectory = @"..\..\..\Resources\";
         private string _carImageName = "01-1";
 
@@ -58,6 +60,12 @@ namespace GradeExpertCRM.ViewModels.Frames
                 "14-1" => Localization.RearBumper,
                 _ => "Error"
             };
+
+        public bool IsPriceEnabled
+        {
+            get => _isPriceEnabled;
+            set => this.RaiseAndSetIfChanged(ref _isPriceEnabled, value);
+        }
 
         public ObservableCollection<DismantlingWork> DismantlingWorks { get; }
 
@@ -173,9 +181,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         }
 
         public void Cancel()
-        {
-            BaseWindow.Content = new CalculationDataViewModel(BaseWindow);
-        }
+            => BaseWindow.Content = new CalculationDataViewModel(BaseWindow);
 
         private List<DismantlingWork> GetDismantlingWorksByBodyType(BodyType bodyType, string componentName)
         {
@@ -220,5 +226,8 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             return fileName;
         }
+
+        public bool ChangePriceMode(bool value)
+            => IsPriceEnabled = value;
     }
 }
