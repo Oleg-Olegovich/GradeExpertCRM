@@ -40,6 +40,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         private async Task OpenAddingDocumentView() => BaseWindow.Content = new AddingDocumentViewModel(BaseWindow, this);
 
+        public bool IsButtonEnabled => carRepository_.SelectedCarId > 0;
         public ReactiveCommand<Unit, Unit> GoAddingDocumentView { get; }
 
         private IDocumentRepository documentRepository_;

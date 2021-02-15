@@ -91,12 +91,14 @@
 
 			<StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="2">
 				<Button x:Name="ImageButtonAddDocument"
+				        IsEnabled="{Binding IsButtonEnabled}"
 						Command="{Binding GoAddingDocumentView}">
 					<Image Source="avares://GradeExpertCRM/Resources/plus.png"
 						   DockPanel.Dock="Left"
 						   HorizontalAlignment="Right"/>
 				</Button>
 				<Button x:Name="ButtonAddDocument"
+				        IsEnabled="{Binding IsButtonEnabled}"
 						Command="{Binding GoAddingDocumentView}"
 						Content="{Binding Localization.ButtonCreateDocument}"/>
 			</StackPanel>
