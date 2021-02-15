@@ -51,14 +51,18 @@
         <StackPanel Grid.Row="2"
 							Grid.ColumnSpan="2">
           <RadioButton GroupName="Price"
-								 IsChecked="True">
+					   IsChecked="True"
+					   Command="{Binding ChangePriceMode}"
+					   CommandParameter="true">
             <TextBlock Classes="Text"
-								   Text="{Binding Localization.GrandExpert}"/>
+					   Text="{Binding Localization.GrandExpert}"/>
           </RadioButton>
           <RadioButton GroupName="Price"
-                       IsChecked="{Binding Calculation.IsFixPrice}">
+                       IsChecked="{Binding Calculation.IsFixPrice}"
+					   Command="{Binding ChangePriceMode}"
+					   CommandParameter="true">
             <TextBlock Classes="Text"
-								   Text="{Binding Localization.FixPrice}"/>
+					   Text="{Binding Localization.FixPrice}"/>
           </RadioButton>
         </StackPanel>
         <Border Classes="BorderOfText"
@@ -66,7 +70,8 @@
 							Grid.Column="0"
 							MaxHeight="40"
 							Margin="0 5 0 5">
-          <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.Price}"/>
+          <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.Price}"
+				   IsReadOnly="true"/>
         </Border>
         <TextBlock Classes="Text"
 						   Grid.Row="3"
@@ -117,7 +122,8 @@
           <TextBlock Classes="Label"
 							   Text="{Binding Localization.NHours}"/>
           <Border Classes="BorderOfText">
-            <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.NHours}"/>
+            <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.NHours}"
+					 IsEnabled="{Binding IsPriceEnabled}"/>
           </Border>
         </StackPanel>
 
@@ -126,7 +132,8 @@
           <TextBlock Classes="Label"
 							   Text="{Binding Localization.Price}"/>
           <Border Classes="BorderOfText">
-            <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.DentPrice}"/>
+            <TextBox VerticalAlignment="Stretch" Text="{Binding Calculation.DentPrice}"
+					 IsEnabled="{Binding IsPriceEnabled}"/>
           </Border>
         </StackPanel>
 
@@ -345,7 +352,12 @@
         <ColumnDefinition/>
         <ColumnDefinition/>
       </Grid.ColumnDefinitions>
-      <Button Grid.Column="0"
+	  <Button Grid.Column="0"
+					Classes="Menu"
+					Content="{Binding Localization.Calculate}"
+					Margin="5 0 5 10"
+          Command="{Binding Calculate}"/>	
+      <Button Grid.Column="1"
 					Classes="Menu"
 					Content="{Binding Localization.ButtonCancel}"
 					Margin="5 0 5 10"

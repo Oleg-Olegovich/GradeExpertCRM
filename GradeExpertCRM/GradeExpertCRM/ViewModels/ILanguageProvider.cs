@@ -279,5 +279,7 @@
         string Van { get; }
 
         string PickupTruck { get; }
+
+        string Calculate { get; }
     }
 }

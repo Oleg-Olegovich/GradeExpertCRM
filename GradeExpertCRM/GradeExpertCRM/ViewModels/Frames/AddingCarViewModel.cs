@@ -4,11 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
-using Avalonia.Controls;
 using GradeExpertCRM.Models;
 using GradeExpertCRM.Models.Data.Repositories;
-using MessageBox.Avalonia.Enums;
-using Org.BouncyCastle.Crypto.Tls;
 using ReactiveUI;
 using Splat;
 
@@ -16,18 +13,45 @@ namespace GradeExpertCRM.ViewModels.Frames
 {
     class AddingCarViewModel : ViewModelBase
     {
+        private DateTime _dateOfInspection = DateTime.Today;
+
+        private int _bodyTypeIndex = 0;
+
+        private bool _isCalendarVisible = false;
+
+        public DateTime DateOfInspection
+        {
+            get => _dateOfInspection;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _dateOfInspection, value);
+                IsCalendarVisible = !IsCalendarVisible;
+                Car.DateOfInspection = _dateOfInspection;
+            }
+        }
+
+        public int BodyTypeIndex
+        {
+            get => _bodyTypeIndex;
+            set 
+            {
+                this.RaiseAndSetIfChanged(ref _bodyTypeIndex, value);
+                Car.BodyType = (BodyType)_bodyTypeIndex; 
+            }
+        }
+
+        public bool IsCalendarVisible
+        {
+            get => _isCalendarVisible;
+            set => this.RaiseAndSetIfChanged(ref _isCalendarVisible, value);
+        }
+
         public Car Car { get; set; } = new Car();
 
         public ObservableCollection<Client> Clients { get; set; }
         public ObservableCollection<string> InspectionPlaces { get; set; }
         public ObservableCollection<string> Inspectors { get; set; }
         public Client SelectedClient { get; set; } = new Client();
-
-        public int BodyTypeIndex
-        {
-            get => (int) Car.BodyType;
-            set => Car.BodyType = (BodyType)value;
-        }
 
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
 
@@ -84,5 +108,8 @@ namespace GradeExpertCRM.ViewModels.Frames
             }
             */
         }
+
+        public void CalendarTextBlockClick()
+            => IsCalendarVisible = true;
     }
 }
