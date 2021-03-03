@@ -27,22 +27,6 @@ namespace GradeExpertCRM.ViewModels.Frames
             set => this.RaiseAndSetIfChanged(ref _localization, value);
         }
 
-
-        private bool _isVatEnabled = false;
-
-        public bool IsVatEnabled 
-        {
-            get => _isVatEnabled;
-            set
-            {
-                if (!value)
-                {
-                    Settings.TaxPercent = null;
-                }
-                this.RaiseAndSetIfChanged(ref _isVatEnabled, value);
-            }
-        }
-
         private readonly ISettingsRepository settingsRepository_;
 
         public SettingsViewModel(IBaseWindow baseWindow)
@@ -52,7 +36,6 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             settingsRepository_ = Locator.Current.GetService<ISettingsRepository>();
             Settings = settingsRepository_.FirstOrDefault() ?? new Settings();
-            _isVatEnabled = Settings.TaxPercent != null;
 
             GoDetailsSettingsView = ReactiveCommand.CreateFromTask(OpenDetailsSettingsView);
             SaveCommand = ReactiveCommand.CreateFromTask(Save);

@@ -29,7 +29,7 @@ namespace GradeExpertCRM.Models
         public int UnderPantingPercent { get; set; }
         //[Required]
         [Range(0, 100)]
-        public int? TaxPercent { get; set; }
+        public int TaxPercent { get; set; }
         public string Language { get; set; } = "Russian";
     }
 }

@@ -39,7 +39,50 @@ namespace GradeExpertCRM.ViewModels.Frames
             set => Calculation.DentDiameter = int.Parse(value.Text);
         }
 
-        public Calculation Calculation { get; set; } = new Calculation();
+        public double NHours { get; set; }
+        public double DentPrice { get; set; }
+
+        private double price_;
+
+        public double Price
+        {
+            get => price_;
+            set => this.RaiseAndSetIfChanged(ref price_, value);
+        }
+
+        private double dentPrice_;
+
+        public double DentPriceView
+        {
+            get => dentPrice_;
+            set => this.RaiseAndSetIfChanged(ref dentPrice_, value);
+        }
+
+        private double dismantlingPrice_;
+
+        public double DismantlingPrice
+        {
+            get => dismantlingPrice_;
+            set => this.RaiseAndSetIfChanged(ref dismantlingPrice_, value);
+        }
+
+        private double sparePartsPrice_;
+
+        public double SparePartsPrice
+        {
+            get => sparePartsPrice_;
+            set => this.RaiseAndSetIfChanged(ref sparePartsPrice_, value);
+        }
+
+        private bool priceOfPaintingIsEnabled;
+
+        public bool PriceOfPaintingIsEnabled
+        {
+            get => priceOfPaintingIsEnabled;
+            set => this.RaiseAndSetIfChanged(ref priceOfPaintingIsEnabled, value);
+        }
+
+        public Calculation Calculation { get; } = new Calculation();
 
         public string CarImageDescription
             => _carImageName switch
@@ -105,6 +148,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         private void Calculate()
         {
             double initialDentPrice;
+            double currentDentPrice = 0;
             if (!Calculation.IsFixPrice)
             {
                 string folder = _carImageName switch
@@ -126,49 +170,63 @@ namespace GradeExpertCRM.ViewModels.Frames
                     var keyList = sortedList.Keys.ToList();
                     int keyIndex = keyList.BinarySearch(Calculation.DentQuantity);
                     keyIndex = ~keyIndex - 1;
-                    hours = sortedList[keyList[keyIndex]];
+                    if (keyIndex > -1)
+                        hours = sortedList[keyList[keyIndex]];
+                    else
+                        hours = 0;
                 }
 
                 Calculation.NHours = hours;
                 initialDentPrice = hours * settings_.RemoveDentsPrice;
-                Calculation.DentPrice = initialDentPrice;
+                currentDentPrice = initialDentPrice;
             }
             else
-                initialDentPrice = Calculation.DentPrice;
+            {
+                Calculation.NHours = NHours;
+                initialDentPrice = NHours * DentPrice;
+                currentDentPrice = initialDentPrice;
+            }
 
+            double currentPrice = 0;
+            double sparePartsPrice = 0;
+            double dismantlingPrice = 0;
 
             if (Calculation.TypeOfRepair == TypeOfRepair.UnderPainting)
             {
-                Calculation.DentPrice -= initialDentPrice * (settings_.UnderPantingPercent / 100.0);
-                Calculation.Price = Calculation.PriceOfPainting;
-            }
-            else if (Calculation.TypeOfRepair == TypeOfRepair.Replacement)
-            {
-                Calculation.SpareParts = new List<SparePart>(SpareParts);
-                foreach (var part in SpareParts)
-                    Calculation.Price += part.Price * part.Quantity;
+                currentDentPrice -= initialDentPrice * (settings_.UnderPantingPercent / 100.0);
+                currentPrice += Calculation.PriceOfPainting;
             }
 
             if (Calculation.IsAluminum)
-                Calculation.DentPrice += initialDentPrice * (settings_.AluminumPercent / 100.0);
+                currentDentPrice += initialDentPrice * (settings_.AluminumPercent / 100.0);
 
             if (Calculation.IsAdhesive)
-                Calculation.DentPrice += initialDentPrice * (settings_.GlueTechniquePercent / 100.0);
+                currentDentPrice += initialDentPrice * (settings_.GlueTechniquePercent / 100.0);
 
-            Calculation.Price += Calculation.DentPrice;
+            currentPrice += currentDentPrice;
+
+            Calculation.SpareParts = new List<SparePart>(SpareParts);
+            sparePartsPrice += SpareParts.Sum(part => part.Price * part.Quantity);
+            currentPrice += sparePartsPrice;
 
             var appliedWorks = from work in DismantlingWorks
                 where work.IsApplied
                 select work;
-
             Calculation.DismantlingWorks = new List<DismantlingWork>(appliedWorks);
+            dismantlingPrice = Calculation.DismantlingWorks.Sum(work => work.Price);
+            currentPrice += dismantlingPrice;
 
-            foreach (var work in Calculation.DismantlingWorks)
-                Calculation.Price += work.Price;
+            Calculation.DentPrice = currentDentPrice;
+            Calculation.Price = currentPrice;
+            Price = currentPrice;
+            DentPriceView = currentDentPrice;
+            DismantlingPrice = dismantlingPrice;
+            SparePartsPrice = sparePartsPrice;
         }
 
         public void SelectTypeOfRepair(string type)
         {
+            PriceOfPaintingIsEnabled = type == "UnderPainting";
             Calculation.TypeOfRepair = Enum.Parse<TypeOfRepair>(type);
         }
 
@@ -228,6 +286,9 @@ namespace GradeExpertCRM.ViewModels.Frames
         }
 
         public bool ChangePriceMode(bool value)
-            => IsPriceEnabled = value;
+        {
+            Calculation.IsFixPrice = value;
+            return IsPriceEnabled = value;
+        }
     }
 }
