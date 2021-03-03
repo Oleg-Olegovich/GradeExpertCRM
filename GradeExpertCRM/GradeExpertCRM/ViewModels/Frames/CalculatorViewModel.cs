@@ -215,7 +215,10 @@ namespace GradeExpertCRM.ViewModels.Frames
             Calculation.DismantlingWorks = new List<DismantlingWork>(appliedWorks);
             dismantlingPrice = Calculation.DismantlingWorks.Sum(work => work.Price);
             currentPrice += dismantlingPrice;
-
+            
+            currentPrice += currentPrice * settings_.TaxPercent / 100.0;
+            
+            Calculation.TexPercent = settings_.TaxPercent;
             Calculation.DentPrice = currentDentPrice;
             Calculation.Price = currentPrice;
             Price = currentPrice;
