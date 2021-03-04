@@ -27,5 +27,7 @@ namespace GradeExpertCRM.Models
         /// Overall price for final processing per automobile
         /// </summary>
         public double FinalProcessingPrice { get; set; }
+
+        public int TaxPercent { get; set; }
     }
 }

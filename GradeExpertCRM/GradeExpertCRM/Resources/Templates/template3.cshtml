@@ -85,51 +85,67 @@
 </head>
 <body>
 
-<!--TODO Make a header with image-->
-<strong>КАЛЬКУЛЯЦИЯ СТОИМОСТИ РАБОТ</strong>
-<p>№ @Model.Car.Id ОТ @DateTime.Now.ToString("dd.MM.yyyy") Г.</p>
+<table style="width: 100%">
+    <tr>
+        <td>
+            <strong>КАЛЬКУЛЯЦИЯ СТОИМОСТИ РАБОТ</strong>
+            <p>№ @Model.Car.Id ОТ @DateTime.Now.ToString("dd.MM.yyyy") Г.</p>
+        </td>
+        <td style="text-align: right">
+            @{
+                string imgSrc = "";
+                if (Model.DetailsSettings.Image != null)
+                {
+                    string base64 = Convert.ToBase64String(Model.DetailsSettings.Image);
+                    imgSrc = $"data:image/gif;base64,{base64}";
+                }
+            }
+            <img style="height: 90px" src="@imgSrc" alt=""/>
+        </td>
+    </tr>
+</table>
 
 <table class="table-style column-bold">
     <tr>
         <td>ЗАКАЗЧИК</td>
-        <td>@Model.Car.Client.Name.ToUpper()</td>
+        <td>@Model.Car.Client.Name?.ToUpper()</td>
         <td>ИСПОЛНИТЕЛЬ</td>
-        <td>@Model.DetailsSettings.Name.ToUpper()</td>
+        <td>@Model.DetailsSettings.Name?.ToUpper()</td>
     </tr>
     <tr>
         <td>АДРЕС</td>
-        <td>@Model.Car.Client.Area.ToUpper(), @Model.Car.Client.City.ToUpper(), @Model.Car.Client.Address.ToUpper()</td>
+        <td>@Model.Car.Client.Area?.ToUpper(), @Model.Car.Client.City?.ToUpper(), @Model.Car.Client.Address?.ToUpper()</td>
         <td>ИНН</td>
-        <td>@Model.DetailsSettings.TIN</td>
+        <td>@(Model.DetailsSettings.TIN ?? "")</td>
     </tr>
     <tr>
         <td>ТЕЛЕФОН</td>
-        <td>@Model.Car.Client.PhoneNumber</td>
+        <td>@(Model.Car.Client.PhoneNumber ?? "")</td>
         <td>ОГРН</td>
         <td>119665802806</td>
     </tr>
     <tr>
         <td>E-MAIL</td>
-        <td>@Model.Car.Client.Email.ToUpper()</td>
+        <td>@Model.Car.Client.Email?.ToUpper()</td>
         <td>АДРЕС</td>
-        <td>@Model.DetailsSettings.Index @Model.DetailsSettings.Area.ToUpper(), @Model.DetailsSettings.City.ToUpper(), @Model.DetailsSettings.Address.ToUpper()</td>
+        <td>@(Model.DetailsSettings.Index ?? "") @Model.DetailsSettings.Area?.ToUpper(), @Model.DetailsSettings.City?.ToUpper(), @Model.DetailsSettings.Address?.ToUpper()</td>
     </tr>
     <tr>
         <td rowspan="4" colspan="2"></td>
         <td style="font-weight: bold">БАНК</td>
-        <td style="font-weight: normal">@Model.DetailsSettings.Bank.ToUpper()</td>
+        <td style="font-weight: normal">@Model.DetailsSettings.Bank?.ToUpper()</td>
     </tr>
     <tr>
         <td>БИК</td>
-        <td>@Model.DetailsSettings.BIC</td>
+        <td>@(Model.DetailsSettings.BIC ?? "")</td>
     </tr>
     <tr>
         <td>КОРР. СЧЕТ</td>
-        <td>@Model.DetailsSettings.CorrespondentAccount</td>
+        <td>@(Model.DetailsSettings.CorrespondentAccount ?? "")</td>
     </tr>
     <tr>
         <td>РАСЧЕТНЫЙ СЧЕТ</td>
-        <td>@Model.DetailsSettings.PaymentAccount</td>
+        <td>@(Model.DetailsSettings.PaymentAccount ?? "")</td>
     </tr>
 </table>
 
@@ -139,19 +155,19 @@
 <table class="table-style column-bold">
     <tr>
         <td>ТИП ПОВРЕЖДЕНИЯ</td>
-        <td>@Model.Car.TypeOfDamage.ToUpper()</td>
+        <td>@Model.Car.TypeOfDamage?.ToUpper()</td>
         <td>МАРКА</td>
-        <td>@Model.Car.Brand.ToUpper()</td>
+        <td>@Model.Car.Brand?.ToUpper()</td>
     </tr>
     <tr>
         <td>ДАТА ОСМОТРА</td>
         <td>@Model.Car.DateOfInspection.ToString("dd.MM.yyyy")</td>
         <td>МОДЕЛЬ</td>
-        <td>@Model.Car.Model.ToUpper()</td>
+        <td>@Model.Car.Model?.ToUpper()</td>
     </tr>
     <tr>
         <td rowspan="2">МЕСТО ОСМОТРА</td>
-        <td rowspan="2">@Model.Car.PlaceOfInspection.ToUpper()</td>
+        <td rowspan="2">@Model.Car.PlaceOfInspection?.ToUpper()</td>
         <td>ТИП КУЗОВА</td>
         @{
             var value = Model.Car.BodyType;
@@ -162,33 +178,33 @@
     </tr>
     <tr>
         <td>ГОС. НОМЕР</td>
-        <td>@Model.Car.Number.ToUpper()</td>
+        <td>@Model.Car.Number?.ToUpper()</td>
     </tr>
     <tr>
         <td rowspan="2">СТРАХОВАЯ КОМПАНИЯ</td>
-        <td rowspan="2">@Model.Car.InsuranceCompany.ToUpper()</td>
+        <td rowspan="2">@Model.Car.InsuranceCompany?.ToUpper()</td>
         <td>ПРОБЕГ</td>
         <td>@Model.Car.Mileage КМ</td>
     </tr>
     <tr>
         <td>VIM</td>
-        <td>@Model.Car.VIN.ToUpper()</td>
+        <td>@Model.Car.VIN?.ToUpper()</td>
     </tr>
     <tr>
         <td>НОМЕР ПОЛИСА</td>
-        <td>@Model.Car.PolicyNumber.ToUpper()</td>
+        <td>@Model.Car.PolicyNumber?.ToUpper()</td>
         <td>ГОД ВЫПУСКА</td>
         <td>@Model.Car.ReleaseYear</td>
     </tr>
     <tr>
         <td>НОМЕР УБЫТКА</td>
-        <td>@Model.Car.Loss.ToUpper()</td>
+        <td>@Model.Car.Loss?.ToUpper()</td>
         <td>ЦВЕТ</td>
-        <td>@Model.Car.Color.ToUpper()</td>
+        <td>@Model.Car.Color?.ToUpper()</td>
     </tr>
     <tr>
         <td>ОСМОТР ПРОИЗВЕЛ</td>
-        <td>@Model.Car.WhoMadeInspection.ToUpper()</td>
+        <td>@Model.Car.WhoMadeInspection?.ToUpper()</td>
         <td>ФРАНШИЗА</td>
         <td>@Model.Car.Franchise</td>
     </tr>
@@ -214,7 +230,7 @@
             {
                 <tr>
                     <td>@dismantlingWork.Code</td>
-                    <td>@dismantlingWork.Name.ToUpper()</td>
+                    <td>@dismantlingWork.Name?.ToUpper()</td>
                     <td>@dismantlingWork.Price</td>
                 </tr>
             }
@@ -242,19 +258,19 @@
     @for (int i = 0; i < Model.Car.Calculations.Count; i++)
     {
         <tr>
-        <td>@(i + 1)</td>
-        <td>@Model.Car.Calculations[i].ComponentName.ToUpper()</td>
-        <td>@Model.Car.Calculations[i].DentQuantity</td>
-        <td>@Model.Car.Calculations[i].DentDiameter MM</td>
-        <td>@(Model.Car.Calculations[i].IsAluminum ? "АЛЮМИНИЙ" : "СТАЛЬ")</td>
-        <td>@(Model.Car.Calculations[i].TypeOfRepair == TypeOfRepair.WithoutPainting ? "БЕЗ ПОКРАСКИ" : "ПОД ПОКРАСКУ")</td>
-        <td style="text-align: center">
-            @if (Model.Car.Calculations[i].IsAdhesive)
-            {
-                @:&#9679;
-            }
-        </td>
-        <td>@Model.Car.Calculations[i].DentPrice</td>
+            <td>@(i + 1)</td>
+            <td>@Model.Car.Calculations[i].ComponentName.ToUpper()</td>
+            <td>@Model.Car.Calculations[i].DentQuantity</td>
+            <td>@Model.Car.Calculations[i].DentDiameter MM</td>
+            <td>@(Model.Car.Calculations[i].IsAluminum ? "АЛЮМИНИЙ" : "СТАЛЬ")</td>
+            <td>@(Model.Car.Calculations[i].TypeOfRepair == TypeOfRepair.WithoutPainting ? "БЕЗ ПОКРАСКИ" : "ПОД ПОКРАСКУ")</td>
+            <td style="text-align: center">
+                @if (Model.Car.Calculations[i].IsAdhesive)
+                {
+                    @:&#9679;
+                }
+            </td>
+            <td>@Model.Car.Calculations[i].DentPrice</td>
         </tr>
     }
 </table>
@@ -308,7 +324,7 @@
             {
                 <tr>
                     <td>@sparePart.Code</td>
-                    <td>@sparePart.Name.ToUpper()</td>
+                    <td>@sparePart.Name?.ToUpper()</td>
                     <td>@sparePart.Price</td>
                     <td>@sparePart.Quantity</td>
                     <td>@(sparePart.Price * sparePart.Quantity)</td>
@@ -409,7 +425,16 @@
         <td style="border: 3.5px solid black">@(dismantlingWorkPrice + sparePartPrice + dentRemovalPrice + additionalWorksPrice + paintingPrice)</td>
     </tr>
     <tr>
-        <td colspan="3" style="border-color: white; text-align: right">НДС НЕ ПРЕДУСМОТРЕН</td>
+        <td colspan="3" style="border-color: white; text-align: right">
+            @if (Model.Car.OverallCalculation.TaxPercent > 0)
+            {
+                <p>НДС @Model.Car.OverallCalculation.TaxPercent%</p>
+            }
+            else
+            {
+                <p>НДС НЕ ПРЕДУСМОТРЕН</p>
+            }
+        </td>
     </tr>
 </table>
 
@@ -421,20 +446,6 @@
     ДЕФЕКТОВ И НЕИСПРАВНОСТЕЙ, НЕ ЗАМЕЧЕННЫХ ИЛИ НЕ ВЫЯВЛЕННЫХ ПРИ ПЕРВИЧНОМ ОСМОТРЕ. ОКОНЧАТЕЛЬНАЯ СТОИМОСТЬ РЕМОНТА УКАЗЫВАЕТСЯ В
     АКТЕ ВЫПОЛНЕННЫХ РАБОТ ПОСЛЕ ЗАВЕРШЕНИЯ РЕМОНТА.
 </p>
-
-@* <p style="page-break-before: always"/> *@
-@* *@
-@* <p>ФОТО 1</p> *@
-@* <img src="https://i.pinimg.com/originals/86/ff/b8/86ffb87572d657f335cd7cd828c70de3.jpg" width="800"/> *@
-
-<!--TODO make a footer and header-->
-<!--<table class="footer">
-    <tr>
-        <td></td>
-        <td style="text-align: center">ООО ГРАД-ЭКСПЕРТ 620016 Г.ЕКАТЕРИНБУРГ, УЛ. МОСТОВАЯ 14, INFO@GRAD-EXPERT.RU, ТЕЛ. (343) 268-58-18</td>
-        <td style="text-align: right">СТР. 1 ИЗ 2</td>
-    </tr>
-</table>-->
 
 </body>
 </html>

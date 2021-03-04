@@ -156,6 +156,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         private void UpdateOverallCalculation()
         {
+            OverallCalculation.TaxPercent = settings_.TaxPercent;
             OverallCalculation.CarId = carRepository_.SelectedCarId;
             OverallCalculation.PreparingToolPrice = settings_.PreparingTool * settings_.DismantlingPrice * Calculations.Count;
             OverallCalculation.AntiCorrosionPrice = settings_.AntiCorrosion * settings_.DismantlingPrice * Calculations.Count;

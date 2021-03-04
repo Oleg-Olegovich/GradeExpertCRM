@@ -8,29 +8,6 @@
     <meta charset="utf-8"/>
     <title>HTML5</title>
 
-    <!--table.table-style {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    height: auto;
-    }
-
-    table.table-style, table.table-style td, table.table-style th {
-    border: 1px solid black*/ /*#595959;*/
-    /*}
-
-    table.table-style td, table.table-style th {
-    padding: 3px;
-    width: 30px;
-    height: 35px;
-    }
-
-    table.table-style th {
-    background: #347c99;
-    color: #fff;
-    font-weight: normal;
-    }-->
-
     <style>
 		table.table-style {
 			width: 100%;
@@ -110,23 +87,23 @@
 <table class="table-style">
     <tbody style="vertical-align: top">
     <tr>
-        <td colspan="2" style="border-bottom-color: white">@Model.DetailsSettings.Bank</td>
+        <td colspan="2" style="border-bottom-color: white">@(Model.DetailsSettings?.Bank ?? "")</td>
         <td>БИК</td>
-        <td style="border-bottom-color: white">@Model.DetailsSettings.BIC</td>
+        <td style="border-bottom-color: white">@(Model.DetailsSettings?.BIC ?? "")</td>
     </tr>
     <tr>
         <td colspan="2" class="text-bottom">Банк получателя</td>
         <td>Сч. №</td>
-        <td style="border-top-color: white">@Model.DetailsSettings.CorrespondentAccount</td>
+        <td style="border-top-color: white">@(Model.DetailsSettings?.CorrespondentAccount ?? "")</td>
     </tr>
     <tr>
-        <td>ИНН @Model.DetailsSettings.TIN</td>
-        <td>КПП @Model.DetailsSettings.CRR</td>
+        <td>ИНН @(Model.DetailsSettings?.TIN ?? "")</td>
+        <td>КПП @(Model.DetailsSettings?.CRR ?? "")</td>
         <td rowspan="3">Сч. №</td>
-        <td rowspan="3">@Model.DetailsSettings.PaymentAccount</td>
+        <td rowspan="3">@(Model.DetailsSettings?.PaymentAccount ?? "")</td>
     </tr>
     <tr>
-        <td colspan="2" style="border-bottom-color: white">@Model.DetailsSettings.Name</td>
+        <td colspan="2" style="border-bottom-color: white">@(Model.DetailsSettings?.Name ?? "")</td>
     </tr>
     <tr>
         <td colspan="2" class="text-bottom" style="border-top-color: white">Получатель</td>
@@ -167,14 +144,14 @@
     <tr>
         <td>Поставщик:</td>
         <td>
-            <strong>@Model.DetailsSettings.Name, ИНН @Model.DetailsSettings.TIN, КПП @Model.DetailsSettings.CRR, @Model.DetailsSettings.Index @Model.DetailsSettings.City, @Model.DetailsSettings.Address</strong>
+            <strong>@(Model.DetailsSettings?.Name ?? ""), ИНН @(Model.DetailsSettings?.TIN ?? ""), КПП @(Model.DetailsSettings?.CRR ?? ""), @(Model.DetailsSettings?.Index ??"") @(Model.DetailsSettings?.City ?? ""), @(Model.DetailsSettings?.Address ??"")</strong>
         </td>
     </tr>
     <tr>
         <td>Покупатель:</td>
         <td>
             <strong>
-                @Model.Car.Client.Name,@(Model.Car.Client.TIN != null ? $" ИНН {Model.Car.Client.TIN}," : "")@(Model.Car.Client.CRR != null ? $" КПП {Model.Car.Client.CRR}," : "")
+                @(Model.Car.Client.Name ?? ""), @(Model.Car.Client.TIN != null ? $" ИНН {Model.Car.Client.TIN}," : "")@(Model.Car.Client.CRR != null ? $" КПП {Model.Car.Client.CRR}," : "")
                 @(Model.Car.Client.Index != null ? $" {Model.Car.Client.Index}," : "") @Model.Car.Client.City, @Model.Car.Client.Address
             </strong>
         </td>
@@ -200,7 +177,7 @@
     </tr>
     <tr>
         <td>1</td>
-        <td>Автомобиль @Model.Car.Brand @Model.Car.Model, VIN:@Model.Car.VIN, ремонт повреждений от града, номер убытка: @Model.Car.Loss</td>
+        <td>Автомобиль @(Model.Car.Brand ?? "") @(Model.Car.Model ?? ""), VIN:@(Model.Car.VIN ?? ""), ремонт повреждений от града, номер убытка: @(Model.Car.Loss ?? "")</td>
         <td>1</td>
         <td>шт</td>
         <td>@(Model.Car.Franchise)</td>
@@ -215,7 +192,16 @@
         </td>
     </tr>
     <tr class="text-bottom-right">
-        <td colspan="5" class="border-white">Без налога (НДС)</td>
+        <td colspan="5" class="border-white">
+            @if (Model.Car.OverallCalculation.TaxPercent > 0)
+            {
+                <p>С @Model.Car.OverallCalculation.TaxPercent% НДС</p>
+            }
+            else
+            {
+                <p>Без налога (НДС)</p>
+            }
+        </td>
         <td class="border-white">-</td>
     </tr>
     </tbody>
@@ -225,7 +211,7 @@
     string word = converter.Translate();
 }
 <p>Всего наименований 1, на сумму @(Model.Car.Franchise) руб.</p>
-<strong>@(word). Без НДС.</strong>
+<strong>@(word). @(Model.Car.OverallCalculation.TaxPercent > 0 ? $"С {Model.Car.OverallCalculation.TaxPercent}% НДС" : "Без налога.")</strong>
 <hr class="horizontal-line">
 <br/>
 

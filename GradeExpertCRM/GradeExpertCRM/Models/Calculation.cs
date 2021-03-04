@@ -45,8 +45,6 @@ namespace GradeExpertCRM.Models
 
         public double PriceOfPainting { get; set; }
 
-        public double TexPercent { get; set; }
-
         public List<DismantlingWork> DismantlingWorks { get; set; } = new List<DismantlingWork>();
 
         public List<SparePart> SpareParts { get; set; } = new List<SparePart>();
