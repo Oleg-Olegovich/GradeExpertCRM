@@ -226,12 +226,16 @@
         </tr>
         @foreach (var calculation in Model.Car.Calculations)
         {
-            foreach (var dismantlingWork in calculation.DismantlingWorks)
+            var dismantlingWork = from work in calculation.DismantlingWorks
+                where work.IsApplied
+                select work;
+            
+            foreach (var work in dismantlingWork)
             {
                 <tr>
-                    <td>@dismantlingWork.Code</td>
-                    <td>@dismantlingWork.Name?.ToUpper()</td>
-                    <td>@dismantlingWork.Price</td>
+                    <td>@work.Code</td>
+                    <td>@work.Name?.ToUpper()</td>
+                    <td>@work.Price</td>
                 </tr>
             }
         }
@@ -380,7 +384,7 @@
             paintingPrice += calculation.PriceOfPainting;
         }
 
-        dismantlingWorkPrice += calculation.DismantlingWorks.Sum(dismantlingWork => dismantlingWork.Price);
+        dismantlingWorkPrice += calculation.DismantlingWorks.Where(work => work.IsApplied).Sum(work => work.Price);
 
         sparePartPrice += calculation.SpareParts.Sum(sparePart => sparePart.Price);
     }

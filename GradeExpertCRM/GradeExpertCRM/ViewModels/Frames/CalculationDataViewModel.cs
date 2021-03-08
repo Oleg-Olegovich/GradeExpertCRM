@@ -99,6 +99,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public bool IsButtonEnabled => carRepository_.SelectedCarId > 0 && settings_ != null;
         public ReactiveCommand<Calculation, Unit> DeleteCommand { get; }
+        public ReactiveCommand<Calculation, Unit> ChangeCommnad { get; }
         
         public OverallCalculation OverallCalculation { get; }
         public ObservableCollection<Calculation> Calculations { get; }
@@ -114,6 +115,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             UpdateImagesAndDescriptions();
 
             DeleteCommand = ReactiveCommand.Create<Calculation>(Delete);
+            ChangeCommnad = ReactiveCommand.Create<Calculation>(Change);
 
             carRepository_ = Locator.Current.GetService<ICarRepository>();
             settings_ = Locator.Current.GetService<ISettingsRepository>().FirstOrDefault();
@@ -167,6 +169,10 @@ namespace GradeExpertCRM.ViewModels.Frames
             overallCalculationRepository_.Update(OverallCalculation);
         }
 
+        public void Change(Calculation calculation)
+        {
+            BaseWindow.Content = new CalculatorViewModel(BaseWindow, calculation);
+        }
         public void Delete(Calculation calculation)
         {
             Calculations.Remove(calculation);

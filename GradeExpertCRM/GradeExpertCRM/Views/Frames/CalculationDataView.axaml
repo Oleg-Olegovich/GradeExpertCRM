@@ -173,13 +173,17 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button>
+
+                                <Button
+                                    Command="{Binding DataContext.ChangeCommnad,
+                                    RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"
+                                    CommandParameter="{Binding}">
                                     <TextBlock
-                                        Text="{Binding DataContext.Localization.Change, 
-                                          RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" />
+                                        Text="{Binding DataContext.Localization.Change,
+                                        RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" />
                                 </Button>
                                 <Button
-                                    Command="{Binding DataContext.DeleteCommand, 
+                                    Command="{Binding DataContext.DeleteCommand,
                                     RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"
                                     CommandParameter="{Binding}">
                                     <Image Source="avares://GradeExpertCRM/Resources/cross.png" />

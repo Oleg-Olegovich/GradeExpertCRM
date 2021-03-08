@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Permissions;
 
 namespace GradeExpertCRM.Models
 {
@@ -14,6 +15,8 @@ namespace GradeExpertCRM.Models
 
         public string ComponentName { get; set; }
 
+        public string ComponentImageName { get; set; }
+
         public bool IsFixPrice { get; set; }
 
         public double Price { get; set; }
@@ -22,8 +25,10 @@ namespace GradeExpertCRM.Models
 
         public int DentDiameter { get; set; } = 20;
 
-        public double NHours { get; set; } //TODO check is this property necessary
+        public double NHours { get; set; }
 
+        public double RemoveDentPrice  { get; set; }
+        
         public double DentPrice { get; set; }
 
         /// <summary>

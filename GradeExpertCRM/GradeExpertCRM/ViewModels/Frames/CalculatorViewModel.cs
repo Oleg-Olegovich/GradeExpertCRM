@@ -33,14 +33,25 @@ namespace GradeExpertCRM.ViewModels.Frames
             set => this.RaiseAndSetIfChanged(ref _carImage, value);
         }
 
-        public TextBlock DentDiameter
+        private int dentDiameterIndex_;
+
+        public int DentDiameterIndex
         {
-            get => new TextBlock {Text = Calculation.DentDiameter.ToString()};
-            set => Calculation.DentDiameter = int.Parse(value.Text);
+            get => dentDiameterIndex_;
+            set
+            {
+                dentDiameterIndex_ = value;
+                Calculation.DentDiameter = value switch
+                {
+                    0 => 20,
+                    1 => 30,
+                    _ => 40
+                };
+            }
         }
 
         public double NHours { get; set; }
-        public double DentPrice { get; set; }
+        public double RemoveDentPrice { get; set; }
 
         private double price_;
 
@@ -85,25 +96,30 @@ namespace GradeExpertCRM.ViewModels.Frames
         public Calculation Calculation { get; } = new Calculation();
 
         public string CarImageDescription
-            => _carImageName switch
+        {
+            get
             {
-                "01-1" => Localization.FrontLeftDoor,
-                "02-1" => Localization.FrontRightDoor,
-                "03-1" => Localization.RearRightDoor,
-                "04-1" => Localization.RearLeftDoor,
-                "05-1" => Localization.FrontLeftFender,
-                "06-1" => Localization.FrontRightFender,
-                "07-1" => Localization.LeftRack,
-                "08-1" => Localization.RightRack,
-                "09-1" => Localization.Roof,
-                "10-1" => Localization.Hood,
-                "11-1" => Localization.Trunk,
-                "12-1" => Localization.RearLeftFender,
-                "13-1" => Localization.RearRightFender,
-                "14-1" => Localization.RearBumper,
-                _ => "Error"
-            };
-
+                return _carImageName switch
+                {
+                    "01-1" => Localization.FrontLeftDoor,
+                    "02-1" => Localization.FrontRightDoor,
+                    "03-1" => Localization.RearRightDoor,
+                    "04-1" => Localization.RearLeftDoor,
+                    "05-1" => Localization.FrontLeftFender,
+                    "06-1" => Localization.FrontRightFender,
+                    "07-1" => Localization.LeftRack,
+                    "08-1" => Localization.RightRack,
+                    "09-1" => Localization.Roof,
+                    "10-1" => Localization.Hood,
+                    "11-1" => Localization.Trunk,
+                    "12-1" => Localization.RearLeftFender,
+                    "13-1" => Localization.RearRightFender,
+                    "14-1" => Localization.RearBumper,
+                    _ => "Error"
+                };
+            }
+        }
+        
         public bool IsPriceEnabled
         {
             get => _isPriceEnabled;
@@ -128,6 +144,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             BaseWindow = baseWindow;
             _carImageName = carImageName;
+            Calculation.ComponentImageName = carImageName;
             Calculation.ComponentName = CarImageDescription;
             CarImage = new Bitmap(ImagePath + carImageName + ".png");
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
@@ -143,6 +160,41 @@ namespace GradeExpertCRM.ViewModels.Frames
                 new ObservableCollection<DismantlingWork>(GetDismantlingWorksByBodyType(selectedCar_.BodyType,
                     carImageName));
             SpareParts = new ObservableCollection<SparePart>();
+        }
+
+        public CalculatorViewModel(IBaseWindow baseWindow, Calculation calculation)
+        {
+            BaseWindow = baseWindow;
+            _carImageName = calculation.ComponentImageName;
+            CarImage = new Bitmap(ImagePath + _carImageName + ".png");
+            SaveCommand = ReactiveCommand.CreateFromTask(Save);
+
+            calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
+            var carRepository = Locator.Current.GetService<ICarRepository>();
+            var settingsRepository = Locator.Current.GetService<ISettingsRepository>();
+
+            selectedCar_ = carRepository.FindById(carRepository.SelectedCarId);
+            settings_ = settingsRepository.FirstOrDefault();
+
+            Calculation = calculation;
+            Price = calculation.Price;
+            DentPriceView = calculation.DentPrice;
+            DismantlingPrice = calculation.DismantlingWorks.Where(work => work.IsApplied).Sum(work => work.Price);
+            SparePartsPrice = calculation.SpareParts.Sum(part => part.Price * part.Quantity);
+
+            DismantlingWorks = new ObservableCollection<DismantlingWork>(calculation.DismantlingWorks);
+            SpareParts = new ObservableCollection<SparePart>(calculation.SpareParts);
+
+            DentDiameterIndex = Calculation.DentDiameter switch
+            {
+                20 => 0,
+                30 => 1,
+                _ => 2
+            };
+            SelectTypeOfRepair(Calculation.TypeOfRepair);
+            IsPriceEnabled = Calculation.IsFixPrice;
+            NHours = Calculation.NHours;
+            RemoveDentPrice = Calculation.RemoveDentPrice;
         }
 
         private void Calculate()
@@ -177,13 +229,15 @@ namespace GradeExpertCRM.ViewModels.Frames
                 }
 
                 Calculation.NHours = hours;
+                Calculation.RemoveDentPrice = settings_.RemoveDentsPrice;
                 initialDentPrice = hours * settings_.RemoveDentsPrice;
                 currentDentPrice = initialDentPrice;
             }
             else
             {
                 Calculation.NHours = NHours;
-                initialDentPrice = NHours * DentPrice;
+                Calculation.RemoveDentPrice = settings_.RemoveDentsPrice;
+                initialDentPrice = NHours * RemoveDentPrice;
                 currentDentPrice = initialDentPrice;
             }
 
@@ -209,13 +263,12 @@ namespace GradeExpertCRM.ViewModels.Frames
             sparePartsPrice += SpareParts.Sum(part => part.Price * part.Quantity);
             currentPrice += sparePartsPrice;
 
-            var appliedWorks = from work in DismantlingWorks
-                where work.IsApplied
-                select work;
-            Calculation.DismantlingWorks = new List<DismantlingWork>(appliedWorks);
-            dismantlingPrice = Calculation.DismantlingWorks.Sum(work => work.Price);
+            Calculation.DismantlingWorks = new List<DismantlingWork>(DismantlingWorks);
+
+            dismantlingPrice = Calculation.DismantlingWorks.Where(work => work.IsApplied).Sum(work => work.Price);
             currentPrice += dismantlingPrice;
-            
+
+            Calculation.IsDismantling = Calculation.DismantlingWorks.Count > 0;
             Calculation.DentPrice = currentDentPrice;
             Calculation.Price = currentPrice;
             Price = currentPrice;
@@ -224,17 +277,16 @@ namespace GradeExpertCRM.ViewModels.Frames
             SparePartsPrice = sparePartsPrice;
         }
 
-        public void SelectTypeOfRepair(string type)
+        public void SelectTypeOfRepair(TypeOfRepair type)
         {
-            PriceOfPaintingIsEnabled = type == "UnderPainting";
-            Calculation.TypeOfRepair = Enum.Parse<TypeOfRepair>(type);
+            PriceOfPaintingIsEnabled = type == TypeOfRepair.UnderPainting;
         }
 
         public async Task Save()
         {
             Calculate();
             Calculation.CarId = selectedCar_.Id;
-            await calculationRepository_.AddAsync(Calculation);
+            await calculationRepository_.UpdateAsync(Calculation);
             BaseWindow.Content = new CalculationDataViewModel(BaseWindow);
         }
 
@@ -250,7 +302,9 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             string path = @$"{ResourcesDirectory}DismantlingWork\{bodyType}\{jsonFile}";
             string json = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<List<DismantlingWork>>(json);
+            var works = JsonConvert.DeserializeObject<List<DismantlingWork>>(json);
+            works.ForEach(work => work.Price = work.NHours * settings_.DismantlingPrice);
+            return works;
         }
 
         private string GetJsonFileName(string componentName)

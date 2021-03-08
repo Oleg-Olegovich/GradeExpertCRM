@@ -268,7 +268,7 @@
             paintingPrice += calculation.PriceOfPainting;
         }
 
-        dismantlingWorkPrice += calculation.DismantlingWorks.Sum(dismantlingWork => dismantlingWork.Price);
+        dismantlingWorkPrice += calculation.DismantlingWorks.Where(work => work.IsApplied).Sum(dismantlingWork => dismantlingWork.Price);
 
         sparePartPrice += calculation.SpareParts.Sum(sparePart => sparePart.Price);
     }

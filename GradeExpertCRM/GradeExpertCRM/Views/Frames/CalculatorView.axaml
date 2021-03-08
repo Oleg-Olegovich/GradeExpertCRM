@@ -5,6 +5,8 @@
              xmlns:vm="clr-namespace:GradeExpertCRM.ViewModels.Frames"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:local="clr-namespace:GradeExpertCRM.Views.Frames"
+             xmlns:root="clr-namespace:GradeExpertCRM"
+             xmlns:models="clr-namespace:GradeExpertCRM.Models"
              x:Class="GradeExpertCRM.Views.Frames.CalculatorView">
 
 
@@ -58,6 +60,7 @@
                                    Text="{Binding Localization.GrandExpert}" />
                     </RadioButton>
                     <RadioButton GroupName="Price"
+                                 IsChecked="{Binding Calculation.IsFixPrice}"
                                  Command="{Binding ChangePriceMode}"
                                  CommandParameter="true">
                         <TextBlock Classes="Text"
@@ -108,7 +111,7 @@
                     <TextBlock Classes="Label"
                                Text="{Binding Localization.Diameter}" />
                     <Border Classes="BorderOfText">
-                        <ComboBox VerticalAlignment="Stretch" SelectedItem="{Binding DentDiameter}">
+                        <ComboBox VerticalAlignment="Stretch" SelectedIndex="{Binding DentDiameterIndex}">
                             <TextBlock Text="20" />
                             <TextBlock Text="30" />
                             <TextBlock Text="40" />
@@ -131,7 +134,7 @@
                     <TextBlock Classes="Label"
                                Text="{Binding Localization.Price}" />
                     <Border Classes="BorderOfText">
-                        <TextBox VerticalAlignment="Stretch" Text="{Binding DentPrice}"
+                        <TextBox VerticalAlignment="Stretch" Text="{Binding RemoveDentPrice}"
                                  IsEnabled="{Binding IsPriceEnabled}" />
                     </Border>
                 </StackPanel>
@@ -175,8 +178,8 @@
                 <DataGrid Grid.Row="1" Items="{Binding DismantlingWorks}"
                           Margin="-6 0 -6 5">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Binding="{Binding IsApplied}" />
-                        <DataGridTextColumn Binding="{Binding WorkingHours}">
+                        <DataGridCheckBoxColumn Binding="{Binding IsApplied, Mode=TwoWay}" />
+                        <DataGridTextColumn Binding="{Binding NHours}">
                             <DataGridTextColumn.Header>
                                 <TextBlock
                                     Text="{Binding DataContext.Localization.NHours, 
@@ -247,24 +250,35 @@
                               ClipToBounds="False"
                               IsEnabled="False" />
                 <StackPanel Grid.Row="2" Margin="0 5 0 0">
+                    <StackPanel.Resources>
+                        <root:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+                    </StackPanel.Resources>
                     <RadioButton GroupName="Repair"
-                                 IsChecked="True"
                                  Command="{Binding SelectTypeOfRepair}"
-                                 CommandParameter="WithoutPainting">
+                                 CommandParameter="{x:Static models:TypeOfRepair.WithoutPainting}"
+                                 IsChecked="{Binding Calculation.TypeOfRepair,
+                                 Converter={StaticResource EnumToBooleanConverter},
+                                 ConverterParameter={x:Static models:TypeOfRepair.WithoutPainting}}">
                         <TextBlock Classes="Text"
                                    Text="{Binding Localization.WithoutPainting}" />
                     </RadioButton>
                     <RadioButton GroupName="Repair"
                                  Command="{Binding SelectTypeOfRepair}"
-                                 CommandParameter="UnderPainting">
-                        <TextBlock Classes="Text"
-                                   Text="{Binding Localization.UnderPainting}" />
+                                 CommandParameter="{x:Static models:TypeOfRepair.UnderPainting}"
+                                 IsChecked="{Binding Calculation.TypeOfRepair,
+                                 Converter={StaticResource EnumToBooleanConverter},
+                                 ConverterParameter={x:Static models:TypeOfRepair.UnderPainting}}">
+                    <TextBlock Classes="Text"
+                               Text="{Binding Localization.UnderPainting}" />
                     </RadioButton>
                     <RadioButton GroupName="Repair"
                                  Command="{Binding SelectTypeOfRepair}"
-                                 CommandParameter="Replacement">
-                        <TextBlock Classes="Text"
-                                   Text="{Binding Localization.Replacement}" />
+                                 CommandParameter="{x:Static models:TypeOfRepair.Replacement}"
+                                 IsChecked="{Binding Calculation.TypeOfRepair,
+                                 Converter={StaticResource EnumToBooleanConverter},
+                                 ConverterParameter={x:Static models:TypeOfRepair.Replacement}}">
+                    <TextBlock Classes="Text"
+                               Text="{Binding Localization.Replacement}" />
                     </RadioButton>
                 </StackPanel>
             </Grid>

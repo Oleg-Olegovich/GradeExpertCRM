@@ -46,35 +46,35 @@
 			</Setter>
 		</Style>
 
-		<Style Selector="DataGridCell">
-			<Setter Property="Background" Value="Transparent"/>
-			<Setter Property="HorizontalContentAlignment" Value="Stretch" />
-			<Setter Property="VerticalContentAlignment" Value="Stretch" />
-			<Setter Property="Template">
-				<ControlTemplate>
-					<Grid ColumnDefinitions="*,Auto"
-						  Background="{TemplateBinding Background}">
-						<ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}"
-										  Content="{TemplateBinding Content}"
-										  Margin="{TemplateBinding Padding}"
-										  TextBlock.Foreground="{TemplateBinding Foreground}"
-										  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-										  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-
-						<Rectangle Grid.Column="0"
-								   Grid.Row="0"
-								   Stroke="#E31E24"
-								   StrokeThickness="1"
-								   Fill="Transparent"/>
-						
-						<Rectangle Name="PART_RightGridLine"
-								   Grid.Column="1"
-								   VerticalAlignment="Stretch"
-								   Width="1" />
-					</Grid>
-				</ControlTemplate>
-			</Setter>
-		</Style>
+		<!-- <Style Selector="DataGridCell"> -->
+		<!-- 	<Setter Property="Background" Value="Transparent"/> -->
+		<!-- 	<Setter Property="HorizontalContentAlignment" Value="Stretch" /> -->
+		<!-- 	<Setter Property="VerticalContentAlignment" Value="Stretch" /> -->
+		<!-- 	<Setter Property="Template"> -->
+		<!-- 		<ControlTemplate> -->
+		<!-- 			<Grid ColumnDefinitions="*,Auto" -->
+		<!-- 				  Background="{TemplateBinding Background}"> -->
+		<!-- 				<ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" -->
+		<!-- 								  Content="{TemplateBinding Content}" -->
+		<!-- 								  Margin="{TemplateBinding Padding}" -->
+		<!-- 								  TextBlock.Foreground="{TemplateBinding Foreground}" -->
+		<!-- 								  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" -->
+		<!-- 								  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/> -->
+		<!-- -->
+		<!-- 				<Rectangle Grid.Column="0" -->
+		<!-- 						   Grid.Row="0" -->
+		<!-- 						   Stroke="#E31E24" -->
+		<!-- 						   StrokeThickness="1" -->
+		<!-- 						   Fill="Transparent"/> -->
+		<!-- 				 -->
+		<!-- 				<Rectangle Name="PART_RightGridLine" -->
+		<!-- 						   Grid.Column="1" -->
+		<!-- 						   VerticalAlignment="Stretch" -->
+		<!-- 						   Width="1" /> -->
+		<!-- 			</Grid> -->
+		<!-- 		</ControlTemplate> -->
+		<!-- 	</Setter> -->
+		<!-- </Style> -->
 
 		<Style Selector="ScrollBar">
 			<Setter Property="Cursor" Value="Arrow" />
