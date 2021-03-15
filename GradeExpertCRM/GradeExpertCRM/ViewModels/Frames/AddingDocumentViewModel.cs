@@ -211,7 +211,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             };
 
             await documentRepository_.AddAsync(documentModel);
-            Test(pdfBytes);
+            ReturnBack(pdfBytes);
         }
         
         private async Task CalculationWithoutPhoto()
@@ -257,7 +257,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             await documentRepository_.AddAsync(documentModel);
 
-            Test(pdfBytes);
+            ReturnBack(pdfBytes);
         }
         
         private async Task DamagePhotos()
@@ -383,7 +383,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             await documentRepository_.AddAsync(documentModel);
 
-            Test(pdfBytes);
+            ReturnBack(pdfBytes);
         }
         
         private async Task Order()
@@ -429,7 +429,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             await documentRepository_.AddAsync(documentModel);
 
-            Test(pdfBytes);
+            ReturnBack(pdfBytes);
         }
         
         private async Task PerformedWork()
@@ -475,7 +475,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             await documentRepository_.AddAsync(documentModel);
 
-            Test(pdfBytes);
+            ReturnBack(pdfBytes);
         }
 
         private async Task Payment()
@@ -521,7 +521,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             await documentRepository_.AddAsync(documentModel);
 
-            Test(pdfBytes);
+            ReturnBack(pdfBytes);
         }
 
         private async Task Franchise()
@@ -567,15 +567,18 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             await documentRepository_.AddAsync(documentModel);
 
-            Test(pdfBytes);
+            ReturnBack(pdfBytes);
         }
         
-        private void Test(byte[] pdfBytes)
+        private void ReturnBack(byte[] pdfBytes)
         {
+            BaseWindow.Content = new DocumentsViewModel(BaseWindow);
+            /*
             const string Output = @"C:\Users\Admin\Desktop\demo.pdf";
             MemoryStream memory = new MemoryStream(pdfBytes);
             PdfDocument pdfDoc = new PdfDocument(new PdfReader(memory), new PdfWriter(Output));
             pdfDoc.Close();
+            */
         }
     }
 }
