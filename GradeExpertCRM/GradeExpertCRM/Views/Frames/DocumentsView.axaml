@@ -79,9 +79,6 @@
 									<Button>
 										<!-- <Image Source=""/> -->
 									</Button>
-									<Button>
-										<!-- <Image Source=""/> -->
-									</Button>
 								</StackPanel>
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>

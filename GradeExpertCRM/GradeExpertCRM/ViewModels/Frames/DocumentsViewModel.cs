@@ -42,6 +42,13 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public bool IsButtonEnabled => carRepository_.SelectedCarId > 0;
         public ReactiveCommand<Unit, Unit> GoAddingDocumentView { get; }
+        
+        //TODO Bind button to this property
+        public ReactiveCommand<Document, Unit> DeleteCommand { get; }
+        //TODO Bind button to this property
+        public ReactiveCommand<Document, Unit> PrintCommand { get; }
+        //TODO Bind button to this property
+        public ReactiveCommand<Document, Unit> SendCommand { get; }
 
         private IDocumentRepository documentRepository_;
         private ICarRepository carRepository_;
@@ -49,6 +56,9 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             BaseWindow = baseWindow;
             GoAddingDocumentView = ReactiveCommand.CreateFromTask(OpenAddingDocumentView);
+            DeleteCommand = ReactiveCommand.CreateFromTask<Document>(Delete);
+            PrintCommand = ReactiveCommand.CreateFromTask<Document>(Print);
+            SendCommand = ReactiveCommand.CreateFromTask<Document>(Send);
 
             carRepository_ = Locator.Current.GetService<ICarRepository>();
             if (carRepository_.SelectedCarId == 0)
@@ -58,6 +68,22 @@ namespace GradeExpertCRM.ViewModels.Frames
             var documents = documentRepository_.Where(x=>x.CarId == carRepository_.SelectedCarId);
             _allDocuments = new ObservableCollection<Document>(documents);
             Documents = _allDocuments;
+        }
+
+        private async Task Delete(Document document)
+        {
+            Documents.Remove(document);
+            await documentRepository_.RemoveAsync(document);
+        }
+
+        private async Task Print(Document document)
+        {
+            
+        }
+
+        private async Task Send(Document document)
+        {
+            
         }
     }
 }

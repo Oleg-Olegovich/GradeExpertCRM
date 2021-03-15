@@ -6,6 +6,7 @@ using GradeExpertCRM.Models;
 using GradeExpertCRM.Models.Data.Repositories;
 using Splat;
 using System.Reactive;
+using System.Threading.Tasks;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace GradeExpertCRM.ViewModels.Frames
@@ -114,7 +115,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             BaseWindow = baseWindow;
             UpdateImagesAndDescriptions();
 
-            DeleteCommand = ReactiveCommand.Create<Calculation>(Delete);
+            DeleteCommand = ReactiveCommand.CreateFromTask<Calculation>(Delete);
             ChangeCommnad = ReactiveCommand.Create<Calculation>(Change);
 
             carRepository_ = Locator.Current.GetService<ICarRepository>();
@@ -173,10 +174,10 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             BaseWindow.Content = new CalculatorViewModel(BaseWindow, calculation);
         }
-        public void Delete(Calculation calculation)
+        public async Task Delete(Calculation calculation)
         {
             Calculations.Remove(calculation);
-            calculationRepository_.Remove(calculation);
+            await calculationRepository_.RemoveAsync(calculation);
         }
 
         public void ScrollLeft()

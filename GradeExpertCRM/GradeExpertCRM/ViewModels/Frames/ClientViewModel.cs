@@ -40,6 +40,9 @@ namespace GradeExpertCRM.ViewModels.Frames
         private async Task OpenAddingClientView() => BaseWindow.Content = new AddingClientViewModel(BaseWindow);
 
         public ReactiveCommand<Unit, Unit> GoAddingClientView { get; }
+        
+        //TODO Bind button to this property 
+        public ReactiveCommand<Client, Unit> DeleteCommand { get; }
 
         private IClientRepository clientRepository_;
 
@@ -47,11 +50,18 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             BaseWindow = baseWindow;
             GoAddingClientView = ReactiveCommand.CreateFromTask(OpenAddingClientView);
+            DeleteCommand = ReactiveCommand.CreateFromTask<Client>(Delete);
             SearchString = "";
             clientRepository_ = Locator.Current.GetService<IClientRepository>();
             var clients = clientRepository_.All();
             _allClients = new ObservableCollection<Client>(clients);
             Clients = _allClients;
+        }
+
+        private async Task Delete(Client client)
+        {
+            Clients.Remove(client);
+            await clientRepository_.RemoveAsync(client);
         }
     }
 }

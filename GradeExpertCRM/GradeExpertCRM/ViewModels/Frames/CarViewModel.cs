@@ -52,16 +52,26 @@ namespace GradeExpertCRM.ViewModels.Frames
                     carRepository_.SelectedCarId = value.Id;
             }
         }
+        
+        //TODO Bind button to this property
+        public ReactiveCommand<Car, Unit> DeleteCommand { get; }
 
         public CarViewModel(IBaseWindow baseWindow)
         {
             BaseWindow = baseWindow;
             GoAddingCarView = ReactiveCommand.CreateFromTask(OpenAddingCarView);
+            DeleteCommand = ReactiveCommand.CreateFromTask<Car>(Delete);
             carRepository_ = Locator.Current.GetService<ICarRepository>();
             calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
             var cars = carRepository_.All();
             _allCars = new ObservableCollection<Car>(cars);
             Cars = _allCars;
+        }
+
+        private async Task Delete(Car car)
+        {
+            Cars.Remove(car);
+            await carRepository_.RemoveAsync(car);
         }
     }
 }
