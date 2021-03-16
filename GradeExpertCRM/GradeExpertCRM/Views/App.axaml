@@ -12,6 +12,7 @@
 		<StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Default.xaml"/>
 		
 		<Style Selector="DataGrid">
+			<Setter Property="IsReadOnly" Value="True"/>
 			<Setter Property="Template">
 				<ControlTemplate>
 					<Border Background="{TemplateBinding Background}"

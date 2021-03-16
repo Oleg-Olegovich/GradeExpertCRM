@@ -61,8 +61,8 @@ namespace GradeExpertCRM.ViewModels
         {
             var settingsRepository = Locator.Current.GetService<ISettingsRepository>();
             Language = settingsRepository.FirstOrDefault()?.Language ?? "Russian";
-            //Content = new SignInViewModel(this);
-            Content = new MainViewModel(true);
+            Content = new SignInViewModel(this);
+            //Content = new MainViewModel(true);
         }
     }
 }

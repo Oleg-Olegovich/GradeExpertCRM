@@ -65,24 +65,34 @@
                                           RelativeSource={RelativeSource AncestorType={x:Type local:DocumentsView}}}"/>
 						</DataGridTextColumn.Header>
 					</DataGridTextColumn>
+					
 					<DataGridTemplateColumn>
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
 								<StackPanel Orientation="Horizontal">
-									<Button>
-										<!-- TODO Вызывает исключение! Из-за того, что нет параметра Source -->
-										<!-- <Image Source=""/> -->
+									<Button
+										Command="{Binding DataContext.PrintCommand,
+										RelativeSource={RelativeSource AncestorType={x:Type local:DocumentsView}}}"
+										CommandParameter="{Binding}">
+										<Image Source="avares://GradeExpertCRM/Resources/printer.png" />
 									</Button>
-									<Button>
-										<!-- <Image Source=""/> -->
+									<Button
+										Command="{Binding DataContext.SendCommnad,
+										RelativeSource={RelativeSource AncestorType={x:Type local:DocumentsView}}}"
+										CommandParameter="{Binding}">
+										<Image Source="avares://GradeExpertCRM/Resources/send.png" />
 									</Button>
-									<Button>
-										<!-- <Image Source=""/> -->
+									<Button
+										Command="{Binding DataContext.DeleteCommand,
+										RelativeSource={RelativeSource AncestorType={x:Type local:DocumentsView}}}"
+										CommandParameter="{Binding}">
+										<Image Source="avares://GradeExpertCRM/Resources/cross.png" />
 									</Button>
 								</StackPanel>
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>
 					</DataGridTemplateColumn>
+					
 				</DataGrid.Columns>
 			</DataGrid>
 

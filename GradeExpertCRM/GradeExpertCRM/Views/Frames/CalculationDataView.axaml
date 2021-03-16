@@ -104,65 +104,75 @@
                        FontSize="12" />
         </Grid>
 
-        <DataGrid Grid.Row="1" Items="{Binding Calculations}">
+        <DataGrid Grid.Row="1" Items="{Binding Calculations}"
+				  IsReadOnly="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ComponentName}">
+                <DataGridTextColumn Binding="{Binding ComponentName}"
+									IsReadOnly="True">
                     <DataGridTextColumn.Header>
                         <TextBlock
                             Text="{Binding DataContext.Localization.Detail, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" />
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding DentQuantity}">
+                <DataGridTextColumn Binding="{Binding DentQuantity}"
+									IsReadOnly="True">
                     <DataGridTextColumn.Header>
                         <TextBlock
                             Text="{Binding DataContext.Localization.QuantityBriefly, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" />
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding DentDiameter}">
+                <DataGridTextColumn Binding="{Binding DentDiameter}"
+									IsReadOnly="True">
                     <DataGridTextColumn.Header>
                         <TextBlock
                             Text="{Binding DataContext.Localization.DN, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" />
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding TypeOfRepair}">
+                <DataGridTextColumn Binding="{Binding TypeOfRepair}"
+									IsReadOnly="True">
                     <DataGridTextColumn.Header>
                         <TextBlock
                             Text="{Binding DataContext.Localization.TypeOfRepair, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" />
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
-                <DataGridCheckBoxColumn Binding="{Binding IsAluminum}">
+                <DataGridCheckBoxColumn Binding="{Binding IsAluminum}"
+										IsReadOnly="False">
                     <DataGridCheckBoxColumn.Header>
                         <TextBlock
                             Text="{Binding DataContext.Localization.AluminumBriefly, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" />
                     </DataGridCheckBoxColumn.Header>
                 </DataGridCheckBoxColumn>
-                <DataGridCheckBoxColumn Binding="{Binding IsAdhesive}">
+                <DataGridCheckBoxColumn Binding="{Binding IsAdhesive}"
+										IsReadOnly="False">
                     <DataGridCheckBoxColumn.Header>
                         <TextBlock
                             Text="{Binding DataContext.Localization.Glue, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" />
                     </DataGridCheckBoxColumn.Header>
                 </DataGridCheckBoxColumn>
-                <DataGridCheckBoxColumn Binding="{Binding IsDismantling}">
+                <DataGridCheckBoxColumn Binding="{Binding IsDismantling}"
+										IsReadOnly="False">
                     <DataGridCheckBoxColumn.Header>
                         <TextBlock
                             Text="{Binding DataContext.Localization.Dismantling, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" />
                     </DataGridCheckBoxColumn.Header>
                 </DataGridCheckBoxColumn>
-                <DataGridTextColumn Binding="{Binding NHours}">
+                <DataGridTextColumn Binding="{Binding NHours}"
+									IsReadOnly="True">
                     <DataGridTextColumn.Header>
                         <TextBlock
                             Text="{Binding DataContext.Localization.NHours, 
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" />
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding DentPrice}">
+                <DataGridTextColumn Binding="{Binding DentPrice}"
+									IsReadOnly="True">
                     <DataGridTextColumn.Header>
                         <TextBlock
                             Text="{Binding DataContext.Localization.Price, 
@@ -173,7 +183,6 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-
                                 <Button
                                     Command="{Binding DataContext.ChangeCommnad,
                                     RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}"

@@ -176,7 +176,7 @@
                            TextAlignment="Center" />
 
                 <DataGrid Grid.Row="1" Items="{Binding DismantlingWorks}"
-                          Margin="-6 0 -6 5">
+                          Margin="-6 0 -6 5" IsReadOnly="False">
                     <DataGrid.Columns>
                         <DataGridCheckBoxColumn Binding="{Binding IsApplied, Mode=TwoWay}" />
                         <DataGridTextColumn Binding="{Binding NHours}">
@@ -298,7 +298,7 @@
                            Text="{Binding Localization.SpareParts}"
                            TextAlignment="Center" />
                 <DataGrid Grid.Row="1" Items="SpareParts"
-                          Margin="-6 0 -6 5">
+                          Margin="-6 0 -6 5" IsReadOnly="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id}" />
                         <DataGridTextColumn Binding="{Binding Code}">
