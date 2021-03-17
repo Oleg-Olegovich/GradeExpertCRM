@@ -7,6 +7,10 @@
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
+    <None Remove="Resources\printer.png" />
+    <AvaloniaResource Include="Resources\printer.png" />
+    <None Remove="Resources\send.png" />
+    <AvaloniaResource Include="Resources\send.png" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="appsettings.json" />

@@ -183,14 +183,12 @@
         <TextBox VerticalAlignment="Stretch" Text="{Binding Car.Franchise}"/>
       </Border>
     </StackPanel>
-	<Calendar IsVisible="{Binding IsCalendarVisible}" SelectedDate="{Binding DateOfInspection}"
-		      ZIndex="15" Grid.Row="9" Grid.Column="0" Grid.RowSpan="4"/>
     <StackPanel Grid.Row="9" Grid.Column="0" Orientation="Vertical"
-				Margin="0 10 0 0">	  
+                Margin="0 10 0 0">	  
       <TextBlock Classes="Label"
 					   Text="{Binding Localization.TextBoxDateOfInspection}"/>
 	  <Border Classes="BorderOfText">
-	      <TextBox VerticalAlignment="Stretch" Text="{Binding DateOfInspection}"/>
+          <CalendarDatePicker SelectedDate="{Binding Car.DateOfInspection, Mode=TwoWay}"/>
       </Border>
     </StackPanel>
 	<StackPanel Grid.Row="9" Grid.Column="1" 

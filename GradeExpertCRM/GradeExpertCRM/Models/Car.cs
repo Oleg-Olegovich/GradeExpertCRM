@@ -34,7 +34,7 @@ namespace GradeExpertCRM.Models
         //[RegularExpression(@"^[A-Za-z0-9_-]*$")]
         //[StringLength(17, MinimumLength = 17, ErrorMessage = "VIM must be 17 characters long")]
         public string VIN { get; set; }
-
+        
         //[Required]
         public string Number { get; set; }
 
@@ -55,7 +55,7 @@ namespace GradeExpertCRM.Models
         public int Franchise { get; set; }
 
         //[Required]
-        public DateTime DateOfInspection { get; set; }
+        public DateTime DateOfInspection { get; set; } = DateTime.Now;
 
         //[Required]
         public string PlaceOfInspection { get; set; }

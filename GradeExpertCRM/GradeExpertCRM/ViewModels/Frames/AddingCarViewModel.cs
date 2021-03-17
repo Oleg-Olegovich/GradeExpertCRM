@@ -83,7 +83,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public async Task Save()
         {
-            var validationContext = new ValidationContext(Car) { MemberName = nameof(Car) };
+                var validationContext = new ValidationContext(Car) { MemberName = nameof(Car) };
             var isValid = Validator.TryValidateObject(Car, validationContext, null);
             if (!isValid || SelectedClient.Id == 0)
                 return;

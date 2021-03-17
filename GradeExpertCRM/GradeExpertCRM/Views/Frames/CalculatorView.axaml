@@ -297,8 +297,9 @@
                            Classes="Text"
                            Text="{Binding Localization.SpareParts}"
                            TextAlignment="Center" />
-                <DataGrid Grid.Row="1" Items="SpareParts"
-                          Margin="-6 0 -6 5" IsReadOnly="False">
+                <DataGrid Grid.Row="1" Items="{Binding SpareParts}"
+                          
+                          Margin="-6 0 -6 5" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id}" />
                         <DataGridTextColumn Binding="{Binding Code}">
