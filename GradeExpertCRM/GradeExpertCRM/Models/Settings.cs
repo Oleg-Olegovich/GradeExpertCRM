@@ -8,26 +8,26 @@ namespace GradeExpertCRM.Models
         public int Id { get; set; }
         [Required]
         public double RemoveDentsPrice { get; set; }
-        //[Required]
+        [Required]
         public double DismantlingPrice { get; set; }
-        //[Required]
+        [Required]
         public double FinalProcessing { get; set; }
-        //[Required]
+        [Required]
         public double AntiCorrosion { get; set; }
-        //[Required]
+        [Required]
         public double PreparingTool { get; set; }
-        //[Required]
+        [Required]
         public double FinalProcessingMax { get; set; }
-        //[Required]
+        [Required]
         [Range(0, 100)]
         public int AluminumPercent { get; set; }
-        //[Required]
+        [Required]
         [Range(0, 100)]
         public int GlueTechniquePercent { get; set; }
-        //[Required]
+        [Required]
         [Range(0, 100)]
         public int UnderPantingPercent { get; set; }
-        //[Required]
+        [Required]
         [Range(0, 100)]
         public int TaxPercent { get; set; }
         public string Language { get; set; } = "Russian";

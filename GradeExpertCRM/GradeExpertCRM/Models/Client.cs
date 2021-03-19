@@ -21,21 +21,21 @@ namespace GradeExpertCRM.Models
         //[RegularExpression(@"^[0-9]+$", ErrorMessage = "Index must be number")]
         public string Index { get; set; }
 
-        //[Required]
+        [Required]
         public string Area { get; set; }
 
-        //[Required]
+        [Required]
         public string City { get; set; }
 
-        //[Required]
+        [Required]
         public string Address { get; set; }
 
-        //[Required]
-        //[RegularExpression(@"^[0-9 ()+-]+$", ErrorMessage = "Incorrect format of number")]
+        [Required]
+        [RegularExpression(@"^[0-9 ()+-]+$", ErrorMessage = "Incorrect format of number")]
         public string PhoneNumber { get; set; }
 
-        //[Required]
-        //[RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{1,}$", ErrorMessage = "Incorrect format of email")]
+        [Required]
+        [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{1,}$", ErrorMessage = "Incorrect format of email")]
         public string Email { get; set; }
 
         /// <summary>
