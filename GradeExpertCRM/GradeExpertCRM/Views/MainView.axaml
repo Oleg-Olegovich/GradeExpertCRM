@@ -64,11 +64,11 @@
 					Command="{Binding GoDocumentsView}" 
 					Content="{Binding Localization.ButtonDocuments}" 
 					Grid.Column="3"/>
-			<Button x:Name="ButtonMail"
+			<!--<Button x:Name="ButtonMail"
 					Classes="Menu"
 					Command="{Binding GoMailView}"
 					Content="{Binding Localization.ButtonMail}" 
-					Grid.Column="4"/>
+					Grid.Column="4"/>-->
 		</Grid>
 
 		<ContentControl Content="{Binding Content}" 
