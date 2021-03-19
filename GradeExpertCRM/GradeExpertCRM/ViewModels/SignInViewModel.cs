@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Reactive;
 using System.Threading.Tasks;
+using System.Configuration;
 using ReactiveUI;
+using Microsoft.Extensions.Configuration;
 
 namespace GradeExpertCRM.ViewModels
 {
@@ -94,8 +96,12 @@ namespace GradeExpertCRM.ViewModels
             IsFormEnabled = false;
             try
             {
-                // TO DO.
-                if (Login == "Admin" && Password == "qwerty")
+                var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+                if (Login == "Admin" && Password == configuration["AdminPassword"])
+                {
+                    BaseWindow.Content = new MainViewModel(true);
+                }
+                if (Login == "User" && Password == configuration["UserPassword"])
                 {
                     BaseWindow.Content = new MainViewModel(true);
                 }
