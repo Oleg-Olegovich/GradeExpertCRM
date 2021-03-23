@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using GradeExpertCRM.Models;
+﻿using GradeExpertCRM.Models;
 using System.Threading.Tasks;
 using ReactiveUI;
 using System.Reactive;

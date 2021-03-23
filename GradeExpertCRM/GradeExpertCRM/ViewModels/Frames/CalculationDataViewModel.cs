@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using ReactiveUI;
 using Avalonia.Media.Imaging;
 using GradeExpertCRM.Models;
@@ -7,37 +6,24 @@ using GradeExpertCRM.Models.Data.Repositories;
 using Splat;
 using System.Reactive;
 using System.Threading.Tasks;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using System.IO;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
     class CalculationDataViewModel : ViewModelBase
     {
+        private readonly string carImagesPath
+            = Path.GetFullPath(@"..\..\..\Resources\Cars\2\");
+
         private int LeftIndex = 0;
 
         private string[] _carImageNames = { "01-1", "02-1", "03-1", "04-1", "05-1",
                                             "06-1", "07-1", "08-1", "09-1", "10-1",
                                             "11-1", "12-1", "13-1", "14-1"};
 
-        private Bitmap[] _carImages = { new Bitmap(@"..\..\..\Resources\Cars\2\01-1.png"),
-                                        new Bitmap(@"..\..\..\Resources\Cars\2\02-1.png"),
-                                        new Bitmap(@"..\..\..\Resources\Cars\2\03-1.png"),
-                                        new Bitmap(@"..\..\..\Resources\Cars\2\04-1.png"),
-                                        new Bitmap(@"..\..\..\Resources\Cars\2\05-1.png"),
-                                        new Bitmap(@"..\..\..\Resources\Cars\2\06-1.png"),
-                                        new Bitmap(@"..\..\..\Resources\Cars\2\07-1.png"),
-                                        new Bitmap(@"..\..\..\Resources\Cars\2\08-1.png"),
-                                        new Bitmap(@"..\..\..\Resources\Cars\2\09-1.png"),
-                                        new Bitmap(@"..\..\..\Resources\Cars\2\10-1.png"),
-                                        new Bitmap(@"..\..\..\Resources\Cars\2\11-1.png"),
-                                        new Bitmap(@"..\..\..\Resources\Cars\2\12-1.png"),
-                                        new Bitmap(@"..\..\..\Resources\Cars\2\13-1.png"),
-                                        new Bitmap(@"..\..\..\Resources\Cars\2\14-1.png") };
+        private Bitmap[] _carImages;
 
-        private Bitmap[] _carImagesInInterface = { new Bitmap(@"..\..\..\Resources\Cars\2\01-1.png"),
-                                                   new Bitmap(@"..\..\..\Resources\Cars\2\02-1.png"),
-                                                   new Bitmap(@"..\..\..\Resources\Cars\2\03-1.png"),
-                                                   new Bitmap(@"..\..\..\Resources\Cars\2\04-1.png") };
+        private Bitmap[] _carImagesInInterface;
 
         private string[] _carImagesDescriprions = { "", "", "", "" };
 
@@ -101,7 +87,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         public bool IsButtonEnabled => carRepository_.SelectedCarId > 0 && settings_ != null;
         public ReactiveCommand<Calculation, Unit> DeleteCommand { get; }
         public ReactiveCommand<Calculation, Unit> ChangeCommnad { get; }
-        
+
         public OverallCalculation OverallCalculation { get; }
         public ObservableCollection<Calculation> Calculations { get; }
 
@@ -112,6 +98,28 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public CalculationDataViewModel(IBaseWindow baseWindow)
         {
+            _carImages = new Bitmap[] {
+                new Bitmap(carImagesPath + @"\01-1.png"),
+                new Bitmap(carImagesPath + @"\02-1.png"),
+                new Bitmap(carImagesPath + @"\03-1.png"),
+                new Bitmap(carImagesPath + @"\04-1.png"),
+                new Bitmap(carImagesPath + @"\05-1.png"),
+                new Bitmap(carImagesPath + @"\06-1.png"),
+                new Bitmap(carImagesPath + @"\07-1.png"),
+                new Bitmap(carImagesPath + @"\08-1.png"),
+                new Bitmap(carImagesPath + @"\09-1.png"),
+                new Bitmap(carImagesPath + @"\10-1.png"),
+                new Bitmap(carImagesPath + @"\11-1.png"),
+                new Bitmap(carImagesPath + @"\12-1.png"),
+                new Bitmap(carImagesPath + @"\13-1.png"),
+                new Bitmap(carImagesPath + @"\14-1.png") };
+
+            _carImagesInInterface = new Bitmap[] { 
+                new Bitmap(carImagesPath + @"\01-1.png"),
+                new Bitmap(carImagesPath + @"\02-1.png"),
+                new Bitmap(carImagesPath + @"\03-1.png"),
+                new Bitmap(carImagesPath + @"\04-1.png") };
+
             BaseWindow = baseWindow;
             UpdateImagesAndDescriptions();
 
@@ -121,7 +129,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             carRepository_ = Locator.Current.GetService<ICarRepository>();
             settings_ = Locator.Current.GetService<ISettingsRepository>().FirstOrDefault();
             var selectedCarId = carRepository_.SelectedCarId;
-            if(selectedCarId == 0 || settings_ == null)
+            if (selectedCarId == 0 || settings_ == null)
                 return;
 
             overallCalculationRepository_ = Locator.Current.GetService<IOverallCalculationRepository>();
@@ -150,10 +158,10 @@ namespace GradeExpertCRM.ViewModels.Frames
                     SparePartsPrice += sparePart.Price;
             }
 
-            AdditionalWorksPrice += OverallCalculation.AntiCorrosionPrice + 
+            AdditionalWorksPrice += OverallCalculation.AntiCorrosionPrice +
                                     OverallCalculation.PreparingToolPrice +
                                     OverallCalculation.FinalProcessingPrice;
-            
+
             TotalPrice = DentRepairPrice + DismantlingPrice + SparePartsPrice + PaintingPrice + AdditionalWorksPrice;
         }
 
