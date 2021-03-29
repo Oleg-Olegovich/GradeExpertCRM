@@ -1,14 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GradeExpertCRM.Models;
 using System.Threading.Tasks;
 using ReactiveUI;
 using System.Reactive;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Avalonia.Controls;
 using GradeExpertCRM.Models.Data.Repositories;
 using iText.Kernel.Pdf;
+using MessageBox.Avalonia.Enums;
 using Splat;
 
 namespace GradeExpertCRM.ViewModels.Frames
@@ -93,6 +97,33 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         private async Task Send(Document document)
         {
+            
+            var uri = "mailto:username@domainname?subject=SubjectText&body=BodyText&file:C:/Users/Admin/Desktop/demo.pdf";
+            var psi = new ProcessStartInfo {UseShellExecute = true, FileName = uri};
+            
+            try
+            {
+                Process.Start(psi);
+            }
+            catch (Win32Exception)
+            {
+                await MessageBox.Avalonia.MessageBoxManager
+                    .GetMessageBoxStandardWindow(Localization.Error, Localization.IncorrectFillingInOfFields,
+                        ButtonEnum.Ok, Icon.Error, WindowStartupLocation.CenterScreen, Style.MacOs)
+                    .Show();
+            }
+            /*
+           try
+           {
+               Car.ClientId = SelectedClient.Id;
+               await carRepository_.AddAsync(Car);
+               BaseWindow.Content = new CarViewModel(BaseWindow);
+           }
+           catch
+           {
+              
+           }
+           */
             
         }
     }

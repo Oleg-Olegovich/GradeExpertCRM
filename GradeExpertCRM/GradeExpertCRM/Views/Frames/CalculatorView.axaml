@@ -179,6 +179,13 @@
                           Margin="-6 0 -6 5" IsReadOnly="False">
                     <DataGrid.Columns>
                         <DataGridCheckBoxColumn Binding="{Binding IsApplied, Mode=TwoWay}" />
+                        <DataGridTextColumn Binding="{Binding Code}">
+                            <DataGridTextColumn.Header>
+                                <TextBlock
+                                    Text="{Binding DataContext.Localization.Code, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding NHours}">
                             <DataGridTextColumn.Header>
                                 <TextBlock
@@ -193,13 +200,6 @@
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
                             </DataGridTextColumn.Header>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Code}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock
-                                    Text="{Binding DataContext.Localization.Code, 
-                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding Name}">
                             <DataGridTextColumn.Header>
                                 <TextBlock
@@ -211,7 +211,7 @@
                 </DataGrid>
             </Grid>
         </Border>
-        
+
         <StackPanel Grid.Column="0" Grid.Row="1"
                     Orientation="Vertical">
             <TextBlock Classes="Text"
@@ -251,7 +251,7 @@
                               IsEnabled="False" />
                 <StackPanel Grid.Row="2" Margin="0 5 0 0">
                     <StackPanel.Resources>
-                        <root:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+                        <root:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
                     </StackPanel.Resources>
                     <RadioButton GroupName="Repair"
                                  Command="{Binding SelectTypeOfRepair}"
@@ -268,8 +268,8 @@
                                  IsChecked="{Binding Calculation.TypeOfRepair,
                                  Converter={StaticResource EnumToBooleanConverter},
                                  ConverterParameter={x:Static models:TypeOfRepair.UnderPainting}}">
-                    <TextBlock Classes="Text"
-                               Text="{Binding Localization.UnderPainting}" />
+                        <TextBlock Classes="Text"
+                                   Text="{Binding Localization.UnderPainting}" />
                     </RadioButton>
                     <RadioButton GroupName="Repair"
                                  Command="{Binding SelectTypeOfRepair}"
@@ -277,8 +277,8 @@
                                  IsChecked="{Binding Calculation.TypeOfRepair,
                                  Converter={StaticResource EnumToBooleanConverter},
                                  ConverterParameter={x:Static models:TypeOfRepair.Replacement}}">
-                    <TextBlock Classes="Text"
-                               Text="{Binding Localization.Replacement}" />
+                        <TextBlock Classes="Text"
+                                   Text="{Binding Localization.Replacement}" />
                     </RadioButton>
                 </StackPanel>
             </Grid>
@@ -298,28 +298,13 @@
                            Text="{Binding Localization.SpareParts}"
                            TextAlignment="Center" />
                 <DataGrid Grid.Row="1" Items="{Binding SpareParts}"
-                          
-                          Margin="-6 0 -6 5" >
+                          IsReadOnly="False"
+                          Margin="-6 0 -6 5">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Id}" />
                         <DataGridTextColumn Binding="{Binding Code}">
                             <DataGridTextColumn.Header>
                                 <TextBlock
                                     Text="{Binding DataContext.Localization.Code, 
-                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding NHours}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock
-                                    Text="{Binding DataContext.Localization.NHours, 
-                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Price}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock
-                                    Text="{Binding DataContext.Localization.Price, 
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
                             </DataGridTextColumn.Header>
                         </DataGridTextColumn>
@@ -330,9 +315,39 @@
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
                             </DataGridTextColumn.Header>
                         </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Price}">
+                            <DataGridTextColumn.Header>
+                                <TextBlock
+                                    Text="{Binding DataContext.Localization.Price, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Quantity}">
+                            <DataGridTextColumn.Header>
+                                <!-- TODO Нужно поправить Localization. Нужно изменить NHours на Quantity-->
+                                <TextBlock
+                                    Text="{Binding DataContext.Localization.NHours, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button
+                                        Command="{Binding DataContext.DeleteSparePartCommand,
+                                        RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}"
+                                        CommandParameter="{Binding}">
+                                        <Image Source="avares://GradeExpertCRM/Resources/cross.png" />
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
+
         </Border>
 
         <Grid Grid.Column="1" Grid.Row="2">

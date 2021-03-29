@@ -95,6 +95,8 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public Calculation Calculation { get; } = new Calculation();
 
+        public SparePart SparePart { get; } = new SparePart();
+        
         public string CarImageDescription
         {
             get
@@ -131,6 +133,8 @@ namespace GradeExpertCRM.ViewModels.Frames
         public ObservableCollection<SparePart> SpareParts { get; }
 
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
+        public ReactiveCommand<Unit, Unit> AddSparePartCommand { get; }
+        public ReactiveCommand<SparePart, Unit> DeleteSparePartCommand { get; }
 
         private readonly Car selectedCar_;
 
@@ -148,7 +152,9 @@ namespace GradeExpertCRM.ViewModels.Frames
             Calculation.ComponentName = CarImageDescription;
             CarImage = new Bitmap(ImagePath + carImageName + ".png");
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
-
+            AddSparePartCommand = ReactiveCommand.Create(AddSparePart);
+            DeleteSparePartCommand = ReactiveCommand.Create<SparePart>(DeleteSparePart);
+            
             calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
             var carRepository = Locator.Current.GetService<ICarRepository>();
             var settingsRepository = Locator.Current.GetService<ISettingsRepository>();
@@ -160,6 +166,15 @@ namespace GradeExpertCRM.ViewModels.Frames
                 new ObservableCollection<DismantlingWork>(GetDismantlingWorksByBodyType(selectedCar_.BodyType,
                     carImageName));
             SpareParts = new ObservableCollection<SparePart>();
+            
+            SpareParts.Add(new SparePart
+            {
+                CalculationId = Calculation.Id,
+                Code = 321,
+                Name = "Капот",
+                Price = 300.1,
+                Quantity = 2
+            });
         }
 
         public CalculatorViewModel(IBaseWindow baseWindow, Calculation calculation)
@@ -290,6 +305,16 @@ namespace GradeExpertCRM.ViewModels.Frames
             BaseWindow.Content = new CalculationDataViewModel(BaseWindow);
         }
 
+        public void AddSparePart()
+        {
+            SpareParts.Add(SparePart);
+        }
+
+        public void DeleteSparePart(SparePart sparePart)
+        {
+            SpareParts.Remove(sparePart);
+        }
+        
         public void Cancel()
             => BaseWindow.Content = new CalculationDataViewModel(BaseWindow);
 
