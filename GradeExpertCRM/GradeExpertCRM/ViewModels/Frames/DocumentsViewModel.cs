@@ -107,14 +107,15 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             MemoryStream memory = new MemoryStream(document.Content);
             pdfDocument_ = new PdfDocument(new PdfReader(memory));
-            
+
             currentPage_ = 1;
             PrintDocument pd = new PrintDocument();
-            pd.PrintPage +=  pd_PrintPage;
+            pd.PrintPage += pd_PrintPage;
             pd.Print();
         }
 
         private int currentPage_ = 1;
+
         private void pd_PrintPage(object sender, PrintPageEventArgs ev)
         {
             int numberOfPages = pdfDocument_.GetNumberOfPages();
@@ -128,8 +129,10 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         private async Task Send(Document document)
         {
+            var car = await carRepository_.GetFullCarAsync(carRepository_.SelectedCarId);
             var uri =
-                "mailto:username@domainname?subject=SubjectText&body=BodyText&file:C:/Users/Admin/Desktop/demo.pdf";
+                $"mailto:{detailsSettings_.Email}?subject=" +
+                $"{car.Brand} {car.Model}, {car.Number}, {car.Loss}";
             var psi = new ProcessStartInfo {UseShellExecute = true, FileName = uri};
 
             try
