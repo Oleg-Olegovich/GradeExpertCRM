@@ -14,7 +14,7 @@ namespace GradeExpertCRM.Models
         [Required]
         public string Name { get; set; }
 
-        [Required]
+        //[Required]
         public bool IsPartner { get; set; }
 
         //[Required]

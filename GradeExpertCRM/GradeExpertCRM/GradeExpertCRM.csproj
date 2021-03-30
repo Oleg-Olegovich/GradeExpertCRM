@@ -11,6 +11,8 @@
     <AvaloniaResource Include="Resources\printer.png" />
     <None Remove="Resources\send.png" />
     <AvaloniaResource Include="Resources\send.png" />
+    <None Remove="Resources\save.png" />
+    <AvaloniaResource Include="Resources\save.png" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="appsettings.json" />
@@ -238,6 +240,7 @@
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
 	  <PackageReference Include="RazorLight" Version="2.0.0-rc.3" />
+	  <PackageReference Include="ThomSoft.itext7.pdfimage" Version="1.0.2" />
   </ItemGroup>
   <ItemGroup>
 	<AvaloniaResource Include="Resources\arial.TTF" />

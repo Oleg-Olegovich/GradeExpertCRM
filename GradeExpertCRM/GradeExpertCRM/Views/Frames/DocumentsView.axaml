@@ -71,6 +71,12 @@
 							<DataTemplate>
 								<StackPanel Orientation="Horizontal">
 									<Button
+										Command="{Binding DataContext.SaveCommand,
+										RelativeSource={RelativeSource AncestorType={x:Type local:DocumentsView}}}"
+										CommandParameter="{Binding}">
+										<Image Source="avares://GradeExpertCRM/Resources/save.png" />
+									</Button>
+									<Button
 										Command="{Binding DataContext.PrintCommand,
 										RelativeSource={RelativeSource AncestorType={x:Type local:DocumentsView}}}"
 										CommandParameter="{Binding}">
