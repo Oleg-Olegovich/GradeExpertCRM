@@ -53,13 +53,14 @@ namespace GradeExpertCRM.ViewModels.Frames
             }
         }
         
-        //TODO Bind button to this property
+        public ReactiveCommand<Car, Unit> ChangeCommand { get; }
         public ReactiveCommand<Car, Unit> DeleteCommand { get; }
 
         public CarViewModel(IBaseWindow baseWindow)
         {
             BaseWindow = baseWindow;
             GoAddingCarView = ReactiveCommand.CreateFromTask(OpenAddingCarView);
+            ChangeCommand = ReactiveCommand.CreateFromTask<Car>(Change);
             DeleteCommand = ReactiveCommand.CreateFromTask<Car>(Delete);
             carRepository_ = Locator.Current.GetService<ICarRepository>();
             calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
@@ -67,7 +68,12 @@ namespace GradeExpertCRM.ViewModels.Frames
             _allCars = new ObservableCollection<Car>(cars);
             Cars = _allCars;
         }
-
+        
+        private async Task Change(Car car)
+        {
+            BaseWindow.Content = new AddingCarViewModel(BaseWindow, car);
+        }
+        
         private async Task Delete(Car car)
         {
             Cars.Remove(car);

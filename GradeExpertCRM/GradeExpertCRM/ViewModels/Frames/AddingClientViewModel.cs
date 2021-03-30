@@ -26,20 +26,22 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             BaseWindow = baseWindow;
             SaveCommand = ReactiveCommand.CreateFromTask(SaveAsync);
-
             clientRepository_ = Locator.Current.GetService<IClientRepository>();
+        }
+
+        public AddingClientViewModel(IBaseWindow baseWindow, Client client) : this(baseWindow)
+        {
+            Client = client;
         }
 
         public async Task SaveAsync()
         {
-            
-            
-                var validationContext = new ValidationContext(Client) { MemberName = nameof(Client) };
-                var isValid = Validator.TryValidateObject(Client, validationContext, null);
-                if (!isValid)
-                    return;
+            var validationContext = new ValidationContext(Client) {MemberName = nameof(Client)};
+            var isValid = Validator.TryValidateObject(Client, validationContext, null);
+            if (!isValid)
+                return;
 
-            await clientRepository_.AddAsync(Client);
+            await clientRepository_.UpdateAsync(Client);
             BaseWindow.Content = new ClientViewModel(BaseWindow);
 
             //try
