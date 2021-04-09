@@ -60,7 +60,6 @@ namespace GradeExpertCRM.ViewModels.Frames
         public ReactiveCommand<Unit, Unit> GoAddingDocumentView { get; }
 
         public ReactiveCommand<Document, Unit> SaveCommand { get; }
-        public ReactiveCommand<Document, Unit> PrintCommand { get; }
         public ReactiveCommand<Document, Unit> SendCommand { get; }
         public ReactiveCommand<Document, Unit> DeleteCommand { get; }
 
@@ -73,7 +72,6 @@ namespace GradeExpertCRM.ViewModels.Frames
             BaseWindow = baseWindow;
             GoAddingDocumentView = ReactiveCommand.CreateFromTask(OpenAddingDocumentView);
             SaveCommand = ReactiveCommand.CreateFromTask<Document>(Save);
-            PrintCommand = ReactiveCommand.CreateFromTask<Document>(Print);
             SendCommand = ReactiveCommand.CreateFromTask<Document>(Send);
             DeleteCommand = ReactiveCommand.CreateFromTask<Document>(Delete);
 
@@ -99,32 +97,6 @@ namespace GradeExpertCRM.ViewModels.Frames
             MemoryStream memory = new MemoryStream(document.Content);
             PdfDocument pdfDoc = new PdfDocument(new PdfReader(memory), new PdfWriter(path));
             pdfDoc.Close();
-        }
-
-        private PdfDocument pdfDocument_;
-
-        private async Task Print(Document document)
-        {
-            MemoryStream memory = new MemoryStream(document.Content);
-            pdfDocument_ = new PdfDocument(new PdfReader(memory));
-
-            currentPage_ = 1;
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += pd_PrintPage;
-            pd.Print();
-        }
-
-        private int currentPage_ = 1;
-
-        private void pd_PrintPage(object sender, PrintPageEventArgs ev)
-        {
-            int numberOfPages = pdfDocument_.GetNumberOfPages();
-
-            Bitmap bitmap = pdfDocument_.GetPage(currentPage_).ConvertPageToBitmap();
-            ev.Graphics.DrawImage(bitmap, new Point(0, 0));
-
-            currentPage_++;
-            ev.HasMorePages = currentPage_ <= numberOfPages;
         }
 
         private async Task Send(Document document)

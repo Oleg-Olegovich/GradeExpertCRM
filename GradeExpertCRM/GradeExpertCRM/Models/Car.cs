@@ -30,16 +30,16 @@ namespace GradeExpertCRM.Models
         [Required]
         public string Color { get; set; }
 
+        // [RegularExpression(@"^[A-Za-z0-9_-]*$")]
+        // [StringLength(17, MinimumLength = 17, ErrorMessage = "VIM must be 17 characters long")]
         [Required]
-        [RegularExpression(@"^[A-Za-z0-9_-]*$")]
-        [StringLength(17, MinimumLength = 17, ErrorMessage = "VIM must be 17 characters long")]
         public string VIN { get; set; }
         
         [Required]
         public string Number { get; set; }
 
+        // [Range(0, Int32.MaxValue, ErrorMessage = "Value must be positive number or 0")]
         [Required]
-        [Range(0, Int32.MaxValue, ErrorMessage = "Value must be positive number or 0")]
         public int Mileage { get; set; }
 
         [Required]
@@ -66,7 +66,8 @@ namespace GradeExpertCRM.Models
         [Required]
         public string TypeOfDamage { get; set; }
 
-        [Range(1900, 2100, ErrorMessage = "Invalid year")]
+        // [Range(1900, 2100, ErrorMessage = "Invalid year")]
+        [Required]
         public int ReleaseYear { get; set; }
 
         public string Note { get; set; }

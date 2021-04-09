@@ -60,7 +60,7 @@ namespace GradeExpertCRM.ViewModels
         /// </summary>
         public MainWindowViewModel()
         {
-            if (DateTime.Now > new DateTime(2021, 4, 1))
+            if (DateTime.Now > new DateTime(2021, 5, 1))
                 throw new Exception();
             var settingsRepository = Locator.Current.GetService<ISettingsRepository>();
             Language = settingsRepository.FirstOrDefault()?.Language ?? "Russian";
