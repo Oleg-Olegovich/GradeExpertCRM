@@ -23,7 +23,7 @@ namespace GradeExpertCRM.Models.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(App.ConnectionString);
+            optionsBuilder.UseSqlite(App.ConnectionString);
         }
     }
 }

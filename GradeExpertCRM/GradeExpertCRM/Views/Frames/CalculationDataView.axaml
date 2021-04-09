@@ -236,10 +236,10 @@
                 <!--     </RadioButton> -->
                 <!-- </StackPanel> -->
 
-                <Button Grid.Row="1"
-                        Grid.Column="0"
-                        Classes="Menu"
-                        Content="{Binding Localization.ButtonSave}" />
+                <!-- <Button Grid.Row="1" -->
+                <!--         Grid.Column="0" -->
+                <!--         Classes="Menu" -->
+                <!--         Content="{Binding Localization.ButtonSave}" /> -->
 
                 <!-- <Button Grid.Row="1" -->
                 <!--         Grid.Column="1" -->

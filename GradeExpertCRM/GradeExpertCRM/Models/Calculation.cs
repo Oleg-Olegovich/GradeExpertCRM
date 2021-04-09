@@ -27,8 +27,8 @@ namespace GradeExpertCRM.Models
 
         public double NHours { get; set; }
 
-        public double RemoveDentPrice  { get; set; }
-        
+        public double RemoveDentPrice { get; set; }
+
         public double DentPrice { get; set; }
 
         /// <summary>

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
+using Avalonia.Controls;
 using GradeExpertCRM.Models;
 using GradeExpertCRM.Models.Data.Repositories;
 using ReactiveUI;
@@ -22,7 +23,27 @@ namespace GradeExpertCRM.ViewModels.Frames
                 this.RaisePropertyChanged(nameof(BodyTypeIndex));
             }
         }
+
+        public TextBlock Color
+        {
+            set
+            {
+                Car.Color = value.Text;
+                this.RaisePropertyChanged(nameof(Color));
+            }
+            get => new TextBlock{Text = Car.Color};
+        }
         
+        public TextBlock TypeOfDamage
+        {
+            set
+            {
+                Car.TypeOfDamage = value.Text;
+                this.RaisePropertyChanged(nameof(Color));
+            }
+            get => new TextBlock{Text = Car.TypeOfDamage};
+        }
+
         public Car Car { get; set; } = new Car();
 
         public ObservableCollection<Client> Clients { get; set; }
