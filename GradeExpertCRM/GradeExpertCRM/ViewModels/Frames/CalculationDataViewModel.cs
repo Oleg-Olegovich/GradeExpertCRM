@@ -7,6 +7,7 @@ using Splat;
 using System.Reactive;
 using System.Threading.Tasks;
 using System.IO;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace GradeExpertCRM.ViewModels.Frames
 {
@@ -17,15 +18,18 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         private int LeftIndex = 0;
 
-        private string[] _carImageNames = { "01-1", "02-1", "03-1", "04-1", "05-1",
-                                            "06-1", "07-1", "08-1", "09-1", "10-1",
-                                            "11-1", "12-1", "13-1", "14-1"};
+        private string[] _carImageNames =
+        {
+            "01-1", "02-1", "03-1", "04-1", "05-1",
+            "06-1", "07-1", "08-1", "09-1", "10-1",
+            "11-1", "12-1", "13-1", "14-1"
+        };
 
         private Bitmap[] _carImages;
 
         private Bitmap[] _carImagesInInterface;
 
-        private string[] _carImagesDescriprions = { "", "", "", "" };
+        private string[] _carImagesDescriprions = {"", "", "", ""};
 
         public Bitmap CarImage0
         {
@@ -76,12 +80,48 @@ namespace GradeExpertCRM.ViewModels.Frames
         }
 
         #region OverallPrices
-        public double DentRepairPrice { get; set; }
-        public double DismantlingPrice { get; set; }
-        public double SparePartsPrice { get; set; }
-        public double PaintingPrice { get; set; }
-        public double AdditionalWorksPrice { get; set; }
-        public double TotalPrice { get; set; }
+
+        private double _dentRepairPrice;
+        public double DentRepairPrice
+        {
+            get => _dentRepairPrice;
+            set => this.RaiseAndSetIfChanged(ref _dentRepairPrice, value);
+        }
+
+        private double _dismantlingPrice;
+        public double DismantlingPrice
+        {
+            get => _dismantlingPrice;
+            set => this.RaiseAndSetIfChanged(ref _dismantlingPrice, value);
+        }
+
+        private double _sparePartsPrice;
+        public double SparePartsPrice
+        {
+            get => _sparePartsPrice;
+            set => this.RaiseAndSetIfChanged(ref _sparePartsPrice, value);
+        }
+
+        private double _paintingPrice;
+        public double PaintingPrice
+        {
+            get => _paintingPrice;
+            set => this.RaiseAndSetIfChanged(ref _paintingPrice, value);
+        }
+
+        private double _additionalWorksPrice;
+        public double AdditionalWorksPrice
+        {
+            get => _additionalWorksPrice;
+            set => this.RaiseAndSetIfChanged(ref _additionalWorksPrice, value);
+        }
+
+        public double _totalPrice;
+        public double TotalPrice
+        {
+            get => _totalPrice;
+            set => this.RaiseAndSetIfChanged(ref _totalPrice, value);
+        }
         #endregion
 
         public bool IsButtonEnabled => carRepository_.SelectedCarId > 0 && settings_ != null;
@@ -98,7 +138,8 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public CalculationDataViewModel(IBaseWindow baseWindow)
         {
-            _carImages = new Bitmap[] {
+            _carImages = new Bitmap[]
+            {
                 new Bitmap(carImagesPath + @"\01-1.png"),
                 new Bitmap(carImagesPath + @"\02-1.png"),
                 new Bitmap(carImagesPath + @"\03-1.png"),
@@ -112,13 +153,16 @@ namespace GradeExpertCRM.ViewModels.Frames
                 new Bitmap(carImagesPath + @"\11-1.png"),
                 new Bitmap(carImagesPath + @"\12-1.png"),
                 new Bitmap(carImagesPath + @"\13-1.png"),
-                new Bitmap(carImagesPath + @"\14-1.png") };
+                new Bitmap(carImagesPath + @"\14-1.png")
+            };
 
-            _carImagesInInterface = new Bitmap[] { 
+            _carImagesInInterface = new Bitmap[]
+            {
                 new Bitmap(carImagesPath + @"\01-1.png"),
                 new Bitmap(carImagesPath + @"\02-1.png"),
                 new Bitmap(carImagesPath + @"\03-1.png"),
-                new Bitmap(carImagesPath + @"\04-1.png") };
+                new Bitmap(carImagesPath + @"\04-1.png")
+            };
 
             BaseWindow = baseWindow;
             UpdateImagesAndDescriptions();
@@ -144,21 +188,67 @@ namespace GradeExpertCRM.ViewModels.Frames
             UpdatePrices();
         }
 
+        #region CheckBoxes
+
+        public bool ToolPreparingCheckBox
+        {
+            get => OverallCalculation.IsPreparingToolApplied;
+            set
+            {
+                OverallCalculation.IsPreparingToolApplied = value;
+                UpdateOverallCalculation();
+                UpdatePrices();
+            }
+        }
+
+        public bool AntiCorrosionTreatmentCheckBox
+        {
+            get => OverallCalculation.IsAntiCorrosionApplied;
+            set
+            {
+                OverallCalculation.IsAntiCorrosionApplied = value;
+                UpdateOverallCalculation();
+                UpdatePrices();
+            }
+        }
+
+        public bool BoxFinishingTreatmentCheckBox
+        {
+            get =>
+                OverallCalculation.IsFinalProcessingApplied;
+            set
+            {
+                OverallCalculation.IsFinalProcessingApplied = value;
+                UpdateOverallCalculation();
+                UpdatePrices();
+            }
+        }
+
+        #endregion
+        
         private void UpdatePrices()
         {
+            double currentDentPrice = 0;
+            double currentPainting = 0;
+            double currentDismantlingPrice = 0;
+            double currentSparePartsPrice = 0;
             foreach (var calculation in Calculations)
             {
-                DentRepairPrice += calculation.DentPrice;
-                PaintingPrice += calculation.PriceOfPainting;
+                currentDentPrice += calculation.DentPrice;
+                currentPainting += calculation.PriceOfPainting;
 
                 foreach (var dismantlingWork in calculation.DismantlingWorks)
-                    DismantlingPrice += dismantlingWork.Price;
+                    currentDismantlingPrice += dismantlingWork.Price;
 
                 foreach (var sparePart in calculation.SpareParts)
-                    SparePartsPrice += sparePart.Price;
+                    currentSparePartsPrice += sparePart.Price;
             }
 
-            AdditionalWorksPrice += OverallCalculation.AntiCorrosionPrice +
+            DentRepairPrice = currentDentPrice;
+            PaintingPrice = currentPainting;
+            DismantlingPrice = currentDismantlingPrice;
+            SparePartsPrice = currentSparePartsPrice;
+            AdditionalWorksPrice = OverallCalculation.AntiCorrosionPrice +
                                     OverallCalculation.PreparingToolPrice +
                                     OverallCalculation.FinalProcessingPrice;
 
@@ -169,11 +259,25 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             OverallCalculation.TaxPercent = settings_.TaxPercent;
             OverallCalculation.CarId = carRepository_.SelectedCarId;
-            OverallCalculation.PreparingToolPrice = settings_.PreparingTool * Calculations.Count;
-            OverallCalculation.AntiCorrosionPrice = settings_.AntiCorrosion * Calculations.Count;
-            var price = settings_.FinalProcessing * Calculations.Count;
-            var maxPrice = settings_.FinalProcessingMax;
-            OverallCalculation.FinalProcessingPrice = price > maxPrice ? maxPrice : price;
+
+            if (OverallCalculation.IsPreparingToolApplied)
+                OverallCalculation.PreparingToolPrice = settings_.PreparingTool * Calculations.Count;
+            else
+                OverallCalculation.PreparingToolPrice = 0;
+            
+            if (OverallCalculation.IsAntiCorrosionApplied)
+                OverallCalculation.AntiCorrosionPrice = settings_.AntiCorrosion * Calculations.Count;
+            else
+                OverallCalculation.AntiCorrosionPrice = 0;
+            
+            if (OverallCalculation.IsFinalProcessingApplied)
+            {
+                var price = settings_.FinalProcessing * Calculations.Count;
+                var maxPrice = settings_.FinalProcessingMax;
+                OverallCalculation.FinalProcessingPrice = price > maxPrice ? maxPrice : price;
+            }
+            else
+                OverallCalculation.FinalProcessingPrice = 0;
 
             overallCalculationRepository_.Update(OverallCalculation);
         }
@@ -182,6 +286,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             BaseWindow.Content = new CalculatorViewModel(BaseWindow, calculation);
         }
+
         public async Task Delete(Calculation calculation)
         {
             Calculations.Remove(calculation);
