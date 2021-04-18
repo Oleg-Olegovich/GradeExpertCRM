@@ -15,7 +15,8 @@ namespace GradeExpertCRM.Models
         public string Name { get; set; }
 
         //[Required]
-        public bool IsPartner { get; set; }
+        //public bool IsPartner { get; set; }
+        public RoleEnum Role { get; set; }
 
         //[Required]
         //[RegularExpression(@"^[0-9]+$", ErrorMessage = "Index must be number")]

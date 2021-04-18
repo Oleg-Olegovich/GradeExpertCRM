@@ -46,8 +46,9 @@
 			<TextBlock Classes="Label"
 					   Text="{Binding Localization.Role}"/>
 			<Border Classes="BorderOfText">
-				<ComboBox Name="clientRole" SelectedIndex="{Binding ClientOrPartner}">
+				<ComboBox Name="clientRole" SelectedIndex="{Binding RoleOfClient}">
 					<TextBlock Text="{Binding Localization.Client}" />
+					<TextBlock Text="Партнер"/>
 					<TextBlock Text="Страховая"/>
 				</ComboBox>
 			</Border>

@@ -169,10 +169,10 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             OverallCalculation.TaxPercent = settings_.TaxPercent;
             OverallCalculation.CarId = carRepository_.SelectedCarId;
-            OverallCalculation.PreparingToolPrice = settings_.PreparingTool * settings_.DismantlingPrice * Calculations.Count;
-            OverallCalculation.AntiCorrosionPrice = settings_.AntiCorrosion * settings_.DismantlingPrice * Calculations.Count;
-            var price = settings_.FinalProcessing * settings_.DismantlingPrice * Calculations.Count;
-            var maxPrice = settings_.FinalProcessingMax * settings_.DismantlingPrice;
+            OverallCalculation.PreparingToolPrice = settings_.PreparingTool * Calculations.Count;
+            OverallCalculation.AntiCorrosionPrice = settings_.AntiCorrosion * Calculations.Count;
+            var price = settings_.FinalProcessing * Calculations.Count;
+            var maxPrice = settings_.FinalProcessingMax;
             OverallCalculation.FinalProcessingPrice = price > maxPrice ? maxPrice : price;
 
             overallCalculationRepository_.Update(OverallCalculation);

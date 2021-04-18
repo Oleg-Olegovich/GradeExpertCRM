@@ -31,9 +31,9 @@ namespace GradeExpertCRM.ViewModels.Frames
                 Car.Color = value.Text;
                 this.RaisePropertyChanged(nameof(Color));
             }
-            get => new TextBlock{Text = Car.Color};
+            get => new TextBlock {Text = Car.Color};
         }
-        
+
         public TextBlock TypeOfDamage
         {
             set
@@ -41,12 +41,13 @@ namespace GradeExpertCRM.ViewModels.Frames
                 Car.TypeOfDamage = value.Text;
                 this.RaisePropertyChanged(nameof(Color));
             }
-            get => new TextBlock{Text = Car.TypeOfDamage};
+            get => new TextBlock {Text = Car.TypeOfDamage};
         }
 
         public Car Car { get; set; } = new Car();
 
         public ObservableCollection<Client> Clients { get; set; }
+        public ObservableCollection<string> InsuranceCompany { get; }
         public ObservableCollection<string> InspectionPlaces { get; set; }
         public ObservableCollection<string> Inspectors { get; set; }
         public Client SelectedClient { get; set; } = new Client();
@@ -62,16 +63,23 @@ namespace GradeExpertCRM.ViewModels.Frames
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
             carRepository_ = Locator.Current.GetService<ICarRepository>();
             clientRepository_ = Locator.Current.GetService<IClientRepository>();
-            var clients = clientRepository_.All().ToList();
+            var allClients = clientRepository_.All().ToList();
+
+            // Owners
+            var clients = allClients.Where(x => x.Role == RoleEnum.Client).ToList();
             Clients = new ObservableCollection<Client>(clients);
 
-            var partners = (from client in clients
-                where client.IsPartner
-                select client).ToList();
+            // InsuranceCompany
+            var insuranceCompany = allClients.Where(x => x.Role == RoleEnum.Insurer).Select(x => x.Name);
+            InsuranceCompany = new ObservableCollection<string>(insuranceCompany);
+
+            // Partners
+            var partners = (from partner in allClients
+                where partner.Role == RoleEnum.Partner
+                select partner).ToList();
 
             var inspectionPlaces = from partner in partners
                 select new string($"{partner.Area} {partner.City} {partner.Address}");
-
             InspectionPlaces = new ObservableCollection<string>(inspectionPlaces);
 
             var inspectors = from partner in partners

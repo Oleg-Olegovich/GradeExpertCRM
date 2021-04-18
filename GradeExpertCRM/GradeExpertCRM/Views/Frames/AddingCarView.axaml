@@ -187,7 +187,11 @@
             <TextBlock Classes="Label"
                        Text="{Binding Localization.TextBoxInsuranceCompany}" />
             <Border Classes="BorderOfText">
-                <TextBox VerticalAlignment="Stretch" Text="{Binding Car.InsuranceCompany}" />
+                <ComboBox VerticalAlignment="Stretch"
+                          Items="{Binding InsuranceCompany}"
+                          SelectedItem="{Binding Car.InsuranceCompany}">
+                </ComboBox>
+                <!-- <TextBox VerticalAlignment="Stretch" Text="{Binding Car.InsuranceCompany}" /> -->
             </Border>
         </StackPanel>
         <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Vertical"
