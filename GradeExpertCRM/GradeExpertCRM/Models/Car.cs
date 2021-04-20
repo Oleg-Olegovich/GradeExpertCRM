@@ -27,47 +27,47 @@ namespace GradeExpertCRM.Models
         [Required]
         public BodyType BodyType { get; set; }
 
-        [Required]
+        //[Required]
         public string Color { get; set; }
 
         // [RegularExpression(@"^[A-Za-z0-9_-]*$")]
         // [StringLength(17, MinimumLength = 17, ErrorMessage = "VIM must be 17 characters long")]
-        [Required]
+        //[Required]
         public string VIN { get; set; }
         
-        [Required]
+        //[Required]
         public string Number { get; set; }
 
         // [Range(0, Int32.MaxValue, ErrorMessage = "Value must be positive number or 0")]
-        [Required]
+        //[Required]
         public int Mileage { get; set; }
 
-        [Required]
+        //[Required]
         public string Loss { get; set; }
 
-        [Required]
+        //[Required]
         public string PolicyNumber { get; set; }
 
-        [Required]
+        //[Required]
         public string InsuranceCompany { get; set; }
 
-        [Required]
+        //[Required]
         public int Franchise { get; set; }
 
-        [Required]
+        //[Required]
         public DateTime DateOfInspection { get; set; } = DateTime.Now;
 
-        [Required]
+        //[Required]
         public string PlaceOfInspection { get; set; }
 
-        [Required]
+        //[Required]
         public string WhoMadeInspection { get; set; }
 
-        [Required]
+        //[Required]
         public string TypeOfDamage { get; set; }
 
         // [Range(1900, 2100, ErrorMessage = "Invalid year")]
-        [Required]
+        //[Required]
         public int ReleaseYear { get; set; }
 
         public string Note { get; set; }

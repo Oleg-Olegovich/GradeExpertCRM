@@ -126,7 +126,7 @@ namespace GradeExpertCRM.ViewModels
 
         public string TextBoxToolPreparing => "VORBEREITUNG DES WERKZEUGS";
 
-        public string TextBoxNHoursPerCar => "N/S pro DETAIL";
+        public string TextBoxCurrencyPerCar => "RUB pro DETAIL";
 
         public string TextBoxLanguage => "SPRACHE";
 

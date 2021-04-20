@@ -122,7 +122,7 @@
 
         string TextBoxToolPreparing { get; }
 
-        string TextBoxNHoursPerCar { get; }
+        string TextBoxCurrencyPerCar { get; }
 
         string TextBoxLanguage { get; }
 

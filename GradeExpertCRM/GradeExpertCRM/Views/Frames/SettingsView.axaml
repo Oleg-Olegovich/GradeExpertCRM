@@ -74,19 +74,19 @@
 
         <TextBlock Grid.Row="8" Grid.Column="2"
                    Classes="Text"
-                   Text="{Binding Localization.NHours}" />
+                   Text="{Binding Localization.Currency}" />
 
         <TextBlock Grid.Row="6" Grid.Column="2"
                    Classes="Text"
-                   Text="{Binding Localization.NHours}" />
+                   Text="{Binding Localization.Currency}" />
 
         <TextBlock Grid.Row="7" Grid.Column="2"
                    Classes="Text"
-                   Text="{Binding Localization.NHours}" />
+                   Text="{Binding Localization.Currency}" />
 
         <TextBlock Grid.Row="9" Grid.Column="2"
                    Classes="Text"
-                   Text="{Binding Localization.TextBoxNHoursPerCar}" />
+                   Text="{Binding Localization.TextBoxCurrencyPerCar}" />
 
         <TextBlock Grid.Row="2" Grid.Column="6"
                    Classes="Text"

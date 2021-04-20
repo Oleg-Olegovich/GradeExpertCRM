@@ -15,11 +15,15 @@ namespace GradeExpertCRM.ViewModels.Frames
         public Client Client { get; set; } = new Client();
         private IClientRepository clientRepository_;
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
-
-        public int ClientOrPartner
+        
+        public int RoleOfClient
         {
-            get => Client.IsPartner ? 1 : 0;
-            set => Client.IsPartner = value == 1;
+            get => (int) Client.Role;
+            set
+            {
+                Client.Role = (RoleEnum) value;
+                this.RaisePropertyChanged(nameof(RoleOfClient));
+            }
         }
 
         public AddingClientViewModel(IBaseWindow baseWindow)

@@ -71,7 +71,6 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         private async Task CalculationWithPhoto()
         {
-            //TODO make a restrictions for selecting up to 15 files
             OpenFileDialog dialog = new OpenFileDialog {AllowMultiple = true};
             dialog.Filters.Add(new FileDialogFilter {Name = "Images", Extensions = {"png", "jpg", "jpeg"}});
 
@@ -79,7 +78,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             if (images.Length <= 0) // Validation
                 return;
-
+            
             const string input = "GradeExpertCRM.Resources.Templates.template3";
 
             var engine = new RazorLightEngineBuilder()
@@ -213,7 +212,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             await documentRepository_.AddAsync(documentModel);
             ReturnBack(pdfBytes);
         }
-        
+
         private async Task CalculationWithoutPhoto()
         {
             const string input = "GradeExpertCRM.Resources.Templates.template3";
@@ -228,7 +227,7 @@ namespace GradeExpertCRM.ViewModels.Frames
                 Car = car_,
                 DetailsSettings = detailsSettings_
             };
-
+            
             string html = await engine.CompileRenderAsync<object>(input, documentVM);
 
             const int pageWidth = 1000;
@@ -259,10 +258,9 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             ReturnBack(pdfBytes);
         }
-        
+
         private async Task DamagePhotos()
         {
-            //TODO make a restrictions for selecting up to 15 files
             OpenFileDialog dialog = new OpenFileDialog {AllowMultiple = true};
             dialog.Filters.Add(new FileDialogFilter {Name = "Images", Extensions = {"png", "jpg", "jpeg"}});
 
@@ -385,11 +383,11 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             ReturnBack(pdfBytes);
         }
-        
+
         private async Task Order()
         {
             const string input = "GradeExpertCRM.Resources.Templates.template1";
-            
+
             var engine = new RazorLightEngineBuilder()
                 .UseEmbeddedResourcesProject(System.Reflection.Assembly.GetEntryAssembly())
                 .UseMemoryCachingProvider()
@@ -415,7 +413,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             ConverterProperties converterProperties = new ConverterProperties();
             converterProperties.SetFontProvider(new DefaultFontProvider(true, true, true));
             HtmlConverter.ConvertToPdf(html, pdfDoc, converterProperties);
-            
+
             pdfDoc.Close();
             byte[] pdfBytes = stream.ToArray();
 
@@ -431,11 +429,11 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             ReturnBack(pdfBytes);
         }
-        
+
         private async Task PerformedWork()
         {
             const string input = "GradeExpertCRM.Resources.Templates.template2";
-            
+
             var engine = new RazorLightEngineBuilder()
                 .UseEmbeddedResourcesProject(System.Reflection.Assembly.GetEntryAssembly())
                 .UseMemoryCachingProvider()
@@ -461,7 +459,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             ConverterProperties converterProperties = new ConverterProperties();
             converterProperties.SetFontProvider(new DefaultFontProvider(true, true, true));
             HtmlConverter.ConvertToPdf(html, pdfDoc, converterProperties);
-            
+
             pdfDoc.Close();
             byte[] pdfBytes = stream.ToArray();
 
@@ -480,8 +478,8 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         private async Task Payment()
         {
-            const string input = "GradeExpertCRM.Resources.Templates.template4";
-            
+             const string input = "GradeExpertCRM.Resources.Templates.template5";
+
             var engine = new RazorLightEngineBuilder()
                 .UseEmbeddedResourcesProject(System.Reflection.Assembly.GetEntryAssembly())
                 .UseMemoryCachingProvider()
@@ -507,7 +505,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             ConverterProperties converterProperties = new ConverterProperties();
             converterProperties.SetFontProvider(new DefaultFontProvider(true, true, true));
             HtmlConverter.ConvertToPdf(html, pdfDoc, converterProperties);
-            
+
             pdfDoc.Close();
             byte[] pdfBytes = stream.ToArray();
 
@@ -527,7 +525,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         private async Task Franchise()
         {
             const string input = "GradeExpertCRM.Resources.Templates.template5";
-            
+
             var engine = new RazorLightEngineBuilder()
                 .UseEmbeddedResourcesProject(System.Reflection.Assembly.GetEntryAssembly())
                 .UseMemoryCachingProvider()
@@ -553,7 +551,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             ConverterProperties converterProperties = new ConverterProperties();
             converterProperties.SetFontProvider(new DefaultFontProvider(true, true, true));
             HtmlConverter.ConvertToPdf(html, pdfDoc, converterProperties);
-            
+
             pdfDoc.Close();
             byte[] pdfBytes = stream.ToArray();
 
@@ -569,7 +567,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             ReturnBack(pdfBytes);
         }
-        
+
         private void ReturnBack(byte[] pdfBytes)
         {
             BaseWindow.Content = new DocumentsViewModel(BaseWindow);

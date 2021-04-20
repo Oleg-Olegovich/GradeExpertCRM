@@ -27,6 +27,10 @@ namespace GradeExpertCRM.Models
         /// Overall price for final processing per automobile
         /// </summary>
         public double FinalProcessingPrice { get; set; }
+        
+        public bool IsPreparingToolApplied { get; set; }
+        public bool IsAntiCorrosionApplied { get; set; }
+        public bool IsFinalProcessingApplied { get; set; }
 
         public int TaxPercent { get; set; }
     }
