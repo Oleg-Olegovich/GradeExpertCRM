@@ -20,9 +20,9 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         private string[] _carImageNames =
         {
-            "01-1", "02-1", "03-1", "04-1", "05-1",
-            "06-1", "07-1", "08-1", "09-1", "10-1",
-            "11-1", "12-1", "13-1", "14-1"
+            "10-1", "09-1", "11-1", "14-1", "07-1",
+            "05-1", "01-1", "04-1", "12-1", "08-1",
+            "06-1", "02-1", "03-1", "13-1"
         };
 
         private Bitmap[] _carImages;
@@ -140,28 +140,28 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             _carImages = new Bitmap[]
             {
+                new Bitmap(carImagesPath + @"\10-1.png"),
+                new Bitmap(carImagesPath + @"\09-1.png"),
+                new Bitmap(carImagesPath + @"\11-1.png"),
+                new Bitmap(carImagesPath + @"\14-1.png"),
+                new Bitmap(carImagesPath + @"\07-1.png"),
+                new Bitmap(carImagesPath + @"\05-1.png"),
                 new Bitmap(carImagesPath + @"\01-1.png"),
+                new Bitmap(carImagesPath + @"\04-1.png"),
+                new Bitmap(carImagesPath + @"\12-1.png"),
+                new Bitmap(carImagesPath + @"\08-1.png"),
+                new Bitmap(carImagesPath + @"\06-1.png"),
                 new Bitmap(carImagesPath + @"\02-1.png"),
                 new Bitmap(carImagesPath + @"\03-1.png"),
-                new Bitmap(carImagesPath + @"\04-1.png"),
-                new Bitmap(carImagesPath + @"\05-1.png"),
-                new Bitmap(carImagesPath + @"\06-1.png"),
-                new Bitmap(carImagesPath + @"\07-1.png"),
-                new Bitmap(carImagesPath + @"\08-1.png"),
-                new Bitmap(carImagesPath + @"\09-1.png"),
-                new Bitmap(carImagesPath + @"\10-1.png"),
-                new Bitmap(carImagesPath + @"\11-1.png"),
-                new Bitmap(carImagesPath + @"\12-1.png"),
                 new Bitmap(carImagesPath + @"\13-1.png"),
-                new Bitmap(carImagesPath + @"\14-1.png")
             };
 
             _carImagesInInterface = new Bitmap[]
             {
-                new Bitmap(carImagesPath + @"\01-1.png"),
-                new Bitmap(carImagesPath + @"\02-1.png"),
-                new Bitmap(carImagesPath + @"\03-1.png"),
-                new Bitmap(carImagesPath + @"\04-1.png")
+                new Bitmap(carImagesPath + @"\10-1.png"),
+                new Bitmap(carImagesPath + @"\09-1.png"),
+                new Bitmap(carImagesPath + @"\11-1.png"),
+                new Bitmap(carImagesPath + @"\14-1.png"),
             };
 
             BaseWindow = baseWindow;
@@ -192,7 +192,12 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public bool ToolPreparingCheckBox
         {
-            get => OverallCalculation.IsPreparingToolApplied;
+            get 
+            {
+                if (OverallCalculation == null)
+                    return false;
+                return OverallCalculation.IsPreparingToolApplied;
+            } 
             set
             {
                 OverallCalculation.IsPreparingToolApplied = value;
@@ -203,7 +208,12 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public bool AntiCorrosionTreatmentCheckBox
         {
-            get => OverallCalculation.IsAntiCorrosionApplied;
+            get
+            {
+                if (OverallCalculation == null)
+                    return false;
+                return OverallCalculation.IsAntiCorrosionApplied;
+            }
             set
             {
                 OverallCalculation.IsAntiCorrosionApplied = value;
@@ -214,8 +224,12 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public bool BoxFinishingTreatmentCheckBox
         {
-            get =>
-                OverallCalculation.IsFinalProcessingApplied;
+            get
+            {
+                if (OverallCalculation == null)
+                    return false;
+                return OverallCalculation.IsFinalProcessingApplied;
+            }
             set
             {
                 OverallCalculation.IsFinalProcessingApplied = value;

@@ -1,8 +1,6 @@
 ﻿using GradeExpertCRM.Models.Data.Repositories;
 using ReactiveUI;
-using GradeExpertCRM.Models;
 using Splat;
-using System;
 
 namespace GradeExpertCRM.ViewModels
 {
