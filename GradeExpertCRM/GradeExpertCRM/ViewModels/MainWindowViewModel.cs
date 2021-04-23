@@ -1,8 +1,6 @@
 ﻿using GradeExpertCRM.Models.Data.Repositories;
 using ReactiveUI;
-using GradeExpertCRM.Models;
 using Splat;
-using System;
 
 namespace GradeExpertCRM.ViewModels
 {
@@ -60,8 +58,6 @@ namespace GradeExpertCRM.ViewModels
         /// </summary>
         public MainWindowViewModel()
         {
-            if (DateTime.Now > new DateTime(2021, 5, 1))
-                throw new Exception();
             var settingsRepository = Locator.Current.GetService<ISettingsRepository>();
             Language = settingsRepository.FirstOrDefault()?.Language ?? "Russian";
             Content = new SignInViewModel(this);

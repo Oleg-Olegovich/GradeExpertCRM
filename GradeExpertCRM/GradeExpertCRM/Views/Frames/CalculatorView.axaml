@@ -289,8 +289,9 @@
                 Margin="5 0 5 10">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition MaxHeight="20" />
+                    <RowDefinition Height="20" />
                     <RowDefinition />
+                    <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0"
@@ -324,9 +325,8 @@
                         </DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding Quantity}">
                             <DataGridTextColumn.Header>
-                                <!-- TODO Нужно поправить Localization. Нужно изменить NHours на Quantity-->
                                 <TextBlock
-                                    Text="{Binding DataContext.Localization.NHours, 
+                                    Text="{Binding DataContext.Localization.Quantity, 
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
                             </DataGridTextColumn.Header>
                         </DataGridTextColumn>
@@ -346,6 +346,40 @@
 
                     </DataGrid.Columns>
                 </DataGrid>
+			
+			    <Grid Grid.Row="2">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+		            </Grid.ColumnDefinitions>
+				
+			        <Border Classes="BorderOfText"
+							Grid.Column="0">
+                        <TextBox VerticalAlignment="Stretch" Text="{Binding SparePart.Code}"/>
+                    </Border>
+				    <Border Classes="BorderOfText"
+							Grid.Column="1">
+                        <TextBox VerticalAlignment="Stretch" Text="{Binding SparePart.Name}"/>
+                    </Border>
+				    <Border Classes="BorderOfText"
+							Grid.Column="2">
+                        <TextBox VerticalAlignment="Stretch" Text="{Binding SparePart.Price}"/>
+                    </Border>
+		            <Border Classes="BorderOfText"
+							Grid.Column="3">
+                        <TextBox VerticalAlignment="Stretch" Text="{Binding SparePart.Quantity}"/>
+                    </Border>
+				
+			        <Button
+							Grid.Column="4"
+						    Command="{Binding DataContext.AddSparePartCommand,
+                                RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}">
+                                        <Image Source="avares://GradeExpertCRM/Resources/plus.png" />
+                    </Button>
+			    </Grid>
             </Grid>
 
         </Border>
