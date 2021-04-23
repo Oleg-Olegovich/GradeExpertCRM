@@ -124,7 +124,7 @@
                     <TextBlock Classes="Label"
                                Text="{Binding Localization.NHours}" />
                     <Border Classes="BorderOfText">
-                        <TextBox VerticalAlignment="Stretch" Text="{Binding NHours}"
+                        <TextBox VerticalAlignment="Stretch" Text="{Binding NHours, Mode=TwoWay}"
                                  IsEnabled="{Binding IsPriceEnabled}" />
                     </Border>
                 </StackPanel>
@@ -134,7 +134,7 @@
                     <TextBlock Classes="Label"
                                Text="{Binding Localization.Price}" />
                     <Border Classes="BorderOfText">
-                        <TextBox VerticalAlignment="Stretch" Text="{Binding RemoveDentPrice}"
+                        <TextBox VerticalAlignment="Stretch" Text="{Binding RemoveDentPrice, Mode=TwoWay}"
                                  IsEnabled="{Binding IsPriceEnabled}" />
                     </Border>
                 </StackPanel>

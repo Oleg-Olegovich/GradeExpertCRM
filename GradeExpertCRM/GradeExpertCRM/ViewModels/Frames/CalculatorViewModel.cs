@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using ReactiveUI;
 using Avalonia.Media.Imaging;
+using DynamicData;
 using GradeExpertCRM.Models;
 using GradeExpertCRM.Models.Data.Repositories;
 using iText.Layout.Element;
@@ -50,8 +51,21 @@ namespace GradeExpertCRM.ViewModels.Frames
             }
         }
 
-        public double NHours { get; set; }
-        public double RemoveDentPrice { get; set; }
+        private double _nHours;
+
+        public double NHours
+        {
+            get => _nHours;
+            set => this.RaiseAndSetIfChanged(ref _nHours, value);
+        }
+
+        private double _removeDentPrice;
+
+        public double RemoveDentPrice
+        {
+            get => _removeDentPrice;
+            set => this.RaiseAndSetIfChanged(ref _removeDentPrice, value);
+        }
 
         private double price_;
 
@@ -96,7 +110,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         public Calculation Calculation { get; } = new Calculation();
 
         public SparePart SparePart { get; } = new SparePart();
-        
+
         public string CarImageDescription
         {
             get
@@ -121,7 +135,7 @@ namespace GradeExpertCRM.ViewModels.Frames
                 };
             }
         }
-        
+
         public bool IsPriceEnabled
         {
             get => _isPriceEnabled;
@@ -154,7 +168,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
             AddSparePartCommand = ReactiveCommand.Create(AddSparePart);
             DeleteSparePartCommand = ReactiveCommand.Create<SparePart>(DeleteSparePart);
-            
+
             calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
             var carRepository = Locator.Current.GetService<ICarRepository>();
             var settingsRepository = Locator.Current.GetService<ISettingsRepository>();
@@ -165,16 +179,8 @@ namespace GradeExpertCRM.ViewModels.Frames
             DismantlingWorks =
                 new ObservableCollection<DismantlingWork>(GetDismantlingWorksByBodyType(selectedCar_.BodyType,
                     carImageName));
+
             SpareParts = new ObservableCollection<SparePart>();
-            
-            SpareParts.Add(new SparePart
-            {
-                CalculationId = Calculation.Id,
-                Code = 321,
-                Name = "Капот",
-                Price = 300.1,
-                Quantity = 2
-            });
         }
 
         public CalculatorViewModel(IBaseWindow baseWindow, Calculation calculation)
@@ -183,6 +189,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             _carImageName = calculation.ComponentImageName;
             CarImage = new Bitmap(ImagePath + _carImageName + ".png");
             SaveCommand = ReactiveCommand.CreateFromTask(Save);
+            DeleteSparePartCommand = ReactiveCommand.Create<SparePart>(DeleteSparePart);
 
             calculationRepository_ = Locator.Current.GetService<ICalculationRepository>();
             var carRepository = Locator.Current.GetService<ICarRepository>();
@@ -244,7 +251,9 @@ namespace GradeExpertCRM.ViewModels.Frames
                 }
 
                 Calculation.NHours = hours;
+                NHours = hours;
                 Calculation.RemoveDentPrice = settings_.RemoveDentsPrice;
+                RemoveDentPrice = settings_.RemoveDentsPrice;
                 initialDentPrice = hours * settings_.RemoveDentsPrice;
                 currentDentPrice = initialDentPrice;
             }
@@ -307,6 +316,7 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         public void AddSparePart()
         {
+            SparePart.CalculationId = Calculation.Id;
             SpareParts.Add(SparePart);
         }
 
@@ -314,7 +324,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             SpareParts.Remove(sparePart);
         }
-        
+
         public void Cancel()
             => BaseWindow.Content = new CalculationDataViewModel(BaseWindow);
 
@@ -328,6 +338,31 @@ namespace GradeExpertCRM.ViewModels.Frames
             string path = @$"{ResourcesDirectory}DismantlingWork\{bodyType}\{jsonFile}";
             string json = File.ReadAllText(path);
             var works = JsonConvert.DeserializeObject<List<DismantlingWork>>(json);
+            
+            HashSet<string> set = new HashSet<string>
+            {
+                "01-1",
+                "02-1",
+                "03-1",
+                "04-1",
+                "05-1",
+                "06-1",
+                "09-1",
+                "10-1",
+                "11-1",
+                "12-1",
+                "13-1"
+            };
+            set.Remove(componentName);
+            foreach (var item in set)
+            {
+                jsonFile = GetJsonFileName(item);
+                path = @$"{ResourcesDirectory}DismantlingWork\{bodyType}\{jsonFile}";
+                json = File.ReadAllText(path);
+                var otherWorks = JsonConvert.DeserializeObject<List<DismantlingWork>>(json);
+                works.Add(otherWorks);
+            }
+            
             works.ForEach(work => work.Price = work.NHours * settings_.DismantlingPrice);
             return works;
         }
