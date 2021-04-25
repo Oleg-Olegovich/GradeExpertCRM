@@ -48,6 +48,8 @@ namespace GradeExpertCRM.Models
         /// </summary>
         public TypeOfRepair TypeOfRepair { get; set; }
 
+        public string TypeOfRepairString { get; set; }
+
         public double PriceOfPainting { get; set; }
 
         public List<DismantlingWork> DismantlingWorks { get; set; } = new List<DismantlingWork>();

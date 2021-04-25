@@ -129,7 +129,31 @@ namespace GradeExpertCRM.ViewModels.Frames
         public ReactiveCommand<Calculation, Unit> ChangeCommand { get; }
 
         public OverallCalculation OverallCalculation { get; }
-        public ObservableCollection<Calculation> Calculations { get; }
+
+        private ObservableCollection<Calculation> _calculations;
+        public ObservableCollection<Calculation> Calculations 
+        {
+            get => _calculations;
+            private set
+            {
+                foreach (var calculation in value)
+                {
+                    switch (calculation.TypeOfRepair)
+                    {
+                        case TypeOfRepair.WithoutPainting:
+                            calculation.TypeOfRepairString = Localization.WithoutPainting;
+                            break;
+                        case TypeOfRepair.UnderPainting:
+                            calculation.TypeOfRepairString = Localization.UnderPainting;
+                            break;
+                        case TypeOfRepair.Replacement:
+                            calculation.TypeOfRepairString = Localization.Replacement;
+                            break;
+                    }
+                }
+                _calculations = value;
+            }
+        }
 
         private readonly IOverallCalculationRepository overallCalculationRepository_;
         private readonly ICalculationRepository calculationRepository_;
@@ -181,6 +205,8 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             var calculations = calculationRepository_.GetFullCalculationsByCarId(selectedCarId);
             Calculations = new ObservableCollection<Calculation>(calculations);
+            if (Calculations == null)
+                return;
 
             var overallCalculation = overallCalculationRepository_.GetByCarId(selectedCarId);
             OverallCalculation = overallCalculation ?? new OverallCalculation();

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reactive;
 using System.Threading.Tasks;
-using System.Configuration;
 using ReactiveUI;
 using Microsoft.Extensions.Configuration;
 

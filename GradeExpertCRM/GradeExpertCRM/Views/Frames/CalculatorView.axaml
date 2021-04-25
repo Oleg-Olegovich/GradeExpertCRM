@@ -23,8 +23,8 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="4*" />
-            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
 
         <Border Grid.Column="0" Grid.Row="0"
@@ -178,29 +178,34 @@
                 <DataGrid Grid.Row="1" Items="{Binding DismantlingWorks}"
                           Margin="-6 0 -6 5" IsReadOnly="False">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Binding="{Binding IsApplied, Mode=TwoWay}" />
-                        <DataGridTextColumn Binding="{Binding Code}">
+                        <DataGridCheckBoxColumn Binding="{Binding IsApplied, Mode=TwoWay}"
+												Width="1*"/>
+                        <DataGridTextColumn Binding="{Binding Code}"
+											Width="1*">
                             <DataGridTextColumn.Header>
                                 <TextBlock
                                     Text="{Binding DataContext.Localization.Code, 
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
                             </DataGridTextColumn.Header>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding NHours}">
+                        <DataGridTextColumn Binding="{Binding NHours}"
+											Width="1*">
                             <DataGridTextColumn.Header>
                                 <TextBlock
                                     Text="{Binding DataContext.Localization.NHours, 
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
                             </DataGridTextColumn.Header>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Price}">
+                        <DataGridTextColumn Binding="{Binding Price}"
+											Width="1*">
                             <DataGridTextColumn.Header>
                                 <TextBlock
                                     Text="{Binding DataContext.Localization.Price, 
                                               RelativeSource={RelativeSource AncestorType={x:Type local:CalculatorView}}}" />
                             </DataGridTextColumn.Header>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Name}">
+                        <DataGridTextColumn Binding="{Binding Name}"
+											Width="3*">
                             <DataGridTextColumn.Header>
                                 <TextBlock
                                     Text="{Binding DataContext.Localization.Description, 

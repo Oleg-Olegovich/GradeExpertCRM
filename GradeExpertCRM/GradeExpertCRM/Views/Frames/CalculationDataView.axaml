@@ -131,7 +131,7 @@
                                           RelativeSource={RelativeSource AncestorType={x:Type local:CalculationDataView}}}" />
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding TypeOfRepair}"
+                <DataGridTextColumn Binding="{Binding TypeOfRepairString}"
                                     IsReadOnly="True">
                     <DataGridTextColumn.Header>
                         <TextBlock
