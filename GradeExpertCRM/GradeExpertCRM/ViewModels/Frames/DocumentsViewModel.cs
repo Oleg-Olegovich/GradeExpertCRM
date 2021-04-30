@@ -88,7 +88,8 @@ namespace GradeExpertCRM.ViewModels.Frames
 
         private async Task Save(Document document)
         {
-            SaveFileDialog dialog = new SaveFileDialog() {InitialFileName = "Untitled", DefaultExtension = "pdf"};
+            
+            SaveFileDialog dialog = new SaveFileDialog() {InitialFileName = document.Title, DefaultExtension = "pdf"};
             string path = await dialog.ShowAsync(new Window());
 
             if (path == null)
@@ -103,7 +104,7 @@ namespace GradeExpertCRM.ViewModels.Frames
         {
             var car = await carRepository_.GetFullCarAsync(carRepository_.SelectedCarId);
             var uri =
-                $"mailto:{detailsSettings_.Email}?subject=" +
+                $"mailto:?subject=" +
                 $"{car.Brand} {car.Model}, {car.Number}, {car.Loss}";
             var psi = new ProcessStartInfo {UseShellExecute = true, FileName = uri};
 

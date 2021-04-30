@@ -289,10 +289,11 @@ namespace GradeExpertCRM.ViewModels.Frames
 
             Calculation.DismantlingWorks = new List<DismantlingWork>(DismantlingWorks);
 
-            dismantlingPrice = Calculation.DismantlingWorks.Where(work => work.IsApplied).Sum(work => work.Price);
+            var appliedWorks = Calculation.DismantlingWorks.Where(work => work.IsApplied).ToList(); 
+            dismantlingPrice = appliedWorks.Sum(work => work.Price);
             currentPrice += dismantlingPrice;
 
-            Calculation.IsDismantling = Calculation.DismantlingWorks.Count > 0;
+            Calculation.IsDismantling = appliedWorks.Count > 0;
             Calculation.DentPrice = currentDentPrice;
             Calculation.Price = currentPrice;
             Price = currentPrice;

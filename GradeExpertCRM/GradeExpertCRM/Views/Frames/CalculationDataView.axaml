@@ -148,7 +148,7 @@
                     </DataGridCheckBoxColumn.Header>
                 </DataGridCheckBoxColumn>
                 <DataGridCheckBoxColumn Binding="{Binding IsAdhesive}"
-                                        IsReadOnly="False">
+                                        IsReadOnly="True">
                     <DataGridCheckBoxColumn.Header>
                         <TextBlock
                             Text="{Binding DataContext.Localization.Glue, 
@@ -156,7 +156,7 @@
                     </DataGridCheckBoxColumn.Header>
                 </DataGridCheckBoxColumn>
                 <DataGridCheckBoxColumn Binding="{Binding IsDismantling}"
-                                        IsReadOnly="False">
+                                        IsReadOnly="True">
                     <DataGridCheckBoxColumn.Header>
                         <TextBlock
                             Text="{Binding DataContext.Localization.Dismantling, 

@@ -128,19 +128,18 @@ namespace GradeExpertCRM.ViewModels.Frames
                 Cell cell11 = new Cell().Add(new Paragraph("ВЛАДЕЛЕЦ").SetBold());
                 Cell cell21 = new Cell().Add(new Paragraph("НОМЕР ПОЛИСА ").SetBold());
                 Cell cell31 = new Cell().Add(new Paragraph("НОМЕР УБЫТКА").SetBold());
-
-                // TODO Исправить исключение, в случае когда значения == null
-                Cell cell12 = new Cell().Add(new Paragraph(car_.Client.Name));
-                Cell cell22 = new Cell().Add(new Paragraph(car_.PolicyNumber));
-                Cell cell32 = new Cell().Add(new Paragraph(car_.Loss));
+                
+                Cell cell12 = new Cell().Add(new Paragraph(car_.Client.Name?.ToUpper() ?? ""));
+                Cell cell22 = new Cell().Add(new Paragraph(car_.PolicyNumber?.ToUpper() ?? ""));
+                Cell cell32 = new Cell().Add(new Paragraph(car_.Loss?.ToUpper() ?? ""));
 
                 Cell cell13 = new Cell().Add(new Paragraph("АВТОМОБИЛЬ").SetBold());
                 Cell cell23 = new Cell().Add(new Paragraph("ГОС. НОМЕР").SetBold());
                 Cell cell33 = new Cell().Add(new Paragraph("VIN").SetBold());
 
-                Cell cell14 = new Cell().Add(new Paragraph($"{car_.Brand} {car_.Model}"));
-                Cell cell24 = new Cell().Add(new Paragraph(car_.Number));
-                Cell cell34 = new Cell().Add(new Paragraph(car_.VIN));
+                Cell cell14 = new Cell().Add(new Paragraph($"{car_.Brand?.ToUpper() ?? ""} {car_.Model?.ToUpper() ?? ""}"));
+                Cell cell24 = new Cell().Add(new Paragraph(car_.Number?.ToUpper() ?? ""));
+                Cell cell34 = new Cell().Add(new Paragraph(car_.VIN?.ToUpper() ?? ""));
 
                 table.AddCell(cell11).AddCell(cell12).AddCell(cell13).AddCell(cell14);
                 table.AddCell(cell21).AddCell(cell22).AddCell(cell23).AddCell(cell24);
@@ -298,19 +297,18 @@ namespace GradeExpertCRM.ViewModels.Frames
                 Cell cell11 = new Cell().Add(new Paragraph("ВЛАДЕЛЕЦ").SetBold());
                 Cell cell21 = new Cell().Add(new Paragraph("НОМЕР ПОЛИСА ").SetBold());
                 Cell cell31 = new Cell().Add(new Paragraph("НОМЕР УБЫТКА").SetBold());
-
-                // TODO Исправить исключение, в случае когда значения == null
-                Cell cell12 = new Cell().Add(new Paragraph(car_.Client.Name));
-                Cell cell22 = new Cell().Add(new Paragraph(car_.PolicyNumber));
-                Cell cell32 = new Cell().Add(new Paragraph(car_.Loss));
+                
+                Cell cell12 = new Cell().Add(new Paragraph(car_.Client.Name?.ToUpper() ?? ""));
+                Cell cell22 = new Cell().Add(new Paragraph(car_.PolicyNumber?.ToUpper() ?? ""));
+                Cell cell32 = new Cell().Add(new Paragraph(car_.Loss?.ToUpper() ?? ""));
 
                 Cell cell13 = new Cell().Add(new Paragraph("АВТОМОБИЛЬ").SetBold());
                 Cell cell23 = new Cell().Add(new Paragraph("ГОС. НОМЕР").SetBold());
                 Cell cell33 = new Cell().Add(new Paragraph("VIN").SetBold());
 
-                Cell cell14 = new Cell().Add(new Paragraph($"{car_.Brand} {car_.Model}"));
-                Cell cell24 = new Cell().Add(new Paragraph(car_.Number));
-                Cell cell34 = new Cell().Add(new Paragraph(car_.VIN));
+                Cell cell14 = new Cell().Add(new Paragraph($"{car_.Brand?.ToUpper() ?? ""} {car_.Model?.ToUpper() ?? ""}"));
+                Cell cell24 = new Cell().Add(new Paragraph(car_.Number?.ToUpper() ?? ""));
+                Cell cell34 = new Cell().Add(new Paragraph(car_.VIN?.ToUpper() ?? ""));
 
                 table.AddCell(cell11).AddCell(cell12).AddCell(cell13).AddCell(cell14);
                 table.AddCell(cell21).AddCell(cell22).AddCell(cell23).AddCell(cell24);
@@ -512,7 +510,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             Models.Document documentModel = new Models.Document
             {
                 CarId = car_.Id,
-                Title = "Счет на оплату",
+                Title = "СЧЕТ НА ОПЛАТУ",
                 CreationDate = DateTime.Now,
                 Content = pdfBytes
             };
@@ -558,7 +556,7 @@ namespace GradeExpertCRM.ViewModels.Frames
             Models.Document documentModel = new Models.Document
             {
                 CarId = car_.Id,
-                Title = "Счет на оплату франшизы",
+                Title = "СЧЕТ НА ОПЛАТУ ФРАНШИЗЫ",
                 CreationDate = DateTime.Now,
                 Content = pdfBytes
             };

@@ -7,6 +7,7 @@ using Splat;
 using System.Reactive;
 using System.Threading.Tasks;
 using System.IO;
+using System.Linq;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace GradeExpertCRM.ViewModels.Frames
@@ -277,11 +278,9 @@ namespace GradeExpertCRM.ViewModels.Frames
                 currentDentPrice += calculation.DentPrice;
                 currentPainting += calculation.PriceOfPainting;
 
-                foreach (var dismantlingWork in calculation.DismantlingWorks)
-                    currentDismantlingPrice += dismantlingWork.Price;
+                currentDismantlingPrice += calculation.DismantlingWorks.Where(work=>work.IsApplied).Sum(work => work.Price);
 
-                foreach (var sparePart in calculation.SpareParts)
-                    currentSparePartsPrice += sparePart.Price;
+                currentSparePartsPrice += calculation.SpareParts.Sum(sparePart => sparePart.Price);
             }
 
             DentRepairPrice = currentDentPrice;

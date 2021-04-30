@@ -69,6 +69,7 @@
         <Button Grid.Row="4"
                 Grid.Column="1"
                 Classes="Menu"
+                Command="{Binding PaymentCommand}"
                 Content="{Binding Localization.TextBoxInvoiceForPaymentWithSignatures}"
                 Margin="10 5 10 5" />
         <Button Grid.Row="5"
@@ -80,6 +81,7 @@
         <Button Grid.Row="5"
                 Grid.Column="1"
                 Classes="Menu"
+                Command="{Binding FranchiseCommand}"
                 Content="{Binding Localization.TextBoxInvoiceForFranchiseWithSignatures}"
                 Margin="10 5 10 5" />
 

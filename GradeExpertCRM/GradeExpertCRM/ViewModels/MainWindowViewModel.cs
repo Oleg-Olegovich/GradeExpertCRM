@@ -1,4 +1,5 @@
-﻿using GradeExpertCRM.Models.Data.Repositories;
+﻿using System;
+using GradeExpertCRM.Models.Data.Repositories;
 using ReactiveUI;
 using Splat;
 
